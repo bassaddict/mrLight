@@ -110,6 +110,7 @@
 			<entry key="price" type="number" value="35000" />
 			<entry key="dailyUpkeep" type="number" value="180" />
 			<entry key="power" type="number" value="135" />
+			<!-- entry key="masses" type="number" value="4.15" is +0.13 / -->
 		</vehicle>
 		
 		<!-- Case IH -->
@@ -156,17 +157,17 @@
 			<entry key="masses" type="number" value="15.948" /> <!--  14.148t plus front ballast, 18 * 100kg  / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHPuma160.xml" >
-		<!-- Real values: 160 HP@2200 RPM, 177 HP@1850 RPM, 767Nm@1500 RPM, from constructor's technical datasheet and power/torque graph -->
+		<!-- Real values: 190 HP@2200 RPM, 203 HP@1800-1900 RPM, 866Nm@1500 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
 			<entry key="maxSpeed" type="number" value="42.53" />
-			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.84 1" />
-			<entry key="torques" type="string" value="0.7 0.74 0.77 0.71 0.67 0.51" />
+			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.82 0.86 1" />
+			<entry key="torques" type="string" value="0.75 0.8 0.87 0.79 0.75 0.61" />
 			<entry key="fuelCapacity" type="number" value="330" />
 			<entry key="fuelUsage" type="number" value="31" />
 			<entry key="price" type="number" value="104544" />
 			<entry key="dailyUpkeep" type="number" value="152" />
-			<entry key="power" type="number" value="177" />
+			<entry key="power" type="number" value="203" />
 			<entry key="masses" type="number" value="6.480" /> <!-- German version, without front axle suspension -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHQuadtrac620.xml" >
@@ -197,6 +198,7 @@
 			<entry key="price" type="number" value="43000" />
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="143" />
+			<!-- entry key="masses" type="number" value="5.4" is +0.1 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/deutz/deutzFahr7250.xml" >
 		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -210,6 +212,7 @@
 			<entry key="price" type="number" value="153484" />
 			<entry key="dailyUpkeep" type="number" value="231" />
 			<entry key="power" type="number" value="263" />
+			<!-- entry key="masses" type="number" value="9.1" is -0.4 / -->
 		</vehicle>
 		
 		<!-- Grimme -->
@@ -225,7 +228,7 @@
 			<entry key="price" type="number" value="479000" />
 			<entry key="dailyUpkeep" type="number" value="1290" />
 			<entry key="power" type="number" value="490" />
-			
+			<!-- entry key="masses" type="string" value="24.53 5"  is +25 !!! -->
 			<entry key="speedLimit" type="number" value="7" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/grimme/grimmeTectron415.xml" >
@@ -240,7 +243,7 @@
 			<entry key="price" type="number" value="479000" />
 			<entry key="dailyUpkeep" type="number" value="1290" />
 			<entry key="power" type="number" value="490" />
-			
+			<!-- entry key="masses" type="string" value="27.3 0.5 0.24"  is -0.5 !!! -->
 			<entry key="speedLimit" type="number" value="7" />
 		</vehicle>
 		
@@ -257,6 +260,7 @@
 			<entry key="price" type="number" value="28000" />
 			<entry key="dailyUpkeep" type="number" value="110" />
 			<entry key="power" type="number" value="90" />
+			<!-- entry key="masses" type="number" value="3.35" is -0.4 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannXM4Ti.xml" >
 		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -270,6 +274,7 @@
 			<entry key="price" type="number" value="76090" />
 			<entry key="dailyUpkeep" type="number" value="105" />
 			<entry key="power" type="number" value="127" />
+			<!-- entry key="masses" type="number" value="5.3" is -0.69 with V-Drive / -->
 		</vehicle>
 		
 		<!-- Krone -->
@@ -285,6 +290,7 @@
 			<entry key="price" type="number" value="415000" />
 			<entry key="dailyUpkeep" type="number" value="810" />
 			<entry key="power" type="number" value="1078" />
+			<!-- entry key="masses" type="number" value="14.8" is -0.2 / -->
 		</vehicle>
 		
 		<!-- Kuhn -->
@@ -300,6 +306,7 @@
 			<entry key="price" type="number" value="128030" />
 			<entry key="dailyUpkeep" type="number" value="110" />
 			<entry key="power" type="number" value="142" />
+			<!-- entry key="masses" type="number" value="9.65" is -0.5 / -->
 		</vehicle>
 		
 		<!-- Lamborghini -->
@@ -315,6 +322,7 @@
 			<entry key="price" type="number" value="141533" />
 			<entry key="dailyUpkeep" type="number" value="212" />
 			<entry key="power" type="number" value="242" />
+			<!-- entry key="masses" type="number" value="8.1" is -1.4 / -->
 		</vehicle>
 		
 		<!-- Liebherr -->
@@ -330,6 +338,7 @@
 			<entry key="price" type="number" value="165000" />
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="156" />
+			<!-- entry key="masses" type="string" value="9.24 3.56"  is +3.2 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrTL432_7.xml" >
 		<!-- Real values: 100 HP@2300 RPM, 480 Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -343,6 +352,7 @@
 			<entry key="price" type="number" value="85000" />
 			<entry key="dailyUpkeep" type="number" value="90" />
 			<entry key="power" type="number" value="100" />
+			<!-- entry key="masses" type="number" value="7" is -6.2 / -->
 		</vehicle>
 		
 		<!-- Lindner -->
@@ -358,6 +368,7 @@
 			<entry key="price" type="number" value="61863" />
 			<entry key="dailyUpkeep" type="number" value="82" />
 			<entry key="power" type="number" value="102" />
+			<!-- entry key="masses" type="number" value="3.95" is -0.01 / -->
 		</vehicle>
 		
 		<!-- MAN -->
@@ -373,6 +384,7 @@
 			<entry key="price" type="number" value="254209" />
 			<entry key="dailyUpkeep" type="number" value="396" />
 			<entry key="power" type="number" value="440" />
+			<!-- entry key="masses" type="number" value="6.68" is -2.279 / -->
 		</vehicle>
 		
 		<!-- New Holland -->
@@ -388,6 +400,7 @@
 			<entry key="price" type="number" value="430000" />
 			<entry key="dailyUpkeep" type="number" value="980" />
 			<entry key="power" type="number" value="652" />
+			<!-- entry key="masses" type="number" value="17.943" is -0.836 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT475.xml" >
 		<!-- Real values: 75 HP@2300 RPM, No peak power, 309Nm@1500 RPM, from constructor's technical datasheet -->
@@ -401,6 +414,7 @@
 			<entry key="price" type="number" value="46499" />
 			<entry key="dailyUpkeep" type="number" value="57" />
 			<entry key="power" type="number" value="75" />
+			<!-- entry key="masses" type="number" value="2.8" is -0.26 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT6160.xml" >
 		<!-- Real values: 150 HP@2200 RPM, 163 maxHP, 676Nm@1500 RPM, from constructor's technical datasheet -->
@@ -414,6 +428,7 @@
 			<entry key="price" type="number" value="96577" />
 			<entry key="dailyUpkeep" type="number" value="139" />
 			<entry key="power" type="number" value="163" />
+			<!-- entry key="masses" type="number" value="5.01" is -0.25 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml.xml" >
 		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
@@ -427,6 +442,7 @@
 			<entry key="price" type="number" value="185921" />
 			<entry key="dailyUpkeep" type="number" value="284" />
 			<entry key="power" type="number" value="320" />
+			<!-- entry key="masses" type="number" value="10.07" is +0.57 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8435.xml" >
 		<!-- Real values: 380 HP@2000 RPM, 435 HP@1800 RPM, 1800 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.420, unknow for T8.435 -->
@@ -440,6 +456,7 @@
 			<entry key="price" type="number" value="251364" />
 			<entry key="dailyUpkeep" type="number" value="391" />
 			<entry key="power" type="number" value="435" />
+			<!-- entry key="masses" type="number" value="11.88" is +2.38 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT9560.xml" >
 		<!-- Real values: 548 HP@2100 RPM, 557 HP@1800 RPM, 2374 Nm@1400 RPM, from constructor's technical datasheet -->
@@ -453,6 +470,7 @@
 			<entry key="price" type="number" value="320790" />
 			<entry key="dailyUpkeep" type="number" value="504" />
 			<entry key="power" type="number" value="557" />
+			<!-- entry key="masses" type="string" value="12.9 9.5"  22.453 total, balance front:back 1.35:1, as Quadtrac620, no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandTC590.xml" >
 		<!-- no data found... -->
@@ -466,6 +484,7 @@
 			<entry key="price" type="number" value="150000" />
 			<entry key="dailyUpkeep" type="number" value="520" />
 			<entry key="power" type="number" value="258" />
+			<!-- entry key="masses" type="number" value="10.75" is +0.5 / -->
 		</vehicle>
 		
 		<!-- Ponsse -->
@@ -481,6 +500,7 @@
 			<entry key="price" type="number" value="221000" />
 			<entry key="dailyUpkeep" type="number" value="340" />
 			<entry key="power" type="number" value="286" />
+			<!-- entry key="masses" type="string" value="11.72 8.08"  19.8 total, balance front:back 1.45:1, pure estimation, no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/ponsse/ponsseScorpion.xml" >
 		<!-- Real values model 2015: 286 HP@2100 RPM, No peak power , 1150Nm@1200-1600 RPM, from constructor's technical datasheet -->
@@ -494,6 +514,7 @@
 			<entry key="price" type="number" value="317000" />
 			<entry key="dailyUpkeep" type="number" value="360" />
 			<entry key="power" type="number" value="286" />
+			<!-- entry key="masses" type="string" value="12.27 10.22"  22.5 total, balance front:back 1.2:1, pure estimation, no exact data found -->
 		</vehicle>
 		
 		<!-- Same -->
@@ -524,6 +545,7 @@
 			<entry key="price" type="number" value="105000" />
 			<entry key="dailyUpkeep" type="number" value="480" />
 			<entry key="power" type="number" value="185" />
+			<!-- entry key="masses" type="number" value="7.1" is -0.9 / -->
 		</vehicle>
 		
 		<!-- Steyr -->
@@ -539,6 +561,7 @@
 			<entry key="price" type="number" value="68692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
+			<!-- entry key="masses" type="number" value="5.15" is +0.6 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -552,6 +575,7 @@
 			<entry key="price" type="number" value="70692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
+			<!-- entry key="masses" type="number" value="5.15" is +0.6 / -->
 		</vehicle>
 		
 		<!-- Ursus -->
