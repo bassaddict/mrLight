@@ -1,0 +1,110 @@
+SpecializationUtil.registerSpecialization("mrLightUtils", "MrLightUtils", g_currentModDirectory.."mrLightUtils.lua");
+
+SpecializationUtil.registerSpecialization("sowingMachineManipulation", "SowingMachineManipulation", g_currentModDirectory.."SowingMachineManipulation.lua");
+SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipulation", g_currentModDirectory.."SprayerManipulation.lua");
+SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
+--SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
+SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
+SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
+SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
+SpecializationUtil.registerSpecialization("drivableManipulation", "DrivableManipulation", g_currentModDirectory.."DrivableManipulation.lua");
+
+
+loaderClass = {};
+
+loaderClass.firstUpdate = true;
+loaderClass.firstLoadMap = true;
+MrLightUtils.modDir = g_currentModDirectory;
+
+function loaderClass:loadMap(name)
+	
+	if loaderClass.firstLoadMap then
+		--print("first load map")
+		loaderClass.firstLoadMap = false;
+		local xmlPath = MrLightUtils.modDir.."mrLightSettings.xml";
+		local xmlFile = loadXMLFile("settings", xmlPath);
+		if xmlFile ~= nil then
+			MrLightUtils.loadVehicleConfigs(xmlFile);
+			delete(xmlFile);
+		end;
+	end;
+	
+	--add specializations to vehicles
+	for k, v in pairs(VehicleTypeUtil.vehicleTypes) do
+		if SpecializationUtil.hasSpecialization(SowingMachine, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("sowingMachineManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(Sprayer, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("sprayerManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(ForageWagon, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("forageWagonManipulation"));
+		end;
+		--if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
+		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
+		--end;
+		if SpecializationUtil.hasSpecialization(Baler, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("balerManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(PowerConsumer, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("powerConsumerManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("workSpeedUpdates"));
+		end;
+		if SpecializationUtil.hasSpecialization(Drivable, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("drivableManipulation"));
+		end;
+	end;
+	
+	
+end;
+
+function loaderClass:deleteMap()
+	loaderClass.firstLoadMap = true;
+	loaderClass.firstUpdate = true;
+end;
+
+function loaderClass:mouseEvent(posX, posY, isDown, isUp, button)
+end;
+
+function loaderClass:keyEvent(unicode, sym, modifier, isDown)
+end;
+
+function loaderClass:update(dt)
+	if loaderClass.firstUpdate then
+		loaderClass.firstUpdate = false;
+		
+		MrLightUtils.setStoreData();
+		
+		
+		local xmlFile = "";
+		if g_currentMission.missionInfo.isValid then
+			local xmlPath = getUserProfileAppPath() .. "savegame".. g_currentMission.missionInfo.savegameIndex .. "/mrLightSettings.xml";
+			xmlFile = loadXMLFile("settings", xmlPath);
+		else
+			local xmlPath = MrLightUtils.modDir.."mrLightSettings.xml";
+			xmlFile = loadXMLFile("settings", xmlPath);
+		end;
+		if xmlFile ~= nil and xmlFile ~= "" then
+			MrLightUtils.setBalancingFactors(xmlFile);
+			delete(xmlFile);
+		end;
+		
+		MrLightUtils.setFruitData(not g_currentMission.missionInfo.isValid);
+		
+		for k,v in pairs(g_currentMission.itemsToSave) do
+			if v.item:isa(Bale) then
+				local newMass = Fillable.fillTypeIndexToDesc[v.item.fillType].massPerLiter * v.item.fillLevel;
+				setMass(v.item.nodeId, newMass);
+			end;
+		end;
+	end;
+	
+end;
+
+function loaderClass:draw()
+end;
+
+addModEventListener(loaderClass);
+

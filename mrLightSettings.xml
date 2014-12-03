@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<settings>
+	<balancing>
+		<priceBalancing value="3" /> 				<!-- default value = 1 / general price balancing applied to all selling/buying product | set it to 1 to get "real" prices for crop -->
+		
+		<seedPriceBalancing value="1" /> 			<!-- default value = 1 / total multiplier = priceBalancing x seedPriceBalancing -->
+		<woolPriceBalancing value="4" />			<!-- default value = 4 / total multiplier = priceBalancing x woolPriceBalancing -->
+		<eggPriceBalancing value="3" />				<!-- default value = 3 / total multiplier = priceBalancing x eggPriceBalancing -->
+		<milkPriceBalancing value="1" />			<!-- default value = 1 / total multiplier = priceBalancing x milkPriceBalancing -->
+		<fuelPriceBalancing value="1" />			<!-- default value = 1 / total multiplier = priceBalancing x fuelPriceBalancing -->
+		<fertilizerPriceBalancing value="1" />		<!-- default value = 1 / total multiplier = priceBalancing x fertilizerPriceBalancing -->
+		<silagePriceBalancing value="1" />		<!-- default value = 1 / total multiplier = priceBalancing x silagePriceBalancing -->
+		<windrowPriceBalancing value="2.5" />		<!-- default value = 2.5 / total multiplier = priceBalancing x windrowPriceBalancing -->
+		<woodChipsPriceBalancing value="1" />
+	</balancing>
+	<vehicles>
+		<!-- balers -->
+		
+		<!-- New Holland -->
+		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandBB1290.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+			<!-- entry key="masses" type="number" value="8.320" value from predecessor model, is +0.028 / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandRollBelt150.xml" >
+			<entry key="speedLimit" type="number" value="10" />
+			<!-- entry key="masses" type="number" value="3.715" is +0.074/ -->
+		</vehicle>
+		
+		
+		
+		<!-- cutters -->
+		
+		<!-- Capello -->
+		<vehicle configFile ="data/vehicles/cutters/capello/capelloQuasarF4.xml" >
+			<entry key="speedLimit" type="number" value="5" />
+			<!-- entry key="masses" type="number" value="1.210" is -0.003 / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/capello/capelloQuasarHS16.xml" >
+			<entry key="speedLimit" type="number" value="6" />
+			<entry key="masses" type="number" value="6.008" />
+		</vehicle>
+		
+		<!-- Case IH -->
+		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3020Cutter.xml" >
+			<entry key="speedLimit" type="number" value="5.5" />
+			<!-- entry key="masses" type="number" value="3.066" is +0.002 / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3162Cutter.xml" >
+			<entry key="speedLimit" type="number" value="6" />
+			<entry key="masses" type="string" value="4.104 0.2 0.1 0.1" /> <!-- total mass of 4.504 -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3412Corn.xml" >
+			<entry key="speedLimit" type="number" value="5.5" />
+			<!-- entry key="masses" type="number" value="3.868" is -0.003 / -->
+		</vehicle>
+		
+		<!-- Krone -->
+		<vehicle configFile ="data/vehicles/cutters/krone/kroneEasyCollect1053.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/krone/kroneEasyFlow300.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/krone/kroneXDisc6200.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		
+		<!-- New Holland -->
+		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandDraper45.xml" >
+			<entry key="speedLimit" type="number" value="6" />
+			<entry key="masses" type="string" value="4.104 0.2 0.1 0.1" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader18.xml" >
+			<entry key="speedLimit" type="number" value="5.2" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader40.xml" >
+			<entry key="speedLimit" type="number" value="5.7" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF6.xml" >
+			<entry key="speedLimit" type="number" value="5" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF12.xml" >
+			<entry key="speedLimit" type="number" value="5.5" />
+		</vehicle>
+		
+		<!-- Poettinger -->
+		<vehicle configFile ="data/vehicles/cutters/poettinger/poettingerMex5.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		
+		<!-- Sampo Rosenlew -->
+		<vehicle configFile ="data/vehicles/cutters/sampoRosenlew/sampoRosenlewC6.xml" >
+			<entry key="speedLimit" type="number" value="5" />
+		</vehicle>
+		
+		
+		
+		<!-- steerable -->
+		
+		<!-- Buehrer -->
+		<vehicle configFile ="data/vehicles/steerable/buehrer/buehrer6135A.xml" >
+		<!-- Real values: 135 HP@2800 RPM, No peak power, extrapolation for the other values, max torque @ 1900 RPM -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2800" />
+			<entry key="maxSpeed" type="number" value="42.11" />
+			<entry key="normRpms" type="string" value="0.35 0.46 0.57 0.68 0.84 1" />
+			<entry key="torques" type="string" value="0.34 0.36 0.38 0.4 0.36 0.34" />
+			<entry key="fuelCapacity" type="number" value="120" />
+			<entry key="fuelUsage" type="number" value="26" />
+			<entry key="price" type="number" value="35000" />
+			<entry key="dailyUpkeep" type="number" value="180" />
+			<entry key="power" type="number" value="135" />
+		</vehicle>
+		
+		<!-- Case IH -->
+		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIH7130.xml" >
+		<!-- Real values: 415 HP@2000 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
+			<entry key="torques" type="string" value="1.13 1.4 1.55 1.6 1.52 1.46" />
+			<entry key="fuelCapacity" type="number" value="950" />
+			<entry key="fuelUsage" type="number" value="82" />
+			<entry key="price" type="number" value="235000" />
+			<entry key="dailyUpkeep" type="number" value="760" />
+			<entry key="power" type="number" value="410" />
+			<!-- entry key="masses" type="number" value="15.467" is +0.200 / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIH9230Crawler.xml" >
+		<!-- Real values: 571 HP@2000 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
+			<entry key="torques" type="string" value="1.78 2.11 2.33 2.35 2.18 2.01" />
+			<entry key="fuelCapacity" type="number" value="1000" />
+			<entry key="fuelUsage" type="number" value="114" />
+			<entry key="price" type="number" value="380000" />
+			<entry key="dailyUpkeep" type="number" value="940" />
+			<entry key="power" type="number" value="571" />
+			<!-- entry key="masses" type="number" value="17.055" is -0.005 / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHMagnum380.xml" >
+		<!-- Real values: 380 HP@2200 RPM, 415 HP@1800 RPM, 1850Nm@1300/1400 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.59 0.64 0.73 0.82 1" />
+			<entry key="torques" type="string" value="1.6 1.85 1.85 1.73 1.62 1.21" />
+			<entry key="fuelCapacity" type="number" value="636" />
+			<entry key="fuelUsage" type="number" value="73" />
+			<entry key="price" type="number" value="239982" />
+			<entry key="dailyUpkeep" type="number" value="373" />
+			<entry key="power" type="number" value="415" />
+			<entry key="masses" type="number" value="15.948" /> <!--  14.148t plus front ballast, 18 * 100kg  / -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHPuma160.xml" >
+		<!-- Real values: 160 HP@2200 RPM, 177 HP@1850 RPM, 767Nm@1500 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.84 1" />
+			<entry key="torques" type="string" value="0.7 0.74 0.77 0.71 0.67 0.51" />
+			<entry key="fuelCapacity" type="number" value="330" />
+			<entry key="fuelUsage" type="number" value="31" />
+			<entry key="price" type="number" value="104544" />
+			<entry key="dailyUpkeep" type="number" value="152" />
+			<entry key="power" type="number" value="177" />
+			<entry key="masses" type="number" value="6.480" /> <!-- German version, without front axle suspension -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHQuadtrac620.xml" >
+		<!-- Real values model 2015: 628 HP@2100 RPM, 692 HP@1900 RPM, 2941Nm@1400 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="36.99" />
+			<entry key="normRpms" type="string" value="0.47 0.62 0.67 0.76 0.9 1" />
+			<entry key="torques" type="string" value="2.5 2.6 2.94 2.8 2.56 2.1" />
+			<entry key="fuelCapacity" type="number" value="1880" />
+			<entry key="fuelUsage" type="number" value="125" />
+			<entry key="price" type="number" value="397615" />
+			<entry key="dailyUpkeep" type="number" value="630" />
+			<entry key="power" type="number" value="692" />
+			<entry key="masses" type="string" value="12.711 9.415" <!-- 22.126 total, balance front:back 1.35:1, average from test data from older quadtrac/steiger models -->
+		</vehicle>
+		
+		<!-- Deutz -->
+		<vehicle configFile ="data/vehicles/steerable/deutz/deutzAgroStar661.xml" >
+		<!-- Real values: 143 HP@2300 RPM, No peak power, 549Nm@1600 RPM, extrapolation for the other values -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="42.52" />
+			<entry key="normRpms" type="string" value="0.43 0.57 0.7 0.78 0.89 1" />
+			<entry key="torques" type="string" value="0.48 0.51 0.55 0.51 0.47 0.44" />
+			<entry key="fuelCapacity" type="number" value="290" />
+			<entry key="fuelUsage" type="number" value="28" />
+			<entry key="price" type="number" value="43000" />
+			<entry key="dailyUpkeep" type="number" value="120" />
+			<entry key="power" type="number" value="143" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/deutz/deutzFahr7250.xml" >
+		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="61.42" />
+			<entry key="normRpms" type="string" value="0.47 0.52 0.69 0.86 0.9 1" />
+			<entry key="torques" type="string" value="0.9 1 1 1 0.97 0.8" />
+			<entry key="fuelCapacity" type="number" value="435" />
+			<entry key="fuelUsage" type="number" value="52" />
+			<entry key="price" type="number" value="153484" />
+			<entry key="dailyUpkeep" type="number" value="231" />
+			<entry key="power" type="number" value="263" />
+		</vehicle>
+		
+		<!-- Grimme -->
+		<vehicle configFile ="data/vehicles/steerable/grimme/grimmeMaxtron620.xml" >
+		<!-- Real values: 490 HP@2000 RPM, extrapolation for the other values: maxTorque@1500RPM -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="1800" />
+			<entry key="maxSpeed" type="number" value="26.75" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.76 0.9 1" />
+			<entry key="torques" type="string" value="1.4 1.6 1.7 1.8 1.75 1.72" />
+			<entry key="fuelCapacity" type="number" value="1400" />
+			<entry key="fuelUsage" type="number" value="98" />
+			<entry key="price" type="number" value="479000" />
+			<entry key="dailyUpkeep" type="number" value="1290" />
+			<entry key="power" type="number" value="490" />
+			
+			<entry key="speedLimit" type="number" value="7" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/grimme/grimmeTectron415.xml" >
+		<!-- Real values: 490 HP@2000 RPM, extrapolation for the other values: maxTorque@1500RPM -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="1650" />
+			<entry key="maxSpeed" type="number" value="26.75" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.76 0.9 1" />
+			<entry key="torques" type="string" value="1.4 1.6 1.7 1.8 1.75 1.72" />
+			<entry key="fuelCapacity" type="number" value="920" />
+			<entry key="fuelUsage" type="number" value="98" />
+			<entry key="price" type="number" value="479000" />
+			<entry key="dailyUpkeep" type="number" value="1290" />
+			<entry key="power" type="number" value="490" />
+			
+			<entry key="speedLimit" type="number" value="7" />
+		</vehicle>
+		
+		<!-- Huerlimann -->
+		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannH488.xml" >
+		<!-- Real values: 90 HP@2500 RPM, No peak power, 322Nm@1350 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2500" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.4 0.54 0.64 0.76 0.88 1" />
+			<entry key="torques" type="string" value="0.3 0.33 0.3 0.28 0.26 0.25" />
+			<entry key="fuelCapacity" type="number" value="110" />
+			<entry key="fuelUsage" type="number" value="17" />
+			<entry key="price" type="number" value="28000" />
+			<entry key="dailyUpkeep" type="number" value="110" />
+			<entry key="power" type="number" value="90" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannXM4Ti.xml" >
+		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.55 0.64 0.73 0.86 1" />
+			<entry key="torques" type="string" value="0.38 0.42 0.46 0.48 0.44 0.41" />
+			<entry key="fuelCapacity" type="number" value="165" />
+			<entry key="fuelUsage" type="number" value="25" />
+			<entry key="price" type="number" value="76090" />
+			<entry key="dailyUpkeep" type="number" value="105" />
+			<entry key="power" type="number" value="127" />
+		</vehicle>
+		
+		<!-- Krone -->
+		<vehicle configFile ="data/vehicles/steerable/krone/kroneBigX1100.xml" >
+		<!-- Real values: 963 HP@1900 RPM, 1078 HP@1750 RPM, extrapolation for the other values: maxTorque@1400RPM -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="1900" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.52 0.64 0.74 0.84 0.92 1" />
+			<entry key="torques" type="string" value="4.2 4.3 4.5 4.4 4.33 3.56" />
+			<entry key="fuelCapacity" type="number" value="960" />
+			<entry key="fuelUsage" type="number" value="207" />
+			<entry key="price" type="number" value="415000" />
+			<entry key="dailyUpkeep" type="number" value="810" />
+			<entry key="power" type="number" value="1078" />
+		</vehicle>
+		
+		<!-- Kuhn -->
+		<vehicle configFile ="data/vehicles/steerable/kuhn/kuhnSPVConfort12.xml" >
+		<!-- Real values: ratedPower :142 HP, extrapolation for the other values (if someone have the technical data sheet ;))-->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.75 0.82 1" />
+			<entry key="torques" type="string" value="0.4 0.55 0.65 0.61 0.58 0.45" />
+			<entry key="fuelCapacity" type="number" value="200" />
+			<entry key="fuelUsage" type="number" value="28" />
+			<entry key="price" type="number" value="128030" />
+			<entry key="dailyUpkeep" type="number" value="110" />
+			<entry key="power" type="number" value="142" />
+		</vehicle>
+		
+		<!-- Lamborghini -->
+		<vehicle configFile ="data/vehicles/steerable/lamborghini/mach230VRT.xml" >
+		<!-- Real values: 242 HP@2300 RPM, No peak power, 1000Nm@1400 RPM, from constructor's technical datasheet and engine manufacturer's (Deutz) power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="61.45" />
+			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.74 0.87 1" />
+			<entry key="torques" type="string" value="0.9 0.95 1 0.9 0.81 0.74" />
+			<entry key="fuelCapacity" type="number" value="450" />
+			<entry key="fuelUsage" type="number" value="49" />
+			<entry key="price" type="number" value="141533" />
+			<entry key="dailyUpkeep" type="number" value="212" />
+			<entry key="power" type="number" value="242" />
+		</vehicle>
+		
+		<!-- Liebherr -->
+		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrL538.xml" >
+		<!-- Real values: 156 HP@1950 RPM, No peak power, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="1950" />
+			<entry key="maxSpeed" type="number" value="34" />
+			<entry key="normRpms" type="string" value="0.51 0.61 0.72 0.82 0.92 1" />
+			<entry key="torques" type="string" value="0.58 0.6 0.63 0.61 0.57 0.56" />
+			<entry key="fuelCapacity" type="number" value="220" />
+			<entry key="fuelUsage" type="number" value="31" />
+			<entry key="price" type="number" value="165000" />
+			<entry key="dailyUpkeep" type="number" value="120" />
+			<entry key="power" type="number" value="156" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrTL432_7.xml" >
+		<!-- Real values: 100 HP@2300 RPM, 480 Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="normRpms" type="string" value="0.43 0.57 0.7 0.78 0.87 1" />
+			<entry key="torques" type="string" value="0.42 0.45 0.48 0.42 0.36 0.31" />
+			<entry key="fuelCapacity" type="number" value="120" />
+			<entry key="fuelUsage" type="number" value="19" />
+			<entry key="price" type="number" value="85000" />
+			<entry key="dailyUpkeep" type="number" value="90" />
+			<entry key="power" type="number" value="100" />
+		</vehicle>
+		
+		<!-- Lindner -->
+		<vehicle configFile ="data/vehicles/steerable/lindner/lindnerGeotrac94.xml" >
+		<!-- Real values: 102 HP@2200 RPM, No peak power, 420Nm@1400 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.55 0.64 0.73 0.86 1" />
+			<entry key="torques" type="string" value="0.39 0.4 0.42 0.4 0.36 0.33" />
+			<entry key="fuelCapacity" type="number" value="120" />
+			<entry key="fuelUsage" type="number" value="20" />
+			<entry key="price" type="number" value="61863" />
+			<entry key="dailyUpkeep" type="number" value="82" />
+			<entry key="power" type="number" value="102" />
+		</vehicle>
+		
+		<!-- MAN -->
+		<vehicle configFile ="data/vehicles/steerable/man/man22S.xml" >
+		<!-- Real values: 440 HP@1900 RPM, No peak power, 2100 Nm@1000-1400 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="1900" />
+			<entry key="maxSpeed" type="number" value="89.99" />
+			<entry key="normRpms" type="string" value="0.52 0.63 0.74 0.84 0.92 1" />
+			<entry key="torques" type="string" value="2.1 2.1 2.1 1.92 1.76 1.63" />
+			<entry key="fuelCapacity" type="number" value="800" />
+			<entry key="fuelUsage" type="number" value="88" />
+			<entry key="price" type="number" value="254209" />
+			<entry key="dailyUpkeep" type="number" value="396" />
+			<entry key="power" type="number" value="440" />
+		</vehicle>
+		
+		<!-- New Holland -->
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandCR1090.xml" >
+		<!-- Real values: 598 HP@2100 RPM, 652 HP@2000 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.95 1" />
+			<entry key="torques" type="string" value="2.45 2.6 2.75 2.65 2.3 2" />
+			<entry key="fuelCapacity" type="number" value="1300" />
+			<entry key="fuelUsage" type="number" value="130" />
+			<entry key="price" type="number" value="430000" />
+			<entry key="dailyUpkeep" type="number" value="980" />
+			<entry key="power" type="number" value="652" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT475.xml" >
+		<!-- Real values: 75 HP@2300 RPM, No peak power, 309Nm@1500 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="42.52" />
+			<entry key="normRpms" type="string" value="0.43 0.54 0.65 0.76 0.87 1" />
+			<entry key="torques" type="string" value="0.29 0.30 0.31 0.28 0.25 0.23" />
+			<entry key="fuelCapacity" type="number" value="115" />
+			<entry key="fuelUsage" type="number" value="14" />
+			<entry key="price" type="number" value="46499" />
+			<entry key="dailyUpkeep" type="number" value="57" />
+			<entry key="power" type="number" value="75" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT6160.xml" >
+		<!-- Real values: 150 HP@2200 RPM, 163 maxHP, 676Nm@1500 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="51.84" />
+			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.86 1" />
+			<entry key="torques" type="string" value="0.58 0.66 0.68 0.64 0.6 0.48" />
+			<entry key="fuelCapacity" type="number" value="175" />
+			<entry key="fuelUsage" type="number" value="32" />
+			<entry key="price" type="number" value="96577" />
+			<entry key="dailyUpkeep" type="number" value="139" />
+			<entry key="power" type="number" value="163" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml.xml" >
+		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="51.86" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
+			<entry key="torques" type="string" value="1.1 1.3 1.4 1.32 1.25 1" />
+			<entry key="fuelCapacity" type="number" value="617" />
+			<entry key="fuelUsage" type="number" value="63" />
+			<entry key="price" type="number" value="185921" />
+			<entry key="dailyUpkeep" type="number" value="284" />
+			<entry key="power" type="number" value="320" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8435.xml" >
+		<!-- Real values: 380 HP@2000 RPM, 435 HP@1800 RPM, 1800 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.420, unknow for T8.435 -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="51.86" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
+			<entry key="torques" type="string" value="1.45 1.65 1.8 1.74 1.7 1.33" />
+			<entry key="fuelCapacity" type="number" value="617" />
+			<entry key="fuelUsage" type="number" value="87" />
+			<entry key="price" type="number" value="251364" />
+			<entry key="dailyUpkeep" type="number" value="391" />
+			<entry key="power" type="number" value="435" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT9560.xml" >
+		<!-- Real values: 548 HP@2100 RPM, 557 HP@1800 RPM, 2374 Nm@1400 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="42.54" />
+			<entry key="normRpms" type="string" value="0.47 0.62 0.67 0.76 0.86 1" />
+			<entry key="torques" type="string" value="2 2.17 2.37 2.27 2.17 1.83" />
+			<entry key="fuelCapacity" type="number" value="1230" />
+			<entry key="fuelUsage" type="number" value="109" />
+			<entry key="price" type="number" value="320790" />
+			<entry key="dailyUpkeep" type="number" value="504" />
+			<entry key="power" type="number" value="557" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandTC590.xml" >
+		<!-- no data found... -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="normRpms" type="string" value="0.45 0.5 0.59 0.72 0.86 1" />
+			<entry key="torques" type="string" value="1.13 1.22 1.26 1.13 1 0.91" />
+			<entry key="fuelCapacity" type="number" value="400" />
+			<entry key="fuelUsage" type="number" value="51" />
+			<entry key="price" type="number" value="150000" />
+			<entry key="dailyUpkeep" type="number" value="520" />
+			<entry key="power" type="number" value="258" />
+		</vehicle>
+		
+		<!-- Ponsse -->
+		<vehicle configFile ="data/vehicles/steerable/ponsse/ponsseBuffalo.xml" >
+		<!-- Real values model 2015: 286 HP@2100 RPM, No peak power , 1150Nm@1200-1600 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="23" />
+			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.88 1" />
+			<entry key="torques" type="string" value="0.9 1.15 1.15 1.15 1.05 0.96" />
+			<entry key="fuelCapacity" type="number" value="200" />
+			<entry key="fuelUsage" type="number" value="58" />
+			<entry key="price" type="number" value="221000" />
+			<entry key="dailyUpkeep" type="number" value="340" />
+			<entry key="power" type="number" value="286" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/ponsse/ponsseScorpion.xml" >
+		<!-- Real values model 2015: 286 HP@2100 RPM, No peak power , 1150Nm@1200-1600 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="23" />
+			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.88 1" />
+			<entry key="torques" type="string" value="0.9 1.15 1.15 1.15 1.05 0.96" />
+			<entry key="fuelCapacity" type="number" value="320" />
+			<entry key="fuelUsage" type="number" value="58" />
+			<entry key="price" type="number" value="317000" />
+			<entry key="dailyUpkeep" type="number" value="360" />
+			<entry key="power" type="number" value="286" />
+		</vehicle>
+		
+		<!-- Same -->
+		<vehicle configFile ="data/vehicles/steerable/same/sameFortis190.xml" >
+		<!-- Real values: 184 HP@2100 RPM, 193 maxHP, 820Nm@1400 RPM, from constructor's technical datasheet -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2100" />
+			<entry key="maxSpeed" type="number" value="51.85" />
+			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.88 1" />
+			<entry key="torques" type="string" value="0.72 0.77 0.82 0.78 0.73 0.62" />
+			<entry key="fuelCapacity" type="number" value="300" />
+			<entry key="fuelUsage" type="number" value="36" />
+			<entry key="price" type="number" value="113649" />
+			<entry key="dailyUpkeep" type="number" value="166" />
+			<entry key="power" type="number" value="193" />
+		</vehicle>
+		
+		<!-- Sampo Rosenlew -->
+		<vehicle configFile ="data/vehicles/steerable/sampoRosenlew/sampoRosenlewC6.xml" >
+		<!-- Real values: 185 HP@2000 RPM, 700Nm maxTorque, from constructor's and engine manufacturer's technical datasheet, others values were extrapolated -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxSpeed" type="number" value="25.92" />
+			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
+			<entry key="torques" type="string" value="0.6 0.65 0.7 0.7 0.67 0.65" />
+			<entry key="fuelCapacity" type="number" value="350" />
+			<entry key="fuelUsage" type="number" value="36" />
+			<entry key="price" type="number" value="105000" />
+			<entry key="dailyUpkeep" type="number" value="480" />
+			<entry key="power" type="number" value="185" />
+		</vehicle>
+		
+		<!-- Steyr -->
+		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115.xml" >
+		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.7 0.85 1" />
+			<entry key="torques" type="string" value="0.38 0.42 0.46 0.46 0.39 0.35" />
+			<entry key="fuelCapacity" type="number" value="160" />
+			<entry key="fuelUsage" type="number" value="22" />
+			<entry key="price" type="number" value="68692" />
+			<entry key="dailyUpkeep" type="number" value="93" />
+			<entry key="power" type="number" value="114" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
+		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2300" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.7 0.85 1" />
+			<entry key="torques" type="string" value="0.38 0.42 0.46 0.46 0.39 0.35" />
+			<entry key="fuelCapacity" type="number" value="160" />
+			<entry key="fuelUsage" type="number" value="22" />
+			<entry key="price" type="number" value="70692" />
+			<entry key="dailyUpkeep" type="number" value="93" />
+			<entry key="power" type="number" value="114" />
+		</vehicle>
+		
+		<!-- Ursus -->
+		<vehicle configFile ="data/vehicles/steerable/ursus/ursus15014.xml" >
+		<!-- Real values: 148 HP@2200 RPM, No peak power, 518Nm@1500 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="2200" />
+			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.86 1" />
+			<entry key="torques" type="string" value="0.47 0.51 0.52 0.51 0.5 0.47" />
+			<entry key="fuelCapacity" type="number" value="200" />
+			<entry key="fuelUsage" type="number" value="29" />
+			<entry key="price" type="number" value="88041" />
+			<entry key="dailyUpkeep" type="number" value="125" />
+			<entry key="power" type="number" value="148" />
+		</vehicle>
+		
+		<!-- Lizard piQup -->
+		<vehicle configFile ="data/vehicles/steerable/cars/piQup.xml" >
+		<!-- Based on Nissan Navara 3.0L V6 230 HP -->
+		<!-- Real values: 231 HP@3750 RPM, 550Nm@1750 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="3750" />
+			<entry key="maxSpeed" type="number" value="141" />
+			<entry key="normRpms" type="string" value="0.26 0.36 0.47 0.67 0.82 1" />
+			<entry key="torques" type="string" value="0.42 0.46 0.55 0.51 0.46 0.43" />
+			<entry key="fuelCapacity" type="number" value="132" />
+			<entry key="fuelUsage" type="number" value="24" />
+			<entry key="price" type="number" value="59000" />
+			<entry key="dailyUpkeep" type="number" value="30" />
+			<entry key="power" type="number" value="230" />
+		</vehicle>
+		
+		
+		<!-- tools -->
+		
+		<!-- Amazone -->
+		<vehicle configFile ="data/vehicles/tools/amazone/amazoneCayron200.xml" >
+			<entry key="speedLimit" type="number" value="7" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/amazone/amazoneUF1801.xml" >
+			<entry key="speedLimit" type="number" value="13" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/amazone/amazoneZAM1501.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		
+		<!-- Damcon -->
+		<vehicle configFile ="data/vehicles/tools/damcon/damconPL75.xml" >
+			<entry key="speedLimit" type="number" value="4" />
+		</vehicle>
+		
+		<!-- Grimme -->
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
+			<entry key="speedLimit" type="number" value="14" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL660.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeKS75-4.xml" >
+			<entry key="speedLimit" type="number" value="14" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeRootster604.xml" >
+			<entry key="speedLimit" type="number" value="7" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/grimme/grimmeSE260.xml" >
+			<entry key="speedLimit" type="number" value="7" />
+		</vehicle>
+		
+		<!-- Horsch -->
+		<vehicle configFile ="data/vehicles/tools/horsch/horschMaestro12SW.xml" >
+			<entry key="speedLimit" type="number" value="10" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/horsch/horschPronto9SW.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/horsch/horschTiger10LT.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		
+		<!-- Koeckerling -->
+		<vehicle configFile ="data/vehicles/tools/koeckerling/koeckerlingTrio300M.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		
+		<!-- Krone -->
+		<vehicle configFile ="data/vehicles/tools/krone/kroneSwadro2000.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		
+		<!-- Kuhn -->
+		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC3525F.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC10030.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGA8521.xml" >
+			<entry key="speedLimit" type="number" value="14" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGF6502.xml" >
+			<entry key="speedLimit" type="number" value="13" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnVariMaster153.xml" >
+			<entry key="speedLimit" type="number" value="6.5" />
+		</vehicle>
+		
+		<!-- Lemken -->
+		<vehicle configFile ="data/vehicles/tools/lemken/lemkenDiamant12.xml" >
+			<entry key="speedLimit" type="number" value="7.5" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/lemken/lemkenHeliodorGigant101200.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		
+		<!-- Poettinger -->
+		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerHit1214T.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerNovacat302ED.xml" >
+			<entry key="speedLimit" type="number" value="13" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerTop1252.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		
+		<!-- Vaederstad -->
+		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadCarrier820.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
+			<entry key="speedLimit" type="number" value="14" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
+			<entry key="speedLimit" type="number" value="10" />
+		</vehicle>
+		
+		<!-- Vogel Noot -->
+		<vehicle configFile ="data/vehicles/tools/vogelNoot/vogelNootHeros1000.xml" >
+			<entry key="speedLimit" type="number" value="8" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/vogelNoot/vogelNootTerraDisc600.xml" >
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		
+		<!-- Zunhammer -->
+		<vehicle configFile ="data/vehicles/tools/zunhammer/zunhammerZunidisc.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		
+		
+		<!-- trailers -->
+		
+		<!-- Amazone -->
+		<vehicle configFile ="data/vehicles/trailers/amazone/amazoneZGB8200.xml" >
+			<entry key="speedLimit" type="number" value="13" />
+		</vehicle>
+		
+		<!-- Bergmann -->
+		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
+			<entry key="capacity" type="number" value="67000" />
+			<entry key="speedLimit" type="number" value="17" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannM1080.xml" >
+			<entry key="speedLimit" type="number" value="10" />
+		</vehicle>
+		
+		<!-- Fliegl -->
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
+			<entry key="speedLimit" type="number" value="11" />
+		</vehicle>
+		
+		<!-- Jenz -->
+		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
+		<!-- Shop power display modification : default needPtoPower in xml file set at 200kW, corresponding 275 Cv, not 250 Cv default Giant value -->
+			<entry key="power" type="number" value="275" />
+		</vehicle>
+		
+		<!-- Marshall -->
+		<vehicle configFile ="data/vehicles/trailers/marshall/marshallST1800.xml" >
+			<entry key="speedLimit" type="number" value="10" />
+		</vehicle>
+		
+		<!-- Poettinger -->
+		<vehicle configFile ="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" >
+			<entry key="capacity" type="number" value="33000" />
+			<entry key="speedLimit" type="number" value="15" />
+		</vehicle>
+		
+		<!-- Strautmann -->
+		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannPS3401.xml" >
+			<entry key="speedLimit" type="number" value="12" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannTeraVitesse5201.xml" >
+			<entry key="capacity" type="number" value="95000" />
+			<entry key="speedLimit" type="number" value="18" />
+		</vehicle>
+		
+		<!-- Ursus -->
+		<vehicle configFile ="data/vehicles/trailers/ursus/ursusN270.xml" >
+			<entry key="speedLimit" type="number" value="11" />
+		</vehicle>
+		
+		<!-- Zunhammer -->
+		<vehicle configFile ="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
+			<entry key="speedLimit" type="number" value="11" />
+		</vehicle>
+	</vehicles>
+</settings>

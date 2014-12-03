@@ -1,0 +1,13 @@
+2014/11/25
+
+initial implementation, V0.5:
+-adjusted crop yields, same values used as MR in FS13
+-adjusted crop densities, same values used as MR in FS13
+-adjusted fertilizer usage: fertilizer 500L/ha, liquid manure: 20m3/ha, manure: 20t/ha
+-reduced hired worker speeds, fix values
+-correct baler capacity and bale masses
+-forage wagon capacity increased, compressed capacity instead of DIN capacity
+-price balancing factors added
+-global vehicle config file created
+-hired workers consume resources, dismiss when empty
+-develop function: setting power requirements (neededPtoPower, maxForce) ingame

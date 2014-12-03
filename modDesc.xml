@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="21">
+    <author>bassaddict, dural</author>
+	<annotation>Special thanks to dural for his awesome MR mod in FS11/FS13</annotation>
+	<version>0.5.0.1</version>
+	<title>
+		<en>MR light</en>
+		<de>MR light</de>
+	</title>
+	<description>
+		<en>rudimentary MR functions</en>
+		<de>rudimentäre MR-Funktionen</de>
+	</description>
+	<iconFilename>store.dds</iconFilename>
+	<multiplayer supported="true" />
+    <extraSourceFiles>
+		<sourceFile filename="loaderClass.lua" />	
+        <!-- sourceFile filename="workSpeedUpdates.lua" / -->
+    </extraSourceFiles>
+	
+	<l10n>
+		<text name="SETFORCE">
+			<en>SETFORCE</en>
+			<de>SETFORCE</de>
+		</text>
+		<text name="SETPTOPOWER">
+			<en>SETPTOPOWER</en>
+			<de>SETPTOPOWER</de>
+		</text>
+		<text name="SETMAXRPM">
+			<en>SETMAXRPM</en>
+			<de>SETMAXRPM</de>
+		</text>
+	</l10n>
+	
+	<inputBindings>
+		<input name="SETFORCE" category="VEHICLE" key1="KEY_lctrl KEY_f" button="" />
+		<input name="SETPTOPOWER" category="VEHICLE" key1="KEY_lctrl KEY_p" button="" />
+		<input name="SETMAXRPM" category="VEHICLE" key1="KEY_lctrl KEY_m" button="" />
+    </inputBindings>
+</modDesc>
