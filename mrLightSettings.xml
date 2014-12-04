@@ -108,29 +108,40 @@
 		
 		<!-- frontLoaders -->
 		
-		<!-- Stoll 
+		<!-- Stoll -->
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollFrontLoaderFZ.xml" >
+			<entry key="masses" type="number" value="0.838" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollFrontLoaderFZNH.xml" >
+			<entry key="masses" type="number" value="0.838" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolBaleFork.xml" >
+			<entry key="masses" type="number" value="0.078" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolBaleGrab.xml" >
+			<entry key="masses" type="string" value="0.12 0.06 0.06" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolLogFork.xml" >
+			<entry key="masses" type="string" value="0.215 0.085" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolManureFork.xml" >
+			<entry key="masses" type="number" value="0.2" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolManureGrabFork.xml" >
+			<entry key="masses" type="number" value="0.26" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolPalletFork.xml" >
+			<entry key="masses" type="number" value="0.29" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolRoundBaleFork.xml" >
+			<entry key="masses" type="string" value="0.185 0.005 0.005" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolShovel.xml" >
+			<entry key="masses" type="number" value="0.471" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolSilageCutter.xml" >
-		</vehicle> -->
+			<entry key="masses" type="number" value="0.69" />
+		</vehicle> 
 		
 		
 		
@@ -652,21 +663,25 @@
 		
 		<!-- telehandlers -->
 		
-		<!-- Lizard
+		<!-- Lizard -->
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerBaleFork.xml" >
+			<entry key="masses" type="number" value="0.078" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerBaleGrab.xml" >
+			<entry key="masses" type="string" value="0.12 0.06 0.06" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerFork.xml" >
+			<entry key="masses" type="number" value="0.29" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerLogFork.xml" >
+			<entry key="masses" type="string" value="0.215 0.085" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerManureFork.xml" >
+			<entry key="masses" type="number" value="0.2" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerShovel.xml" >
-		</vehicle> -->
-		
-		
+			<entry key="masses" type="number" value="0.471" />
+		</vehicle>
 		
 		<!-- tools -->
 		
