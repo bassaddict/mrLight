@@ -14,16 +14,21 @@
 		<woodChipsPriceBalancing value="1" />
 	</balancing>
 	<vehicles>
+		<!-- basic empty entry
+		<entry key="" type="" value="" />
+		-->
+		
+		
 		<!-- balers -->
 		
 		<!-- New Holland -->
 		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandBB1290.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<!-- entry key="masses" type="number" value="8.320" value from predecessor model, is +0.028 / -->
+			<!-- entry key="masses" type="number" value="8.320" /> value from predecessor model, is +0.028 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandRollBelt150.xml" >
 			<entry key="speedLimit" type="number" value="10" />
-			<!-- entry key="masses" type="number" value="3.715" is +0.074/ -->
+			<!-- entry key="masses" type="number" value="3.715" /> is +0.074 -->
 		</vehicle>
 		
 		
@@ -33,7 +38,7 @@
 		<!-- Capello -->
 		<vehicle configFile ="data/vehicles/cutters/capello/capelloQuasarF4.xml" >
 			<entry key="speedLimit" type="number" value="5" />
-			<!-- entry key="masses" type="number" value="1.210" is -0.003 / -->
+			<!-- entry key="masses" type="number" value="1.210" /> is -0.003 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/capello/capelloQuasarHS16.xml" >
 			<entry key="speedLimit" type="number" value="6" />
@@ -43,7 +48,7 @@
 		<!-- Case IH -->
 		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3020Cutter.xml" >
 			<entry key="speedLimit" type="number" value="5.5" />
-			<!-- entry key="masses" type="number" value="3.066" is +0.002 / -->
+			<!-- entry key="masses" type="number" value="3.066" /> is +0.002 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3162Cutter.xml" >
 			<entry key="speedLimit" type="number" value="6" />
@@ -51,26 +56,30 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3412Corn.xml" >
 			<entry key="speedLimit" type="number" value="5.5" />
-			<!-- entry key="masses" type="number" value="3.868" is -0.003 / -->
+			<!-- entry key="masses" type="number" value="3.868" /> is -0.003 -->
 		</vehicle>
 		
 		<!-- Krone -->
-		<!-- vehicle configFile ="data/vehicles/cutters/krone/kroneCutterTrailer.xml" >
-		</vehicle -->
+		<vehicle configFile ="data/vehicles/cutters/krone/kroneCutterTrailer.xml" >
+			<entry key="masses" type="string" value="0.750 0.100 0.100" /> <!-- total mass of 0.95, is +0.893, data from MR DLCs -->
+		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/krone/kroneEasyCollect1053.xml" >
 			<entry key="speedLimit" type="number" value="8" />
+			<entry key="masses" type="number" value="3.600" /> <!--  is +0.359, data from MR DLCs -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/krone/kroneEasyFlow300.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<entry key="masses" type="number" value="1.250" /> <!--  is +0.324, data from MR DLCs -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/krone/kroneXDisc6200.xml" >
 			<entry key="speedLimit" type="number" value="8" />
+			<entry key="masses" type="number" value="2.350" /> <!--  is +0.274, data from MR DLCs -->
 		</vehicle>
 		
 		<!-- New Holland -->
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandDraper45.xml" >
 			<entry key="speedLimit" type="number" value="6" />
-			<entry key="masses" type="string" value="4.104 0.200 0.100 0.100" />
+			<entry key="masses" type="string" value="4.104 0.200 0.100 0.100" /> <!-- total mass of 4.504 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader18.xml" >
 			<entry key="speedLimit" type="number" value="5.2" />
@@ -706,15 +715,23 @@
 		<!-- Horsch -->
 		<vehicle configFile ="data/vehicles/tools/horsch/horschMaestro12SW.xml" >
 			<entry key="speedLimit" type="number" value="10" />
+			<entry key="masses" type="string" value="4.305 2.870" /> <!-- is -5.629, estimated ballance wagon:sower 60%:40%-->
+			<entry key="neededPower" type="number" value="180" /> <!-- 130kw / 180hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschPronto9SW.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="masses" type="string" value="3.460 9.740" /> <!-- is +0.255, actual ballance wagon:sower -->
+			<entry key="neededPower" type="number" value="320" /> <!-- 235-330kw / 320-450hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<!-- entry key="masses" type="number" value="6.450" />  is -0.081 -->
+			<entry key="neededPower" type="number" value="205" /> <!-- 150-220kw / 205-300hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTiger10LT.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<!-- entry key="masses" type="number" value="10.835" />  is +0.033 -->
+			<entry key="neededPower" type="number" value="400" /> <!-- 295-440kw / 400-600hp -->
 		</vehicle>
 		
 		<!-- Koeckerling -->
@@ -851,14 +868,15 @@
 		<vehicle configFile ="data/vehicles/trailers/fuelTrailer/fuelTrailer.xml" >
 		</vehicle> -->
 		
-		<!-- Horsch
+		<!-- Horsch -->
 		<vehicle configFile ="data/vehicles/trailers/horsch/horschTitan34UW.xml" >
-		</vehicle> -->
+			<entry key="neededPower" type="number" value="200" /> <!-- 150kw / 200hp -->
+		</vehicle>
 		
 		<!-- Jenz -->
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
-		<!-- Shop power display modification : default needPtoPower in xml file set at 200kW, corresponding 275 Cv, not 250 Cv default Giant value -->
-			<entry key="power" type="number" value="275" />
+			<entry key="neededPower" type="number" value="180" /> <!-- 132-350kw / 180-475hp -->
+			<entry key="neededPtoPower" type="number" value="132" />
 		</vehicle>
 		
 		<!-- Kotte
