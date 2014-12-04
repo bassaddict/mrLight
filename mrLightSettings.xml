@@ -55,6 +55,8 @@
 		</vehicle>
 		
 		<!-- Krone -->
+		<!-- vehicle configFile ="data/vehicles/cutters/krone/kroneCutterTrailer.xml" >
+		</vehicle -->
 		<vehicle configFile ="data/vehicles/cutters/krone/kroneEasyCollect1053.xml" >
 			<entry key="speedLimit" type="number" value="8" />
 		</vehicle>
@@ -95,6 +97,34 @@
 		
 		
 		
+		<!-- frontLoaders -->
+		
+		<!-- Stoll 
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollFrontLoaderFZ.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollFrontLoaderFZNH.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolBaleFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolBaleGrab.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolLogFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolManureFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolManureGrabFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolPalletFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolRoundBaleFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolShovel.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/frontLoaders/stoll/stollToolSilageCutter.xml" >
+		</vehicle> -->
+		
+		
+		
 		<!-- steerable -->
 		
 		<!-- Buehrer -->
@@ -111,6 +141,22 @@
 			<entry key="dailyUpkeep" type="number" value="180" />
 			<entry key="power" type="number" value="135" />
 			<entry key="masses" type="number" value="4.150" /> <!-- is -0.124 / -->
+		</vehicle>
+		
+		<!-- cars -->
+		<vehicle configFile ="data/vehicles/steerable/cars/piQup.xml" >
+		<!-- Based on Nissan Navara 3.0L V6 230 HP -->
+		<!-- Real values: 231 HP@3750 RPM, 550Nm@1750 RPM, from constructor's technical datasheet and power/torque graph -->
+			<entry key="torqueScale" type="number" value="1" />
+			<entry key="maxRpm" type="number" value="3750" />
+			<entry key="maxSpeed" type="number" value="141" />
+			<entry key="normRpms" type="string" value="0.26 0.36 0.47 0.67 0.82 1" />
+			<entry key="torques" type="string" value="0.42 0.46 0.55 0.51 0.46 0.43" />
+			<entry key="fuelCapacity" type="number" value="132" />
+			<entry key="fuelUsage" type="number" value="24" />
+			<entry key="price" type="number" value="59000" />
+			<entry key="dailyUpkeep" type="number" value="30" />
+			<entry key="power" type="number" value="230" />
 		</vehicle>
 		
 		<!-- Case IH -->
@@ -593,21 +639,24 @@
 			<entry key="power" type="number" value="148" />
 		</vehicle>
 		
-		<!-- Lizard piQup -->
-		<vehicle configFile ="data/vehicles/steerable/cars/piQup.xml" >
-		<!-- Based on Nissan Navara 3.0L V6 230 HP -->
-		<!-- Real values: 231 HP@3750 RPM, 550Nm@1750 RPM, from constructor's technical datasheet and power/torque graph -->
-			<entry key="torqueScale" type="number" value="1" />
-			<entry key="maxRpm" type="number" value="3750" />
-			<entry key="maxSpeed" type="number" value="141" />
-			<entry key="normRpms" type="string" value="0.26 0.36 0.47 0.67 0.82 1" />
-			<entry key="torques" type="string" value="0.42 0.46 0.55 0.51 0.46 0.43" />
-			<entry key="fuelCapacity" type="number" value="132" />
-			<entry key="fuelUsage" type="number" value="24" />
-			<entry key="price" type="number" value="59000" />
-			<entry key="dailyUpkeep" type="number" value="30" />
-			<entry key="power" type="number" value="230" />
+		
+		
+		<!-- telehandlers -->
+		
+		<!-- Lizard
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerBaleFork.xml" >
 		</vehicle>
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerBaleGrab.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerLogFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerManureFork.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/telehandlers/lizard/telehandlerShovel.xml" >
+		</vehicle> -->
+		
 		
 		
 		<!-- tools -->
@@ -616,6 +665,8 @@
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneCayron200.xml" >
 			<entry key="speedLimit" type="number" value="7" />
 		</vehicle>
+		<!-- vehicle configFile ="data/vehicles/tools/amazone/amazoneFT1001.xml" >
+		</vehicle -->
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneUF1801.xml" >
 			<entry key="speedLimit" type="number" value="13" />
 		</vehicle>
@@ -627,6 +678,10 @@
 		<vehicle configFile ="data/vehicles/tools/damcon/damconPL75.xml" >
 			<entry key="speedLimit" type="number" value="4" />
 		</vehicle>
+		
+		<!-- FSI 
+		<vehicle configFile ="data/vehicles/tools/fsi/fsiST65T.xml" >
+		</vehicle> -->
 		
 		<!-- Grimme -->
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
@@ -715,6 +770,14 @@
 			<entry key="speedLimit" type="number" value="12" />
 		</vehicle>
 		
+		<!-- Suer
+		<vehicle configFile ="data/vehicles/tools/suer/suerSB700.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/suer/suerSB1000.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/tools/suer/suerSB1600.xml" >
+		</vehicle> -->
+		
 		<!-- Vaederstad -->
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadCarrier820.xml" >
 			<entry key="speedLimit" type="number" value="15" />
@@ -740,6 +803,7 @@
 		</vehicle>
 		
 		
+		
 		<!-- trailers -->
 		
 		<!-- Amazone -->
@@ -747,25 +811,75 @@
 			<entry key="speedLimit" type="number" value="13" />
 		</vehicle>
 		
+		<!-- Arcusin
+		<vehicle configFile ="data/vehicles/trailers/arcusin/arcusinAutostackFS63-72.xml" >
+		</vehicle> -->
+		
 		<!-- Bergmann -->
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
 			<entry key="capacity" type="number" value="67000" />
 			<entry key="speedLimit" type="number" value="17" />
 		</vehicle>
+		<!-- vehicle configFile ="data/vehicles/trailers/bergmann/bergmannHTW65.xml" >
+		</vehicle -->
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannM1080.xml" >
 			<entry key="speedLimit" type="number" value="10" />
 		</vehicle>
 		
+		<!-- Brantner
+		<vehicle configFile ="data/vehicles/trailers/brantner/brantnerE8041.xml" >
+		</vehicle> -->
+		
 		<!-- Fliegl -->
+		<!-- vehicle configFile ="data/vehicles/trailers/fliegl/flieglASS2101.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDolly.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDPW180.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglSemitrailer.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
+		</vehicle -->
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />
 		</vehicle>
+		
+		<!-- fuelTrailer
+		<vehicle configFile ="data/vehicles/trailers/fuelTrailer/fuelTrailer.xml" >
+		</vehicle> -->
+		
+		<!-- Horsch
+		<vehicle configFile ="data/vehicles/trailers/horsch/horschTitan34UW.xml" >
+		</vehicle> -->
 		
 		<!-- Jenz -->
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
 		<!-- Shop power display modification : default needPtoPower in xml file set at 200kW, corresponding 275 Cv, not 250 Cv default Giant value -->
 			<entry key="power" type="number" value="275" />
 		</vehicle>
+		
+		<!-- Kotte
+		<vehicle configFile ="data/vehicles/trailers/kotte/garantFieldContainer.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/kotte/garantTSA.xml" >
+		</vehicle> -->
+		
+		<!-- Krampe
+		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBBS900.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/krampe/krampeSB3060.xml" >
+		</vehicle> -->
+		
+		<!-- Kroeger
+		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerHKD302.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerTAW30.xml" >
+		</vehicle> -->
 		
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" >
@@ -786,6 +900,10 @@
 			<entry key="speedLimit" type="number" value="15" />
 		</vehicle>
 		
+		<!-- Stepa
+		<vehicle configFile ="data/vehicles/trailers/stepa/stepaFHL13AK.xml" >
+		</vehicle> -->
+		
 		<!-- Strautmann -->
 		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannPS3401.xml" >
 			<entry key="speedLimit" type="number" value="12" />
@@ -795,10 +913,24 @@
 			<entry key="speedLimit" type="number" value="18" />
 		</vehicle>
 		
+		<!-- Thueringer Agrar
+		<vehicle configFile ="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan40.xml" >
+		</vehicle> -->
+		
 		<!-- Ursus -->
 		<vehicle configFile ="data/vehicles/trailers/ursus/ursusN270.xml" >
 			<entry key="speedLimit" type="number" value="11" />
 		</vehicle>
+		<!-- vehicle configFile ="data/vehicles/trailers/ursus/ursusT127.xml" >
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/ursus/ursusZ586.xml" >
+		</vehicle -->
+		
+		<!-- waterTrailer
+		<vehicle configFile ="data/vehicles/trailers/waterTrailer/waterTrailer.xml" >
+		</vehicle> -->
 		
 		<!-- Zunhammer -->
 		<vehicle configFile ="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
