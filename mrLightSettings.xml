@@ -47,7 +47,7 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3162Cutter.xml" >
 			<entry key="speedLimit" type="number" value="6" />
-			<entry key="masses" type="string" value="4.104 0.2 0.1 0.1" /> <!-- total mass of 4.504 -->
+			<entry key="masses" type="string" value="4.104 0.200 0.100 0.100" /> <!-- total mass of 4.504 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/caseIH/caseIH3412Corn.xml" >
 			<entry key="speedLimit" type="number" value="5.5" />
@@ -68,7 +68,7 @@
 		<!-- New Holland -->
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandDraper45.xml" >
 			<entry key="speedLimit" type="number" value="6" />
-			<entry key="masses" type="string" value="4.104 0.2 0.1 0.1" />
+			<entry key="masses" type="string" value="4.104 0.200 0.100 0.100" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader18.xml" >
 			<entry key="speedLimit" type="number" value="5.2" />
@@ -110,7 +110,7 @@
 			<entry key="price" type="number" value="35000" />
 			<entry key="dailyUpkeep" type="number" value="180" />
 			<entry key="power" type="number" value="135" />
-			<!-- entry key="masses" type="number" value="4.15" is +0.13 / -->
+			<entry key="masses" type="number" value="4.150" /> <!-- is -0.124 / -->
 		</vehicle>
 		
 		<!-- Case IH -->
@@ -126,7 +126,7 @@
 			<entry key="price" type="number" value="235000" />
 			<entry key="dailyUpkeep" type="number" value="760" />
 			<entry key="power" type="number" value="410" />
-			<!-- entry key="masses" type="number" value="15.467" is +0.200 / -->
+			<entry key="masses" type="number" value="15.467" /> <!-- is +0.200 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIH9230Crawler.xml" >
 		<!-- Real values: 571 HP@2000 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -182,7 +182,7 @@
 			<entry key="price" type="number" value="397615" />
 			<entry key="dailyUpkeep" type="number" value="630" />
 			<entry key="power" type="number" value="692" />
-			<entry key="masses" type="string" value="12.711 9.415" <!-- 22.126 total, balance front:back 1.35:1, average from test data from older quadtrac/steiger models -->
+			<entry key="masses" type="string" value="12.711 9.415" /> <!-- 22.126 total, balance front:back 1.35:1, average from test data from older quadtrac/steiger models -->
 		</vehicle>
 		
 		<!-- Deutz -->
@@ -198,7 +198,7 @@
 			<entry key="price" type="number" value="43000" />
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="143" />
-			<!-- entry key="masses" type="number" value="5.4" is +0.1 / -->
+			<!-- entry key="masses" type="number" value="5.400" is -0.068 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/deutz/deutzFahr7250.xml" >
 		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -212,7 +212,7 @@
 			<entry key="price" type="number" value="153484" />
 			<entry key="dailyUpkeep" type="number" value="231" />
 			<entry key="power" type="number" value="263" />
-			<!-- entry key="masses" type="number" value="9.1" is -0.4 / -->
+			<entry key="masses" type="number" value="9.100" /> <!-- is +0.4 / -->
 		</vehicle>
 		
 		<!-- Grimme -->
@@ -228,7 +228,7 @@
 			<entry key="price" type="number" value="479000" />
 			<entry key="dailyUpkeep" type="number" value="1290" />
 			<entry key="power" type="number" value="490" />
-			<!-- entry key="masses" type="string" value="24.53 5"  is +25 !!! -->
+			<entry key="masses" type="string" value="26.000 2.500" /> <!-- is -24.926 !!! -->
 			<entry key="speedLimit" type="number" value="7" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/grimme/grimmeTectron415.xml" >
@@ -243,7 +243,7 @@
 			<entry key="price" type="number" value="479000" />
 			<entry key="dailyUpkeep" type="number" value="1290" />
 			<entry key="power" type="number" value="490" />
-			<!-- entry key="masses" type="string" value="27.3 0.5 0.24"  is -0.5 !!! -->
+			<entry key="masses" type="string" value="26.000 1.500 0.500" /> <!-- is +0.58 -->
 			<entry key="speedLimit" type="number" value="7" />
 		</vehicle>
 		
@@ -260,7 +260,7 @@
 			<entry key="price" type="number" value="28000" />
 			<entry key="dailyUpkeep" type="number" value="110" />
 			<entry key="power" type="number" value="90" />
-			<!-- entry key="masses" type="number" value="3.35" is -0.4 / -->
+			<entry key="masses" type="number" value="3.350" /> <!-- is +0.414 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannXM4Ti.xml" >
 		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -274,7 +274,7 @@
 			<entry key="price" type="number" value="76090" />
 			<entry key="dailyUpkeep" type="number" value="105" />
 			<entry key="power" type="number" value="127" />
-			<!-- entry key="masses" type="number" value="5.3" is -0.69 with V-Drive / -->
+			<entry key="masses" type="number" value="5.300" /> <!-- is +0.696, with V-Drive / -->
 		</vehicle>
 		
 		<!-- Krone -->
@@ -290,7 +290,7 @@
 			<entry key="price" type="number" value="415000" />
 			<entry key="dailyUpkeep" type="number" value="810" />
 			<entry key="power" type="number" value="1078" />
-			<!-- entry key="masses" type="number" value="14.8" is -0.2 / -->
+			<entry key="masses" type="number" value="14.800" /> <!-- is +0.27 / -->
 		</vehicle>
 		
 		<!-- Kuhn -->
@@ -303,10 +303,10 @@
 			<entry key="torques" type="string" value="0.4 0.55 0.65 0.61 0.58 0.45" />
 			<entry key="fuelCapacity" type="number" value="200" />
 			<entry key="fuelUsage" type="number" value="28" />
-			<entry key="price" type="number" value="128030" />
+			<entry key="price" type="number" value="152518" />
 			<entry key="dailyUpkeep" type="number" value="110" />
 			<entry key="power" type="number" value="142" />
-			<!-- entry key="masses" type="number" value="9.65" is -0.5 / -->
+			<entry key="masses" type="number" value="10.360" /> <!-- is -0.252 / -->
 		</vehicle>
 		
 		<!-- Lamborghini -->
@@ -322,7 +322,7 @@
 			<entry key="price" type="number" value="141533" />
 			<entry key="dailyUpkeep" type="number" value="212" />
 			<entry key="power" type="number" value="242" />
-			<!-- entry key="masses" type="number" value="8.1" is -1.4 / -->
+			<entry key="masses" type="number" value="8.100" /> <!-- is +1.4 / -->
 		</vehicle>
 		
 		<!-- Liebherr -->
@@ -338,7 +338,7 @@
 			<entry key="price" type="number" value="165000" />
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="156" />
-			<!-- entry key="masses" type="string" value="9.24 3.56"  is +3.2 -->
+			<entry key="masses" type="string" value="3.840 8.960" /> <!-- is -3.154 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrTL432_7.xml" >
 		<!-- Real values: 100 HP@2300 RPM, 480 Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -352,7 +352,7 @@
 			<entry key="price" type="number" value="85000" />
 			<entry key="dailyUpkeep" type="number" value="90" />
 			<entry key="power" type="number" value="100" />
-			<!-- entry key="masses" type="number" value="7" is -6.2 / -->
+			<entry key="masses" type="number" value="7.060" /> <!-- is +6.169 / -->
 		</vehicle>
 		
 		<!-- Lindner -->
@@ -368,7 +368,7 @@
 			<entry key="price" type="number" value="61863" />
 			<entry key="dailyUpkeep" type="number" value="82" />
 			<entry key="power" type="number" value="102" />
-			<!-- entry key="masses" type="number" value="3.95" is -0.01 / -->
+			<!-- entry key="masses" type="number" value="3.950" is +0.016 / -->
 		</vehicle>
 		
 		<!-- MAN -->
@@ -384,7 +384,7 @@
 			<entry key="price" type="number" value="254209" />
 			<entry key="dailyUpkeep" type="number" value="396" />
 			<entry key="power" type="number" value="440" />
-			<!-- entry key="masses" type="number" value="6.68" is -2.279 / -->
+			<!-- entry key="masses" type="number" value="6.680" is +2.279 / -->
 		</vehicle>
 		
 		<!-- New Holland -->
@@ -430,7 +430,7 @@
 			<entry key="power" type="number" value="163" />
 			<!-- entry key="masses" type="number" value="5.01" is -0.25 / -->
 		</vehicle>
-		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml.xml" >
+		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml" >
 		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
@@ -684,9 +684,13 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGF6502.xml" >
 			<entry key="speedLimit" type="number" value="13" />
+			<!-- entry key="masses" type="number" value="0.920" / -->
+			<entry key="price" type="number" value="10473" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnVariMaster153.xml" >
 			<entry key="speedLimit" type="number" value="6.5" />
+			<!-- entry key="masses" type="number" value="1.665" / -->
+			<entry key="price" type="number" value="19471" />
 		</vehicle>
 		
 		<!-- Lemken -->
@@ -761,6 +765,14 @@
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
 		<!-- Shop power display modification : default needPtoPower in xml file set at 200kW, corresponding 275 Cv, not 250 Cv default Giant value -->
 			<entry key="power" type="number" value="275" />
+		</vehicle>
+		
+		<!-- Kuhn -->
+		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" >
+			<entry key="price" type="number" value="21281" />
+		</vehicle>
+		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnProfile1880.xml" >
+			<entry key="price" type="number" value="41398" />
 		</vehicle>
 		
 		<!-- Marshall -->

@@ -54,11 +54,11 @@ function BalerManipulation:update(dt)
 	if (self.lastFillType ~= self.currentFillType and self.currentFillType ~= Fillable.FILLTYPE_UNKNOWN) or (self.forceCapacityUpdate and self.currentFillType ~= Fillable.FILLTYPE_UNKNOWN) then
 		local bale = self.baleTypes[1];
 		if bale.isRoundBale then
-			local capacity = math.pi * (bale.diameter / 2)^2 * bale.width * 3; --round bale, compacting factor 3, about 120kg per m3 for straw
+			local capacity = math.pi * (bale.diameter / 2)^2 * bale.width * 3000; --round bale, compacting factor 3, about 120kg per m3 for straw
 			self:setCapacity(capacity);
 			--print(" --> "..tostring(self.configFileName) .. " " .. tostring(Fillable.fillTypeIndexToDesc[self.currentFillType].massPerLiter));
 		else
-			local capacity = bale.width * bale.length * bale.height * 5.5; --square bale, compacting factor 5.5, about 220kg per m3 for straw
+			local capacity = bale.width * bale.length * bale.height * 5500; --square bale, compacting factor 5.5, about 220kg per m3 for straw
 			self:setCapacity(capacity);
 		end;
 		--print("capacity updated: " .. tostring(self.capacity));

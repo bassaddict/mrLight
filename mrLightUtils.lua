@@ -89,7 +89,17 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 		while true do
 			local entry = string.format(vehicle..".entry(%d)", j)
 			local key = getXMLString(xmlFile, entry.."#key");
-			local value = getXMLFloat(xmlFile, entry.."#value");
+			local vtype = getXMLString(xmlFile, entry.."#type");
+			
+			local value = nil;
+			if vtype == "number" then
+				value = getXMLFloat(xmlFile, entry.."#value");
+			elseif vtype == "string" then
+				value = getXMLString(xmlFile, entry.."#value");
+			elseif vtype == "bool" then
+				value = getXMLBool(xmlFile, entry.."#value");
+			end;
+			
 			if key == nil or value == nil then
 				break;
 			end;
@@ -102,11 +112,11 @@ end;
 
 function MrLightUtils.setStoreData()
 	for k,v in pairs(MrLightUtils.vehicleConfigs) do
-		print("k: "..tostring(k)..", v: "..tostring(v));
-		string.lower(k)
+		k = string.lower(k);
 		if v.price ~= nil then
 			if StoreItemsUtil.storeItemsByXMLFilename[k] == nil then
 				print("1 is nil");
+				print("k: "..tostring(k)..", v: "..tostring(v));
 			end;
 			if StoreItemsUtil.storeItemsByXMLFilename[k].price == nil then
 				print("3 is nil");
