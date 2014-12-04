@@ -4,6 +4,8 @@ update V0.6
 -added proper torque/power curves
 -correcting vehicle masses
 -fixing store information (price, dailyUpkeep, required power)
+-fixing variable names (firstRunXY)
+-added general vehicle manipulation class
 
 
 
