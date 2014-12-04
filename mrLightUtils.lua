@@ -68,6 +68,7 @@ function MrLightUtils.setBalancingFactors(xmlFile)
 	if value~=nil then
 		MrLightUtils.PriceBalanceFactors.woodChips = value;
 	end;
+	print("--- MRL: balancing factors set");
 end;
 
 
@@ -108,6 +109,7 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 		end;
 		i = i + 1;
 	end;
+	print("--- MRL: cehicle configs loaded");
 end;
 
 function MrLightUtils.setStoreData()
@@ -133,6 +135,7 @@ function MrLightUtils.setStoreData()
 			StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower = Utils.getNoNil(tonumber(v.neededPower), StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower);
 		end;
 	end;
+	print("--- MRL: store data set");
 end;
 
 function MrLightUtils.getFillableInfos(fillTypeName)
@@ -304,7 +307,11 @@ function MrLightUtils.setFruitUtilInfos(fruitName)
 			desc.windrowMassPerLiter = Fillable.fillTypeNameToDesc[fruitName.."_windrow"].massPerLiter; --also setting the correct density for the crop windrow in the FruitUtil table.
 		end;
 	else
-		if desc.seedUsagePerSqm > 0 then
+		if desc.seedUsagePerSqm == nil then
+			print(string.format("ERROR: corrupted fruit! fruit %s does not use the proper data structure given by Giants Software", desc.name));
+			desc.seedUsagePerSqm = 0.1;
+			desc.seedPricePerLiter = 0.1;
+		elseif desc.seedUsagePerSqm > 0 then
 			--set sell price as seed price
 			local fillType = FruitUtil.fruitTypeToFillType[desc.index];
 			desc.seedPricePerLiter = Fillable.fillTypeIndexToDesc[fillType].pricePerLiter;
@@ -324,6 +331,7 @@ function MrLightUtils.setFruitData(newGame)
 	for k, fruitType in pairs(FruitUtil.fruitTypes) do
 		MrLightUtils.setFruitUtilInfos(fruitType.name)
 	end;
+	print("--- MRL: fruit data set");
 end;
 
 

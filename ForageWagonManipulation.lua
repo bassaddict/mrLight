@@ -5,7 +5,7 @@ function ForageWagonManipulation.prerequisitesPresent(specializations)
 end;
 
 function ForageWagonManipulation:load(xmlFile)
-	self.myFirstRun = true;
+	self.firstRunForageWagonManipulation = true;
 	
 	
 	self.debugRender = false;
@@ -39,8 +39,8 @@ end;
 
 function ForageWagonManipulation:update(dt)
 
-	if self.myFirstRun then
-		self.myFirstRun = false;
+	if self.firstRunForageWagonManipulation then
+		self.firstRunForageWagonManipulation = false;
 		--print("first run");
 		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].capacity ~= nil then
 			MrLightUtils.vehicleConfigs[self.configFileName].oldCapacity = self.capacity;

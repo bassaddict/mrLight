@@ -8,7 +8,7 @@ function DrivableManipulation:load(xmlFile)
 	self.collectMaxRpm = false;
 	self.collected = false;
 	self.collectedInput = "";
-	self.firstUpdate = true;
+	self.firstRunDrivableManipulation = true;
 	
 	self.debugRender = false;
 end;
@@ -38,8 +38,8 @@ end;
 
 function DrivableManipulation:update(dt)
 	
-	if self.firstUpdate then
-		self.firstUpdate = false;
+	if self.firstRunDrivableManipulation then
+		self.firstRunDrivableManipulation = false;
 		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 			local torqueScale = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].torqueScale, 1);
 			local maxRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxRpm, self.motor.maxRpm);
@@ -67,7 +67,7 @@ function DrivableManipulation:update(dt)
 					self.motor.maxRpm = maxRpm;
 					self.motor.torqueCurve.maxTime = maxRpm;
 					for k,rpm in pairs(normRpmsT) do
-						print(k);
+						--print(k);
 						local e_time = rpm * maxRpm;
 						local e_v = torquesT[k] * torqueScale;
 						self.motor.torqueCurve.keyframes[k].time = e_time;

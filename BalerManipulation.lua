@@ -5,8 +5,8 @@ function BalerManipulation.prerequisitesPresent(specializations)
 end;
 
 function BalerManipulation:load(xmlFile)	
-	self.firstRun = true;
-	self.secondRun = false;
+	self.firstRunBalerManipulation = true;
+	self.secondRunBalerManipulation = false;
 	self.forceCapacityUpdate = false;
 	self.lastFillType = Fillable.FILLTYPE_UNKNOWN;
 	
@@ -42,13 +42,13 @@ end;
 
 function BalerManipulation:update(dt)
 
-	if self.secondRun then
-		self.secondRun = false;
+	if self.secondRunBalerManipulation then
+		self.secondRunBalerManipulation = false;
 		self.forceCapacityUpdate = true;
 	end;
-	if self.firstRun then
-		self.firstRun = false;
-		self.secondRun = true;
+	if self.firstRunBalerManipulation then
+		self.firstRunBalerManipulation = false;
+		self.secondRunBalerManipulation = true;
 	end;
 
 	if (self.lastFillType ~= self.currentFillType and self.currentFillType ~= Fillable.FILLTYPE_UNKNOWN) or (self.forceCapacityUpdate and self.currentFillType ~= Fillable.FILLTYPE_UNKNOWN) then

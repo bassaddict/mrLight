@@ -5,7 +5,7 @@ function TrailerManipulation.prerequisitesPresent(specializations)
 end;
 
 function TrailerManipulation:load(xmlFile)
-	self.myFirstRun = true;
+	self.firstRunTrailerManipulation = true;
 	
 	
 	self.debugRender = false;
@@ -39,8 +39,8 @@ end;
 
 function TrailerManipulation:update(dt)
 
-	if self.myFirstRun then
-		self.myFirstRun = false;
+	if self.firstRunTrailerManipulation then
+		self.firstRunTrailerManipulation = false;
 		
 		if MrLightUtils ~= nil and MrLightUtils.trailers[self.configFileName] ~= nil then
 			MrLightUtils.trailers[self.configFileName].oldCapacity = self.capacity;

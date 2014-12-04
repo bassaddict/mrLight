@@ -8,6 +8,9 @@ SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulatio
 SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
 SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
 SpecializationUtil.registerSpecialization("drivableManipulation", "DrivableManipulation", g_currentModDirectory.."DrivableManipulation.lua");
+SpecializationUtil.registerSpecialization("vehicleManipulation", "VehicleManipulation", g_currentModDirectory.."VehicleManipulation.lua");
+
+
 
 
 loaderClass = {};
@@ -31,6 +34,7 @@ function loaderClass:loadMap(name)
 	
 	--add specializations to vehicles
 	for k, v in pairs(VehicleTypeUtil.vehicleTypes) do
+		table.insert(v.specializations, SpecializationUtil.getSpecialization("vehicleManipulation"));
 		if SpecializationUtil.hasSpecialization(SowingMachine, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("sowingMachineManipulation"));
 		end;
@@ -56,7 +60,7 @@ function loaderClass:loadMap(name)
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("drivableManipulation"));
 		end;
 	end;
-	
+	print("--- MRL: specializations added, map loaded");
 	
 end;
 

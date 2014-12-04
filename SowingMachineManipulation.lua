@@ -6,7 +6,7 @@ end;
 
 function SowingMachineManipulation:load(xmlFile)
 	self.myLastFillLevel = self.fillLevel;
-	self.myFirstRun = true;
+	self.firstRunSowingMachineManipulation = true;
 	self.deltaFill = 0;
 	self.oldFillLitersPerSecond = self.fillLitersPerSecond;
 	self.fillLitersPerSecond = 2;
@@ -28,8 +28,8 @@ end;
 
 function SowingMachineManipulation:update(dt)
 
-	if self.myFirstRun then
-		self.myFirstRun = false;
+	if self.firstRunSowingMachineManipulation then
+		self.firstRunSowingMachineManipulation = false;
 		self.myLastFillLevel = self.fillLevel;
 		self.lastSeed = self.currentSeed;
 	else

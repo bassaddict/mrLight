@@ -7,7 +7,7 @@ end;
 function SprayerManipulation:load(xmlFile)
 	self.getWorkingWidth = SpecializationUtil.callSpecializationsFunction("getWorkingWidth");
 	
-	self.myFirstRun = true;
+	self.firstRunSprayerManipulation = true;
 	self.oldFillLitersPerSecond = self.fillLitersPerSecond;
 	self.fillLitersPerSecond = 2;
 	self.fillSpeedFX = 0;
@@ -35,8 +35,8 @@ end;
 
 function SprayerManipulation:update(dt)
 
-	if self.myFirstRun then
-		self.myFirstRun = false;
+	if self.firstRunSprayerManipulation then
+		self.firstRunSprayerManipulation = false;
 		self:getWorkingWidth(self.workAreas, self.rootNode);
 	end;
 	if self.updateWorkingWidth then
