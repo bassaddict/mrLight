@@ -539,12 +539,12 @@
 			<!-- entry key="masses" type="string" value="12.9 9.5"  22.453 total, balance front:back 1.35:1, as Quadtrac620, no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandTC590.xml" >
-		<!-- no data found... -->
+		<!-- no data found , copy TC5080's data, similary model -->
 			<entry key="torqueScale" type="number" value="1" />
-			<entry key="maxRpm" type="number" value="2000" />
+			<entry key="maxRpm" type="number" value="2100" />
 			<entry key="maxSpeed" type="number" value="25" />
-			<entry key="normRpms" type="string" value="0.45 0.5 0.59 0.72 0.86 1" />
-			<entry key="torques" type="string" value="1.13 1.22 1.26 1.13 1 0.91" />
+			<entry key="normRpms" type="string" value="0.47 0.6 0.71 0.83 0.95 1" />
+			<entry key="torques" type="string" value="0.84 0.86 0.87 0.89 0.905 0.796" />
 			<entry key="fuelCapacity" type="number" value="400" />
 			<entry key="fuelUsage" type="number" value="51" />
 			<entry key="price" type="number" value="150000" />
