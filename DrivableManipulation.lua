@@ -61,12 +61,21 @@ function DrivableManipulation:load(xmlFile)
 		self.fuelCapacity = fuelCapacity;
 		self.fuelUsage = fuelUsage / (60*60*1000);
 		
+		self.motor.maxForwardGearRatio = 750;
+		
 		
 		--experiment:
 		self.motor.lowBrakeForceScale = 0.1;
 	end;
 	
 	
+	
+	self.frontInclineNode = createTransformGroup("front");
+	self.backInclineNode = createTransformGroup("back");
+	link(self.rootNode, self.frontInclineNode);
+	link(self.rootNode, self.backInclineNode);
+	setTranslation(self.frontInclineNode, 0, 0, 1);
+	setTranslation(self.backInclineNode, 0, 0, -1);
 	
 	
 	
@@ -127,16 +136,27 @@ function DrivableManipulation:update(dt)
 		self.collected = false;
 		self.collectedInput = "";
 	end;
+	
+	
+	
+	
+	local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
+	local bx, by, bz = getWorldTranslation(self.backInclineNode);
+	local heightDif = fy - by;
+	--print(string.format("fy: %.3f, by: %.3f, heightDif: %.3f", fy, by, heightDif));
+	self.anglePercent = 100 / math.sqrt(4 - math.pow(heightDif, 2)) * heightDif;
+	
 end;
 
 function DrivableManipulation:draw()
-	local rx, ry, rz = getWorldRotation(self.rootNode);
+	--[[local rx, ry, rz = getWorldRotation(self.rootNode);
 	local x, yCosValue, z = localDirectionToWorld(self.rootNode, 0, 1, 0);
 	local dir = Utils.clamp(yCosValue, 0, 1);
 	local deg_rx = math.acos(dir); --rx / (2 * math.pi) * 360;
 	local deg_rx1 = math.deg(rx);
-	local percent_rx = math.tan(deg_rx) * 100;
+	local percent_rx = math.tan(deg_rx) * 100;]]
 		setTextAlignment(RenderText.ALIGN_LEFT);
-		renderText(0.6, 0.01, 0.01, string.format("rx: %.4f, ry: %.4f, rz: %.4f", rx, ry, rz));
-		renderText(0.85, 0.01, 0.01, string.format("rad: %.3f, deg: %.3f, deg1: %.3f, percent: %.3f",rx, deg_rx, deg_rx1, percent_rx));
+		--renderText(0.6, 0.01, 0.01, string.format("rx: %.4f, ry: %.4f, rz: %.4f", rx, ry, rz));
+		--renderText(0.85, 0.01, 0.01, string.format("rad: %.3f, deg: %.3f, deg1: %.3f, percent: %.3f",rx, deg_rx, deg_rx1, percent_rx));
+		renderText(0.85, 0.01, 0.012, string.format("incline: %.3f", self.anglePercent));
 end;
