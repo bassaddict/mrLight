@@ -272,11 +272,11 @@ function MrLightUtils.getFruitUtilInfos(fruitName)
 		elseif fruitName=="rape" then
 			seedPrice, usage, yield, windrowYield = 14, 0.0004, 0.69, 0; -- 6900L/Ha = 4.4T | 2.4kg/ha => 4L/ha => 400 000 graines ~= 56€
 		elseif fruitName=="grass" then
-			seedPrice, usage, yield, windrowYield = 1.2, 0.0067, 14, 14; -- 140000L/ha = 35T
+			seedPrice, usage, yield, windrowYield = 1.2, 0.0067, 1.065, 14; -- 140000L/ha = 35T
 		elseif fruitName=="drygrass" then
-			seedPrice, usage, yield, windrowYield = 0, 0, 12, 14; -- 120000L/ha = 6T -- a little less liters than wet grass because there are some losses when doing hay
+			seedPrice, usage, yield, windrowYield = 0, 0, 0.18, 12; -- 120000L/ha = 6T -- a little less liters than wet grass because there are some losses when doing hay
 		elseif fruitName=="chaff" then
-			seedPrice, usage, yield, windrowYield = 0, 0, 12.5, 0; -- 125000L / ha = 50T
+			seedPrice, usage, yield, windrowYield = 0, 0, 10.96, 0; -- this is just a factor. goal: maize chaff with 125000L / ha = 50T
 		elseif fruitName=="potato" then
 			seedPrice, usage, yield, windrowYield = 0.25, 0.285, 7.4, 0; -- 50T/ha  0.67 density => 74 000L / ha
 		elseif fruitName=="sugarbeet" then
@@ -308,7 +308,7 @@ function MrLightUtils.setFruitUtilInfos(fruitName)
 		end;
 	else
 		if desc.seedUsagePerSqm == nil then
-			print(string.format("ERROR: corrupted fruit! fruit %s does not use the proper data structure given by Giants Software", desc.name));
+			print(string.format("ERROR: corrupted fruit! fruit '%s' does not use the proper data structure given by Giants Software", desc.name));
 			desc.seedUsagePerSqm = 0.1;
 			desc.seedPricePerLiter = 0.1;
 		elseif desc.seedUsagePerSqm > 0 then

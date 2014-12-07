@@ -8,7 +8,68 @@ function DrivableManipulation:load(xmlFile)
 	self.collectMaxRpm = false;
 	self.collected = false;
 	self.collectedInput = "";
-	self.firstRunDrivableManipulation = true;
+	--self.firstRunDrivableManipulation = true;
+	
+	
+	
+	
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+		local torqueScale = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].torqueScale, 1);
+		local maxRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxRpm, self.motor.maxRpm);
+		local maxSpeed = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxSpeed, self.motor.maxForwardSpeed*3.6);
+		local normRpms = MrLightUtils.vehicleConfigs[self.configFileName].normRpms;
+		local torques = MrLightUtils.vehicleConfigs[self.configFileName].torques;
+		local fuelCapacity = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelCapacity, self.fuelCapacity);
+		local fuelUsage = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelUsage, self.fuelUsage*60*60*1000);
+		
+		if normRpms ~= nil and torques ~= nil then
+			--self.motor.torqueCurve.keyframes = {};
+			local normRpmsT = Utils.splitString(" ", normRpms);
+			local torquesT =  Utils.splitString(" ", torques);
+			
+			
+			if self.debugRender then
+				print(string.format("normRpms: %s, torques: %s", normRpms, torques));
+				for k,v in pairs(normRpmsT) do
+					print(string.format("k: %d, v: %s", k, v));
+				end;
+			end;
+			
+			
+			if #normRpmsT == #torquesT and #normRpmsT == #self.motor.torqueCurve.keyframes then
+				self.motor.maxRpm = maxRpm;
+				self.motor.torqueCurve.maxTime = maxRpm;
+				for k,rpm in pairs(normRpmsT) do
+					--print(k);
+					local e_time = rpm * maxRpm;
+					local e_v = torquesT[k] * torqueScale;
+					self.motor.torqueCurve.keyframes[k].time = e_time;
+					self.motor.torqueCurve.keyframes[k].v = e_v;
+					--table.insert(self.motor.torqueCurve.keyframes, {time=e_time,v=e_v});
+				end;
+			else
+				print("ERROR: not same length for 'normRpms' and 'torques' in vehicle "..self.configFileName);
+				print(string.format(" --> #normRpmsT: %d, #torquesT: %d, #keyframes: %d", #normRpmsT, #torquesT, #self.motor.torqueCurve.keyframes));
+			end;
+		end;
+		
+		self.cruiseControl.maxSpeed = maxSpeed;
+		self.cruiseControl.speed = maxSpeed;
+		self.cruiseControl.speedSent = maxSpeed;
+		self.motor.maxForwardSpeed = maxSpeed / 3.6;
+		self.motor.minForwardGearRatio = maxRpm / maxSpeed / (30 / math.pi / 3.6);
+		self.fuelCapacity = fuelCapacity;
+		self.fuelUsage = fuelUsage / (60*60*1000);
+		
+		
+		--experiment:
+		self.motor.lowBrakeForceScale = 0.1;
+	end;
+	
+	
+	
+	
+	
 	
 	self.debugRender = false;
 end;
@@ -38,61 +99,9 @@ end;
 
 function DrivableManipulation:update(dt)
 	
-	if self.firstRunDrivableManipulation then
-		self.firstRunDrivableManipulation = false;
-		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
-			local torqueScale = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].torqueScale, 1);
-			local maxRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxRpm, self.motor.maxRpm);
-			local maxSpeed = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxSpeed, self.motor.maxForwardSpeed*3.6);
-			local normRpms = MrLightUtils.vehicleConfigs[self.configFileName].normRpms;
-			local torques = MrLightUtils.vehicleConfigs[self.configFileName].torques;
-			local fuelCapacity = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelCapacity, self.fuelCapacity);
-			local fuelUsage = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelUsage, self.fuelUsage*60*60*1000);
-			
-			if normRpms ~= nil and torques ~= nil then
-				--self.motor.torqueCurve.keyframes = {};
-				local normRpmsT = Utils.splitString(" ", normRpms);
-				local torquesT =  Utils.splitString(" ", torques);
-				
-				
-				if self.debugRender then
-					print(string.format("normRpms: %s, torques: %s", normRpms, torques));
-					for k,v in pairs(normRpmsT) do
-						print(string.format("k: %d, v: %s", k, v));
-					end;
-				end;
-				
-				
-				if #normRpmsT == #torquesT and #normRpmsT == #self.motor.torqueCurve.keyframes then
-					self.motor.maxRpm = maxRpm;
-					self.motor.torqueCurve.maxTime = maxRpm;
-					for k,rpm in pairs(normRpmsT) do
-						--print(k);
-						local e_time = rpm * maxRpm;
-						local e_v = torquesT[k] * torqueScale;
-						self.motor.torqueCurve.keyframes[k].time = e_time;
-						self.motor.torqueCurve.keyframes[k].v = e_v;
-						--table.insert(self.motor.torqueCurve.keyframes, {time=e_time,v=e_v});
-					end;
-				else
-					print("ERROR: not same length for 'normRpms' and 'torques' in vehicle "..self.configFileName);
-					print(string.format(" --> #normRpmsT: %d, #torquesT: %d, #keyframes: %d", #normRpmsT, #torquesT, #self.motor.torqueCurve.keyframes));
-				end;
-			end;
-			
-			self.cruiseControl.maxSpeed = maxSpeed;
-			self.cruiseControl.speed = maxSpeed;
-			self.cruiseControl.speedSent = maxSpeed;
-			self.motor.maxForwardSpeed = maxSpeed / 3.6;
-			self.motor.minForwardGearRatio = maxRpm / maxSpeed / (30 / math.pi / 3.6);
-			self.fuelCapacity = fuelCapacity;
-			self.fuelUsage = fuelUsage / (60*60*1000);
-			
-			
-			--experiment:
-			self.motor.lowBrakeForceScale = 0.1;
-		end;
-	end;
+	--if self.firstRunDrivableManipulation then
+	--	self.firstRunDrivableManipulation = false;
+	--end;
 	
 	if (InputBinding.hasEvent(InputBinding.SETMAXRPM)) then --and not self.collectPtoPower then
 		self.collectMaxRpm = true;

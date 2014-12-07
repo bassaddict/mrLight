@@ -1,5 +1,5 @@
 
-2014/12/04
+2014/12/07
 update V0.6
 -added proper torque/power curves
 -correcting vehicle masses
@@ -8,6 +8,11 @@ update V0.6
 -added general vehicle manipulation class
 
 
+2014/12/07
+update V0.5.1
+-fixed crash with sowing machine with improperly added fruits
+-fixed yield with forage harvester
+-added config file with balancing factors in the savegame
 
 
 2014/11/25

@@ -28,7 +28,7 @@ function VehicleManipulation:update(dt)
 		
 		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 			if MrLightUtils.vehicleConfigs[self.configFileName].masses ~= nil then
-				-print("--VehicleManipulation vehicle exists, masses exists, "..self.configFileName);
+				--print("--VehicleManipulation vehicle exists, masses exists, "..self.configFileName);
 				local numComponents = #self.components;
 				if numComponents > 1 then
 					local massesT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].masses);
