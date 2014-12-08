@@ -621,7 +621,7 @@
 			<entry key="price" type="number" value="105000" />
 			<entry key="dailyUpkeep" type="number" value="480" />
 			<entry key="power" type="number" value="185" />
-			<entry key="masses" type="number" value="8.24" /> <!-- is +0.24 -->
+			<entry key="masses" type="number" value="6.2" /> <!-- is +1.8 -->
 		</vehicle>
 		
 		<!-- Steyr -->
