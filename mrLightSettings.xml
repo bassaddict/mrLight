@@ -796,6 +796,8 @@
 		<!-- Koeckerling -->
 		<vehicle configFile ="data/vehicles/tools/koeckerling/koeckerlingTrio300M.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<entry key="neededPower" type="number" value="100" />
+			<!-- entry key="masses" type="number" value="1.6" />  is +0.064 -->
 		</vehicle>
 		
 		<!-- Krone -->
