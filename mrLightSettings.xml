@@ -92,19 +92,25 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF6.xml" >
 			<entry key="speedLimit" type="number" value="5" />
+			<entry key="masses" type="string" value="1.975" /> <!-- is +0.428 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF12.xml" >
 			<entry key="speedLimit" type="number" value="5.5" />
+			<entry key="masses" type="string" value="4.726" /> <!-- is -0.160 -->
 		</vehicle>
 		
 		<!-- Poettinger -->
 		<vehicle configFile ="data/vehicles/cutters/poettinger/poettingerMex5.xml" >
 			<entry key="speedLimit" type="number" value="8" />
+			<entry key="neededPower" type="number" value="170" />
+			<entry key="neededPtoPower" type="number" value="110" />
+			<!--entry key="masses" type="number" value="2.15" is -0.089 / -->
 		</vehicle>
 		
 		<!-- Sampo Rosenlew -->
 		<vehicle configFile ="data/vehicles/cutters/sampoRosenlew/sampoRosenlewC6.xml" >
 			<entry key="speedLimit" type="number" value="5" />
+			<!--entry key="masses" type="number" value="1.8" is +0.004 / -->
 		</vehicle>
 		
 		
