@@ -726,9 +726,12 @@
 			<entry key="masses" type="number" value="1.5" /><!-- is +0.568 -->
 		</vehicle>
 		
-		<!-- FSI 
+		<!-- FSI -->
 		<vehicle configFile ="data/vehicles/tools/fsi/fsiST65T.xml" >
-		</vehicle> -->
+			<entry key="neededPower" type="number" value="85" />
+			<entry key="neededPtoPower" type="number" value="53" />
+			<entry key="masses" type="number" value="0.7" /><!-- is +0.238 -->
+		</vehicle>
 		
 		<!-- Grimme -->
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
