@@ -773,14 +773,14 @@
 		
 		<!-- Horsch -->
 		<vehicle configFile ="data/vehicles/tools/horsch/horschMaestro12SW.xml" >
-			<entry key="speedLimit" type="number" value="10" />
-			<entry key="masses" type="string" value="4.305 2.870" /> <!-- is -5.629, estimated ballance wagon:sower 60%:40%-->
+			<entry key="speedLimit" type="number" value="16" />
+			<entry key="masses" type="string" value="4.180 2.760" /> <!-- is -5.395, estimated ballance wagon:sower 60%:40%, total masse 6.94-->
 			<entry key="neededPower" type="number" value="180" /> <!-- 130kw / 180hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschPronto9SW.xml" >
-			<entry key="speedLimit" type="number" value="15" />
+			<entry key="speedLimit" type="number" value="20" />
 			<entry key="masses" type="string" value="3.460 9.740" /> <!-- is +0.255, actual ballance wagon:sower -->
-			<entry key="neededPower" type="number" value="320" /> <!-- 235-330kw / 320-450hp -->
+			<entry key="neededPower" type="number" value="240" /> <!-- 175-240kW / 240-330HP-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
 			<entry key="speedLimit" type="number" value="12" />
