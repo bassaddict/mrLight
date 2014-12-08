@@ -721,6 +721,9 @@
 		<!-- Damcon -->
 		<vehicle configFile ="data/vehicles/tools/damcon/damconPL75.xml" >
 			<entry key="speedLimit" type="number" value="4" />
+			<entry key="neededPower" type="number" value="80" />
+			<entry key="neededPtoPower" type="number" value="50" />
+			<entry key="masses" type="number" value="1.5" /><!-- is +0.568 -->
 		</vehicle>
 		
 		<!-- FSI 
