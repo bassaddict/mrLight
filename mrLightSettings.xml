@@ -830,7 +830,7 @@
 			<entry key="speedLimit" type="number" value="13" />
 			<entry key="neededPower" type="number" value="35" />
 			<entry key="neededPtoPower" type="number" value="22" />
-			<entry key="masses" type="number" value="0.72 0.2" /><!-- is -0.79 -->
+			<entry key="masses" type="string" value="0.72 0.2" /><!-- is -0.79 -->
 			<entry key="price" type="number" value="10473" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnVariMaster153.xml" >
@@ -843,9 +843,13 @@
 		<!-- Lemken -->
 		<vehicle configFile ="data/vehicles/tools/lemken/lemkenDiamant12.xml" >
 			<entry key="speedLimit" type="number" value="7.5" />
+			<entry key="neededPower" type="number" value="200" />
+			<entry key="masses" type="string" value="3.494 0.5" /><!-- is +0.15 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/lemken/lemkenHeliodorGigant101200.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="300" />
+			<entry key="masses" type="string" value="2.515 2 2" /><!-- is -1.243, 6.515 kg for heliodor + 4*313kg for RSW540 -->
 		</vehicle>
 		
 		<!-- Poettinger -->
