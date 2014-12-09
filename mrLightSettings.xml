@@ -700,7 +700,7 @@
 			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="neededPtoPower" type="number" value="99" />
-			<!--entry key="masses" type="number" value="2.425 XX" is +0.046 / -->
+			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components -->
 		</vehicle>
 		<!-- vehicle configFile ="data/vehicles/tools/amazone/amazoneFT1001.xml" >
 			<entry key="masses" type="number" value="0.217" is +0.005 />
@@ -784,7 +784,7 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
 			<entry key="speedLimit" type="number" value="12" />
-			<!-- entry key="masses" type="number" value="6.150 0.3" />  is -0.081 -->
+			<entry key="masses" type="string" value="6.150 0.3" /> <!-- is -0.081, better balance between components -->
 			<entry key="neededPower" type="number" value="205" /> <!-- 150-220kw / 205-300hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTiger10LT.xml" >
@@ -805,9 +805,9 @@
 			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="neededPtoPower" type="number" value="96" />
-			<!--entry key="masses" type="number" value="9.1 0.3" is +0.814 / -->
+			<entry key="masses" type="string" value="4.7 0.3 0.7 0.7 0.7 0.7 0.7 0.7 0.1 0.1" /><!-- is +0.814 -->
 		</vehicle>
-		
+
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC3525F.xml" >
 			<entry key="speedLimit" type="number" value="15" />
