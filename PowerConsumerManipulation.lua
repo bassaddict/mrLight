@@ -9,6 +9,14 @@ function PowerConsumerManipulation:load(xmlFile)
 	self.collectPtoPower = false;
 	self.collected = false;
 	self.collectedInput = "";
+	
+	
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+		self.powerConsumer.ptoRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].ptoRpm, self.powerConsumer.ptoRpm);
+		self.powerConsumer.neededPtoPower = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].neededPtoPower, self.powerConsumer.neededPtoPower);
+		self.powerConsumer.maxForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxForce, self.powerConsumer.maxForce);
+	end;
+	
 end;
 
 function PowerConsumerManipulation:delete()
