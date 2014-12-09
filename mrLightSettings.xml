@@ -699,7 +699,6 @@
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneCayron200.xml" >
 			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="neededPtoPower" type="number" value="99" />
 			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components -->
 		</vehicle>
 		<!-- vehicle configFile ="data/vehicles/tools/amazone/amazoneFT1001.xml" >
@@ -776,11 +775,13 @@
 			<entry key="speedLimit" type="number" value="16" />
 			<entry key="masses" type="string" value="4.180 2.760" /> <!-- is -5.395, estimated ballance wagon:sower 60%:40%, total masse 6.94-->
 			<entry key="neededPower" type="number" value="180" /> <!-- 130kw / 180hp -->
+			<entry key="neededPtoPower" type="number" value="119" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschPronto9SW.xml" >
 			<entry key="speedLimit" type="number" value="20" />
 			<entry key="masses" type="string" value="3.460 9.740" /> <!-- is +0.255, actual ballance wagon:sower -->
 			<entry key="neededPower" type="number" value="240" /> <!-- 175-240kW / 240-330HP-->
+			<entry key="neededPtoPower" type="number" value="155" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
 			<entry key="speedLimit" type="number" value="12" />
@@ -908,14 +909,19 @@
 		<!-- Vogel Noot -->
 		<vehicle configFile ="data/vehicles/tools/vogelNoot/vogelNootHeros1000.xml" >
 			<entry key="speedLimit" type="number" value="8" />
+			<entry key="neededPower" type="number" value="300" />
+			<entry key="masses" type="string" value="5.668 0.6 0.6" /><!-- is +0.054, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vogelNoot/vogelNootTerraDisc600.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="180" />
+			<entry key="masses" type="string" value="3.5 0.4" /><!-- is +1.086 -->
 		</vehicle>
 		
 		<!-- Zunhammer -->
 		<vehicle configFile ="data/vehicles/tools/zunhammer/zunhammerZunidisc.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<entry key="masses" type="number" value="2.1" /><!-- is +1.086 -->
 		</vehicle>
 		
 		
