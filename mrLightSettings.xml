@@ -811,22 +811,33 @@
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC3525F.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="115" />
+			<entry key="neededPtoPower" type="number" value="75" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC10030.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="215" />
+			<entry key="neededPtoPower" type="number" value="140" />
+			<entry key="masses" type="string" value="2.225 0.5 0.5" /><!-- is +0.079 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGA8521.xml" >
 			<entry key="speedLimit" type="number" value="14" />
+			<entry key="neededPower" type="number" value="80" />
+			<entry key="neededPtoPower" type="number" value="51" />
+			<entry key="masses" type="string" value="1 0.2 0.5 0.5" /><!-- is +0.079 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGF6502.xml" >
 			<entry key="speedLimit" type="number" value="13" />
-			<!-- entry key="masses" type="number" value="0.920" / -->
+			<entry key="neededPower" type="number" value="35" />
+			<entry key="neededPtoPower" type="number" value="22" />
+			<entry key="masses" type="number" value="0.72 0.2" /><!-- is -0.79 -->
 			<entry key="price" type="number" value="10473" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnVariMaster153.xml" >
-			<entry key="speedLimit" type="number" value="6.5" />
-			<!-- entry key="masses" type="number" value="1.665" / -->
-			<entry key="price" type="number" value="19471" />
+			<entry key="speedLimit" type="number" value="9" />
+			<entry key="neededPower" type="number" value="120" />
+			<entry key="masses" type="number" value="1.580" /><!-- is -0.11 -->
+			<entry key="price" type="number" value="19208" />
 		</vehicle>
 		
 		<!-- Lemken -->
