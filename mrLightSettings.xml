@@ -855,15 +855,27 @@
 		<!-- Poettinger -->
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerHit1214T.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="85" />
+			<entry key="neededPtoPower" type="number" value="55" />
+			<entry key="masses" type="string" value="1.22 0.08 0.5 0.15 0.1 0.15 0.1" /><!-- is -0.9 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerNovacat302ED.xml" >
 			<entry key="speedLimit" type="number" value="13" />
+			<entry key="neededPower" type="number" value="95" />
+			<entry key="neededPtoPower" type="number" value="60" />
+			<entry key="masses" type="string" value="0.7 0.51" /><!-- is -0.03, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerTop1252.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="100" />
+			<entry key="neededPtoPower" type="number" value="66" />
+			<entry key="masses" type="string" value="3.25 0.3 0.6 0.6 0.6 0.6" /><!-- is -0.05, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<entry key="neededPower" type="number" value="85" />
+			<entry key="neededPtoPower" type="number" value="55" />
+			<entry key="masses" type="number" value="1.685" /><!-- is -0.581 -->
 		</vehicle>
 		
 		<!-- Suer
@@ -877,12 +889,20 @@
 		<!-- Vaederstad -->
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadCarrier820.xml" >
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPower" type="number" value="250" />
+			<entry key="masses" type="string" value="3.4 2 2" /><!-- is -0.08, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
-			<entry key="speedLimit" type="number" value="14" />
+			<entry key="speedLimit" type="number" value="18" />
+			<entry key="neededPower" type="number" value="180" />
+			<entry key="neededPtoPower" type="number" value="119" />
+			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
-			<entry key="speedLimit" type="number" value="10" />
+			<entry key="speedLimit" type="number" value="21" />
+			<entry key="neededPower" type="number" value="90" />
+			<entry key="neededPtoPower" type="number" value="59" />
+			<entry key="masses" type="number" value="3.4" /><!-- is +1.086 -->
 		</vehicle>
 		
 		<!-- Vogel Noot -->
@@ -1032,6 +1052,19 @@
 		<!-- Zunhammer -->
 		<vehicle configFile ="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
 			<entry key="speedLimit" type="number" value="11" />
+		</vehicle>
+		
+		<!-- wheelloader -->
+		
+		<!-- Lizard -->
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderFork.xml" >
+			<entry key="masses" type="string" value="0.67 0.5" /><!-- is -0.226 -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderLogFork.xml" >
+			<entry key="masses" type="string" value="1.47 1" /><!-- is +1.798 -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderShovel.xml" >
+			<entry key="masses" type="number" value="2.67" /><!-- is -2.367 -->
 		</vehicle>
 	</vehicles>
 </settings>
