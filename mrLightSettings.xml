@@ -1033,5 +1033,18 @@
 		<vehicle configFile ="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
 			<entry key="speedLimit" type="number" value="11" />
 		</vehicle>
+		
+		<!-- wheelloader -->
+		
+		<!-- Lizard -->
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderFork.xml" >
+			<entry key="masses" type="string" value="0.67 0.5" /><!-- is -0.226 -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderLogFork.xml" >
+			<entry key="masses" type="string" value="1.47 1" /><!-- is +1.798 -->
+		</vehicle>
+		<vehicle configFile ="data/vehicles/wheelLoaders/lizard/wheelLoaderShovel.xml" >
+			<entry key="masses" type="number" value="2.67" /><!-- is -2.367 -->
+		</vehicle>
 	</vehicles>
 </settings>
