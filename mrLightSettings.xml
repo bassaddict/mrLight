@@ -161,7 +161,7 @@
 		<!-- Real values: 135 HP@2800 RPM, No peak power, extrapolation for the other values, max torque @ 1900 RPM -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2800" />
-			<entry key="maxSpeed" type="number" value="42.11" />
+			<entry key="maxSpeed" type="number" value="34" />
 			<entry key="normRpms" type="string" value="0.35 0.46 0.57 0.68 0.84 1" />
 			<entry key="torques" type="string" value="0.34 0.36 0.38 0.4 0.36 0.34" />
 			<entry key="fuelCapacity" type="number" value="120" />
@@ -222,7 +222,7 @@
 		<!-- Real values: 380 HP@2200 RPM, 415 HP@1800 RPM, 1850Nm@1300/1400 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.45 0.59 0.64 0.73 0.82 1" />
 			<entry key="torques" type="string" value="1.6 1.85 1.85 1.73 1.62 1.21" />
 			<entry key="fuelCapacity" type="number" value="636" />
@@ -236,7 +236,7 @@
 		<!-- Real values: 190 HP@2200 RPM, 203 HP@1800-1900 RPM, 866Nm@1500 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="52" />
 			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.82 0.86 1" />
 			<entry key="torques" type="string" value="0.75 0.8 0.87 0.79 0.75 0.61" />
 			<entry key="fuelCapacity" type="number" value="330" />
@@ -250,7 +250,7 @@
 		<!-- Real values model 2015: 628 HP@2100 RPM, 692 HP@1900 RPM, 2941Nm@1400 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2100" />
-			<entry key="maxSpeed" type="number" value="36.99" />
+			<entry key="maxSpeed" type="number" value="37" />
 			<entry key="normRpms" type="string" value="0.47 0.62 0.67 0.76 0.9 1" />
 			<entry key="torques" type="string" value="2.5 2.6 2.94 2.8 2.56 2.1" />
 			<entry key="fuelCapacity" type="number" value="1880" />
@@ -266,7 +266,7 @@
 		<!-- Real values: 143 HP@2300 RPM, No peak power, 549Nm@1600 RPM, extrapolation for the other values -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2300" />
-			<entry key="maxSpeed" type="number" value="42.52" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.43 0.57 0.7 0.78 0.89 1" />
 			<entry key="torques" type="string" value="0.48 0.51 0.55 0.51 0.47 0.44" />
 			<entry key="fuelCapacity" type="number" value="290" />
@@ -280,7 +280,7 @@
 		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2100" />
-			<entry key="maxSpeed" type="number" value="61.42" />
+			<entry key="maxSpeed" type="number" value="62" />
 			<entry key="normRpms" type="string" value="0.47 0.52 0.69 0.86 0.9 1" />
 			<entry key="torques" type="string" value="0.9 1 1 1 0.97 0.8" />
 			<entry key="fuelCapacity" type="number" value="435" />
@@ -328,7 +328,7 @@
 		<!-- Real values: 90 HP@2500 RPM, No peak power, 322Nm@1350 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2500" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.4 0.54 0.64 0.76 0.88 1" />
 			<entry key="torques" type="string" value="0.3 0.33 0.3 0.28 0.26 0.25" />
 			<entry key="fuelCapacity" type="number" value="110" />
@@ -342,7 +342,7 @@
 		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.45 0.55 0.64 0.73 0.86 1" />
 			<entry key="torques" type="string" value="0.38 0.42 0.46 0.48 0.44 0.41" />
 			<entry key="fuelCapacity" type="number" value="165" />
@@ -358,7 +358,7 @@
 		<!-- Real values: 963 HP@1900 RPM, 1078 HP@1750 RPM, extrapolation for the other values: maxTorque@1400RPM -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="1900" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="40" />
 			<entry key="normRpms" type="string" value="0.52 0.64 0.74 0.84 0.92 1" />
 			<entry key="torques" type="string" value="4.2 4.3 4.5 4.4 4.33 3.56" />
 			<entry key="fuelCapacity" type="number" value="960" />
@@ -374,7 +374,7 @@
 		<!-- Real values: ratedPower :142 HP, extrapolation for the other values (if someone have the technical data sheet ;))-->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="40" />
 			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.75 0.82 1" />
 			<entry key="torques" type="string" value="0.4 0.55 0.65 0.61 0.58 0.45" />
 			<entry key="fuelCapacity" type="number" value="200" />
@@ -390,7 +390,7 @@
 		<!-- Real values: 242 HP@2300 RPM, No peak power, 1000Nm@1400 RPM, from constructor's technical datasheet and engine manufacturer's (Deutz) power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2300" />
-			<entry key="maxSpeed" type="number" value="61.45" />
+			<entry key="maxSpeed" type="number" value="62" />
 			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.74 0.87 1" />
 			<entry key="torques" type="string" value="0.9 0.95 1 0.9 0.81 0.74" />
 			<entry key="fuelCapacity" type="number" value="450" />
@@ -406,7 +406,7 @@
 		<!-- Real values: 156 HP@1950 RPM, No peak power, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="1950" />
-			<entry key="maxSpeed" type="number" value="34" />
+			<entry key="maxSpeed" type="number" value="40" />
 			<entry key="normRpms" type="string" value="0.51 0.61 0.72 0.82 0.92 1" />
 			<entry key="torques" type="string" value="0.58 0.6 0.63 0.61 0.57 0.56" />
 			<entry key="fuelCapacity" type="number" value="220" />
@@ -436,7 +436,7 @@
 		<!-- Real values: 102 HP@2200 RPM, No peak power, 420Nm@1400 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.45 0.55 0.64 0.73 0.86 1" />
 			<entry key="torques" type="string" value="0.39 0.4 0.42 0.4 0.36 0.33" />
 			<entry key="fuelCapacity" type="number" value="120" />
@@ -452,7 +452,7 @@
 		<!-- Real values: 440 HP@1900 RPM, No peak power, 2100 Nm@1000-1400 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="1900" />
-			<entry key="maxSpeed" type="number" value="89.99" />
+			<entry key="maxSpeed" type="number" value="90" />
 			<entry key="normRpms" type="string" value="0.52 0.63 0.74 0.84 0.92 1" />
 			<entry key="torques" type="string" value="2.1 2.1 2.1 1.92 1.76 1.63" />
 			<entry key="fuelCapacity" type="number" value="800" />
@@ -468,7 +468,7 @@
 		<!-- Real values: 598 HP@2100 RPM, 652 HP@2000 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
-			<entry key="maxSpeed" type="number" value="25" />
+			<entry key="maxSpeed" type="number" value="30" />
 			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.95 1" />
 			<entry key="torques" type="string" value="2.45 2.6 2.75 2.65 2.3 2" />
 			<entry key="fuelCapacity" type="number" value="1300" />
@@ -482,7 +482,7 @@
 		<!-- Real values: 75 HP@2300 RPM, No peak power, 309Nm@1500 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2300" />
-			<entry key="maxSpeed" type="number" value="42.52" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.43 0.54 0.65 0.76 0.87 1" />
 			<entry key="torques" type="string" value="0.29 0.30 0.31 0.28 0.25 0.23" />
 			<entry key="fuelCapacity" type="number" value="115" />
@@ -496,7 +496,7 @@
 		<!-- Real values: 150 HP@2200 RPM, 163 maxHP, 676Nm@1500 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="51.84" />
+			<entry key="maxSpeed" type="number" value="52" />
 			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.86 1" />
 			<entry key="torques" type="string" value="0.58 0.66 0.68 0.64 0.6 0.48" />
 			<entry key="fuelCapacity" type="number" value="175" />
@@ -510,7 +510,7 @@
 		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
-			<entry key="maxSpeed" type="number" value="51.86" />
+			<entry key="maxSpeed" type="number" value="52" />
 			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
 			<entry key="torques" type="string" value="1.1 1.3 1.4 1.32 1.25 1" />
 			<entry key="fuelCapacity" type="number" value="617" />
@@ -524,7 +524,7 @@
 		<!-- Real values: 380 HP@2000 RPM, 435 HP@1800 RPM, 1800 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.420, unknow for T8.435 -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
-			<entry key="maxSpeed" type="number" value="51.86" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
 			<entry key="torques" type="string" value="1.45 1.65 1.8 1.74 1.7 1.33" />
 			<entry key="fuelCapacity" type="number" value="617" />
@@ -538,7 +538,7 @@
 		<!-- Real values: 548 HP@2100 RPM, 557 HP@1800 RPM, 2374 Nm@1400 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2100" />
-			<entry key="maxSpeed" type="number" value="42.54" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.47 0.62 0.67 0.76 0.86 1" />
 			<entry key="torques" type="string" value="2 2.17 2.37 2.27 2.17 1.83" />
 			<entry key="fuelCapacity" type="number" value="1230" />
@@ -598,7 +598,7 @@
 		<!-- Real values: 184 HP@2100 RPM, 193 maxHP, 820Nm@1400 RPM, from constructor's technical datasheet -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2100" />
-			<entry key="maxSpeed" type="number" value="51.85" />
+			<entry key="maxSpeed" type="number" value="52" />
 			<entry key="normRpms" type="string" value="0.47 0.57 0.67 0.76 0.88 1" />
 			<entry key="torques" type="string" value="0.72 0.77 0.82 0.78 0.73 0.62" />
 			<entry key="fuelCapacity" type="number" value="300" />
@@ -613,7 +613,7 @@
 		<!-- Real values: 185 HP@2000 RPM, 700Nm maxTorque, from constructor's and engine manufacturer's technical datasheet, others values were extrapolated -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2000" />
-			<entry key="maxSpeed" type="number" value="25.92" />
+			<entry key="maxSpeed" type="number" value="22" />
 			<entry key="normRpms" type="string" value="0.5 0.6 0.7 0.8 0.9 1" />
 			<entry key="torques" type="string" value="0.6 0.65 0.7 0.7 0.67 0.65" />
 			<entry key="fuelCapacity" type="number" value="350" />
@@ -629,7 +629,7 @@
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2300" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.7 0.85 1" />
 			<entry key="torques" type="string" value="0.38 0.42 0.46 0.46 0.39 0.35" />
 			<entry key="fuelCapacity" type="number" value="160" />
@@ -643,7 +643,7 @@
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2300" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.43 0.52 0.61 0.7 0.85 1" />
 			<entry key="torques" type="string" value="0.38 0.42 0.46 0.46 0.39 0.35" />
 			<entry key="fuelCapacity" type="number" value="160" />
@@ -659,7 +659,7 @@
 		<!-- Real values: 148 HP@2200 RPM, No peak power, 518Nm@1500 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="torqueScale" type="number" value="1" />
 			<entry key="maxRpm" type="number" value="2200" />
-			<entry key="maxSpeed" type="number" value="42.53" />
+			<entry key="maxSpeed" type="number" value="42" />
 			<entry key="normRpms" type="string" value="0.45 0.57 0.68 0.77 0.86 1" />
 			<entry key="torques" type="string" value="0.47 0.51 0.52 0.51 0.5 0.47" />
 			<entry key="fuelCapacity" type="number" value="200" />
