@@ -92,11 +92,11 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF6.xml" >
 			<entry key="speedLimit" type="number" value="5" />
-			<entry key="masses" type="string" value="1.975" /> <!-- is +0.428 -->
+			<entry key="masses" type="number" value="1.975" /> <!-- is +0.428 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/cutters/newHolland/newHollandHeader980CF12.xml" >
 			<entry key="speedLimit" type="number" value="5.5" />
-			<entry key="masses" type="string" value="4.726" /> <!-- is -0.160 -->
+			<entry key="masses" type="number" value="4.726" /> <!-- is -0.160 -->
 		</vehicle>
 		
 		<!-- Poettinger -->
@@ -637,7 +637,7 @@
 			<entry key="price" type="number" value="68692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
-			<entry key="masses" type="number" value="5.15" /> <!-- is +0.6 -->
+			<!-- entry key="masses" type="number" value="5.15" / --> <!-- is +0.6 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -651,7 +651,7 @@
 			<entry key="price" type="number" value="70692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
-			<entry key="masses" type="number" value="5.15" /> <!-- is +0.6 -->
+			<!-- entry key="masses" type="number" value="5.15" / --> <!-- is +0.6 -->
 		</vehicle>
 		
 		<!-- Ursus -->
@@ -896,13 +896,13 @@
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
 			<entry key="speedLimit" type="number" value="18" />
 			<entry key="neededPower" type="number" value="180" />
-			<entry key="neededPtoPower" type="number" value="119" />
+			<!-- entry key="neededPtoPower" type="number" value="119" / -->
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
 			<entry key="speedLimit" type="number" value="21" />
 			<entry key="neededPower" type="number" value="90" />
-			<entry key="neededPtoPower" type="number" value="59" />
+			<!-- entry key="neededPtoPower" type="number" value="59" / -->
 			<entry key="masses" type="number" value="3.4" /><!-- is +1.086 -->
 		</vehicle>
 		
