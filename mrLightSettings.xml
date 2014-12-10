@@ -577,6 +577,7 @@
 			<entry key="dailyUpkeep" type="number" value="340" />
 			<entry key="power" type="number" value="286" />
 			<entry key="masses" type="string" value="11.72 8.08" /> <!-- 19.8 total, balance front:back 1.45:1, pure estimation, no exact data found -->
+			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/ponsse/ponsseScorpion.xml" >
 		<!-- Real values model 2015: 286 HP@2100 RPM, No peak power , 1150Nm@1200-1600 RPM, from constructor's technical datasheet -->
@@ -591,6 +592,7 @@
 			<entry key="dailyUpkeep" type="number" value="360" />
 			<entry key="power" type="number" value="286" />
 			<entry key="masses" type="string" value="12.27 10.22" /> <!-- 22.5 total, balance front:back 1.2:1, pure estimation, no exact data found -->
+			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		
 		<!-- Same -->
@@ -997,6 +999,7 @@
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
 			<entry key="neededPower" type="number" value="180" /> <!-- 132-350kw / 180-475hp -->
 			<entry key="neededPtoPower" type="number" value="132" />
+			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		
 		<!-- Kotte
@@ -1038,9 +1041,10 @@
 			<entry key="speedLimit" type="number" value="15" />
 		</vehicle>
 		
-		<!-- Stepa
+		<!-- Stepa -->
 		<vehicle configFile ="data/vehicles/trailers/stepa/stepaFHL13AK.xml" >
-		</vehicle> -->
+			<entry key="fixCraneAxis" type="bool" value="true" />
+		</vehicle>
 		
 		<!-- Strautmann -->
 		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannPS3401.xml" >
