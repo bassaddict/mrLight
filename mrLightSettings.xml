@@ -637,7 +637,7 @@
 			<entry key="price" type="number" value="68692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
-			<!-- entry key="masses" type="number" value="5.15" / --> <!-- is +0.6 -->
+			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -651,7 +651,7 @@
 			<entry key="price" type="number" value="70692" />
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
-			<!-- entry key="masses" type="number" value="5.15" / --> <!-- is +0.6 -->
+			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
 		</vehicle>
 		
 		<!-- Ursus -->
@@ -896,7 +896,6 @@
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
 			<entry key="speedLimit" type="number" value="18" />
 			<entry key="neededPower" type="number" value="180" />
-			<!-- entry key="neededPtoPower" type="number" value="119" / -->
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
@@ -948,18 +947,18 @@
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
 			<entry key="capacity" type="number" value="67000" />
 			<entry key="speedLimit" type="number" value="17" />
-			<entry key="neededPower" type="number" value="180" />
-			<entry key="neededPtoPower" type="number" value="120" />
+			<entry key="neededPower" type="number" value="180" /><!-- for correct pulling @max load -->
+			<entry key="neededPtoPower" type="number" value="80" /><!-- for pickup/discharge -->
 			<!--entry key="masses" type="number" value="9.44" / is +0.09 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannHTW65.xml" >
-			<!-- <entry key="neededPower" type="number" value="150" /> -->
+			<entry key="neededPower" type="number" value="150" />
 			<entry key="masses" type="number" value="10.1" /><!-- is +1.881, according Dural's search for MR FS13 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannM1080.xml" >
 			<entry key="speedLimit" type="number" value="10" />
 			<entry key="neededPower" type="number" value="95" />
-			<entry key="neededPtoPower" type="number" value="60" />
+			<entry key="neededPtoPower" type="number" value="25" />
 			<!--entry key="masses" type="number" value="2.235" / is +0.016 -->
 		</vehicle>
 		
