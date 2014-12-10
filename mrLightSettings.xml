@@ -936,9 +936,13 @@
 			<!-- entry key="masses" type="number" value="3.5" is +0.046 / -->
 		</vehicle>
 		
-		<!-- Arcusin
+		<!-- Arcusin -->
 		<vehicle configFile ="data/vehicles/trailers/arcusin/arcusinAutostackFS63-72.xml" >
-		</vehicle> -->
+			<entry key="speedLimit" type="number" value="18" />
+			<entry key="neededPower" type="number" value="80" />
+			<entry key="neededPtoPower" type="number" value="39" />
+			<entry key="masses" type="number" value="8.9" /><!-- is -0.105 -->
+		</vehicle>
 		
 		<!-- Bergmann -->
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
