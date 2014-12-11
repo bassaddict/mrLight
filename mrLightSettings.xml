@@ -768,7 +768,7 @@
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeSE260.xml" >
 			<entry key="speedLimit" type="number" value="10" />
 			<entry key="neededPower" type="number" value="110" />
-			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="neededPtoPower" type="number" value="44" />
 			<entry key="masses" type="number" value="2.425" /> <!-- is +0.105 -->
 		</vehicle>
 		
