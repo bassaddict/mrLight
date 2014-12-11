@@ -831,8 +831,8 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGF6502.xml" >
 			<entry key="speedLimit" type="number" value="13" />
-			<entry key="neededPower" type="number" value="55" />
-			<entry key="neededPtoPower" type="number" value="9" />
+			<entry key="neededPower" type="number" value="60" />
+			<entry key="neededPtoPower" type="number" value="22" />
 			<entry key="masses" type="string" value="0.72 0.2" /><!-- is -0.79 -->
 			<entry key="price" type="number" value="10473" />
 		</vehicle>
