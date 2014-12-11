@@ -102,8 +102,8 @@
 		<!-- Poettinger -->
 		<vehicle configFile ="data/vehicles/cutters/poettinger/poettingerMex5.xml" >
 			<entry key="speedLimit" type="number" value="8" />
-			<entry key="neededPower" type="number" value="170" />
-			<entry key="neededPtoPower" type="number" value="110" />
+			<entry key="neededPower" type="number" value="150" />
+			<entry key="neededPtoPower" type="number" value="56" />
 			<!--entry key="masses" type="number" value="2.15" is -0.089 / -->
 		</vehicle>
 		
