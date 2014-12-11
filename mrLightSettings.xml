@@ -983,6 +983,7 @@
 			<entry key="masses" type="string" value="6.5 0.6" /><!-- is -1.624 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" >
+			<entry key="masses" type="number" value="5.9" /><!-- is -1.525 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
 		</vehicle>
