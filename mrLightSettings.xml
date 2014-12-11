@@ -1019,6 +1019,7 @@
 			<entry key="neededPower" type="number" value="150" /> 
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kotte/garantTSA.xml" >
+			<entry key="neededPower" type="number" value="320" />
 		</vehicle>
 		
 		<!-- Krampe
