@@ -806,8 +806,8 @@
 		<!-- Krone -->
 		<vehicle configFile ="data/vehicles/tools/krone/kroneSwadro2000.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="150" />
-			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="neededPower" type="number" value="190" />
+			<entry key="neededPtoPower" type="number" value="96" />
 			<entry key="masses" type="string" value="4.7 0.3 0.7 0.7 0.7 0.7 0.7 0.7 0.1 0.1" /><!-- is +0.814 -->
 		</vehicle>
 
