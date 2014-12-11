@@ -989,6 +989,9 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />
+			<entry key="neededPower" type="number" value="320" />
+			<entry key="neededPtoPower" type="number" value="60" />
+			<entry key="masses" type="number" value="2.235" /><!-- is +0.124 -->
 		</vehicle>
 		
 		<!-- fuelTrailer
