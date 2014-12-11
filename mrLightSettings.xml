@@ -986,6 +986,7 @@
 			<entry key="masses" type="number" value="5.9" /><!-- is -1.525 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
+			<entry key="neededPower" type="number" value="210" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />
