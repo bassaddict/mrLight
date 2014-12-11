@@ -819,8 +819,8 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC10030.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="215" />
-			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="neededPower" type="number" value="290" />
+			<entry key="neededPtoPower" type="number" value="170" />
 			<entry key="masses" type="string" value="2.225 0.5 0.5" /><!-- is +0.079 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnGA8521.xml" >
