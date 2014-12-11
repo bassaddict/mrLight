@@ -960,7 +960,7 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannM1080.xml" >
 			<entry key="speedLimit" type="number" value="10" />
-			<entry key="neededPower" type="number" value="95" />
+			<entry key="neededPower" type="number" value="100" />
 			<entry key="neededPtoPower" type="number" value="25" />
 			<!--entry key="masses" type="number" value="2.235" / is +0.016 -->
 		</vehicle>
