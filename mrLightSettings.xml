@@ -858,8 +858,8 @@
 		<!-- Poettinger -->
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerHit1214T.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="85" />
-			<entry key="neededPtoPower" type="number" value="55" />
+			<entry key="neededPower" type="number" value="75" />
+			<entry key="neededPtoPower" type="number" value="30" />
 			<entry key="masses" type="string" value="1.22 0.08 0.5 0.15 0.1 0.15 0.1" /><!-- is -0.9 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerNovacat302ED.xml" >
