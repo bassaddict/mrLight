@@ -707,13 +707,13 @@
 			<entry key="masses" type="number" value="0.217" is +0.005 />
 		</vehicle -->
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneUF1801.xml" >
-			<entry key="speedLimit" type="number" value="8" />
+			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="15" />
 			<!--entry key="masses" type="number" value="1.29" is -0.02 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneZAM1501.xml" >
-			<entry key="speedLimit" type="number" value="12" />
+			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="neededPtoPower" type="number" value="20" />
 			<entry key="masses" type="number" value="0.416" /><!-- is +0.145 -->
@@ -738,37 +738,37 @@
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
 			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="90" />
-			<entry key="neededPtoPower" type="number" value="60" />
+			<entry key="neededPtoPower" type="number" value="30" />
 			<entry key="masses" type="number" value="1.15" /><!-- is +0.104 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
-			<entry key="speedLimit" type="number" value="8" />
+			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="140" />
-			<entry key="neededPtoPower" type="number" value="90" />
+			<entry key="neededPtoPower" type="number" value="12" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
 			<!--entry key="masses" type="number" value="2.3" is +0.011 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL660.xml" >
-			<entry key="speedLimit" type="number" value="8" />
+			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="170" />
-			<entry key="neededPtoPower" type="number" value="110" />
+			<entry key="neededPtoPower" type="number" value="15" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
 			<entry key="masses" type="number" value="3.8" /><!-- is +0.916 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeKS75-4.xml" >
 			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="70" />
-			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="neededPtoPower" type="number" value="30" />
 			<!--entry key="masses" type="number" value="0.95" is +0.022 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeRootster604.xml" >
-			<entry key="speedLimit" type="number" value="7" />
-			<entry key="neededPower" type="number" value="205" />
-			<entry key="neededPtoPower" type="number" value="136" />
+			<entry key="speedLimit" type="number" value="12" />
+			<entry key="neededPower" type="number" value="185" />
+			<entry key="neededPtoPower" type="number" value="45" />
 			<!--entry key="masses" type="number" value="8.6" is +0.026 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeSE260.xml" >
-			<entry key="speedLimit" type="number" value="7" />
-			<entry key="neededPower" type="number" value="120" />
-			<entry key="neededPtoPower" type="number" value="80" />
+			<entry key="speedLimit" type="number" value="10" />
+			<entry key="neededPower" type="number" value="110" />
+			<entry key="neededPtoPower" type="number" value="45" />
 			<entry key="masses" type="number" value="2.425" /> <!-- is +0.105 -->
 		</vehicle>
 		
