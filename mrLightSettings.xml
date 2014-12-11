@@ -996,9 +996,10 @@
 			<entry key="masses" type="number" value="2.235" /><!-- is +0.124 -->
 		</vehicle>
 		
-		<!-- fuelTrailer
+		<!-- fuelTrailer -->
 		<vehicle configFile ="data/vehicles/trailers/fuelTrailer/fuelTrailer.xml" >
-		</vehicle> -->
+			<entry key="masses" type="number" value="2.25" /><!-- is +0.729 -->
+		</vehicle> 
 		
 		<!-- Horsch -->
 		<vehicle configFile ="data/vehicles/trailers/horsch/horschTitan34UW.xml" >
@@ -1080,9 +1081,10 @@
 		<vehicle configFile ="data/vehicles/trailers/ursus/ursusZ586.xml" >
 		</vehicle -->
 		
-		<!-- waterTrailer
+		<!-- waterTrailer -->
 		<vehicle configFile ="data/vehicles/trailers/waterTrailer/waterTrailer.xml" >
-		</vehicle> -->
+			<entry key="masses" type="number" value="2.08" /><!-- is -0.330 -->
+		</vehicle> 
 		
 		<!-- Zunhammer -->
 		<vehicle configFile ="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
