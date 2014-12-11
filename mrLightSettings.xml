@@ -1009,7 +1009,7 @@
 		
 		<!-- Jenz -->
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
-			<entry key="neededPower" type="number" value="180" /> <!-- 132-350kw / 180-475hp -->
+			<entry key="neededPower" type="number" value="200" /> <!-- 132-350kw / 180-475hp -->
 			<entry key="neededPtoPower" type="number" value="132" />
 			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
