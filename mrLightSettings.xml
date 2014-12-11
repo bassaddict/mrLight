@@ -814,8 +814,8 @@
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC3525F.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="115" />
-			<entry key="neededPtoPower" type="number" value="25" />
+			<entry key="neededPower" type="number" value="155" />
+			<entry key="neededPtoPower" type="number" value="75" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/kuhn/kuhnFC10030.xml" >
 			<entry key="speedLimit" type="number" value="15" />
