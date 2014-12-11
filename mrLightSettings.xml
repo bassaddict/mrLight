@@ -978,6 +978,7 @@
 			<entry key="masses" type="number" value="2" /><!-- is +0.363 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDPW180.xml" >
+			<entry key="neededPower" type="number" value="150" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglSemitrailer.xml" >
 			<entry key="masses" type="string" value="6.5 0.6" /><!-- is -1.624 -->
