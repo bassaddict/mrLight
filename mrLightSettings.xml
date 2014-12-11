@@ -933,8 +933,8 @@
 		<!-- Amazone -->
 		<vehicle configFile ="data/vehicles/trailers/amazone/amazoneZGB8200.xml" >
 			<entry key="speedLimit" type="number" value="14" />
-			<entry key="neededPower" type="number" value="115" />
-			<entry key="neededPtoPower" type="number" value="75" />
+			<entry key="neededPower" type="number" value="150" />
+			<entry key="neededPtoPower" type="number" value="20" />
 			<!-- entry key="masses" type="number" value="3.5" is +0.046 / -->
 		</vehicle>
 		
