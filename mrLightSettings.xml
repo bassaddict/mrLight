@@ -980,6 +980,7 @@
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDPW180.xml" >
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglSemitrailer.xml" >
+			<entry key="masses" type="string" value="6.5 0.6" /><!-- is -1.624 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" >
 		</vehicle>
