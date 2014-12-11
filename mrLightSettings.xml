@@ -902,9 +902,9 @@
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
-			<entry key="speedLimit" type="number" value="21" />
+			<entry key="speedLimit" type="number" value="17" />
 			<entry key="neededPower" type="number" value="90" />
-			<!-- entry key="neededPtoPower" type="number" value="59" / -->
+			<entry key="neededPtoPower" type="number" value="12" />
 			<entry key="masses" type="number" value="3.4" /><!-- is +1.086 -->
 		</vehicle>
 		
