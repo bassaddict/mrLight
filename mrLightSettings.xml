@@ -1036,11 +1036,13 @@
 			<entry key="masses" type="number" value="8" /><!-- is -0.355 -->
 		</vehicle> 
 		
-		<!-- Kroeger
+		<!-- Kroeger -->
 		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerHKD302.xml" >
+			<entry key="neededPower" type="number" value="150" />
+			<entry key="masses" type="string" value="3.05 0.9 0.3" /><!-- is +0.297 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerTAW30.xml" >
-		</vehicle> -->
+		</vehicle> 
 		
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" >
