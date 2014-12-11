@@ -970,7 +970,9 @@
 		</vehicle> -->
 		
 		<!-- Fliegl -->
-		<!-- vehicle configFile ="data/vehicles/trailers/fliegl/flieglASS2101.xml" >
+		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglASS2101.xml" >
+			<entry key="neededPower" type="number" value="320" />
+			<entry key="masses" type="number" value="6.85" /><!-- is -0.574 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDolly.xml" >
 		</vehicle>
@@ -981,7 +983,7 @@
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" >
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
-		</vehicle -->
+		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />
 		</vehicle>
