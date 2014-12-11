@@ -1054,6 +1054,8 @@
 			<entry key="price" type="number" value="21281" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnProfile1880.xml" >
+			<entry key="neededPtoPower" type="number" value="66" />
+			<entry key="neededPower" type="number" value="140" />
 			<entry key="price" type="number" value="41398" />
 		</vehicle>
 		
