@@ -1014,11 +1014,12 @@
 			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		
-		<!-- Kotte
+		<!-- Kotte -->
 		<vehicle configFile ="data/vehicles/trailers/kotte/garantFieldContainer.xml" >
+			<entry key="neededPower" type="number" value="150" /> 
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kotte/garantTSA.xml" >
-		</vehicle> -->
+		</vehicle>
 		
 		<!-- Krampe
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
