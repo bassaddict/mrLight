@@ -870,8 +870,8 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerTop1252.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="100" />
-			<entry key="neededPtoPower" type="number" value="66" />
+			<entry key="neededPower" type="number" value="90" />
+			<entry key="neededPtoPower" type="number" value="30" />
 			<entry key="masses" type="string" value="3.25 0.3 0.6 0.6 0.6 0.6" /><!-- is -0.05, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
