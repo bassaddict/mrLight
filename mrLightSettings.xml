@@ -743,7 +743,7 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
 			<entry key="speedLimit" type="number" value="12" />
-			<entry key="neededPower" type="number" value="140" />
+			<entry key="neededPower" type="number" value="122" />
 			<entry key="neededPtoPower" type="number" value="12" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
 			<!--entry key="masses" type="number" value="2.3" is +0.011 / -->
 		</vehicle>
