@@ -1004,6 +1004,7 @@
 		<!-- Horsch -->
 		<vehicle configFile ="data/vehicles/trailers/horsch/horschTitan34UW.xml" >
 			<entry key="neededPower" type="number" value="200" /> <!-- 150kw / 200hp -->
+			<entry key="neededPtoPower" type="number" value="60" />
 		</vehicle>
 		
 		<!-- Jenz -->
