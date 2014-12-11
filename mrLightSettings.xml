@@ -898,6 +898,7 @@
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
 			<entry key="speedLimit" type="number" value="18" />
 			<entry key="neededPower" type="number" value="180" />
+			<entry key="neededPtoPower" type="number" value="25" />
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
