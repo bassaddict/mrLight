@@ -1024,6 +1024,8 @@
 		
 		<!-- Krampe -->
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
+			<entry key="neededPower" type="number" value="180" />
+			<entry key="masses" type="number" value="8.9" /><!-- is +0.994 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBBS900.xml" >
 			<entry key="neededPower" type="number" value="190" />
