@@ -701,21 +701,21 @@
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneCayron200.xml" >
 			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components -->
+			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components, need to be test -->
 		</vehicle>
 		<!-- vehicle configFile ="data/vehicles/tools/amazone/amazoneFT1001.xml" >
 			<entry key="masses" type="number" value="0.217" is +0.005 />
 		</vehicle -->
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneUF1801.xml" >
 			<entry key="speedLimit" type="number" value="8" />
-			<entry key="neededPower" type="number" value="115" />
-			<entry key="neededPtoPower" type="number" value="75" />
+			<entry key="neededPower" type="number" value="125" />
+			<entry key="neededPtoPower" type="number" value="15" />
 			<!--entry key="masses" type="number" value="1.29" is -0.02 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneZAM1501.xml" >
 			<entry key="speedLimit" type="number" value="12" />
-			<entry key="neededPower" type="number" value="170" />
-			<entry key="neededPtoPower" type="number" value="112" />
+			<entry key="neededPower" type="number" value="150" />
+			<entry key="neededPtoPower" type="number" value="20" />
 			<entry key="masses" type="number" value="0.416" /><!-- is +0.145 -->
 		</vehicle>
 		
