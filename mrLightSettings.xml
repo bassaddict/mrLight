@@ -1022,13 +1022,15 @@
 			<entry key="neededPower" type="number" value="320" />
 		</vehicle>
 		
-		<!-- Krampe
+		<!-- Krampe -->
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBBS900.xml" >
+			<entry key="neededPower" type="number" value="190" />
+			<entry key="masses" type="number" value="10.2" /><!-- is +1.702 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeSB3060.xml" >
-		</vehicle> -->
+		</vehicle> 
 		
 		<!-- Kroeger
 		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerHKD302.xml" >
