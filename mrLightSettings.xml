@@ -755,8 +755,8 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeKS75-4.xml" >
 			<entry key="speedLimit" type="number" value="14" />
-			<entry key="neededPower" type="number" value="70" />
-			<entry key="neededPtoPower" type="number" value="30" />
+			<entry key="neededPower" type="number" value="60" />
+			<entry key="neededPtoPower" type="number" value="25" />
 			<!--entry key="masses" type="number" value="0.95" is +0.022 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeRootster604.xml" >
