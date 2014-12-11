@@ -876,8 +876,8 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
 			<entry key="speedLimit" type="number" value="12" />
-			<entry key="neededPower" type="number" value="85" />
-			<entry key="neededPtoPower" type="number" value="55" />
+			<entry key="neededPower" type="number" value="120" />
+			<entry key="neededPtoPower" type="number" value="35" />
 			<entry key="masses" type="number" value="1.685" /><!-- is -0.581 -->
 		</vehicle>
 		
