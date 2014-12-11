@@ -737,8 +737,8 @@
 		<!-- Grimme -->
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
 			<entry key="speedLimit" type="number" value="14" />
-			<entry key="neededPower" type="number" value="90" />
-			<entry key="neededPtoPower" type="number" value="30" />
+			<entry key="neededPower" type="number" value="122" />
+			<entry key="neededPtoPower" type="number" value="60" />
 			<entry key="masses" type="number" value="1.15" /><!-- is +0.104 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
