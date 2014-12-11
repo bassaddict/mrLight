@@ -1032,6 +1032,8 @@
 			<entry key="masses" type="number" value="10.2" /><!-- is +1.702 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeSB3060.xml" >
+			<entry key="neededPower" type="number" value="320" />
+			<entry key="masses" type="number" value="8" /><!-- is -0.355 -->
 		</vehicle> 
 		
 		<!-- Kroeger
