@@ -1049,6 +1049,8 @@
 		
 		<!-- Kuhn -->
 		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" >
+			<entry key="neededPtoPower" type="number" value="51" />
+			<entry key="neededPower" type="number" value="110" />
 			<entry key="price" type="number" value="21281" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kuhn/kuhnProfile1880.xml" >
