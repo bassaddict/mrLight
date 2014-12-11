@@ -1042,6 +1042,9 @@
 			<entry key="masses" type="string" value="3.05 0.9 0.3" /><!-- is +0.297 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerTAW30.xml" >
+			<entry key="neededPtoPower" type="number" value="80" />
+			<entry key="neededPower" type="number" value="240" />
+			<entry key="masses" type="string" value="3.05 0.9 0.3" /><!-- is +0.297 -->
 		</vehicle> 
 		
 		<!-- Kuhn -->
