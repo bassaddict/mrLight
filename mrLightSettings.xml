@@ -975,6 +975,7 @@
 			<entry key="masses" type="number" value="6.85" /><!-- is -0.574 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDolly.xml" >
+			<entry key="masses" type="number" value="2" /><!-- is +0.363 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglDPW180.xml" >
 		</vehicle>
