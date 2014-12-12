@@ -1085,6 +1085,8 @@
 		<!-- Strautmann -->
 		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannPS3401.xml" >
 			<entry key="speedLimit" type="number" value="12" />
+			<entry key="neededPtoPower" type="number" value="80" />
+			<entry key="neededPower" type="number" value="220" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannTeraVitesse5201.xml" >
 			<entry key="capacity" type="number" value="95000" />
