@@ -1091,6 +1091,8 @@
 		<vehicle configFile ="data/vehicles/trailers/strautmann/strautmannTeraVitesse5201.xml" >
 			<entry key="capacity" type="number" value="95000" />
 			<entry key="speedLimit" type="number" value="18" />
+			<entry key="neededPtoPower" type="number" value="70" />
+			<entry key="neededPower" type="number" value="240" />
 		</vehicle>
 		
 		<!-- Thueringer Agrar
