@@ -1107,10 +1107,12 @@
 			<entry key="neededPtoPower" type="number" value="50" />
 			<entry key="neededPower" type="number" value="150" />
 		</vehicle>
-		<!-- vehicle configFile ="data/vehicles/trailers/ursus/ursusT127.xml" >
+		<vehicle configFile ="data/vehicles/trailers/ursus/ursusT127.xml" >
+			<entry key="neededPtoPower" type="number" value="15" />
+			<entry key="neededPower" type="number" value="70" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/ursus/ursusZ586.xml" >
-		</vehicle -->
+		</vehicle>
 		
 		<!-- waterTrailer -->
 		<vehicle configFile ="data/vehicles/trailers/waterTrailer/waterTrailer.xml" >
