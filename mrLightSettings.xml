@@ -1104,6 +1104,8 @@
 		<!-- Ursus -->
 		<vehicle configFile ="data/vehicles/trailers/ursus/ursusN270.xml" >
 			<entry key="speedLimit" type="number" value="11" />
+			<entry key="neededPtoPower" type="number" value="50" />
+			<entry key="neededPower" type="number" value="150" />
 		</vehicle>
 		<!-- vehicle configFile ="data/vehicles/trailers/ursus/ursusT127.xml" >
 		</vehicle>
