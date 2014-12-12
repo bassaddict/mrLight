@@ -1071,6 +1071,8 @@
 		<vehicle configFile ="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" >
 			<entry key="capacity" type="number" value="33000" />
 			<entry key="speedLimit" type="number" value="15" />
+			<entry key="neededPtoPower" type="number" value="40" />
+			<entry key="neededPower" type="number" value="100" />
 		</vehicle>
 		
 		<!-- Stepa -->
