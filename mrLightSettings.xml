@@ -1078,6 +1078,8 @@
 		<!-- Stepa -->
 		<vehicle configFile ="data/vehicles/trailers/stepa/stepaFHL13AK.xml" >
 			<entry key="fixCraneAxis" type="bool" value="true" />
+			<entry key="neededPower" type="number" value="150" />
+			<entry key="masses" type="string" value="2.05 0.15 0.1 0.1" /><!-- is -0.3 -->
 		</vehicle>
 		
 		<!-- Strautmann -->
