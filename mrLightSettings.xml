@@ -1062,6 +1062,9 @@
 		<!-- Marshall -->
 		<vehicle configFile ="data/vehicles/trailers/marshall/marshallST1800.xml" >
 			<entry key="speedLimit" type="number" value="10" />
+			<entry key="neededPtoPower" type="number" value="30" />
+			<entry key="neededPower" type="number" value="95" />
+			<entry key="price" type="number" value="11970" />
 		</vehicle>
 		
 		<!-- Poettinger -->
