@@ -732,6 +732,7 @@
 			<entry key="neededPower" type="number" value="85" />
 			<entry key="neededPtoPower" type="number" value="53" />
 			<entry key="masses" type="number" value="0.7" /><!-- is +0.238 -->
+			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		
 		<!-- Grimme -->
