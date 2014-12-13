@@ -10,6 +10,8 @@ SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates"
 SpecializationUtil.registerSpecialization("drivableManipulation", "DrivableManipulation", g_currentModDirectory.."DrivableManipulation.lua");
 SpecializationUtil.registerSpecialization("vehicleManipulation", "VehicleManipulation", g_currentModDirectory.."VehicleManipulation.lua");
 SpecializationUtil.registerSpecialization("cylinderedManipulation", "CylinderedManipulation", g_currentModDirectory.."CylinderedManipulation.lua");
+SpecializationUtil.registerSpecialization("attachableManipulation", "AttachableManipulation", g_currentModDirectory.."AttachableManipulation.lua");
+
 
 
 
@@ -62,6 +64,9 @@ function loaderClass:loadMap(name)
 		end;
 		if SpecializationUtil.hasSpecialization(Cylindered, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("cylinderedManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(Attachable, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("attachableManipulation"));
 		end;
 	end;
 	print("--- MRL: specializations added, map loaded");
