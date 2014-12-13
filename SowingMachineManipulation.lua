@@ -14,7 +14,7 @@ function SowingMachineManipulation:load(xmlFile)
 	self.lastSeed = self.currentSeed;
 	
 	
-	self.debugRender = false;
+	self.debugRenderSowingMachineManipulation = false;
 end;
 
 function SowingMachineManipulation:delete()
@@ -61,7 +61,7 @@ function SowingMachineManipulation:update(dt)
 end;
 
 function SowingMachineManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderSowingMachineManipulation then
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, lastFillLevel: %.4f, currentSeed: %d, isFilling: %s", self.fillLevel, self.myLastFillLevel, self.currentSeed, tostring(self.isFilling)));
 		renderText(0.99, 0.78, 0.018, string.format("fillDelta: %.4f",self.deltaFill));

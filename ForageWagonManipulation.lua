@@ -8,7 +8,7 @@ function ForageWagonManipulation:load(xmlFile)
 	self.firstRunForageWagonManipulation = true;
 	
 	
-	self.debugRender = false;
+	self.debugRenderForageWagonManipulation = false;
 end;
 
 function ForageWagonManipulation:delete()
@@ -79,7 +79,7 @@ function ForageWagonManipulation:update(dt)
 end;
 
 function ForageWagonManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderForageWagonManipulation then
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
 		setTextAlignment(RenderText.ALIGN_LEFT);

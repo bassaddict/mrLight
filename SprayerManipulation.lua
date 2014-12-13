@@ -21,7 +21,7 @@ function SprayerManipulation:load(xmlFile)
 	self.workingWidth = 10;
 	
 	
-	self.debugRender = false;
+	self.debugRenderSprayerManipulation = false;
 end;
 
 function SprayerManipulation:delete()
@@ -69,7 +69,7 @@ function SprayerManipulation:update(dt)
 end;
 
 function SprayerManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderSprayerManipulation then
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		renderText(0.99, 0.80, 0.018, string.format("lastMovedDistance: %.4f, workingWidth: %.2f, sprayLitersPerSecond: %.4f, fillLevel: %.2f", self.lastMovedDistance, self.workingWidth, Utils.getNoNil(self.sprayLitersPerSecond[self.currentFillType], 0), Utils.getNoNil(self.fillLevel,0)));
 		--renderText(0.99, 0.78, 0.018, string.format("fillDelta: %.4f",self.deltaFill));
