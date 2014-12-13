@@ -9,6 +9,7 @@ end;
 
 function WorkSpeedUpdates:load(xmlFile)
 	self.firstRunWorkSpeedUpdates = true;
+	self.debugRenderWorkSpeedUpdates = false;
 end;
 
 function WorkSpeedUpdates:delete()

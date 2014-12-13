@@ -10,9 +10,11 @@ function DrivableManipulation:load(xmlFile)
 	self.collectedInput = "";
 	--self.firstRunDrivableManipulation = true;
 	
+	self.toggleDifferentialLock = DrivableManipulation.toggleDifferentialLock;
 	
 	
 	
+	-- update motor settings
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 		local torqueScale = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].torqueScale, 1);
 		local maxRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxRpm, self.motor.maxRpm);
@@ -61,7 +63,7 @@ function DrivableManipulation:load(xmlFile)
 		self.fuelCapacity = fuelCapacity;
 		self.fuelUsage = fuelUsage / (60*60*1000);
 		
-		self.motor.maxForwardGearRatio = 750;
+		--self.motor.maxForwardGearRatio = 750;
 		
 		
 		--experiment:
@@ -69,7 +71,7 @@ function DrivableManipulation:load(xmlFile)
 	end;
 	
 	
-	
+	-- incline display
 	self.frontInclineNode = createTransformGroup("front");
 	self.backInclineNode = createTransformGroup("back");
 	link(self.rootNode, self.frontInclineNode);
@@ -79,8 +81,37 @@ function DrivableManipulation:load(xmlFile)
 	
 	
 	
+	-- slip
+	self.slip = 0;
+	self.isDiffLocked = false;
+	self.diffBak = {};
+	for k,v in pairs(self.differentials) do
+		self.diffBak[k] = {};
+		self.diffBak[k].torqueRatio = v.torqueRatio;
+		self.diffBak[k].maxSpeedRatio = v.maxSpeedRatio;
+	end;
+	--print("diff backup done");
 	
-	self.debugRender = false;
+	self.wheelsRot = {};
+	self.wheelsPos = {};
+	for k,v in pairs(self.wheels) do
+		local rx,_,_ = getRotation(v.driveNode);
+		self.wheelsRot[k] = rx;
+		local x,y,z = getWorldTranslation(v.driveNode);
+		self.wheelsPos[k] = {x=x, y=y, z=z};
+		
+		v.rotPerSecond = 0;
+		v.distPerSecond = 0;
+		v.slip = 0;
+		v.slipDisplay = 0;
+	end;
+	
+	
+	
+	
+	
+	
+	self.debugRenderDrivableManipulation = true;
 end;
 
 function DrivableManipulation:delete()
@@ -138,6 +169,43 @@ function DrivableManipulation:update(dt)
 	end;
 	
 	
+	if self.slip > 0.15 and not self.isDiffLocked then
+		print("todo lock diff");
+		DrivableManipulation.toggleDifferentialLock(self, self.isDiffLocked);
+	elseif self.slip <= 0.15 and self.isDiffLocked then
+		print("todo unlock diff");
+		DrivableManipulation.toggleDifferentialLock(self, self.isDiffLocked);
+	end;
+	--print("self.slip: "..tostring(self.slip)..", self.isDiffLocked: "..tostring(self.isDiffLocked));
+	
+	
+	
+	
+	for k,v in pairs(self.wheels) do
+		local lastRot = self.wheelsRot[k];
+		local rx,_,_ = getRotation(v.driveNode);
+		self.wheelsRot[k] = rx;
+		local tempRot = rx - lastRot;
+		if self.movingDirection >= 0 and tempRot < 0 then
+			tempRot = (2 * math.pi) + tempRot;
+		elseif self.movingDirection < 0 and tempRot > 0 then
+			tempRot = (-2 * math.pi) + tempRot;
+		end;
+		
+		v.rotPerSecond = (tempRot / (2 * math.pi)) * (1000 / dt);
+		--v.rotPerSecond = ((rx - lastRot) / 2 * math.pi) * (1000 / dt);
+		
+		
+		local lastPos = self.wheelsPos[k];
+		local x,y,z = getWorldTranslation(v.driveNode);
+		self.wheelsPos[k] = {x=x, y=y, z=z};
+		v.distPerSecond = Utils.vector3Length(x-lastPos.x, y-lastPos.y, z-lastPos.z) * (1000 / dt);
+		
+		v.slip = 1 - (v.distPerSecond / (math.abs(v.rotPerSecond) * (v.radius * 2 * math.pi)));
+		if v.rotPerSecond == 0 then v.slip = 0 end;
+		v.slipDisplay = (v.slipDisplay * 0.984) + (v.slip * 0.016);
+	end;
+	
 	
 	
 	local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
@@ -148,15 +216,33 @@ function DrivableManipulation:update(dt)
 	
 end;
 
+function DrivableManipulation.toggleDifferentialLock(self, isLocked)
+	print("toggle diff");
+	if isLocked then
+		for k,v in pairs(self.differentials) do
+			v.torqueRatio = self.diffBak[k].torqueRatio;
+			v.maxSpeedRatio = self.diffBak[k].maxSpeedRatio;
+		end;
+	elseif not isLocked then
+		for k,v in pairs(self.differentials) do
+			v.torqueRatio = 0.5;
+			v.maxSpeedRatio = 0;
+		end;
+	end;
+	self.isDiffLocked = not self.isDiffLocked;
+end;
+
 function DrivableManipulation:draw()
-	--[[local rx, ry, rz = getWorldRotation(self.rootNode);
-	local x, yCosValue, z = localDirectionToWorld(self.rootNode, 0, 1, 0);
-	local dir = Utils.clamp(yCosValue, 0, 1);
-	local deg_rx = math.acos(dir); --rx / (2 * math.pi) * 360;
-	local deg_rx1 = math.deg(rx);
-	local percent_rx = math.tan(deg_rx) * 100;]]
+	if self.debugRenderDrivableManipulation then
 		setTextAlignment(RenderText.ALIGN_LEFT);
-		--renderText(0.6, 0.01, 0.01, string.format("rx: %.4f, ry: %.4f, rz: %.4f", rx, ry, rz));
-		--renderText(0.85, 0.01, 0.01, string.format("rad: %.3f, deg: %.3f, deg1: %.3f, percent: %.3f",rx, deg_rx, deg_rx1, percent_rx));
 		renderText(0.85, 0.01, 0.012, string.format("incline: %.3f", self.anglePercent));
+		setTextAlignment(RenderText.ALIGN_RIGHT);
+		
+		local i = 0;
+		for k,v in pairs(self.wheels) do
+			i = i + 0.01;
+			renderText(0.8, i, 0.012, string.format("r/s: %.2f, m/s: %.2f, slip: %.2f, slipDisplay: %.2f", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
+		end;
+	end;
+	setTextAlignment(RenderText.ALIGN_LEFT);
 end;

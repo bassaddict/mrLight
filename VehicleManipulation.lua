@@ -8,7 +8,7 @@ function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
 	
-	self.debugRender = false;
+	self.debugRenderVehicleManipulation = false;
 end;
 
 function VehicleManipulation:delete()
@@ -52,7 +52,7 @@ function VehicleManipulation:update(dt)
 end;
 
 function VehicleManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderVehicleManipulation then
 		--setTextAlignment(RenderText.ALIGN_RIGHT);
 		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
 		--setTextAlignment(RenderText.ALIGN_LEFT);

@@ -40,7 +40,7 @@ function CylinderedManipulation:load(xmlFile)
 		end;
 	end;
 	
-	self.debugRender = false;
+	self.debugRenderCylinderedManipulation = false;
 end;
 
 function CylinderedManipulation:delete()
@@ -84,7 +84,7 @@ function CylinderedManipulation:update(dt)
 end;
 
 function CylinderedManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderCylinderedManipulation then
 		--setTextAlignment(RenderText.ALIGN_RIGHT);
 		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
 		--setTextAlignment(RenderText.ALIGN_LEFT);

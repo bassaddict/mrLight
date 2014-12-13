@@ -17,6 +17,7 @@ function PowerConsumerManipulation:load(xmlFile)
 		self.powerConsumer.maxForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxForce, self.powerConsumer.maxForce);
 	end;
 	
+	self.debugRenderPowerConsumerManipulation = false;
 end;
 
 function PowerConsumerManipulation:delete()

@@ -11,7 +11,7 @@ function BalerManipulation:load(xmlFile)
 	self.lastFillType = Fillable.FILLTYPE_UNKNOWN;
 	
 	
-	self.debugRender = false;
+	self.debugRenderBalerManipulation = false;
 end;
 
 function BalerManipulation:delete()
@@ -80,7 +80,7 @@ function BalerManipulation:update(dt)
 end;
 
 function BalerManipulation:draw()
-	if self.debugRender then
+	if self.debugRenderBalerManipulation then
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.2f, capacity: %.2f, diam: %.2f, width: %.2f, height: %.2f, length: %.2f", Utils.getNoNil(self.fillLevel,0), self.capacity, self.baleTypes[1].diameter, self.baleTypes[1].width, self.baleTypes[1].height, self.baleTypes[1].length));
 		setTextAlignment(RenderText.ALIGN_LEFT);
