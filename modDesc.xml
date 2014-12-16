@@ -31,11 +31,21 @@
 			<en>SETMAXRPM</en>
 			<de>SETMAXRPM</de>
 		</text>
+		<text name="SETLOWERDIST">
+			<en>SETLOWERDIST</en>
+			<de>SETLOWERDIST</de>
+		</text>
+		<text name="SETUPPERDIST">
+			<en>SETUPPERDIST</en>
+			<de>SETUPPERDIST</de>
+		</text>
 	</l10n>
 	
 	<inputBindings>
 		<input name="SETFORCE" category="VEHICLE" key1="KEY_lctrl KEY_f" button="" />
 		<input name="SETPTOPOWER" category="VEHICLE" key1="KEY_lctrl KEY_p" button="" />
 		<input name="SETMAXRPM" category="VEHICLE" key1="KEY_lctrl KEY_m" button="" />
+		<input name="SETLOWERDIST" category="VEHICLE" key1="KEY_lctrl KEY_l" button="" />
+		<input name="SETUPPERDIST" category="VEHICLE" key1="KEY_lctrl KEY_u" button="" />
     </inputBindings>
 </modDesc>

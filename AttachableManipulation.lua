@@ -16,6 +16,16 @@ function AttachableManipulation:load(xmlFile)
 		end;
 	end;
 	
+	
+	
+	self.collectLoderDist = false;
+	self.collectUpperDist = false;
+	self.collectedAM = false;
+	self.collectedInputAM = "";
+	
+	
+	
+	
 	self.debugRenderAttachableManipulation = false;
 end;
 
@@ -26,10 +36,47 @@ function AttachableManipulation:mouseEvent(posX, posY, isDown, isUp, button)
 end;
 
 function AttachableManipulation:keyEvent(unicode, sym, modifier, isDown)
+	if self.collectLowerDist or self.collectUpperDist then
+		if isDown then
+			if sym == 13 then
+				self.collectedAM = true;
+				--print("enter");
+			--elseif unicode == 46 or (unicode >= 48 and unicode <= 57) then
+			elseif unicode >= 48 and unicode <= 57 then
+				self.collectedInputAM = self.collectedInputAM .. string.char(unicode);
+				--print("number: " .. tostring(unicode));
+			else
+				print("other char pressed: " .. tostring(sym));
+			end;
+		end;
+	end;
 end;
 
 function AttachableManipulation:update(dt)
-
+	
+	if (InputBinding.hasEvent(InputBinding.SETLOWERDIST)) and not self.collectUpperDist then
+		self.collectLowerDist = true;
+		--print("force pressed");
+	elseif (InputBinding.hasEvent(InputBinding.SETUPPERDIST)) and not self.collectLowerDist then
+		self.collectUpperDist = true;
+		--print("PTO power pressed");
+	end;
+	if self.collectedAM then
+		local newValue = tonumber(self.collectedInputAM);
+		if self.collectLowerDist then
+			self.inputAttacherJoints[1].lowerDistanceToGround = Utils.getNoNil(newValue*0.01, self.inputAttacherJoints[1].lowerDistanceToGround);
+			self.collectLowerDist = false;
+			print("new lowerDist value: " .. tostring(self.inputAttacherJoints[1].lowerDistanceToGround));
+		elseif self.collectUpperDist then
+			self.inputAttacherJoints[1].upperDistanceToGround = Utils.getNoNil(newValue*0.01, self.inputAttacherJoints[1].upperDistanceToGround);
+			self.collectUpperDist = false;
+			print("new upperDist value: " .. tostring(self.inputAttacherJoints[1].upperDistanceToGround));
+		end;
+		self.collectedAM = false;
+		self.collectedInputAM = "";
+	end;
+	
+	
 	--if self.firstRunAttachableManipulation then
 	--	self.firstRunAttachableManipulation = false;
 	--end;

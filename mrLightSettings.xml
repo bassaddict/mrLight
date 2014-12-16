@@ -23,14 +23,14 @@
 		<!-- New Holland -->
 		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandBB1290.xml" >
 			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="190" />
-			<entry key="neededPtoPower" type="number" value="90" />
+			<entry key="neededPower" type="number" value="140" />
+			<entry key="neededPtoPower" type="number" value="65" />
 			<!-- entry key="masses" type="number" value="8.320" is +0.028 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/balers/newHolland/newHollandRollBelt150.xml" >
 			<entry key="speedLimit" type="number" value="10" />
-			<entry key="neededPower" type="number" value="120" />
-			<entry key="neededPtoPower" type="number" value="51" />
+			<entry key="neededPower" type="number" value="80" />
+			<entry key="neededPtoPower" type="number" value="35" />
 			<!--entry key="masses" type="number" value="3.715" is +0.074 / -->
 		</vehicle>
 		
@@ -103,7 +103,7 @@
 		<vehicle configFile ="data/vehicles/cutters/poettinger/poettingerMex5.xml" >
 			<entry key="speedLimit" type="number" value="8" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="neededPtoPower" type="number" value="70" />
+			<entry key="neededPtoPower" type="number" value="56" />
 			<!--entry key="masses" type="number" value="2.15" is -0.089 / -->
 		</vehicle>
 		
@@ -792,7 +792,7 @@
 			<entry key="neededPower" type="number" value="205" /> <!-- 150-220kw / 205-300hp -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTiger10LT.xml" >
-			<entry key="speedLimit" type="number" value="12" />
+			<entry key="speedLimit" type="number" value="14" />
 			<!-- entry key="masses" type="number" value="10.835" />  is +0.033 -->
 			<entry key="neededPower" type="number" value="400" /> <!-- 295-440kw / 400-600hp -->
 			<entry key="maxForce" type="number" value="120" />
@@ -800,7 +800,7 @@
 		
 		<!-- Koeckerling -->
 		<vehicle configFile ="data/vehicles/tools/koeckerling/koeckerlingTrio300M.xml" >
-			<entry key="speedLimit" type="number" value="12" />
+			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="100" />
 			<!-- entry key="masses" type="number" value="1.6" />  is +0.064 -->
 			<entry key="lowerDistanceToGround" type="number" value="0.85" />
@@ -845,6 +845,7 @@
 			<entry key="neededPower" type="number" value="80" />
 			<entry key="masses" type="number" value="1.580" /><!-- is -0.11 -->
 			<entry key="price" type="number" value="19208" />
+			<entry key="lowerDistanceToGround" type="number" value="0.8" />
 		</vehicle>
 		
 		<!-- Lemken -->
@@ -954,8 +955,8 @@
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
 			<entry key="capacity" type="number" value="67000" />
 			<entry key="speedLimit" type="number" value="17" />
-			<entry key="neededPower" type="number" value="180" />
-			<entry key="neededPtoPower" type="number" value="80" />
+			<entry key="neededPower" type="number" value="180" /><!-- for correct pulling @max load -->
+			<entry key="neededPtoPower" type="number" value="80" /><!-- for pickup/discharge -->
 			<!--entry key="masses" type="number" value="9.44" / is +0.09 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannHTW65.xml" >
@@ -1013,7 +1014,7 @@
 		
 		<!-- Jenz -->
 		<vehicle configFile ="data/vehicles/trailers/jenz/jenzHEM583.xml" >
-			<entry key="neededPower" type="number" value="200" /> <!-- 132-350kw / 180-475hp -->
+			<entry key="neededPower" type="number" value="180" /> <!-- 132-350kw / 180-475hp -->
 			<entry key="neededPtoPower" type="number" value="132" />
 			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
