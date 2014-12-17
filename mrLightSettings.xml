@@ -576,7 +576,7 @@
 			<entry key="price" type="number" value="221000" />
 			<entry key="dailyUpkeep" type="number" value="340" />
 			<entry key="power" type="number" value="286" />
-			<entry key="masses" type="string" value="11.72 8.08" /> <!-- 19.8 total, balance front:back 1.45:1, pure estimation, no exact data found -->
+			<entry key="masses" type="string" value="11.72 7.28 0.5 0.15 0.15" /> <!-- 19.8 total, balance front:back 1.45:1, pure estimation, no exact data found -->
 			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/ponsse/ponsseScorpion.xml" >
@@ -591,7 +591,7 @@
 			<entry key="price" type="number" value="317000" />
 			<entry key="dailyUpkeep" type="number" value="360" />
 			<entry key="power" type="number" value="286" />
-			<entry key="masses" type="string" value="12.27 10.22" /> <!-- 22.5 total, balance front:back 1.2:1, pure estimation, no exact data found -->
+			<entry key="masses" type="string" value="12.27 9.52 0.4 0.3" /> <!-- 22.5 total, balance front:back 1.2:1, pure estimation, no exact data found -->
 			<entry key="fixCraneAxis" type="bool" value="true" />
 		</vehicle>
 		
