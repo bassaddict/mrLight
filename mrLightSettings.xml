@@ -170,6 +170,8 @@
 			<entry key="dailyUpkeep" type="number" value="180" />
 			<entry key="power" type="number" value="135" />
 			<entry key="masses" type="number" value="4.150" /> <!-- is -0.124  -->
+			<entry key="attacherJoint1" type="string" value="1.000 7.00 21.60 -14.60 0.700 -0.00 4.90 -4.90" />
+			<entry key="attacherJoint2" type="string" value="1.001 9.00 -45.15 36.15 0.701 0.00 -14.00 14.00" />
 		</vehicle>
 		
 		<!-- cars -->
@@ -231,6 +233,7 @@
 			<entry key="dailyUpkeep" type="number" value="373" />
 			<entry key="power" type="number" value="415" />
 			<entry key="masses" type="number" value="15.948" /> <!--  14.148t plus front ballast, 18 * 100kg  / -->
+			<entry key="attacherJoint1" type="string" value="1.000 7.49 20.50 -13.50 0.701 0.49 4.70 -4.70" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHPuma160.xml" >
 		<!-- Real values: 190 HP@2200 RPM, 203 HP@1800-1900 RPM, 866Nm@1500 RPM, from constructor's technical datasheet -->
@@ -245,6 +248,8 @@
 			<entry key="dailyUpkeep" type="number" value="152" />
 			<entry key="power" type="number" value="203" />
 			<entry key="masses" type="number" value="6.48" /> <!-- is +1.03 -->
+			<entry key="attacherJoint1" type="string" value="1.000 7.28 20.05 -13.05 0.700 0.28 2.00 -2.00" />
+			<entry key="attacherJoint2" type="string" value="1.000 12.72 -22.65 9.65 0.701 -0.28 -3.95 3.95" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHQuadtrac620.xml" >
 		<!-- Real values model 2015: 628 HP@2100 RPM, 692 HP@1900 RPM, 2941Nm@1400 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -259,6 +264,7 @@
 			<entry key="dailyUpkeep" type="number" value="630" />
 			<entry key="power" type="number" value="692" />
 			<entry key="masses" type="string" value="12.711 9.415" /> <!-- 22.126 total (is +1.53), balance front:back 1.35:1, average from test data from older quadtrac/steiger models -->
+			<entry key="attacherJoint1" type="string" value="1.001 8.72 12.05 -4.05 0.700 0.72 -2.90 2.90" />
 		</vehicle>
 		
 		<!-- Deutz -->
@@ -275,6 +281,8 @@
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="143" />
 			<!-- entry key="masses" type="number" value="5.400" is -0.068 / -->
+			<entry key="attacherJoint1" type="string" value="1.000 7.43 17.55 -10.55 0.700 0.43 -0.80 0.80" />
+			<entry key="attacherJoint2" type="string" value="1.000 12.57 -15.50 2.50 0.701 -0.43 4.15 -4.15" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/deutz/deutzFahr7250.xml" >
 		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -289,6 +297,8 @@
 			<entry key="dailyUpkeep" type="number" value="231" />
 			<entry key="power" type="number" value="263" />
 			<entry key="masses" type="number" value="9.100" /> <!-- is +0.4 / -->
+			<entry key="attacherJoint1" type="string" value="1.001 5.70 20.80 -13.80 0.701 -1.30 0.60 -0.60" />
+			<entry key="attacherJoint2" type="string" value="1.001 14.30 -14.80 1.80 0.701 1.30 6.20 -6.20" />
 		</vehicle>
 		
 		<!-- Grimme -->
@@ -337,6 +347,8 @@
 			<entry key="dailyUpkeep" type="number" value="110" />
 			<entry key="power" type="number" value="90" />
 			<entry key="masses" type="number" value="3.350" /> <!-- is +0.414 / -->
+			<entry key="attacherJoint1" type="string" value="0.999 6.53 28.00 -21.00 0.701 -0.47 3.85 -3.85" />
+			<entry key="attacherJoint2" type="string" value="1.001 13.47 -27.35 14.35 0.699 0.47 -2.85 2.85" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannXM4Ti.xml" >
 		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -351,6 +363,8 @@
 			<entry key="dailyUpkeep" type="number" value="105" />
 			<entry key="power" type="number" value="127" />
 			<entry key="masses" type="number" value="5.300" /> <!-- is +0.696, with V-Drive / -->
+			<entry key="attacherJoint1" type="string" value="0.999 8.01 25.45 -17.45 0.701 0.00 4.00 -4.00" />
+			<entry key="attacherJoint2" type="string" value="0.999 12.99 -34.10 21.10 0.699 -0.00 -7.85 7.85" />
 		</vehicle>
 		
 		<!-- Krone -->
@@ -399,6 +413,8 @@
 			<entry key="dailyUpkeep" type="number" value="212" />
 			<entry key="power" type="number" value="242" />
 			<entry key="masses" type="number" value="8.100" /> <!-- is +1.4 / -->
+			<entry key="attacherJoint1" type="string" value="1.001 5.70 20.95 -13.95 0.701 -1.30 0.80 -0.80" />
+			<entry key="attacherJoint2" type="string" value="1.000 14.30 -14.85 1.85 0.701 1.30 6.25 -6.25" />
 		</vehicle>
 		
 		<!-- Liebherr -->
@@ -445,6 +461,8 @@
 			<entry key="dailyUpkeep" type="number" value="82" />
 			<entry key="power" type="number" value="102" />
 			<!-- entry key="masses" type="number" value="3.950" is +0.016 / -->
+			<entry key="attacherJoint1" type="string" value="0.999 6.85 25.50 -18.50 0.699 -0.15 6.00 -6.00" />
+			<entry key="attacherJoint2" type="string" value="1.001 9.15 -52.40 43.40 0.701 0.15 -18.25 18.25" />
 		</vehicle>
 		
 		<!-- MAN -->
@@ -491,6 +509,7 @@
 			<entry key="dailyUpkeep" type="number" value="57" />
 			<entry key="power" type="number" value="75" />
 			<entry key="masses" type="number" value="2.8" /> <!-- is -0.26 -->
+			<entry key="attacherJoint1" type="string" value="0.999 9.75 25.50 -15.50 0.699 0.75 4.10 -3.10" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT6160.xml" >
 		<!-- Real values: 150 HP@2200 RPM, 163 maxHP, 676Nm@1500 RPM, from constructor's technical datasheet -->
@@ -505,6 +524,8 @@
 			<entry key="dailyUpkeep" type="number" value="139" />
 			<entry key="power" type="number" value="163" />
 			<!-- entry key="masses" type="number" value="5.22" is +0.042 / -->
+			<entry key="attacherJoint1" type="string" value="1.001 6.99 19.30 -12.30 0.700 -0.02 2.05 -2.05" />
+			<entry key="attacherJoint2" type="string" value="1.000 13.01 -15.90 2.90 0.700 0.00 3.25 -3.25" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml" >
 		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
@@ -519,6 +540,8 @@
 			<entry key="dailyUpkeep" type="number" value="284" />
 			<entry key="power" type="number" value="320" />
 			<entry key="masses" type="number" value="12.32" /> <!-- is +2.82 -->
+			<entry key="attacherJoint1" type="string" value="1.001 6.77 21.60 -14.60 0.699 -0.23 5.20 -5.20" />
+			<entry key="attacherJoint2" type="string" value="1.001 13.23 -23.00 10.00 0.700 0.23 -0.45 0.45" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8435.xml" >
 		<!-- Real values: 380 HP@2000 RPM, 435 HP@1800 RPM, 1800 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.420, unknow for T8.435 -->
@@ -533,6 +556,8 @@
 			<entry key="dailyUpkeep" type="number" value="391" />
 			<entry key="power" type="number" value="435" />
 			<entry key="masses" type="number" value="12.8" /> <!-- is +3.304 -->
+			<entry key="attacherJoint1" type="string" value="0.999 6.06 24.00 -17.00 0.700 -0.95 7.60 -7.60" />
+			<entry key="attacherJoint2" type="string" value="1.001 13.94 -20.50 7.50 0.701 0.94 1.85 -1.85" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT9560.xml" >
 		<!-- Real values: 548 HP@2100 RPM, 557 HP@1800 RPM, 2374 Nm@1400 RPM, from constructor's technical datasheet -->
@@ -547,6 +572,7 @@
 			<entry key="dailyUpkeep" type="number" value="504" />
 			<entry key="power" type="number" value="557" />
 			<!-- entry key="masses" type="string" value="12.9 9.5"  22.453 total, balance front:back 1.35:1, as Quadtrac620, no exact data found -->
+			<entry key="attacherJoint1" type="string" value="1.001 11.16 14.90 -3.90 0.699 0.17 0.90 -0.90" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandTC590.xml" >
 		<!-- no data found , copy TC5080's data, similary model -->
@@ -608,6 +634,8 @@
 			<entry key="price" type="number" value="113649" />
 			<entry key="dailyUpkeep" type="number" value="166" />
 			<entry key="power" type="number" value="193" />
+			<entry key="attacherJoint1" type="string" value="1.001 5.93 19.60 -12.60 0.701 -1.07 0.80 -0.80" />
+			<entry key="attacherJoint2" type="string" value="1.001 14.07 -26.05 13.05 0.700 1.07 -1.60 1.60" />
 		</vehicle>
 		
 		<!-- Sampo Rosenlew -->
@@ -640,6 +668,8 @@
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
 			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
+			<entry key="attacherJoint1" type="string" value="0.999 9.25 22.60 -12.60 0.700 -0.75 3.55 -3.55" />
+			<entry key="attacherJoint2" type="string" value="1.000 13.75 -28.50 15.50 0.700 0.75 -6.40 6.40" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -654,6 +684,8 @@
 			<entry key="dailyUpkeep" type="number" value="93" />
 			<entry key="power" type="number" value="114" />
 			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
+			<entry key="attacherJoint1" type="string" value="0.999 9.25 22.60 -12.60 0.700 -0.75 3.55 -3.55" />
+			<entry key="attacherJoint2" type="string" value="1.000 13.75 -28.50 15.50 0.700 0.75 -6.40 6.40" />
 		</vehicle>
 		
 		<!-- Ursus -->
@@ -669,6 +701,8 @@
 			<entry key="price" type="number" value="88041" />
 			<entry key="dailyUpkeep" type="number" value="125" />
 			<entry key="power" type="number" value="148" />
+			<entry key="attacherJoint1" type="string" value="0.999 7.81 40.80 -32.80 0.701 -0.19 18.00 -18.00" />
+			<entry key="attacherJoint2" type="string" value="1.001 8.19 -26.40 18.40 0.700 0.19 -3.75 3.75" />
 		</vehicle>
 		
 		
@@ -702,6 +736,8 @@
 			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components, need to be test -->
+			<entry key="lowerDistanceToGround" type="number" value="0.68" />
+			<entry key="maxForce" type="number" value="120" />
 		</vehicle>
 		<!-- vehicle configFile ="data/vehicles/tools/amazone/amazoneFT1001.xml" >
 			<entry key="masses" type="number" value="0.217" is +0.005 />
@@ -803,7 +839,7 @@
 			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="100" />
 			<!-- entry key="masses" type="number" value="1.6" />  is +0.064 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.85" />
+			<entry key="lowerDistanceToGround" type="number" value="0.77" />
 			<entry key="maxForce" type="number" value="25" />
 		</vehicle>
 		
@@ -845,7 +881,8 @@
 			<entry key="neededPower" type="number" value="80" />
 			<entry key="masses" type="number" value="1.580" /><!-- is -0.11 -->
 			<entry key="price" type="number" value="19208" />
-			<entry key="lowerDistanceToGround" type="number" value="0.8" />
+			<entry key="lowerDistanceToGround" type="number" value="0.67" />
+			<entry key="maxForce" type="number" value="80" />
 		</vehicle>
 		
 		<!-- Lemken -->

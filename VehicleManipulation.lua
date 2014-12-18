@@ -7,6 +7,29 @@ end;
 function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
+	
+	--[[for i,attacherJoint in ipairs(self.attacherJoints) do
+		--local jointEntry = MrLightUtils.vehicleConfigs[self.configFileName]["attacherJoint"..tostring(i)];
+		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+			local jointNumber = "attacherJoint"..tostring(i);
+			
+			if MrLightUtils.vehicleConfigs[self.configFileName][jointNumber] ~= nil then
+				local jointSettings = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
+				attacherJoint.minRotDistanceToGround = jointSettings[1];
+				attacherJoint.minRotRotationOffset = math.rad(jointSettings[2]);
+				attacherJoint.minRot[1] = math.rad(jointSettings[3]);
+				attacherJoint.minRot2[1] = math.rad(jointSettings[4]);
+				attacherJoint.maxRotDistanceToGround = jointSettings[5];
+				attacherJoint.maxRotRotationOffset = math.rad(jointSettings[6]);
+				attacherJoint.maxRot[1] = math.rad(jointSettings[7]);
+				attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
+			end;
+		end;
+	end;]]
+			
+			
+			
+	
 	self.counter = 100;
 	
 	self.debugVehicleManipulation = true;
@@ -48,6 +71,7 @@ function VehicleManipulation:update(dt)
 					setMass(self.rootNode, MrLightUtils.vehicleConfigs[self.configFileName].masses);
 				end;
 			end;
+			
 		end;
 	end;
 	
@@ -79,27 +103,29 @@ function VehicleManipulation:update(dt)
 					rx2,ry2,rz2 = getRotation(attacherJoint.rotationNode2);
 				end
 				
-				local offset = math.rad(0.25); --2 * math.pi / 360;
+				local offset = math.rad(0.05); --2 * math.pi / 360;
 				local sign = 1;
 				local pos = 1;
 				local c = 0;
 				if attacherJoint.maxRot[1] < attacherJoint.minRot[1] then sign = -1 else sign = 1 end;
 				
+				local minRotOrig = attacherJoint.minRot[1];
+				local minRot2Orig = attacherJoint.minRot2[1];
 				attacherJoint.minRotDistanceToGround = 0;
 				-- set min rot
 				--while attacherJoint.minRotDistanceToGround < 1 do
 				while true do
-					if attacherJoint.minRotDistanceToGround > 0.995 and attacherJoint.minRotDistanceToGround < 1.005 then
+					if attacherJoint.minRotDistanceToGround > 0.999 and attacherJoint.minRotDistanceToGround < 1.001 then
 						print("break min in iteration: "..tostring(c));
 						break;
 					end;
 					if attacherJoint.minRotDistanceToGround > 1 then pos = -1 else pos = 1 end;
 					if attacherJoint.rotationNode ~= nil then
-						attacherJoint.minRot[1] = attacherJoint.minRot[1] - (pos * sign * offset);
+						attacherJoint.minRot[1] = minRotOrig - (pos * sign * c * offset);
 						setRotation(attacherJoint.rotationNode, unpack(attacherJoint.minRot));
 					end
 					if attacherJoint.rotationNode2 ~= nil then
-						attacherJoint.minRot2[1] = attacherJoint.minRot2[1] + (pos * sign * offset);
+						attacherJoint.minRot2[1] = minRot2Orig + (pos * sign * c * offset);
 						setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.minRot2));
 					end
 					local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
@@ -119,21 +145,23 @@ function VehicleManipulation:update(dt)
 				
 				
 				c = 0;
+				local maxRotOrig = attacherJoint.maxRot[1];
+				local maxRot2Orig = attacherJoint.maxRot2[1];
 				attacherJoint.maxRotDistanceToGround = 10;
 				-- set max rot
 				--while attacherJoint.maxRotDistanceToGround > 0.7 do
 				while true do
-					if attacherJoint.maxRotDistanceToGround > 0.695 and attacherJoint.maxRotDistanceToGround < 0.705 then
+					if attacherJoint.maxRotDistanceToGround > 0.379 and attacherJoint.maxRotDistanceToGround < 0.381 then
 						print("break max in iteration: "..tostring(c));
 						break;
 					end;
 					if attacherJoint.maxRotDistanceToGround < 0.7 then pos = -1 else pos = 1 end;
 					if attacherJoint.rotationNode ~= nil then
-						attacherJoint.maxRot[1] = attacherJoint.maxRot[1] + (pos * sign * offset);
+						attacherJoint.maxRot[1] = maxRotOrig + (pos * sign * c * offset);
 						setRotation(attacherJoint.rotationNode, unpack(attacherJoint.maxRot));
 					end
 					if attacherJoint.rotationNode2 ~= nil then
-						attacherJoint.maxRot2[1] = attacherJoint.maxRot2[1] - (pos * sign * offset);
+						attacherJoint.maxRot2[1] = maxRot2Orig - (pos * sign * c * offset);
 						setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.maxRot2));
 					end
 					local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
