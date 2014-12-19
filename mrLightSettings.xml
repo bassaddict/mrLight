@@ -758,7 +758,7 @@
 		<!-- Damcon -->
 		<vehicle configFile ="data/vehicles/tools/damcon/damconPL75.xml" >
 			<entry key="speedLimit" type="number" value="4" />
-			<entry key="neededPower" type="number" value="122" />
+			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="45" />
 			<entry key="masses" type="number" value="1.5" /><!-- is +0.568 -->
 		</vehicle>
@@ -774,13 +774,13 @@
 		<!-- Grimme -->
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeFT300.xml" >
 			<entry key="speedLimit" type="number" value="14" />
-			<entry key="neededPower" type="number" value="122" />
+			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="60" />
 			<entry key="masses" type="number" value="1.15" /><!-- is +0.104 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
 			<entry key="speedLimit" type="number" value="12" />
-			<entry key="neededPower" type="number" value="122" />
+			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="12" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
 			<!--entry key="masses" type="number" value="2.3" is +0.011 / -->
 		</vehicle>
