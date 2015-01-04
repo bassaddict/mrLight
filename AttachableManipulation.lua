@@ -24,6 +24,10 @@ function AttachableManipulation:load(xmlFile)
 	self.collectedInputAM = "";
 	
 	
+	for _,v in pairs(self.inputAttacherJoints) do
+		v.transLimitScale = {0, 0, 0};
+	end;
+	
 	
 	
 	self.debugRenderAttachableManipulation = false;

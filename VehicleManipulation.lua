@@ -97,13 +97,14 @@ function VehicleManipulation:update(dt)
 				local rx,ry,rz;
 				if attacherJoint.rotationNode ~= nil then
 					rx,ry,rz = getRotation(attacherJoint.rotationNode);
-				end
+				end;
 				local rx2,ry2,rz2;
 				if attacherJoint.rotationNode2 ~= nil then
 					rx2,ry2,rz2 = getRotation(attacherJoint.rotationNode2);
-				end
+				end;
 				
-				local offset = math.rad(0.05); --2 * math.pi / 360;
+				
+				--[[local offset = math.rad(0.05); --2 * math.pi / 360;
 				local sign = 1;
 				local pos = 1;
 				local c = 0;
@@ -133,18 +134,28 @@ function VehicleManipulation:update(dt)
 					raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
 					attacherJoint.minRotDistanceToGround = groundRaycastResult.groundDistance;
 					c = c + 1;
+				end;]]
+				if attacherJoint.rotationNode ~= nil then
+					setRotation(attacherJoint.rotationNode, unpack(attacherJoint.minRot));
 				end;
+				if attacherJoint.rotationNode2 ~= nil then
+					setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.minRot2));
+				end;
+				local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
+				groundRaycastResult.groundDistance = 0;
+				raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
+				attacherJoint.minRotDistanceToGround = groundRaycastResult.groundDistance;
 				
 				local dx,dy,dz = localDirectionToWorld(attacherJoint.jointTransform, 0, 1, 0);
 				local angle = math.deg(math.acos(Utils.clamp(dy, -1, 1)));
 				local dxx,dxy,dxz = localDirectionToWorld(attacherJoint.jointTransform, 1, 0, 0);
 				if dxy < 0 then
 					angle = -angle;
-				end
+				end;
 				attacherJoint.minRotRotationOffset = math.rad(angle);
 				
 				
-				c = 0;
+				--[[c = 0;
 				local maxRotOrig = attacherJoint.maxRot[1];
 				local maxRot2Orig = attacherJoint.maxRot2[1];
 				attacherJoint.maxRotDistanceToGround = 10;
@@ -169,23 +180,40 @@ function VehicleManipulation:update(dt)
 					raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
 					attacherJoint.maxRotDistanceToGround = groundRaycastResult.groundDistance;
 					c = c + 1;
+				end;]]
+				local brx,bry,brz = getRotation(attacherJoint.bottomArm.rotationNode);
+				attacherJoint.maxRot = {brx, bry, brz};
+				attacherJoint.maxRot2 = {-brx, -bry, -brz};
+				if attacherJoint.rotationNode ~= nil then
+					setRotation(attacherJoint.rotationNode, brx, bry, brz);
 				end;
+				if attacherJoint.rotationNode2 ~= nil then
+					setRotation(attacherJoint.rotationNode2, -brx, -bry, -brz);
+				end;
+				local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
+				groundRaycastResult.groundDistance = 0;
+				raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
+				attacherJoint.maxRotDistanceToGround = groundRaycastResult.groundDistance;
 				
 				local dx,dy,dz = localDirectionToWorld(attacherJoint.jointTransform, 0, 1, 0);
 				local angle = math.deg(math.acos(Utils.clamp(dy, -1, 1)));
 				local dxx,dxy,dxz = localDirectionToWorld(attacherJoint.jointTransform, 1, 0, 0);
 				if dxy < 0 then
 					angle = -angle;
-				end
+				end;
 				attacherJoint.maxRotRotationOffset = math.rad(angle);
 
 				-- reset rotations
 				if attacherJoint.rotationNode ~= nil then
 					setRotation(attacherJoint.rotationNode, rx,ry,rz);
-				end
+				end;
 				if attacherJoint.rotationNode2 ~= nil then
 					setRotation(attacherJoint.rotationNode2, rx2,ry2,rz2);
-				end
+				end;
+				
+				
+				attacherJoint.bottomArm.translationNode = nil;
+				
 				
 				print(string.format("joint %d for vehicle %s: %.3f %.2f %.2f %.2f %.3f %.2f %.2f %.2f", i, self.configFileName, 
 				attacherJoint.minRotDistanceToGround, 
@@ -196,13 +224,9 @@ function VehicleManipulation:update(dt)
 				math.deg(attacherJoint.maxRotRotationOffset),
 				math.deg(attacherJoint.maxRot[1]), 
 				math.deg(attacherJoint.maxRot2[1])));
-			end
+			end;
 			setRotation(attacherJoint.jointTransform, trx, try, trz);
-		end
-		
-		
-		
-		
+		end;
 		
 		
 		--[[for k,v in pairs(self.attacherJoints) do
@@ -248,3 +272,17 @@ function VehicleManipulation:draw()
 		--setTextAlignment(RenderText.ALIGN_LEFT);
 	end;
 end;
+
+function VehicleManipulation:setAttacherJointRotation(joint, rotation)
+	local jointNumber = tonumber(joint);
+	local rotDeg = tonumber(rotation);
+	if g_currentMission ~= nil and g_currentMission.controlledVehicle ~= nil and g_currentMission.controlledVehicle.isServer then
+		local self = g_currentMission.controlledVehicle;
+		if self.attacherJoints ~= nil and self.attacherJoints[jointNumber] ~= nil and self.attacherJoints[jointNumber].bottomArm ~= nil then
+			setRotation(self.attacherJoints[jointNumber].bottomArm.rotationNode, math.rad(rotDeg), 0, 0);
+			self:setMovingToolDirty(self.attacherJoints[jointNumber].bottomArm.rotationNode);
+		end;
+	end;
+end;
+
+addConsoleCommand('setJointRot', 'set rotation for attacher joint', 'setAttacherJointRotation', VehicleManipulation);

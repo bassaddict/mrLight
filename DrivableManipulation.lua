@@ -100,6 +100,8 @@ function DrivableManipulation:load(xmlFile)
 		local x,y,z = getWorldTranslation(v.driveNode);
 		self.wheelsPos[k] = {x=x, y=y, z=z};
 		
+		--v.frictionScale = 5;
+		
 		v.rotPerSecond = 0;
 		v.distPerSecond = 0;
 		v.slip = 0;
@@ -170,11 +172,11 @@ function DrivableManipulation:update(dt)
 	
 	
 	if self.slip > 0.15 and not self.isDiffLocked then
-		print("todo lock diff");
-		DrivableManipulation.toggleDifferentialLock(self, self.isDiffLocked);
-	elseif self.slip <= 0.15 and self.isDiffLocked then
-		print("todo unlock diff");
-		DrivableManipulation.toggleDifferentialLock(self, self.isDiffLocked);
+		--print("todo lock diff");
+		self:toggleDifferentialLock();
+	elseif self.slip <= 0.10 and self.isDiffLocked then
+		--print("todo unlock diff");
+		self:toggleDifferentialLock();
 	end;
 	--print("self.slip: "..tostring(self.slip)..", self.isDiffLocked: "..tostring(self.isDiffLocked));
 	
@@ -204,7 +206,9 @@ function DrivableManipulation:update(dt)
 		v.slip = 1 - (v.distPerSecond / (math.abs(v.rotPerSecond) * (v.radius * 2 * math.pi)));
 		if v.rotPerSecond == 0 then v.slip = 0 end;
 		v.slipDisplay = (v.slipDisplay * 0.984) + (v.slip * 0.016);
+		self.slip = self.slip + v.slipDisplay;
 	end;
+	self.slip = self.slip / #self.wheels;
 	
 	
 	
@@ -216,17 +220,23 @@ function DrivableManipulation:update(dt)
 	
 end;
 
-function DrivableManipulation.toggleDifferentialLock(self, isLocked)
+function DrivableManipulation:toggleDifferentialLock()
 	print("toggle diff");
-	if isLocked then
+	if self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			v.torqueRatio = self.diffBak[k].torqueRatio;
-			v.maxSpeedRatio = self.diffBak[k].maxSpeedRatio;
+			print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			updateDifferential(self.rootNode, k, self.diffBak[k].torqueRatio, self.diffBak[k].maxSpeedRatio);
+			print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--v.torqueRatio = self.diffBak[k].torqueRatio;
+			--v.maxSpeedRatio = self.diffBak[k].maxSpeedRatio;
 		end;
-	elseif not isLocked then
+	elseif not self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			v.torqueRatio = 0.5;
-			v.maxSpeedRatio = 0;
+			print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			updateDifferential(self.rootNode, k, 0.5, 1);
+			print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--v.torqueRatio = 0.5;
+			--v.maxSpeedRatio = 1;
 		end;
 	end;
 	self.isDiffLocked = not self.isDiffLocked;
