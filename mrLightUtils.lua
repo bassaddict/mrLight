@@ -308,7 +308,7 @@ function MrLightUtils.setFruitUtilInfos(fruitName)
 		end;
 	else
 		if desc.seedUsagePerSqm == nil then
-			print(string.format("ERROR: corrupted fruit! fruit '%s' does not use the proper data structure given by Giants Software", desc.name));
+			print(string.format("WARNING: MR-Light detected a corrupted fruit! fruit '%s' does not use the proper data structure given by Giants Software", desc.name));
 			desc.seedUsagePerSqm = 0.1;
 			desc.seedPricePerLiter = 0.1;
 		elseif desc.seedUsagePerSqm > 0 then

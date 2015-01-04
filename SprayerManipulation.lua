@@ -52,6 +52,9 @@ function SprayerManipulation:update(dt)
 		-- 10000sqm / speed in m/s = duration to work 1ha with 1m working width
 		-- ha usage / 1ha1m work duration = usage in l/s for 1m working width
 		-- min working speed: 2.5km/h
+		if self.sprayLitersPerHectare[self.currentFillType] == nil then
+			self.sprayLitersPerHectare[self.currentFillType] = self.sprayLitersPerHectare[Fillable.FILLTYPE_FERTILIZER];
+		end;
 		self.sprayLitersPerSecond[self.currentFillType] = self.sprayLitersPerHectare[self.currentFillType] / math.min(10000 / (Utils.getNoNil(self.lastMovedDistance, 0.0001) * (1000 / dt)), 14400) * self.workingWidth;
 		if self.attachedTool ~= nil then
 			self.attachedTool.sprayLitersPerSecond[self.currentFillType] = self.sprayLitersPerSecond[self.currentFillType];
