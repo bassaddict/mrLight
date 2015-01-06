@@ -8,9 +8,10 @@ function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
 	
-	--[[for i,attacherJoint in ipairs(self.attacherJoints) do
+	
 		--local jointEntry = MrLightUtils.vehicleConfigs[self.configFileName]["attacherJoint"..tostring(i)];
-		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+		for i,attacherJoint in ipairs(self.attacherJoints) do
 			local jointNumber = "attacherJoint"..tostring(i);
 			
 			if MrLightUtils.vehicleConfigs[self.configFileName][jointNumber] ~= nil then
@@ -23,9 +24,12 @@ function VehicleManipulation:load(xmlFile)
 				attacherJoint.maxRotRotationOffset = math.rad(jointSettings[6]);
 				attacherJoint.maxRot[1] = math.rad(jointSettings[7]);
 				attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
+				
+				attacherJoint.bottomArm.translationNode = nil;
+				attacherJoint.isFixed = true;
 			end;
 		end;
-	end;]]
+	end;
 			
 			
 			
@@ -93,7 +97,7 @@ function VehicleManipulation:update(dt)
 		for i, attacherJoint in ipairs(self.attacherJoints) do
 			local trx, try, trz = getRotation(attacherJoint.jointTransform);
 			setRotation(attacherJoint.jointTransform, unpack(attacherJoint.jointOrigRot));
-			if attacherJoint.rotationNode ~= nil or attacherJoint.rotationNode2 ~= nil then
+			if attacherJoint.rotationNode ~= nil and attacherJoint.rotationNode2 ~= nil and not attacherJoint.isFixed then
 				local rx,ry,rz;
 				if attacherJoint.rotationNode ~= nil then
 					rx,ry,rz = getRotation(attacherJoint.rotationNode);
@@ -102,7 +106,20 @@ function VehicleManipulation:update(dt)
 				if attacherJoint.rotationNode2 ~= nil then
 					rx2,ry2,rz2 = getRotation(attacherJoint.rotationNode2);
 				end;
-				
+				local jointNumber = "attacherJoint"..tostring(i).."TODO";
+				if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName][jointNumber] ~= nil then
+					local jointMinMax = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
+					if attacherJoint.minRot[1] < attacherJoint.minRot2[1] then
+						attacherJoint.minRot[1] = math.rad(jointMinMax[1]);
+						attacherJoint.minRot2[1] = math.rad(-jointMinMax[1] - 8);
+					else
+						attacherJoint.minRot[1] = math.rad(jointMinMax[1]);
+						attacherJoint.minRot2[1] = math.rad(-jointMinMax[1] + 8);
+					end;
+					attacherJoint.maxRot[1] = math.rad(jointMinMax[2]);
+					attacherJoint.maxRot2[1] = math.rad(-jointMinMax[2]);
+					attacherJoint.useTODO = true;
+				end;
 				
 				--[[local offset = math.rad(0.05); --2 * math.pi / 360;
 				local sign = 1;
@@ -181,14 +198,16 @@ function VehicleManipulation:update(dt)
 					attacherJoint.maxRotDistanceToGround = groundRaycastResult.groundDistance;
 					c = c + 1;
 				end;]]
-				local brx,bry,brz = getRotation(attacherJoint.bottomArm.rotationNode);
-				attacherJoint.maxRot = {brx, bry, brz};
-				attacherJoint.maxRot2 = {-brx, -bry, -brz};
+				if attacherJoint.useTODO == nil then
+					local brx,bry,brz = getRotation(attacherJoint.bottomArm.rotationNode);
+					attacherJoint.maxRot = {brx, bry, brz};
+					attacherJoint.maxRot2 = {-brx, -bry, -brz};
+				end;
 				if attacherJoint.rotationNode ~= nil then
-					setRotation(attacherJoint.rotationNode, brx, bry, brz);
+					setRotation(attacherJoint.rotationNode, unpack(attacherJoint.maxRot));
 				end;
 				if attacherJoint.rotationNode2 ~= nil then
-					setRotation(attacherJoint.rotationNode2, -brx, -bry, -brz);
+					setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.maxRot2));
 				end;
 				local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
 				groundRaycastResult.groundDistance = 0;
