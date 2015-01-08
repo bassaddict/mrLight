@@ -28,8 +28,8 @@ function loaderClass:loadMap(name)
 		--print("first load map")
 		loaderClass.firstLoadMap = false;
 		local xmlPath = MrLightUtils.modDir.."mrLightSettings.xml";
-		local xmlFile = loadXMLFile("settings", xmlPath);
-		if xmlFile ~= nil then
+		if fileExists(xmlPath) then
+			local xmlFile = loadXMLFile("settings", xmlPath);
 			MrLightUtils.loadVehicleConfigs(xmlFile);
 			delete(xmlFile);
 		end;
@@ -94,7 +94,9 @@ function loaderClass:update(dt)
 		local xmlFile = "";
 		if g_currentMission.missionInfo.isValid then
 			local xmlPath = getUserProfileAppPath() .. "savegame".. g_currentMission.missionInfo.savegameIndex .. "/mrLightSettings.xml";
-			xmlFile = loadXMLFile("settings", xmlPath);
+			if fileExists(xmlPath) then
+				xmlFile = loadXMLFile("settings", xmlPath);
+			end;
 		else
 			local xmlPath = MrLightUtils.modDir.."mrLightSettings.xml";
 			xmlFile = loadXMLFile("settings", xmlPath);

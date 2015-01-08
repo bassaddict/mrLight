@@ -439,8 +439,8 @@ BaseMission.addItemToSave = MrLightUtils.addItemToSave;
 --******************************************--
 --*   saving price balancing config file   *--
 --******************************************--
-local oldCareerScreenSaveSavegame = CareerScreen.saveSavegame;
-CareerScreen.saveSavegame = function(self, savegame)
+local oldCareerScreenSaveSavegame = g_careerScreen.saveSavegame;
+g_careerScreen.saveSavegame = function(self, savegame)
 	oldCareerScreenSaveSavegame(self, savegame)
 	
 	--ZZZ_getVars.getVars:getVariables(savegame);
