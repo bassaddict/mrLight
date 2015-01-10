@@ -205,7 +205,7 @@ function DrivableManipulation:update(dt)
 		
 		v.slip = 1 - (v.distPerSecond / (math.abs(v.rotPerSecond) * (v.radius * 2 * math.pi)));
 		if v.rotPerSecond == 0 then v.slip = 0 end;
-		v.slipDisplay = (v.slipDisplay * 0.984) + (v.slip * 0.016);
+		v.slipDisplay = (v.slipDisplay * 0.95) + (v.slip * 0.05);
 		self.slip = self.slip + v.slipDisplay;
 	end;
 	self.slip = self.slip / #self.wheels;
@@ -221,20 +221,20 @@ function DrivableManipulation:update(dt)
 end;
 
 function DrivableManipulation:toggleDifferentialLock()
-	print("toggle diff");
+	--print("toggle diff");
 	if self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			updateDifferential(self.rootNode, k, self.diffBak[k].torqueRatio, self.diffBak[k].maxSpeedRatio);
-			print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			--v.torqueRatio = self.diffBak[k].torqueRatio;
 			--v.maxSpeedRatio = self.diffBak[k].maxSpeedRatio;
 		end;
 	elseif not self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			updateDifferential(self.rootNode, k, 0.5, 1);
-			print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
+			--print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			--v.torqueRatio = 0.5;
 			--v.maxSpeedRatio = 1;
 		end;
@@ -251,7 +251,8 @@ function DrivableManipulation:draw()
 		local i = 0;
 		for k,v in pairs(self.wheels) do
 			i = i + 0.01;
-			renderText(0.8, i, 0.012, string.format("r/s: %.2f, m/s: %.2f, slip: %.2f, slipDisplay: %.2f", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
+			--local engineSlip = getWheelShapeSlip(self.rootNode, k);
+			renderText(0.8, i, 0.012, string.format("r/s: %.2f, m/s: %.2f, slip: %.2f, slipDisplay: %.2f,", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
 		end;
 	end;
 	setTextAlignment(RenderText.ALIGN_LEFT);

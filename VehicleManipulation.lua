@@ -30,14 +30,21 @@ function VehicleManipulation:load(xmlFile)
 			end;
 		end;
 	end;
-			
-			
-			
+	
+	self.isDrivable = SpecializationUtil.hasSpecialization(Drivable, self.specializations);
+	if self.isDrivable then
+		self.moveLowerJointAxis1 = InputBinding.AXIS_MOVE_ATTACHERJOINT_LOWER1;
+		self.moveLowerJointAxis2 = InputBinding.AXIS_MOVE_ATTACHERJOINT_LOWER2;
+		self.moveUpperJointAxis1 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER1;
+		self.moveUpperJointAxis2 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER2;
+		self.isSelectable = true;
+	end;
 	
 	self.counter = 100;
-	
+	self.debugLowerDistanceToGround = 0;
+	self.debugUpperDistanceToGround = 1.5;
 	self.debugVehicleManipulation = true;
-	self.debugRenderVehicleManipulation = false;
+	self.debugRenderVehicleManipulation = true;
 end;
 
 function VehicleManipulation:delete()
@@ -282,12 +289,48 @@ function VehicleManipulation:update(dt)
 		end;]]
 	end;
 	
+	if self:getIsActiveForInput(false) and self.isDrivable then
+		if self.selectedImplement ~= nil then
+			if self.selectedImplement.object ~= nil then
+				
+				local moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis2);
+				local moveDeltaU = 0.05 / (1000 / dt); --0.05m/s
+				if InputBinding.isAxisZero(moveU) then
+					moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis1);
+					moveDeltaU = 0.25 / (1000 / dt); --0.25m/s
+				end;
+				
+				local moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis2);
+				local moveDeltaL = 0.05 / (1000 / dt); --0.05m/s
+				if InputBinding.isAxisZero(moveL) then
+					moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis1);
+					moveDeltaL = 0.25 / (1000 / dt); --0.25m/s
+				end;
+				
+				
+				
+				local aj = self.selectedImplement.object.attacherJoint;
+				local ajs = self.attacherJoints[self.selectedImplement.jointDescIndex];
+				
+				aj.lowerDistanceToGround = math.max(math.min((aj.lowerDistanceToGround + (moveDeltaL * moveL)), aj.upperDistanceToGround), ajs.maxRotDistanceToGround);
+				aj.upperDistanceToGround = math.min(math.max((aj.upperDistanceToGround + (moveDeltaU * moveU)), aj.lowerDistanceToGround), ajs.minRotDistanceToGround);
+				self.debugLowerDistanceToGround = aj.lowerDistanceToGround;
+				self.debugUpperDistanceToGround = aj.upperDistanceToGround;
+				
+				ajs.upperAlpha, ajs.lowerAlpha = self:calculateAttacherJointMoveUpperLowerAlpha(ajs, self.selectedImplement.object);
+			end;
+		else
+			self.debugLowerDistanceToGround = 0;
+			self.debugUpperDistanceToGround = 1.5
+		end;
+	end;
+	
 end;
 
 function VehicleManipulation:draw()
-	if self.debugRenderVehicleManipulation then
+	if self.debugRenderVehicleManipulation and self.isDrivable then
 		--setTextAlignment(RenderText.ALIGN_RIGHT);
-		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
+		renderText(0.45, 0.01, 0.01, string.format("low: %.3f, up: %.3f", self.debugLowerDistanceToGround, self.debugUpperDistanceToGround));
 		--setTextAlignment(RenderText.ALIGN_LEFT);
 	end;
 end;
