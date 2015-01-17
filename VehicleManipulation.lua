@@ -29,6 +29,23 @@ function VehicleManipulation:load(xmlFile)
 				attacherJoint.isFixed = true;
 			end;
 		end;
+		
+		--[[if MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring ~= nil then
+			local wheelsSpringT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring);
+			if #wheelsSpringT == #self.wheels then
+				for k,v in pairs(self.wheels) do
+					v.spring = wheelsSpringT[k] * 10;
+					
+					
+					local collisionMask = 255 - 4; -- all up to bit 8, except bit 2 which is set by the players kinematic object
+					print(string.format("node %d, x %.4f, y %.4f, z %.4f, radius %.4f, suspTravel %.4f, radius %.4f, spring %.4f, damper %.4f, mass %.4f, collisionMask %d, wheelShape %d", v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.radius, v.spring, v.damper, v.mass, collisionMask, v.wheelShape));
+					--v.wheelShape = createWheelShape(v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.radius, v.spring, v.damper, v.mass, collisionMask, v.wheelShape);
+					
+				end;
+			else
+				print("WARNING: number of wheelsSpring elements not equal number of wheels for vehicle "..self.configFileName);
+			end;
+		end;]]
 	end;
 	
 	self.isDrivable = SpecializationUtil.hasSpecialization(Drivable, self.specializations);

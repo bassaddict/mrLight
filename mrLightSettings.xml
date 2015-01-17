@@ -110,6 +110,8 @@
 		<!-- Sampo Rosenlew -->
 		<vehicle configFile ="data/vehicles/cutters/sampoRosenlew/sampoRosenlewC6.xml" >
 			<entry key="speedLimit" type="number" value="5" />
+			<!-- entry key="ptoRpm" type="number" value="500" />
+			<entry key="neededPtoPower" type="number" value="105" / --> <!-- about 25kw per meter working width, 4.2m -->
 			<!--entry key="masses" type="number" value="1.8" is +0.004 / -->
 		</vehicle>
 		
@@ -524,6 +526,7 @@
 			<entry key="dailyUpkeep" type="number" value="139" />
 			<entry key="power" type="number" value="163" />
 			<!-- entry key="masses" type="number" value="5.22" is +0.042 / -->
+			<entry key="centerOfMass" type="string" value="0 1.36 -0.33" />
 			<entry key="attacherJoint1" type="string" value="1.078 7.99 24.00 -16.00 0.435 -0.00 -13.00 13.00" />
 			<entry key="attacherJoint2" type="string" value="1.237 8.01 -33.00 25.00 0.433 0.00 20.00 -20.00" />
 		</vehicle>
@@ -761,6 +764,7 @@
 			<entry key="speedLimit" type="number" value="4" />
 			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="maxForce" type="number" value="10" />
 			<entry key="masses" type="number" value="1.5" /><!-- is +0.568 -->
 			<entry key="lowerDistanceToGround" type="number" value="0.47" /> <!-- 0.458 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
@@ -784,9 +788,12 @@
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL420.xml" >
-			<entry key="speedLimit" type="number" value="12" />
+			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="125" />
+			<entry key="ptoRpm" type="number" value="540" />
 			<entry key="neededPtoPower" type="number" value="12" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
+			<entry key="forceNode" type="string" value="0>" />
+			<entry key="maxForce" type="number" value="100" />
 			<!--entry key="masses" type="number" value="2.3" is +0.011 / -->
 			<entry key="lowerDistanceToGround" type="number" value="0.675" /> <!-- 0.675 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
@@ -794,7 +801,10 @@
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeGL660.xml" >
 			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="150" />
+			<entry key="ptoRpm" type="number" value="540" />
 			<entry key="neededPtoPower" type="number" value="15" /><!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
+			<entry key="forceNode" type="string" value="0>" />
+			<entry key="maxForce" type="number" value="120" />
 			<entry key="masses" type="number" value="3.8" /><!-- is +0.916 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeKS75-4.xml" >
@@ -934,11 +944,12 @@
 			<entry key="masses" type="string" value="3.25 0.3 0.6 0.6 0.6 0.6" /><!-- is -0.05, better balance -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
-			<entry key="speedLimit" type="number" value="12" />
+			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPower" type="number" value="120" />
 			<entry key="neededPtoPower" type="number" value="35" />
+			<entry key="maxForce" type="number" value="40" />
 			<entry key="masses" type="number" value="1.685" /><!-- is -0.581 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.47" /> <!-- 0.457 -->
+			<entry key="lowerDistanceToGround" type="number" value="0.50" /> <!-- 0.457 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		
@@ -955,18 +966,25 @@
 			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPower" type="number" value="250" />
 			<entry key="masses" type="string" value="3.4 2 2" /><!-- is -0.08, better balance -->
+			<!-- entry key="price" type="number" value="61000" />
+			<entry key="dailyUpkeep" type="number" value="24" / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
 			<entry key="speedLimit" type="number" value="18" />
 			<entry key="neededPower" type="number" value="180" />
 			<entry key="neededPtoPower" type="number" value="25" />
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
+			<entry key="price" type="number" value="76000" />
+			<entry key="dailyUpkeep" type="number" value="18" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
 			<entry key="speedLimit" type="number" value="17" />
 			<entry key="neededPower" type="number" value="90" />
 			<entry key="neededPtoPower" type="number" value="12" />
+			<entry key="maxForce" type="number" value="60" />
 			<entry key="masses" type="number" value="3.4" /><!-- is +1.086 -->
+			<!--entry key="price" type="number" value="61000" />
+			<entry key="dailyUpkeep" type="number" value="16" / -->
 		</vehicle>
 		
 		<!-- Vogel Noot -->
@@ -1049,6 +1067,7 @@
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
 			<entry key="neededPower" type="number" value="210" />
+			<entry key="wheelsSpring" type="string" value="7.5 7.5 7.5 7.5" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />

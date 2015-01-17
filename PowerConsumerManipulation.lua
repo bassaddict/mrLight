@@ -12,6 +12,8 @@ function PowerConsumerManipulation:load(xmlFile)
 	
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+		self.powerConsumer.forceNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceNode, "0>"));
+		self.powerConsumer.forceDirNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceDirNode, "0>"));
 		self.powerConsumer.ptoRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].ptoRpm, self.powerConsumer.ptoRpm);
 		self.powerConsumer.neededPtoPower = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].neededPtoPower, self.powerConsumer.neededPtoPower);
 		self.powerConsumer.maxForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxForce, self.powerConsumer.maxForce);
@@ -65,7 +67,19 @@ function PowerConsumerManipulation:update(dt)
 		self.collected = false;
 		self.collectedInput = "";
 	end;
+	
+	--if ... then
+	--	local powerMultiplier = getPowerMultiplier();
+	--	local ptoRpm = getPtoRpm();
+	--	local consumedPtoTorque = getConsumedPtoTorque();
+	--end;
 end;
 
 function PowerConsumerManipulation:draw()
+	if self.debugRenderPowerConsumerManipulation then
+		setTextAlignment(RenderText.ALIGN_RIGHT);
+		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, lastFillLevel: %.4f, currentSeed: %d, isFilling: %s", self.fillLevel, self.myLastFillLevel, self.currentSeed, tostring(self.isFilling)));
+		--renderText(0.99, 0.78, 0.018, string.format("fillDelta: %.4f",self.deltaFill));
+		setTextAlignment(RenderText.ALIGN_LEFT);
+	end;
 end;

@@ -108,7 +108,8 @@ function DrivableManipulation:load(xmlFile)
 		v.slipDisplay = 0;
 	end;
 	
-	
+	self.anglePercentVehicle = 0;
+	self.anglePercentTerrain = 0;
 	
 	
 	
@@ -212,11 +213,17 @@ function DrivableManipulation:update(dt)
 	
 	
 	
+	
 	local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
 	local bx, by, bz = getWorldTranslation(self.backInclineNode);
-	local heightDif = fy - by;
+	local tfy = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, fx, fy, fz);
+	local tby = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, bx, by, bz);
+	local dist = Utils.vector3Length(fx-bx, tfy-tby, fz-bz);
+	local heightDifVehicle = fy - by;
+	local heightDifTerrain = tfy - tby;
 	--print(string.format("fy: %.3f, by: %.3f, heightDif: %.3f", fy, by, heightDif));
-	self.anglePercent = 100 / math.sqrt(4 - math.pow(heightDif, 2)) * heightDif;
+	self.anglePercentVehicle = 100 / math.sqrt(4 - math.pow(heightDifVehicle, 2)) * heightDifVehicle;
+	self.anglePercentTerrain = 100 / math.sqrt(math.pow(dist, 2) - math.pow(heightDifTerrain, 2)) * heightDifTerrain;
 	
 end;
 
@@ -245,14 +252,14 @@ end;
 function DrivableManipulation:draw()
 	if self.debugRenderDrivableManipulation then
 		setTextAlignment(RenderText.ALIGN_LEFT);
-		renderText(0.85, 0.01, 0.012, string.format("incline: %.3f", self.anglePercent));
+		renderText(0.85, 0.01, 0.012, string.format("incline V: %.3f, incline T: %.3f", self.anglePercentVehicle, self.anglePercentTerrain));
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		
 		local i = 0;
 		for k,v in pairs(self.wheels) do
 			i = i + 0.01;
 			--local engineSlip = getWheelShapeSlip(self.rootNode, k);
-			renderText(0.8, i, 0.012, string.format("r/s: %.2f, m/s: %.2f, slip: %.2f, slipDisplay: %.2f,", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
+			renderText(0.8, i, 0.012, string.format("r/s: %02.2f, m/s: %02.2f, slip: %02.2f, slipDisplay: %02.2f,", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
 		end;
 	end;
 	setTextAlignment(RenderText.ALIGN_LEFT);
