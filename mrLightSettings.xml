@@ -442,6 +442,7 @@
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="156" />
 			<entry key="masses" type="string" value="8.960 3.840" /> <!-- is -3.154 -->
+			<entry key="centerOfMass" type="string" value="0 1.33 -0.55;0 1.33 -0.55" /> <!-- ratio front/back : 30/70 - From liebherr data-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrTL432_7.xml" >
 		<!-- Real values: 100 HP@2300 RPM, 480 Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -456,6 +457,7 @@
 			<entry key="dailyUpkeep" type="number" value="90" />
 			<entry key="power" type="number" value="100" />
 			<entry key="masses" type="number" value="7.060" /> <!-- is +6.169 / -->
+			<entry key="centerOfMass" type="string" value="0 0.97 -0.43" /> <!-- no data found, supposed ratio front/back : 35/65 -->
 		</vehicle>
 		
 		<!-- Lindner -->
