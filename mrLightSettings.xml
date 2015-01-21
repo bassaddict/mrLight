@@ -425,6 +425,7 @@
 			<entry key="masses" type="number" value="8.100" /> <!-- is +1.4 / -->
 			<entry key="attacherJoint1" type="string" value="1.044 5.70 24.00 -17.00 0.393 -1.30 -20.00 20.00" />
 			<entry key="attacherJoint2" type="string" value="1.207 9.32 -30.00 22.00 0.516 1.32 20.00 -20.00" />
+			<entry key="centerOfMass" type="string" value="0 1.26 0.05" /> <!-- no exact data found, use 45/55 ratio front back-->
 		</vehicle>
 		
 		<!-- Liebherr -->
