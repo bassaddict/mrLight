@@ -357,6 +357,7 @@
 			<entry key="masses" type="number" value="3.350" /> <!-- is +0.414 / -->
 			<entry key="attacherJoint1" type="string" value="0.976 7.53 26.00 -18.00 0.398 -0.47 -20.00 20.00" />
 			<entry key="attacherJoint2" type="string" value="1.085 8.47 -35.00 27.00 0.598 0.47 5.00 -5.00" />
+			<entry key="centerOfMass" type="string" value="0 1.034 -0.11" /> <!-- no exact data found, use 45/55 ratio front back-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/huerlimann/huerlimannXM4Ti.xml" >
 		<!-- Real values: 127 HP@2200 RPM, No peak power, 480Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -373,6 +374,7 @@
 			<entry key="masses" type="number" value="5.300" /> <!-- is +0.696, with V-Drive / -->
 			<entry key="attacherJoint1" type="string" value="0.993 8.01 25.00 -17.00 0.344 0.02 -21.12 21.12" />
 			<entry key="attacherJoint2" type="string" value="0.941 7.99 -28.60 20.60 0.361 -0.03 20.00 -20.00" />
+			<entry key="centerOfMass" type="string" value="0 1.08 -0.18" /> <!-- no exact data found, use 45/55 ratio front back-->
 		</vehicle>
 		
 		<!-- Krone -->
