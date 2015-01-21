@@ -289,6 +289,7 @@
 			<!-- entry key="masses" type="number" value="5.400" is -0.068 / -->
 			<entry key="attacherJoint1" type="string" value="1.039 8.43 20.00 -12.00 0.343 0.43 -22.86 22.86" />
 			<entry key="attacherJoint2" type="string" value="1.023 7.57 -17.00 9.00 0.536 -0.43 15.00 -15.00" />
+			<entry key="centerOfMass" type="string" value="0 1.15 0.09" /> <!-- no exact data found, use 45/55 ratio front back-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/deutz/deutzFahr7250.xml" >
 		<!-- Real values: 238 HP@2100 RPM, 263 HP@1900 RPM, 1009Nm@1100-1800 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -305,6 +306,7 @@
 			<entry key="masses" type="number" value="9.100" /> <!-- is +0.4 / -->
 			<entry key="attacherJoint1" type="string" value="1.046 5.70 24.00 -17.00 0.396 -1.30 -20.00 20.00" />
 			<entry key="attacherJoint2" type="string" value="1.201 9.30 -30.00 22.00 0.506 1.30 20.00 -20.00" />
+			<entry key="centerOfMass" type="string" value="0 1.35 -0.145" /> <!-- ratio front/back : 38/62 - deutz-fahr.com-->
 		</vehicle>
 		
 		<!-- Grimme -->
