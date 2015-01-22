@@ -124,7 +124,7 @@ function DrivableManipulation:mouseEvent(posX, posY, isDown, isUp, button)
 end;
 
 function DrivableManipulation:keyEvent(unicode, sym, modifier, isDown)
-	if self.collectMaxRpm then
+	--[[if self.collectMaxRpm then
 		if isDown then
 			if sym == 13 then
 				self.collected = true;
@@ -137,7 +137,7 @@ function DrivableManipulation:keyEvent(unicode, sym, modifier, isDown)
 				print("other char pressed: " .. tostring(sym));
 			end;
 		end;
-	end;
+	end;]]
 end;
 
 function DrivableManipulation:update(dt)
@@ -146,7 +146,7 @@ function DrivableManipulation:update(dt)
 	--	self.firstRunDrivableManipulation = false;
 	--end;
 	
-	if (InputBinding.hasEvent(InputBinding.SETMAXRPM)) then --and not self.collectPtoPower then
+	--[[if (InputBinding.hasEvent(InputBinding.SETMAXRPM)) then --and not self.collectPtoPower then
 		self.collectMaxRpm = true;
 		--print("force pressed");
 	end;
@@ -169,7 +169,7 @@ function DrivableManipulation:update(dt)
 		end;
 		self.collected = false;
 		self.collectedInput = "";
-	end;
+	end;]]
 	
 	
 	if self.slip > 0.15 and not self.isDiffLocked then
@@ -231,19 +231,11 @@ function DrivableManipulation:toggleDifferentialLock()
 	--print("toggle diff");
 	if self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			--print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			updateDifferential(self.rootNode, k, self.diffBak[k].torqueRatio, self.diffBak[k].maxSpeedRatio);
-			--print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
-			--v.torqueRatio = self.diffBak[k].torqueRatio;
-			--v.maxSpeedRatio = self.diffBak[k].maxSpeedRatio;
 		end;
 	elseif not self.isDiffLocked then
 		for k,v in pairs(self.differentials) do
-			--print(string.format("before -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
 			updateDifferential(self.rootNode, k, 0.5, 1);
-			--print(string.format("after -- dif: %d, torque: %.2f, speed: %.2f", k, v.torqueRatio, v.maxSpeedRatio));
-			--v.torqueRatio = 0.5;
-			--v.maxSpeedRatio = 1;
 		end;
 	end;
 	self.isDiffLocked = not self.isDiffLocked;

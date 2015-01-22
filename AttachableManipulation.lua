@@ -5,7 +5,7 @@ function AttachableManipulation.prerequisitesPresent(specializations)
 end;
 
 function AttachableManipulation:load(xmlFile)
-	self.firstRunAttachableManipulation = true;
+	--self.firstRunAttachableManipulation = true;
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 		if MrLightUtils.vehicleConfigs[self.configFileName].lowerDistanceToGround ~= nil then
@@ -18,7 +18,7 @@ function AttachableManipulation:load(xmlFile)
 	
 	
 	
-	self.collectLoderDist = false;
+	--[[self.collectLoderDist = false;
 	self.collectUpperDist = false;
 	self.collectedAM = false;
 	self.collectedInputAM = "";
@@ -26,11 +26,11 @@ function AttachableManipulation:load(xmlFile)
 	
 	for _,v in pairs(self.inputAttacherJoints) do
 		v.transLimitScale = {0, 0, 0};
-	end;
+	end;]]
 	
 	
 	
-	self.debugRenderAttachableManipulation = false;
+	--self.debugRenderAttachableManipulation = false;
 end;
 
 function AttachableManipulation:delete()
@@ -40,7 +40,7 @@ function AttachableManipulation:mouseEvent(posX, posY, isDown, isUp, button)
 end;
 
 function AttachableManipulation:keyEvent(unicode, sym, modifier, isDown)
-	if self.collectLowerDist or self.collectUpperDist then
+	--[[if self.collectLowerDist or self.collectUpperDist then
 		if isDown then
 			if sym == 13 then
 				self.collectedAM = true;
@@ -53,12 +53,12 @@ function AttachableManipulation:keyEvent(unicode, sym, modifier, isDown)
 				print("other char pressed: " .. tostring(sym));
 			end;
 		end;
-	end;
+	end;]]
 end;
 
 function AttachableManipulation:update(dt)
 	
-	if (InputBinding.hasEvent(InputBinding.SETLOWERDIST)) and not self.collectUpperDist then
+	--[[if (InputBinding.hasEvent(InputBinding.SETLOWERDIST)) and not self.collectUpperDist then
 		self.collectLowerDist = true;
 		--print("force pressed");
 	elseif (InputBinding.hasEvent(InputBinding.SETUPPERDIST)) and not self.collectLowerDist then
@@ -83,7 +83,7 @@ function AttachableManipulation:update(dt)
 	
 	--if self.firstRunAttachableManipulation then
 	--	self.firstRunAttachableManipulation = false;
-	--end;
+	--end;]]
 	
 end;
 

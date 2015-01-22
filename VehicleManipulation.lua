@@ -55,12 +55,13 @@ function VehicleManipulation:load(xmlFile)
 		self.moveUpperJointAxis1 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER1;
 		self.moveUpperJointAxis2 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER2;
 		self.isSelectable = true;
+		self.attacherJointMovementLocked = true;
 	end;
 	
 	self.counter = 100;
 	self.debugLowerDistanceToGround = 0;
 	self.debugUpperDistanceToGround = 1.5;
-	self.debugVehicleManipulation = true;
+	self.debugVehicleManipulation = false;
 	self.debugRenderVehicleManipulation = true;
 end;
 
@@ -80,9 +81,9 @@ function VehicleManipulation:update(dt)
 		--print("--VehicleManipulation first update "..self.configFileName);
 		
 		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+			local numComponents = #self.components;
 			if MrLightUtils.vehicleConfigs[self.configFileName].masses ~= nil then
 				--print("--VehicleManipulation vehicle exists, masses exists, "..self.configFileName);
-				local numComponents = #self.components;
 				if numComponents > 1 then
 					local massesT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].masses);
 					if #massesT == numComponents then
@@ -97,6 +98,18 @@ function VehicleManipulation:update(dt)
 				elseif numComponents == 1 then
 					--print("--VehicleManipulation set mass single component");
 					setMass(self.rootNode, MrLightUtils.vehicleConfigs[self.configFileName].masses);
+				end;
+			end;
+			
+			if MrLightUtils.vehicleConfigs[self.configFileName].centerOfMass ~= nil then
+				local comT = Utils.splitString(";", MrLightUtils.vehicleConfigs[self.configFileName].centerOfMass);
+				if numComponents == # comT then
+					for k,v in pairs(comT) do
+						local x, y, z = Utils.getVectorFromString(v);
+						setCenterOfMass(self.components[k].node, x, y, z);
+					end;
+				else
+					print("WARNING: number of \"centerOfMass\" parts in configFile not equals number of components for vehicle "..self.configFileName);
 				end;
 			end;
 			
@@ -306,36 +319,37 @@ function VehicleManipulation:update(dt)
 		end;]]
 	end;
 	
-	if self:getIsActiveForInput(false) and self.isDrivable then
-		if self.selectedImplement ~= nil then
-			if self.selectedImplement.object ~= nil then
-				
-				local moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis2);
-				local moveDeltaU = 0.05 / (1000 / dt); --0.05m/s
-				if InputBinding.isAxisZero(moveU) then
-					moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis1);
-					moveDeltaU = 0.25 / (1000 / dt); --0.25m/s
-				end;
-				
-				local moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis2);
-				local moveDeltaL = 0.05 / (1000 / dt); --0.05m/s
-				if InputBinding.isAxisZero(moveL) then
-					moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis1);
-					moveDeltaL = 0.25 / (1000 / dt); --0.25m/s
-				end;
-				
-				
-				
-				local aj = self.selectedImplement.object.attacherJoint;
-				local ajs = self.attacherJoints[self.selectedImplement.jointDescIndex];
-				
-				aj.lowerDistanceToGround = math.max(math.min((aj.lowerDistanceToGround + (moveDeltaL * moveL)), aj.upperDistanceToGround), ajs.maxRotDistanceToGround);
-				aj.upperDistanceToGround = math.min(math.max((aj.upperDistanceToGround + (moveDeltaU * moveU)), aj.lowerDistanceToGround), ajs.minRotDistanceToGround);
-				self.debugLowerDistanceToGround = aj.lowerDistanceToGround;
-				self.debugUpperDistanceToGround = aj.upperDistanceToGround;
-				
-				ajs.upperAlpha, ajs.lowerAlpha = self:calculateAttacherJointMoveUpperLowerAlpha(ajs, self.selectedImplement.object);
+	if (InputBinding.hasEvent(InputBinding.TOGGLE_AJ_LOCK)) then
+		self.attacherJointMovementLocked = not self.attacherJointMovementLocked;
+	end;
+	
+	if self:getIsActiveForInput(false) and self.isDrivable and not self.attacherJointMovementLocked then
+		if self.selectedImplement ~= nil and self.selectedImplement.object ~= nil and self.attacherJoints[self.selectedImplement.jointDescIndex].bottomArm ~= nil then
+			local moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis2);
+			local moveDeltaU = 0.05 / (1000 / dt); --0.05m/s
+			if InputBinding.isAxisZero(moveU) then
+				moveU, _ = InputBinding.getInputAxis(self.moveUpperJointAxis1);
+				moveDeltaU = 0.25 / (1000 / dt); --0.25m/s
 			end;
+			
+			local moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis2);
+			local moveDeltaL = 0.05 / (1000 / dt); --0.05m/s
+			if InputBinding.isAxisZero(moveL) then
+				moveL, _ = InputBinding.getInputAxis(self.moveLowerJointAxis1);
+				moveDeltaL = 0.25 / (1000 / dt); --0.25m/s
+			end;
+			
+			
+			
+			local aj = self.selectedImplement.object.attacherJoint;
+			local ajs = self.attacherJoints[self.selectedImplement.jointDescIndex];
+			
+			aj.lowerDistanceToGround = math.max(math.min((aj.lowerDistanceToGround + (moveDeltaL * moveL)), aj.upperDistanceToGround), ajs.maxRotDistanceToGround);
+			aj.upperDistanceToGround = math.min(math.max((aj.upperDistanceToGround + (moveDeltaU * moveU)), aj.lowerDistanceToGround), ajs.minRotDistanceToGround);
+			self.debugLowerDistanceToGround = aj.lowerDistanceToGround;
+			self.debugUpperDistanceToGround = aj.upperDistanceToGround;
+			
+			ajs.upperAlpha, ajs.lowerAlpha = self:calculateAttacherJointMoveUpperLowerAlpha(ajs, self.selectedImplement.object);
 		else
 			self.debugLowerDistanceToGround = 0;
 			self.debugUpperDistanceToGround = 1.5
