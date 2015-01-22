@@ -138,12 +138,19 @@ function MrLightUtils.setStoreData()
 	print("--- MRL: store data set");
 end;
 
+MrLightUtils.numFillableClasses = 4;
+MrLightUtils.FILLABLE_CLASS_UNKNOWN = 1;
+MrLightUtils.FILLABLE_CLASS_GRAINS = 2;
+MrLightUtils.FILLABLE_CLASS_SOLIDS = 3;
+MrLightUtils.FILLABLE_CLASS_FLUIDS = 4;
+
 function MrLightUtils.getFillableInfos(fillTypeName)
 	-- pricePerKg of some fruit/filltype should NEVER be 0
 	-- example : grass. there is some random computation done by the game engine at some times, and when you play in mp, the client game will crash (only XP OS)
 	
 	local density = 0.75; --kg/L
 	local pricePerKg = 1; --€/T
+	local fillableClass = MrLightUtils.FILLABLE_CLASS_UNKNOWN;
 	local found = false;
 
 	if fillTypeName~=nil and fillTypeName~="" then
@@ -155,64 +162,64 @@ function MrLightUtils.getFillableInfos(fillTypeName)
 		
 		--*********************** FRUITS filltype
 		if fillTypeName=="wheat" then
-			density, pricePerKg = 0.79, 0.200; -- 200€/T
+			density, pricePerKg, fillableClass = 0.79, 0.200, MrLightUtils.FILLABLE_CLASS_GRAINS; -- 200€/T
 		elseif fillTypeName=="barley" then
-			density, pricePerKg = 0.71, 0.195; -- 195€/T
+			density, pricePerKg, fillableClass = 0.71, 0.195, MrLightUtils.FILLABLE_CLASS_GRAINS; -- 195€/T
 		elseif fillTypeName=="maize" then
-			density, pricePerKg = 0.82, 0.190; -- 190€/T
+			density, pricePerKg, fillableClass = 0.82, 0.190, MrLightUtils.FILLABLE_CLASS_GRAINS; -- 190€/T
 		elseif fillTypeName=="rape" then
-			density, pricePerKg = 0.64, 0.400; -- 400€/T
+			density, pricePerKg, fillableClass = 0.64, 0.400, MrLightUtils.FILLABLE_CLASS_GRAINS; -- 400€/T
 		elseif fillTypeName=="chaff" or fillTypeName=="forage" then
-			density, pricePerKg = 0.40, 0.040; -- 2000€/ha =>	2000€/50T => 40€/T			
+			density, pricePerKg, fillableClass = 0.40, 0.040, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 2000€/ha =>	2000€/50T => 40€/T			
 		elseif fillTypeName=="sugarbeet" then
-			density, pricePerKg = 0.69, 0.040; --40€/T
+			density, pricePerKg, fillableClass = 0.69, 0.040, MrLightUtils.FILLABLE_CLASS_SOLIDS; --40€/T
 		elseif fillTypeName=="potato" then
-			density, pricePerKg = 0.67, 0.065; --65€/T. should be something like 150-200€/T but in the game, we do not have to irrigate, prepare the soil, weed or clean/wash/sort the potatoes
+			density, pricePerKg, fillableClass = 0.67, 0.065, MrLightUtils.FILLABLE_CLASS_SOLIDS; --65€/T. should be something like 150-200€/T but in the game, we do not have to irrigate, prepare the soil, weed or clean/wash/sort the potatoes
 				
 		elseif fillTypeName=="manure" then
-			density, pricePerKg = 0.65, 0.020;	--20€/T
+			density, pricePerKg, fillableClass = 0.65, 0.020, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--20€/T
 		elseif fillTypeName=="liquidmanure" then
-			density, pricePerKg = 0.92, 0.007;	--7€/T
+			density, pricePerKg, fillableClass = 0.92, 0.007, MrLightUtils.FILLABLE_CLASS_FLUIDS;	--7€/T
 			
 		elseif fillTypeName=="seeds" then
-			density, pricePerKg = 0.654, 0;	--bassaddict: Density averaged over the different seed types since density for each seed type is not implemented. Maybe a future feature.
+			density, pricePerKg, fillableClass = 0.654, 0, MrLightUtils.FILLABLE_CLASS_UNKNOWN;	--bassaddict: Density averaged over the different seed types since density for each seed type is not implemented. Maybe a future feature.
 					
 		--*************************** WINDROW filltype
 		elseif fillTypeName=="wheat_windrow" then
-			density, pricePerKg = 0.040, 0.040*MrLightUtils.PriceBalanceFactors.windrow;	--40€/T
+			density, pricePerKg, fillableClass = 0.040, 0.040*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--40€/T
 		elseif fillTypeName=="barley_windrow" then
-			density, pricePerKg = 0.036, 0.044*MrLightUtils.PriceBalanceFactors.windrow;	--44€/T
+			density, pricePerKg, fillableClass = 0.036, 0.044*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--44€/T
 		elseif fillTypeName=="drygrass_windrow" or fillTypeName=="drygrass" then
-			density, pricePerKg = 0.050, 0.085*MrLightUtils.PriceBalanceFactors.windrow; -- 85€/T			
+			density, pricePerKg, fillableClass = 0.050, 0.085*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 85€/T			
 		elseif fillTypeName=="grass_windrow" or fillTypeName=="grass" then
-			density, pricePerKg = 0.25, 0.015*MrLightUtils.PriceBalanceFactors.windrow; -- 15€/T	 
+			density, pricePerKg, fillableClass = 0.25, 0.015*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 15€/T	 
 			
 		--*************************** OTHER filltype
 		elseif fillTypeName=="silage" then
-			density, pricePerKg = 0.4, 0.175*MrLightUtils.PriceBalanceFactors.silage;	--175€/T   compress silage = 0.85 density / uncompressed = 0.4
+			density, pricePerKg, fillableClass = 0.4, 0.175*MrLightUtils.PriceBalanceFactors.silage, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--175€/T   compress silage = 0.85 density / uncompressed = 0.4
 		elseif fillTypeName=="forage_mixing" then -- TMR
-			density, pricePerKg = 0.2, 0.300; --300€/T
+			density, pricePerKg, fillableClass = 0.2, 0.300, MrLightUtils.FILLABLE_CLASS_SOLIDS; --300€/T
 		
 		elseif fillTypeName=="fuel" then
-			density, pricePerKg = 0.83, 1.025*MrLightUtils.PriceBalanceFactors.fuel;	--0.85€/L == 1.025€/Kg.  
+			density, pricePerKg, fillableClass = 0.83, 1.025*MrLightUtils.PriceBalanceFactors.fuel, MrLightUtils.FILLABLE_CLASS_FLUIDS;	--0.85€/L == 1.025€/Kg.  
 		elseif fillTypeName=="fertilizer" then
-			density, pricePerKg = 1.28, 0.190*MrLightUtils.PriceBalanceFactors.fertilizer;	--230€/M3 == 190€/T.   factor 4 to balance gameplay
+			density, pricePerKg, fillableClass = 1.28, 0.190*MrLightUtils.PriceBalanceFactors.fertilizer, MrLightUtils.FILLABLE_CLASS_UNKNOWN;	--230€/M3 == 190€/T.   factor 4 to balance gameplay
 			
 		elseif fillTypeName=="milk" then
-			density, pricePerKg = 1.03, 0.485*MrLightUtils.PriceBalanceFactors.milk; -- 0.5€/L = 0.485€/kg
+			density, pricePerKg, fillableClass = 1.03, 0.485*MrLightUtils.PriceBalanceFactors.milk, MrLightUtils.FILLABLE_CLASS_FLUIDS; -- 0.5€/L = 0.485€/kg
 		elseif fillTypeName=="egg" then
-			density, pricePerKg = 0.37, 1.35*MrLightUtils.PriceBalanceFactors.egg; -- density of an egg box, price = 0.50€ per egg for not-industrial eggs (1 egg = 60g)   the pricePerLiter for egg = price for 1 egg in the game.   Factor 10 to balance gameplay (you have to manually pick up eggs in the game)
+			density, pricePerKg, fillableClass = 0.37, 1.35*MrLightUtils.PriceBalanceFactors.egg, MrLightUtils.FILLABLE_CLASS_UNKNOWN; -- density of an egg box, price = 0.50€ per egg for not-industrial eggs (1 egg = 60g)   the pricePerLiter for egg = price for 1 egg in the game.   Factor 10 to balance gameplay (you have to manually pick up eggs in the game)
 		elseif fillTypeName=="wool" then -- 50kg/m3
-			density, pricePerKg = 0.05, 1*MrLightUtils.PriceBalanceFactors.wool;	-- "real" price = 1€/kg -- wanted price ingame (hard difficulty) = 1€/L -> 20€/kg (there is already the priceBalancing applied, that means we need a woolPriceBalancing of 4)
+			density, pricePerKg, fillableClass = 0.05, 1*MrLightUtils.PriceBalanceFactors.wool, MrLightUtils.FILLABLE_CLASS_UNKNOWN;	-- "real" price = 1€/kg -- wanted price ingame (hard difficulty) = 1€/L -> 20€/kg (there is already the priceBalancing applied, that means we need a woolPriceBalancing of 4)
 			
 		elseif fillTypeName=="water" then
-			density, pricePerKg = 1, 0;		
+			density, pricePerKg, fillableClass = 1, 0, MrLightUtils.FILLABLE_CLASS_FLUIDS;		
 			
-		elseif fillTypeName=="woodchips" then -- forest mod (Forst Mod)
-			density, pricePerKg = 0.24, 0.075*MrLightUtils.PriceBalanceFactors.woodChips;	-- 75€/T
+		elseif fillTypeName=="woodchips" then
+			density, pricePerKg, fillableClass = 0.24, 0.075*MrLightUtils.PriceBalanceFactors.woodChips, MrLightUtils.FILLABLE_CLASS_SOLIDS;	-- 75€/T
 			
-		elseif fillTypeName=="treesaplings" then -- forest mod (Forst Mod)
-			density, pricePerKg = 10, 2.765;	-- 1L = 1 seedling = 10kgs / 17 seedling = 470€ => 2.765€ per kilo		
+		elseif fillTypeName=="treesaplings" then
+			density, pricePerKg, fillableClass = 10, 2.765, MrLightUtils.FILLABLE_CLASS_UNKNOWN;	-- 1L = 1 seedling = 10kgs / 17 seedling = 470€ => 2.765€ per kilo		
 			
 		else --no filltype matching the input filltypeName
 			found = false;
@@ -232,16 +239,17 @@ function MrLightUtils.getFillableInfos(fillTypeName)
 	pricePerKg = MrLightUtils.PriceBalanceFactorGlobal*pricePerKg;
 	local pricePerLiter = density * pricePerKg;
 	
-	return found, density, pricePerKg, pricePerLiter;
+	return found, density, pricePerKg, pricePerLiter, fillableClass;
 end;
 
 function MrLightUtils.setFillableInfos(fillTypeName, newGame)
 	local desc = Fillable.fillTypeNameToDesc[fillTypeName];	
-	local found, density, pricePerKg, pricePerLiter = MrLightUtils.getFillableInfos(desc.name);
+	local found, density, pricePerKg, pricePerLiter, fillableClass = MrLightUtils.getFillableInfos(desc.name);
 	
 	if found then
 		desc.massPerLiter = density * 0.001;
 		desc.startPricePerLiter = pricePerLiter;
+		desc.fillableClass = fillableClass;
 		if newGame then
 			desc.pricePerLiter = pricePerLiter;
 			desc.previousHourPrice = pricePerLiter;

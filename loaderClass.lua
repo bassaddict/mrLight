@@ -4,6 +4,7 @@ SpecializationUtil.registerSpecialization("sowingMachineManipulation", "SowingMa
 SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipulation", g_currentModDirectory.."SprayerManipulation.lua");
 SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
 --SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
+SpecializationUtil.registerSpecialization("fillableManipulation", "FillableManipulation", g_currentModDirectory.."FillableManipulation.lua");
 SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
 SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
 SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
@@ -50,6 +51,9 @@ function loaderClass:loadMap(name)
 		--if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
 		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
 		--end;
+		if SpecializationUtil.hasSpecialization(Fillable, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("fillableManipulation"));
+		end;
 		if SpecializationUtil.hasSpecialization(Baler, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("balerManipulation"));
 		end;

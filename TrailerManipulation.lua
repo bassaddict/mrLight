@@ -1,7 +1,7 @@
 TrailerManipulation = {};
 
 function TrailerManipulation.prerequisitesPresent(specializations)
-    return SpecializationUtil.hasSpecialization(Fillable, specializations);
+    return SpecializationUtil.hasSpecialization(Trailer, specializations);
 end;
 
 function TrailerManipulation:load(xmlFile)
@@ -42,17 +42,31 @@ function TrailerManipulation:update(dt)
 	if self.firstRunTrailerManipulation then
 		self.firstRunTrailerManipulation = false;
 		
-		if MrLightUtils ~= nil and MrLightUtils.trailers[self.configFileName] ~= nil then
-			MrLightUtils.trailers[self.configFileName].oldCapacity = self.capacity;
+		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].capacity ~= nil then
+			MrLightUtils.vehicleConfigs[self.configFileName].oldCapacity = self.capacity;
 			--print("set cap");
-			self:setCapacity(MrLightUtils.trailers[self.configFileName].newCapacity);
-			if self.capacity == MrLightUtils.trailers[self.configFileName].oldCapacity then
+			self:setCapacity(MrLightUtils.vehicleConfigs[self.configFileName].capacity);
+			if self.capacity == MrLightUtils.vehicleConfigs[self.configFileName].oldCapacity then
 				--print("set cap fix");
-				self.capacity = MrLightUtils.trailers[self.configFileName].newCapacity;
+				self.capacity = MrLightUtils.vehicleConfigs[self.configFileName].capacity;
 			end;
 		end;
 	
-		--self:updateMeasurementNode();
+		-- start
+		-- code by Stefan Geiger, deleting old fillVolume and creating a new one to fit the new capacity
+		for _, fillVolume in pairs(self.fillVolumes) do
+			if fillVolume.volume ~= nil then
+				delete(fillVolume.volume)
+				local maxPhysicalSurfaceAngle = math.rad(35);
+				fillVolume.volume = createFillPlaneShape(fillVolume.baseNode, "fillPlane", self.capacity, fillVolume.maxDelta, fillVolume.maxSurfaceAngle, maxPhysicalSurfaceAngle, fillVolume.maxSubDivEdgeLength, fillVolume.allSidePlanes);
+				link(fillVolume.baseNode, fillVolume.volume);
+			end
+		end
+		local fillLevel = self.fillLevel;
+		local fillType = self.currentFillType;
+		self:setFillLevel(0, fillType, true)
+		self:setFillLevel(fillLevel, fillType, true)
+		-- end
 		
 		if self.actualFillLevel ~= nil and self.actualFillType ~= nil then
 			local fillTypeInt = Fillable.fillTypeNameToInt[self.actualFillType];

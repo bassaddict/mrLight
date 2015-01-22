@@ -1077,6 +1077,8 @@
 			<entry key="masses" type="number" value="5.9" /><!-- is -1.525 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
+			<entry key="fillVolumesNode" type="string" value="0>6|2|3" />
+			<entry key="capacities" type="string" value="22000 22000 30000 0" />
 			<entry key="neededPower" type="number" value="210" />
 			<entry key="wheelsSpring" type="string" value="7.5 7.5 7.5 7.5" />
 		</vehicle>
@@ -1115,6 +1117,8 @@
 		
 		<!-- Krampe -->
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
+			<entry key="fillVolumesNode" type="string" value="0>10" />
+			<entry key="capacities" type="string" value="24500 24500 40000 0" />
 			<entry key="neededPower" type="number" value="180" />
 			<entry key="masses" type="number" value="8.9" /><!-- is +0.994 -->
 		</vehicle>
@@ -1129,6 +1133,9 @@
 		
 		<!-- Kroeger -->
 		<vehicle configFile ="data/vehicles/trailers/kroeger/kroegerHKD302.xml" >
+			<!--entry key="fillVolumesNode" type="string" value="0>3|0|0|3" />
+			<entry key="capacities" type="string" value="18000 18000 18000 0" />
+			<entry key="capacity" type="number" value="18000" / -->
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="masses" type="string" value="3.05 0.9 0.3" /><!-- is +0.297 -->
 		</vehicle>
@@ -1160,7 +1167,9 @@
 		
 		<!-- Poettinger -->
 		<vehicle configFile ="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" >
-			<entry key="capacity" type="number" value="33000" />
+			<entry key="fillVolumesNode" type="string" value="0>5" />
+			<entry key="capacities" type="string" value="21300 0 33000 0" />
+			<!--entry key="capacity" type="number" value="33000" / -->
 			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPtoPower" type="number" value="40" />
 			<entry key="neededPower" type="number" value="100" />
