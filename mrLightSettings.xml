@@ -525,6 +525,7 @@
 			<entry key="power" type="number" value="75" />
 			<entry key="masses" type="number" value="2.8" /> <!-- is -0.26 -->
 			<entry key="attacherJoint1" type="string" value="0.993 9.75 25.00 -15.00 0.389 -0.25 -17.46 17.46" />
+			<entry key="centerOfMass" type="string" value="0 0.992 -0.126" /> <!-- ratio front/back : 40/60 - tractortestlab.unl.edu-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT6160.xml" >
 		<!-- Real values: 150 HP@2200 RPM, 163 maxHP, 676Nm@1500 RPM, from constructor's technical datasheet -->
@@ -542,6 +543,7 @@
 			<entry key="centerOfMass" type="string" value="0 1.36 -0.33" />
 			<entry key="attacherJoint1" type="string" value="1.078 7.99 24.00 -16.00 0.435 -0.00 -13.00 13.00" />
 			<entry key="attacherJoint2" type="string" value="1.237 8.01 -33.00 25.00 0.433 0.00 20.00 -20.00" />
+			<entry key="centerOfMass" type="string" value="0 1.187 -0.334" /> <!-- ratio front/back : 44/56 - dlg-test.de-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml" >
 		<!-- Real values: 286 HP@2000 RPM, 320 HP@1800 RPM, 1400 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.330, unknow for T8.320 -->
@@ -558,6 +560,7 @@
 			<entry key="masses" type="number" value="12.32" /> <!-- is +2.82 -->
 			<entry key="attacherJoint1" type="string" value="1.043 6.77 24.00 -17.00 0.480 -0.23 -6.42 6.42" />
 			<entry key="attacherJoint2" type="string" value="1.121 8.23 -33.00 25.00 0.490 0.23 15.00 -15.00" />
+			<entry key="centerOfMass" type="string" value="0 1.54 -0.345" /> <!-- ratio front/back : 37/63 - tractortestlab.unl.edu-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8435.xml" >
 		<!-- Real values: 380 HP@2000 RPM, 435 HP@1800 RPM, 1800 Nm@1400 RPM, from constructor's technical datasheet, the MaxTorque value is from T8.420, unknow for T8.435 -->
@@ -574,6 +577,7 @@
 			<entry key="masses" type="number" value="12.8" /> <!-- is +3.304 -->
 			<entry key="attacherJoint1" type="string" value="0.999 6.06 24.00 -17.00 0.435 -0.94 -6.42 6.42" />
 			<entry key="attacherJoint2" type="string" value="1.152 8.95 -33.00 25.00 0.522 0.95 15.00 -15.00" />
+			<entry key="centerOfMass" type="string" value="0 1.54 -0.446" /> <!-- ratio front/back : 34/66 - tractortestlab.unl.edu-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT9560.xml" >
 		<!-- Real values: 548 HP@2100 RPM, 557 HP@1800 RPM, 2374 Nm@1400 RPM, from constructor's technical datasheet -->
@@ -589,6 +593,7 @@
 			<entry key="power" type="number" value="557" />
 			<!-- entry key="masses" type="string" value="12.9 9.5"  22.453 total, balance front:back 1.35:1, as Quadtrac620, no exact data found -->
 			<entry key="attacherJoint1" type="string" value="1.344 8.13 32.27 -24.27 0.353 0.13 -15.00 15.00" />
+			<entry key="centerOfMass" type="string" value="0 1.38 1.437;0 1.39 -1.663" /> 
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandTC590.xml" >
 		<!-- no data found , copy TC5080's data, similary model -->
