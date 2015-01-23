@@ -237,7 +237,7 @@
 			<entry key="power" type="number" value="415" />
 			<entry key="masses" type="number" value="15.948" /> <!--  14.148t plus front ballast, 18 * 100kg  / -->
 			<entry key="attacherJoint1" type="string" value="0.991 8.49 20.00 -12.00 0.434 0.49 -9.00 9.00" />
-			<entry key="centerOfMass" type="string" value="0 1.51 -0.56" /><!-- ratio front/back : 37/63 - from magnum 370 without ballast - tractortestlab.unl.edu -->
+			<entry key="centerOfMass" type="string" value="0 1.51 -0.34" /><!-- ratio front/back : 37/63 - from magnum 370 without ballast - tractortestlab.unl.edu -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHPuma160.xml" >
 		<!-- Real values: 190 HP@2200 RPM, 203 HP@1800-1900 RPM, 866Nm@1500 RPM, from constructor's technical datasheet -->
@@ -270,7 +270,7 @@
 			<entry key="power" type="number" value="692" />
 			<entry key="masses" type="string" value="12.711 9.415" /> <!-- 22.126 total (is +1.53), balance front:back 1.35:1, average from test data from older quadtrac/steiger models -->
 			<entry key="attacherJoint1" type="string" value="1.153 8.72 19.79 -11.79 0.334 0.72 -22.00 22.00" />
-			<entry key="centerOfMass" type="string" value="0 1.66 -0.05;0 1.66 -0.05" /><!-- ratio front/back : 58/42 - from Quadtrac 600 - tractortestlab.unl.edu -->
+			<entry key="centerOfMass" type="string" value="0 1.66 1.724;0 1.66 -1.977" /><!-- ratio front/back : 58/42 - from Quadtrac 600 - tractortestlab.unl.edu -->
 		</vehicle>
 		
 		<!-- Deutz -->
@@ -306,7 +306,7 @@
 			<entry key="masses" type="number" value="9.100" /> <!-- is +0.4 / -->
 			<entry key="attacherJoint1" type="string" value="1.046 5.70 24.00 -17.00 0.396 -1.30 -20.00 20.00" />
 			<entry key="attacherJoint2" type="string" value="1.201 9.30 -30.00 22.00 0.506 1.30 20.00 -20.00" />
-			<entry key="centerOfMass" type="string" value="0 1.35 -0.145" /> <!-- ratio front/back : 38/62 - deutz-fahr.com-->
+			<entry key="centerOfMass" type="string" value="0 1.35 -0.006" /> <!-- ratio front/back : 38/62 - deutz-fahr.com-->
 		</vehicle>
 		
 		<!-- Grimme -->
