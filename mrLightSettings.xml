@@ -442,7 +442,7 @@
 			<entry key="dailyUpkeep" type="number" value="120" />
 			<entry key="power" type="number" value="156" />
 			<entry key="masses" type="string" value="8.960 3.840" /> <!-- is -3.154 -->
-			<entry key="centerOfMass" type="string" value="0 1.33 -0.55;0 1.33 -0.55" /> <!-- ratio front/back : 30/70 - From liebherr data-->
+			<entry key="centerOfMass" type="string" value="0 1.33 -1.396;0 1.1 1.052" /> <!-- ratio front/back : 30/70 - From liebherr data-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/liebherr/liebherrTL432_7.xml" >
 		<!-- Real values: 100 HP@2300 RPM, 480 Nm@1600 RPM, from constructor's technical datasheet and power/torque graph -->
