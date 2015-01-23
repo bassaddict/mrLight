@@ -493,6 +493,7 @@
 			<entry key="dailyUpkeep" type="number" value="396" />
 			<entry key="power" type="number" value="440" />
 			<entry key="masses" type="number" value="6.680" /><!--is +2.279 -->
+			<entry key="centerOfMass" type="string" value="0 0.916 0.527" /> <!-- no data found, supposed ratio front/back : 75/25 -->
 		</vehicle>
 		
 		<!-- New Holland -->
