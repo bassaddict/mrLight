@@ -694,6 +694,7 @@
 			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
 			<entry key="attacherJoint1" type="string" value="0.960 9.25 20.00 -10.00 0.359 -0.75 -17.82 17.82" />
 			<entry key="attacherJoint2" type="string" value="0.943 8.75 -24.00 16.00 0.536 0.75 5.00 -5.00" />
+			<entry key="centerOfMass" type="string" value="0 1.11 -0.161" /> <!-- ratio front/back : 45/55 - case-steyr-center.ch-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/steyr/steyrMulti4115Forestry.xml" >
 		<!-- Real values: 114 HP@2300 RPM, No peak power, 461Nm@1400-1600 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -710,6 +711,7 @@
 			<!-- entry key="masses" type="number" value="4.5" / --> <!-- is +0.0 -->
 			<entry key="attacherJoint1" type="string" value="0.960 9.25 20.00 -10.00 0.359 -0.75 -17.82 17.82" />
 			<entry key="attacherJoint2" type="string" value="0.943 8.75 -24.00 16.00 0.536 0.75 5.00 -5.00" />
+			<entry key="centerOfMass" type="string" value="0 1.11 -0.161" /> <!-- ratio front/back : 45/55 - case-steyr-center.ch-->
 		</vehicle>
 		
 		<!-- Ursus -->
