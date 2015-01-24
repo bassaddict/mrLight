@@ -208,6 +208,7 @@
 			<entry key="dailyUpkeep" type="number" value="760" />
 			<entry key="power" type="number" value="410" />
 			<entry key="masses" type="number" value="15.467" /> <!-- is +0.200 / -->
+			<entry key="centerOfMass" type="string" value="0 2.113 0.178" /><!-- ratio front/back : 60/40 - no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIH9230Crawler.xml" >
 		<!-- Real values: 571 HP@2000 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -222,6 +223,7 @@
 			<entry key="dailyUpkeep" type="number" value="940" />
 			<entry key="power" type="number" value="571" />
 			<!-- entry key="masses" type="number" value="17.055" is -0.005 / -->
+			<entry key="centerOfMass" type="string" value="0 2.224 0.096" /><!-- ratio front/back : 60/40 - no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHMagnum380.xml" >
 		<!-- Real values: 380 HP@2200 RPM, 415 HP@1800 RPM, 1850Nm@1300/1400 RPM, from constructor's technical datasheet and power/torque graph -->
@@ -510,6 +512,7 @@
 			<entry key="dailyUpkeep" type="number" value="980" />
 			<entry key="power" type="number" value="652" />
 			<entry key="masses" type="number" value="17.943" /><!-- is -0.836 -->
+			<entry key="centerOfMass" type="string" value="0 2.489 0.214" /><!-- ratio front/back : 60/40 - no exact data found -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT475.xml" >
 		<!-- Real values: 75 HP@2300 RPM, No peak power, 309Nm@1500 RPM, from constructor's technical datasheet -->
@@ -608,6 +611,7 @@
 			<entry key="dailyUpkeep" type="number" value="520" />
 			<entry key="power" type="number" value="258" />
 			<entry key="masses" type="number" value="10.75" /> <!-- is +0.5  -->
+			<entry key="centerOfMass" type="string" value="0 1.799 0.544" /><!-- ratio front/back : 60/40 - no exact data found -->
 		</vehicle>
 		
 		<!-- Ponsse -->
@@ -676,6 +680,7 @@
 			<entry key="dailyUpkeep" type="number" value="480" />
 			<entry key="power" type="number" value="185" />
 			<entry key="masses" type="number" value="6.2" /> <!-- is +1.8 -->
+			<entry key="centerOfMass" type="string" value="0 2.472 0.827" /><!-- ratio front/back : 60/40 - no exact data found -->
 		</vehicle>
 		
 		<!-- Steyr -->
