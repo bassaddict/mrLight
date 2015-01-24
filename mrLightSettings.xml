@@ -659,6 +659,7 @@
 			<entry key="power" type="number" value="193" />
 			<entry key="attacherJoint1" type="string" value="1.068 6.93 24.00 -16.00 0.417 -1.07 -17.00 17.00" />
 			<entry key="attacherJoint2" type="string" value="1.077 9.07 -33.00 25.00 0.488 1.07 15.00 -15.00" />
+			<entry key="centerOfMass" type="string" value="0 1.198 -0.266" /> <!-- ratio front/back : 45/55 - no exact data found-->
 		</vehicle>
 		
 		<!-- Sampo Rosenlew -->
