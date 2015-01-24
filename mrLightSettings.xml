@@ -729,6 +729,7 @@
 			<entry key="power" type="number" value="148" />
 			<entry key="attacherJoint1" type="string" value="0.989 7.81 40.00 -32.00 0.274 -0.19 -13.00 13.00" />
 			<entry key="attacherJoint2" type="string" value="1.008 8.19 -27.00 19.00 0.377 0.19 20.00 -20.00" />
+			<entry key="centerOfMass" type="string" value="0 1.146 0.043" /> <!-- ratio front/back : 45/55 - no exact data found-->
 		</vehicle>
 		
 		
