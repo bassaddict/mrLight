@@ -14,6 +14,9 @@ function AttachableManipulation:load(xmlFile)
 		if MrLightUtils.vehicleConfigs[self.configFileName].upperDistanceToGround ~= nil then
 			self.inputAttacherJoints[1].upperDistanceToGround = MrLightUtils.vehicleConfigs[self.configFileName].upperDistanceToGround;
 		end;
+		if MrLightUtils.vehicleConfigs[self.configFileName].rotLimitScale ~= nil then
+			self.inputAttacherJoints[1].rotLimitScale = {Utils.getVectorFromString(MrLightUtils.vehicleConfigs[self.configFileName].rotLimitScale)};
+		end;
 	end;
 	
 	

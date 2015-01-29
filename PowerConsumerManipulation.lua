@@ -12,8 +12,10 @@ function PowerConsumerManipulation:load(xmlFile)
 	
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
-		self.powerConsumer.forceNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceNode, "0>"));
-		self.powerConsumer.forceDirNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceDirNode, "0>"));
+		if MrLightUtils.vehicleConfigs[self.configFileName].maxForce ~= nil then
+			self.powerConsumer.forceNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceNode, "0>"));
+			self.powerConsumer.forceDirNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceDirNode, "0>"));
+		end;
 		self.powerConsumer.ptoRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].ptoRpm, self.powerConsumer.ptoRpm);
 		self.powerConsumer.neededPtoPower = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].neededPtoPower, self.powerConsumer.neededPtoPower);
 		self.powerConsumer.maxForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxForce, self.powerConsumer.maxForce);

@@ -793,9 +793,10 @@
 			<entry key="speedLimit" type="number" value="4" />
 			<entry key="neededPower" type="number" value="125" />
 			<entry key="neededPtoPower" type="number" value="45" />
+			<entry key="ptoRpm" type="number" value="540" />
 			<entry key="maxForce" type="number" value="10" />
 			<entry key="masses" type="number" value="1.5" /><!-- is +0.568 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.47" /> <!-- 0.458 -->
+			<entry key="lowerDistanceToGround" type="number" value="0.715" /> <!-- 0.458 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		
@@ -803,8 +804,12 @@
 		<vehicle configFile ="data/vehicles/tools/fsi/fsiST65T.xml" >
 			<entry key="neededPower" type="number" value="85" />
 			<entry key="neededPtoPower" type="number" value="53" />
+			<entry key="ptoRpm" type="number" value="540" />
 			<entry key="masses" type="number" value="0.7" /><!-- is +0.238 -->
-			<entry key="fixCraneAxis" type="bool" value="true" />
+			<!-- entry key="fixCraneAxis" type="bool" value="true" / -->
+			<entry key="lowerDistanceToGround" type="number" value="0.625" /> <!-- 0.675 -->
+			<entry key="upperDistanceToGround" type="number" value="1.5" />
+			<entry key="rotLimitScale" type="string" value="0 0 0" />
 		</vehicle>
 		
 		<!-- Grimme -->
@@ -839,7 +844,7 @@
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeKS75-4.xml" >
 			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="60" />
-			<entry key="neededPtoPower" type="number" value="25" />
+			<entry key="neededPtoPower" type="number" value="45" />
 			<!--entry key="masses" type="number" value="0.95" is +0.022 / -->
 			<entry key="lowerDistanceToGround" type="number" value="0.58" /> <!-- 0.574 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
@@ -848,12 +853,17 @@
 			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="185" />
 			<entry key="neededPtoPower" type="number" value="75" />
+			<entry key="forceNode" type="string" value="0>" />
+			<entry key="forceDirNode" type="string" value="0>" />
+			<!--entry key="forceNodePosition" type="string" value="0 0 0" / -->
+			<entry key="maxForce" type="number" value="0" />
 			<!--entry key="masses" type="number" value="8.6" is +0.026 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeSE260.xml" >
 			<entry key="speedLimit" type="number" value="10" />
 			<entry key="neededPower" type="number" value="110" />
 			<entry key="neededPtoPower" type="number" value="44" />
+			<entry key="maxForce" type="number" value="30" />
 			<entry key="masses" type="number" value="2.425" /> <!-- is +0.105 -->
 		</vehicle>
 		
