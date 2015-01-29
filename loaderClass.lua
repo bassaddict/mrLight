@@ -2,7 +2,7 @@ SpecializationUtil.registerSpecialization("mrLightUtils", "MrLightUtils", g_curr
 
 SpecializationUtil.registerSpecialization("sowingMachineManipulation", "SowingMachineManipulation", g_currentModDirectory.."SowingMachineManipulation.lua");
 SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipulation", g_currentModDirectory.."SprayerManipulation.lua");
-SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
+--SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
 --SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
 SpecializationUtil.registerSpecialization("fillableManipulation", "FillableManipulation", g_currentModDirectory.."FillableManipulation.lua");
 SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
@@ -45,9 +45,9 @@ function loaderClass:loadMap(name)
 		if SpecializationUtil.hasSpecialization(Sprayer, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("sprayerManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(ForageWagon, v.specializations) then
-			table.insert(v.specializations, SpecializationUtil.getSpecialization("forageWagonManipulation"));
-		end;
+		--if SpecializationUtil.hasSpecialization(ForageWagon, v.specializations) then
+		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("forageWagonManipulation"));
+		--end;
 		--if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
 		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
 		--end;

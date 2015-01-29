@@ -22,17 +22,18 @@ function FillableManipulation:load(xmlFile)
 	
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].capacities ~= nil then
-		self.myCapacities = Utils.getNoNil(getXMLString(xmlFile, "vehicle.capacities"), {});
-		self.myCapacities = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].capacities);
+		--self.capacities = Utils.getNoNil(getXMLString(xmlFile, "vehicle.capacities"), {});
+		self.capacities = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].capacities);
+		self.compressedCapacity = MrLightUtils.vehicleConfigs[self.configFileName].compressedCapacity;
 	
-		if #self.myCapacities == 0 then
-			self.myCapacities[1] = self.capacity;
+		if #self.capacities == 0 then
+			self.capacities[1] = self.capacity;
 		end;
 		self.fillVolumesInfo = {}
 		for k=1, MrLightUtils.numFillableClasses do
 			local capacity = 0;
-			if self.myCapacities[k] ~= nil and self.myCapacities[k] ~= 0 and self.myCapacities[k] ~= "0" then
-				capacity = tonumber(self.myCapacities[k]);
+			if self.capacities[k] ~= nil and self.capacities[k] ~= 0 and self.capacities[k] ~= "0" then
+				capacity = tonumber(self.capacities[k]);
 			end;
 			local node;
 			if self.configFileNameClean ~= nil then
@@ -108,6 +109,12 @@ function FillableManipulation:update(dt)
 		end;
 		
 		self:setCapacity(self.fillVolumesInfo[fillableClass].capacity);
+		if self.isTurnedOn then
+			if string.find(Fillable.fillTypeIndexToDesc[self.currentFillType].name, "_windrow") then
+				self:setCapacity(self.compressedCapacity);
+			end;
+		end;
+		
 		local volume;
 		local baseNode;
 		-- start
