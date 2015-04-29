@@ -5,7 +5,7 @@ function SprayerManipulation.prerequisitesPresent(specializations)
 end;
 
 function SprayerManipulation:load(xmlFile)
-	self.getWorkingWidth = SpecializationUtil.callSpecializationsFunction("getWorkingWidth");
+	--self.getWorkingWidth = SpecializationUtil.callSpecializationsFunction("getWorkingWidth");
 	
 	self.firstRunSprayerManipulation = true;
 	self.oldFillLitersPerSecond = self.fillLitersPerSecond;
@@ -37,14 +37,14 @@ function SprayerManipulation:update(dt)
 
 	if self.firstRunSprayerManipulation then
 		self.firstRunSprayerManipulation = false;
-		self:getWorkingWidth(self.workAreas, self.rootNode);
+		self.workingWidth = MrLightUtils.getWorkingWidth(self.workAreas, self.rootNode);
 	end;
 	if self.updateWorkingWidth then
 		self.updateWorkingWidth = false;
 		if self.attachedTool ~= nil then
-			self:getWorkingWidth(self.attachedTool.workAreas, self.attachedTool.rootNode);
+			self.workingWidth = MrLightUtils.getWorkingWidth(self.attachedTool.workAreas, self.attachedTool.rootNode);
 		else
-			self:getWorkingWidth(self.workAreas, self.rootNode);
+			self.workingWidth = MrLightUtils.getWorkingWidth(self.workAreas, self.rootNode);
 		end;
 		--print("working width updated: "..tostring(self.workingWidth));
 	end;
@@ -80,39 +80,5 @@ function SprayerManipulation:draw()
 	end;
 end;
 
-function SprayerManipulation:getWorkingWidth(workAreas, rootNode)
-	local minX = 1000;
-	local maxX = -1000;
-	if workAreas ~= nil then
-		for _,workArea in pairs(workAreas) do
-		
-			local x1,y1,z1 = getWorldTranslation(workArea.start)
-			local x2,y2,z2 = getWorldTranslation(workArea.width)
-			local x3,y3,z3 = getWorldTranslation(workArea.height)
-			local lx1,ly1,lz1 = worldToLocal(rootNode,x1,y1,z1)
-			local lx2,ly2,lz2 = worldToLocal(rootNode,x2,y2,z2)
-			local lx3,ly3,lz3 = worldToLocal(rootNode,x3,y3,z3)
-			
-			if lx1 < minX then
-				minX = lx1;
-			end
-			if lx1 > maxX then
-				maxX = lx1;
-			end
-			if lx2 < minX then
-				minX = lx2;
-			end
-			if lx2 > maxX then
-				maxX = lx2;
-			end
-			if lx3 < minX then
-				minX = lx3;
-			end
-			if lx3 > maxX then
-				maxX = lx3;
-			end
-		end;
-	end;
-	self.workingWidth = math.min(math.abs(maxX - minX), 50); --no wider than 50m allowed, backup to prevent insane usage in case the workingAreas aren't detected correctly.
-end;
+
 

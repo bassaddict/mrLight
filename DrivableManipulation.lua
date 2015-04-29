@@ -24,6 +24,10 @@ function DrivableManipulation:load(xmlFile)
 		local fuelCapacity = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelCapacity, self.fuelCapacity);
 		local fuelUsage = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].fuelUsage, self.fuelUsage*60*60*1000);
 		
+		
+		self.motor.brakeForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].brakeForce, self.motor.brakeForce);
+		
+		
 		if normRpms ~= nil and torques ~= nil then
 			--self.motor.torqueCurve.keyframes = {};
 			local normRpmsT = Utils.splitString(" ", normRpms);
@@ -94,19 +98,24 @@ function DrivableManipulation:load(xmlFile)
 	
 	self.wheelsRot = {};
 	self.wheelsPos = {};
+	self.numWheels = #self.wheels;
+	self.wheelsGroundContactPos = {};
 	for k,v in pairs(self.wheels) do
 		local rx,_,_ = getRotation(v.driveNode);
 		self.wheelsRot[k] = rx;
 		local x,y,z = getWorldTranslation(v.driveNode);
 		self.wheelsPos[k] = {x=x, y=y, z=z};
+		local a, b, c = getTranslation(v.driveNode)
+		self.wheelsGroundContactPos[k] = {localToWorld(v.driveNode, a, 0, c)}; --{localToWorld(v.driveNode, v.positionX, 0, v.positionZ)};
 		
-		--v.frictionScale = 5;
+		v.frictionScale = 1.5;
 		
 		v.rotPerSecond = 0;
 		v.distPerSecond = 0;
 		v.slip = 0;
 		v.slipDisplay = 0;
 	end;
+	
 	
 	self.anglePercentVehicle = 0;
 	self.anglePercentTerrain = 0;
@@ -208,13 +217,19 @@ function DrivableManipulation:update(dt)
 		if v.rotPerSecond == 0 then v.slip = 0 end;
 		v.slipDisplay = (v.slipDisplay * 0.95) + (v.slip * 0.05);
 		self.slip = self.slip + v.slipDisplay;
+		--local a, b, c = getTranslation(v.driveNode)
+		local x1,y1,z1 = worldToLocal(v.driveNode, x, y, z);
+		--print(x1, " ", y1, " ", z1);
+		
+		self.wheelsGroundContactPos[k] = {localToWorld(v.driveNode,x1,-v.radius,z1)}; --{worldToLocal(v.driveNode, x, y-v.radius, z)}; --{localToWorld(v.driveNode, v.positionX, 0, v.positionZ)};
+		--drawDebugPoint(unpack(self.wheelsGroundContactPos[k]),0,1,1,1);
 	end;
-	self.slip = self.slip / #self.wheels;
+	self.slip = self.slip / self.numWheels;
 	
 	
 	
 	
-	local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
+	--[[local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
 	local bx, by, bz = getWorldTranslation(self.backInclineNode);
 	local tfy = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, fx, fy, fz);
 	local tby = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, bx, by, bz);
@@ -223,8 +238,21 @@ function DrivableManipulation:update(dt)
 	local heightDifTerrain = tfy - tby;
 	--print(string.format("fy: %.3f, by: %.3f, heightDif: %.3f", fy, by, heightDif));
 	self.anglePercentVehicle = 100 / math.sqrt(4 - math.pow(heightDifVehicle, 2)) * heightDifVehicle;
-	self.anglePercentTerrain = 100 / math.sqrt(math.pow(dist, 2) - math.pow(heightDifTerrain, 2)) * heightDifTerrain;
+	self.anglePercentTerrain = 100 / math.sqrt(math.pow(dist, 2) - math.pow(heightDifTerrain, 2)) * heightDifTerrain;]]
+	local ax, ay, az = unpack(self.wheelsGroundContactPos[1]);
+	--print(ax, " ", ay, " ", az);
+	local bx, by, bz = unpack(self.wheelsGroundContactPos[2]);
+	local cx, cy, cz = unpack(self.wheelsGroundContactPos[4]);
 	
+	drawDebugLine(ax,ay,az,1,0,1,bx,by,bz,1,0,1); --,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
+	drawDebugLine(bx,by,bz,1,1,1,cx,cy,cz,1,1,1); --float x0,float y0,float z0,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
+	
+	local distLeftRight = Utils.vector3Length(ax-bx, ay-by, az-bz);
+	local distFrontBack = Utils.vector3Length(bx-cx, by-cy, bz-cz);
+	local yDifLeftRight = ay - by;
+	local yDifFrontBack = by - cy;
+	self.anglePercentLeftRight = 100 / math.sqrt(math.pow(distLeftRight, 2) - math.pow(yDifLeftRight, 2)) * yDifLeftRight;
+	self.anglePercentFrontBack = 100 / math.sqrt(math.pow(distFrontBack, 2) - math.pow(yDifFrontBack, 2)) * yDifFrontBack;
 end;
 
 function DrivableManipulation:toggleDifferentialLock()
@@ -244,7 +272,7 @@ end;
 function DrivableManipulation:draw()
 	if self.debugRenderDrivableManipulation then
 		setTextAlignment(RenderText.ALIGN_LEFT);
-		renderText(0.85, 0.01, 0.012, string.format("incline V: %.3f, incline T: %.3f", self.anglePercentVehicle, self.anglePercentTerrain));
+		renderText(0.85, 0.01, 0.012, string.format("incline X: %.3f, incline Z: %.3f", self.anglePercentLeftRight, self.anglePercentFrontBack));
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		
 		local i = 0;

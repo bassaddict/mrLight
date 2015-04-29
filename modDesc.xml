@@ -15,7 +15,7 @@
 	<multiplayer supported="true" />
     <extraSourceFiles>
 		<sourceFile filename="loaderClass.lua" />	
-        <!-- sourceFile filename="workSpeedUpdates.lua" / -->
+        <sourceFile filename="DynamicLoan.lua" />
     </extraSourceFiles>
 	
 	<l10n>
@@ -75,18 +75,28 @@
 			<en>toggle attacherJoint movement lock</en>
 			<de>attacherJoint Bewegungssperre an/aus</de>
 		</text>
+		<text name="WWPLUS">
+			<en>increase working width</en>
+			<de>Arbeitsbreite erhöhen</de>
+		</text>
+		<text name="WWMINUS">
+			<en>decrease working width</en>
+			<de>Arbeitsbreite verringern</de>
+		</text>
 	</l10n>
 	
 	<inputBindings>
 		<input name="SETFORCE" category="VEHICLE" key1="KEY_lctrl KEY_f" button="" />
 		<input name="SETPTOPOWER" category="VEHICLE" key1="KEY_lctrl KEY_p" button="" />
-		<input name="SETMAXRPM" category="VEHICLE" key1="KEY_lctrl KEY_m" button="" />
-		<!-- input name="SETLOWERDIST" category="VEHICLE" key1="KEY_lctrl KEY_l" button="" />
+		<!-- input name="SETMAXRPM" category="VEHICLE" key1="KEY_lctrl KEY_m" button="" />
+		<input name="SETLOWERDIST" category="VEHICLE" key1="KEY_lctrl KEY_l" button="" />
 		<input name="SETUPPERDIST" category="VEHICLE" key1="KEY_lctrl KEY_u" button="" / -->
 		<axis name="AXIS_MOVE_ATTACHERJOINT_LOWER1" category="VEHICLE" key1="KEY_j" key2="KEY_n" key3="" key4="" button="BUTTON_5" axis="AXIS_4" device="0" invert="false" mouse="MOUSE_BUTTON_LEFT" mouseAxis="y" />
 		<axis name="AXIS_MOVE_ATTACHERJOINT_LOWER2" category="VEHICLE" key1="KEY_lshift KEY_j" key2="KEY_lshift KEY_n" key3="" key4="" button="BUTTON_5 BUTTON_6" axis="AXIS_4" device="0" invert="false" mouse="MOUSE_BUTTON_LEFT MOUSE_BUTTON_RIGHT" mouseAxis="y" />
 		<axis name="AXIS_MOVE_ATTACHERJOINT_UPPER1" category="VEHICLE" key1="KEY_m" key2="KEY_k" key3="" key4="" button="BUTTON_5" axis="AXIS_3" device="0" invert="false" mouse="MOUSE_BUTTON_LEFT" mouseAxis="x" />
 		<axis name="AXIS_MOVE_ATTACHERJOINT_UPPER2" category="VEHICLE" key1="KEY_lshift KEY_m" key2="KEY_lshift KEY_k" key3="" key4="" button="BUTTON_5 BUTTON_6" axis="AXIS_3" device="0" invert="false" mouse="MOUSE_BUTTON_LEFT MOUSE_BUTTON_RIGHT" mouseAxis="x" />
 		<input name="TOGGLE_AJ_LOCK" category="VEHICLE" key1="KEY_lctrl KEY_l" button="" />
+		<input name="WWPLUS" category="VEHICLE" key1="KEY_lctrl KEY_lshift KEY_KP_plus" button="" />
+		<input name="WWMINUS" category="VEHICLE" key1="KEY_lctrl KEY_lshift KEY_KP_minus" button="" />
     </inputBindings>
 </modDesc>

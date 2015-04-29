@@ -12,6 +12,7 @@
 		<silagePriceBalancing value="1" />		<!-- default value = 1 / total multiplier = priceBalancing x silagePriceBalancing -->
 		<windrowPriceBalancing value="2.5" />		<!-- default value = 2.5 / total multiplier = priceBalancing x windrowPriceBalancing -->
 		<woodChipsPriceBalancing value="1" />
+		<woodTrunksPriceBalancing value="0.11" /> 			<!-- default value = 1 / total multiplier = priceBalancing x seedPriceBalancing -->
 	</balancing>
 	<vehicles>
 		<!-- basic empty entry
@@ -174,6 +175,7 @@
 			<entry key="masses" type="number" value="4.150" /> <!-- is -0.124  -->
 			<entry key="attacherJoint1" type="string" value="1.007 8.00 22.00 -14.00 0.372 -0.00 -13.00 13.00" />
 			<entry key="attacherJoint2" type="string" value="1.038 8.00 -50.00 42.00 0.657 0.00 -10.00 10.00" />
+			<entry key="attacherJoint4" type="string" value="20 70 90" />
 			<entry key="centerOfMass" type="string" value="0 1.02 0.037" /> <!-- no exact data found, use 45/55 ratio front back-->
 		</vehicle>
 		
@@ -256,6 +258,7 @@
 			<entry key="masses" type="number" value="6.48" /> <!-- is +1.03 -->
 			<entry key="attacherJoint1" type="string" value="1.182 7.28 32.00 -25.00 0.345 0.28 -19.24 19.24" />
 			<entry key="attacherJoint2" type="string" value="0.959 7.72 -20.00 12.00 0.471 -0.28 10.00 -10.00" />
+			<entry key="attacherJoint4" type="string" value="20 50 90" />
 			<entry key="centerOfMass" type="string" value="0 1.23 -0.32" /><!-- ratio front/back : 40/60 - dlg-test.de -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/caseIH/caseIHQuadtrac620.xml" >
@@ -309,6 +312,7 @@
 			<entry key="attacherJoint1" type="string" value="1.046 5.70 24.00 -17.00 0.396 -1.30 -20.00 20.00" />
 			<entry key="attacherJoint2" type="string" value="1.201 9.30 -30.00 22.00 0.506 1.30 20.00 -20.00" />
 			<entry key="centerOfMass" type="string" value="0 1.35 -0.006" /> <!-- ratio front/back : 38/62 - deutz-fahr.com-->
+			<!--entry key="brakeForce" type="number" value="0.1" /-->
 		</vehicle>
 		
 		<!-- Grimme -->
@@ -546,6 +550,7 @@
 			<entry key="centerOfMass" type="string" value="0 1.36 -0.33" />
 			<entry key="attacherJoint1" type="string" value="1.078 7.99 24.00 -16.00 0.435 -0.00 -13.00 13.00" />
 			<entry key="attacherJoint2" type="string" value="1.237 8.01 -33.00 25.00 0.433 0.00 20.00 -20.00" />
+			<entry key="attacherJoint4" type="string" value="20 80 180" />
 			<entry key="centerOfMass" type="string" value="0 1.187 -0.334" /> <!-- ratio front/back : 44/56 - dlg-test.de-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/steerable/newHolland/newHollandT8320.xml" >
@@ -767,8 +772,9 @@
 		<vehicle configFile ="data/vehicles/tools/amazone/amazoneCayron200.xml" >
 			<entry key="speedLimit" type="number" value="9" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="masses" type="string" value="2.225 0.2" /><!-- is +0.046, better balance between components, need to be test -->
-			<entry key="lowerDistanceToGround" type="number" value="0.42" /> <!-- 0.404 -->
+			<entry key="masses" type="string" value="1.025 1.4" /><!-- is +0.046, better balance between components, need to be test -->
+			<!-- entry key="centerOfMass" type="string" value="0 0.8 0;1.012 0.747 -3.216" / -->
+			<entry key="lowerDistanceToGround" type="number" value="0.75" /> <!-- 0.404 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 			<entry key="maxForce" type="number" value="120" />
 		</vehicle>
@@ -786,6 +792,7 @@
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="neededPtoPower" type="number" value="20" />
 			<entry key="masses" type="number" value="0.416" /><!-- is +0.145 -->
+			<entry key="workingWidths" type="string" value="24 12 36 3" /> <!-- default min max step -->
 		</vehicle>
 		
 		<!-- Damcon -->
@@ -852,11 +859,11 @@
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeRootster604.xml" >
 			<entry key="speedLimit" type="number" value="12" />
 			<entry key="neededPower" type="number" value="185" />
-			<entry key="neededPtoPower" type="number" value="75" />
+			<entry key="neededPtoPower" type="number" value="50" />
 			<entry key="forceNode" type="string" value="0>" />
 			<entry key="forceDirNode" type="string" value="0>" />
 			<!--entry key="forceNodePosition" type="string" value="0 0 0" / -->
-			<entry key="maxForce" type="number" value="0" />
+			<entry key="maxForce" type="number" value="80" />
 			<!--entry key="masses" type="number" value="8.6" is +0.026 / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/grimme/grimmeSE260.xml" >
@@ -865,6 +872,7 @@
 			<entry key="neededPtoPower" type="number" value="44" />
 			<entry key="maxForce" type="number" value="30" />
 			<entry key="masses" type="number" value="2.425" /> <!-- is +0.105 -->
+			<entry key="groundReferenceNodes" type="string" value="+, 0>0|5|0, 0 -1 2, 0.1, 1" />
 		</vehicle>
 		
 		<!-- Horsch -->
@@ -873,17 +881,24 @@
 			<entry key="masses" type="string" value="4.180 2.760" /> <!-- is -5.395, estimated ballance wagon:sower 60%:40%, total masse 6.94-->
 			<entry key="neededPower" type="number" value="180" /> <!-- 130kw / 180hp -->
 			<entry key="neededPtoPower" type="number" value="20" /><!--for pneumatic pump on hydraulic-->
+			<entry key="maxForce" type="number" value="60" />
+			<entry key="forceNode" type="string" value="1>" />
+			<entry key="forceDirNode" type="string" value="1>" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschPronto9SW.xml" >
 			<entry key="speedLimit" type="number" value="20" />
 			<entry key="masses" type="string" value="3.460 9.740" /> <!-- is +0.255, actual ballance wagon:sower -->
 			<entry key="neededPower" type="number" value="240" /> <!-- 175-240kW / 240-330HP-->
 			<entry key="neededPtoPower" type="number" value="40" /><!-- KW air turbine -->
+			<entry key="maxForce" type="number" value="80" />
+			<entry key="forceNode" type="string" value="1>" />
+			<entry key="forceDirNode" type="string" value="1>" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTerrano5FM.xml" >
 			<entry key="speedLimit" type="number" value="12" />
 			<entry key="masses" type="string" value="6.150 0.3" /> <!-- is -0.081, better balance between components -->
 			<entry key="neededPower" type="number" value="205" /> <!-- 150-220kw / 205-300hp -->
+			<entry key="maxForce" type="number" value="60" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/horsch/horschTiger10LT.xml" >
 			<entry key="speedLimit" type="number" value="14" />
@@ -897,7 +912,7 @@
 			<entry key="speedLimit" type="number" value="14" />
 			<entry key="neededPower" type="number" value="100" />
 			<!-- entry key="masses" type="number" value="1.6" />  is +0.064 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.67" /> <!-- 0.668 -->
+			<entry key="lowerDistanceToGround" type="number" value="0.775" /> <!-- 0.668 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 			<entry key="maxForce" type="number" value="25" />
 		</vehicle>
@@ -988,7 +1003,7 @@
 			<entry key="neededPtoPower" type="number" value="35" />
 			<entry key="maxForce" type="number" value="40" />
 			<entry key="masses" type="number" value="1.685" /><!-- is -0.581 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.50" /> <!-- 0.457 -->
+			<entry key="lowerDistanceToGround" type="number" value="0.70" /> <!-- 0.457 -->
 			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		
@@ -1012,9 +1027,13 @@
 			<entry key="speedLimit" type="number" value="18" />
 			<entry key="neededPower" type="number" value="180" />
 			<entry key="neededPtoPower" type="number" value="25" />
+			<entry key="ptoRpm" type="number" value="500" />
+			<entry key="maxForce" type="number" value="100" />
 			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 			<entry key="price" type="number" value="76000" />
 			<entry key="dailyUpkeep" type="number" value="18" />
+			<entry key="lowerDistanceToGround" type="number" value="0.85" />
+			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		<vehicle configFile ="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
 			<entry key="speedLimit" type="number" value="17" />
@@ -1054,6 +1073,7 @@
 			<entry key="neededPower" type="number" value="150" />
 			<entry key="neededPtoPower" type="number" value="20" />
 			<!-- entry key="masses" type="number" value="3.5" is +0.046 / -->
+			<entry key="workingWidths" type="string" value="30 24 36 3" /> <!-- default min max step -->
 		</vehicle>
 		
 		<!-- Arcusin -->
@@ -1071,7 +1091,7 @@
 			<entry key="compressedCapacity" type="number" value="67000" />
 			<entry key="speedLimit" type="number" value="17" />
 			<entry key="neededPower" type="number" value="180" /><!-- for correct pulling @max load -->
-			<entry key="neededPtoPower" type="number" value="80" /><!-- for pickup/discharge -->
+			<entry key="neededPtoPower" type="number" value="60" /><!-- for pickup/discharge -->
 			<!--entry key="masses" type="number" value="9.44" / is +0.09 -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/bergmann/bergmannHTW65.xml" >
@@ -1110,7 +1130,7 @@
 			<entry key="fillVolumesNode" type="string" value="0>6|2|3" />
 			<entry key="capacities" type="string" value="22000 22000 30000 0" />
 			<entry key="neededPower" type="number" value="210" />
-			<entry key="wheelsSpring" type="string" value="7.5 7.5 7.5 7.5" />
+			<!-- entry key="wheelsSpring" type="string" value="45 45 45 45" / -->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
 			<entry key="speedLimit" type="number" value="11" />
@@ -1148,9 +1168,10 @@
 		<!-- Krampe -->
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBandit750.xml" >
 			<entry key="fillVolumesNode" type="string" value="0>10" />
-			<entry key="capacities" type="string" value="24500 24500 40000 0" />
+			<entry key="capacities" type="string" value="26500 26500 40000 0" />
 			<entry key="neededPower" type="number" value="180" />
-			<entry key="masses" type="number" value="8.9" /><!-- is +0.994 -->
+			<entry key="masses" type="number" value="7.9" /><!-- is -0.06 -->
+			<!--entry key="brakeForce" type="number" value="100" /-->
 		</vehicle>
 		<vehicle configFile ="data/vehicles/trailers/krampe/krampeBBS900.xml" >
 			<entry key="neededPower" type="number" value="190" />
@@ -1198,7 +1219,7 @@
 		<vehicle configFile ="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" >
 			<entry key="fillVolumesNode" type="string" value="0>5" />
 			<entry key="capacities" type="string" value="21300 0 21300 0" />
-			<entry key="compressedCapacity" type="string" value="33000" />
+			<entry key="compressedCapacity" type="number" value="33000" />
 			<entry key="speedLimit" type="number" value="15" />
 			<entry key="neededPtoPower" type="number" value="40" />
 			<entry key="neededPower" type="number" value="100" />

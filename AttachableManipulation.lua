@@ -17,6 +17,8 @@ function AttachableManipulation:load(xmlFile)
 		if MrLightUtils.vehicleConfigs[self.configFileName].rotLimitScale ~= nil then
 			self.inputAttacherJoints[1].rotLimitScale = {Utils.getVectorFromString(MrLightUtils.vehicleConfigs[self.configFileName].rotLimitScale)};
 		end;
+		
+		self.brakeForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].brakeForce, self.brakeForce);
 	end;
 	
 	

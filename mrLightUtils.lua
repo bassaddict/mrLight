@@ -10,7 +10,8 @@ MrLightUtils.PriceBalanceFactors = {
 	egg = 3,
 	wool = 4,
 	woodChips = 1,
-	seed = 1
+	seed = 1,
+	woodTrunks = 0.33
 };
 MrLightUtils.PriceBalanceFactorGlobal = 1;
 
@@ -68,6 +69,10 @@ function MrLightUtils.setBalancingFactors(xmlFile)
 	if value~=nil then
 		MrLightUtils.PriceBalanceFactors.woodChips = value;
 	end;
+	value = getXMLFloat(xmlFile, xmlMainNode .. ".woodTrunksPriceBalancing#value");
+	if value~=nil then
+		MrLightUtils.PriceBalanceFactors.woodTrunks = value;
+	end;
 	print("--- MRL: balancing factors set");
 end;
 
@@ -84,32 +89,42 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 		if configFile == nil then
 			break;
 		end;
-		
-		MrLightUtils.vehicleConfigs[configFile] = {};
-		local j = 0;
-		while true do
-			local entry = string.format(vehicle..".entry(%d)", j)
-			local key = getXMLString(xmlFile, entry.."#key");
-			local vtype = getXMLString(xmlFile, entry.."#type");
-			
-			local value = nil;
-			if vtype == "number" then
-				value = getXMLFloat(xmlFile, entry.."#value");
-			elseif vtype == "string" then
-				value = getXMLString(xmlFile, entry.."#value");
-			elseif vtype == "bool" then
-				value = getXMLBool(xmlFile, entry.."#value");
+		if Utils.startsWith(configFile, "$pdlcdir$") then
+			local tmp = string.gfind(string.gsub(configFile, "$pdlcdir$", ""), "%w+/")
+			if getfenv(0)["pdlc_"..tmp] == nil then
+				configFile = nil;
+			else
+				--TODO
 			end;
+		end;
+		if configFile ~= nil then
+			MrLightUtils.vehicleConfigs[configFile] = {};
+			local j = 0;
+			while true do
+				local entry = string.format(vehicle..".entry(%d)", j)
+				local key = getXMLString(xmlFile, entry.."#key");
+				local vtype = getXMLString(xmlFile, entry.."#type");
 			
-			if key == nil or value == nil then
-				break;
+				local value = nil;
+				if vtype == "number" then
+					value = getXMLFloat(xmlFile, entry.."#value");
+				elseif vtype == "string" then
+					value = getXMLString(xmlFile, entry.."#value");
+				elseif vtype == "bool" then
+					value = getXMLBool(xmlFile, entry.."#value");
+				end;
+			
+				if key == nil or value == nil then
+					break;
+				end;
+				MrLightUtils.vehicleConfigs[configFile][key] = value;
+				j = j + 1;
 			end;
-			MrLightUtils.vehicleConfigs[configFile][key] = value;
-			j = j + 1;
 		end;
 		i = i + 1;
 	end;
-	print("--- MRL: cehicle configs loaded");
+
+	print("--- MRL: vehicle configs loaded");
 end;
 
 function MrLightUtils.setStoreData()
@@ -135,6 +150,11 @@ function MrLightUtils.setStoreData()
 			StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower = Utils.getNoNil(tonumber(v.neededPower), StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower);
 		end;
 	end;
+	
+	StoreItemsUtil.storeItemsByXMLFilename.cow.dailyUpkeep = 15; --default 40
+	StoreItemsUtil.storeItemsByXMLFilename.sheep.dailyUpkeep = 1.6; --default 20
+	StoreItemsUtil.storeItemsByXMLFilename.chicken.dailyUpkeep = 0.5; --default 1
+	
 	print("--- MRL: store data set");
 end;
 
@@ -327,6 +347,12 @@ function MrLightUtils.setFruitUtilInfos(fruitName)
 	end;
 end;
 
+function MrLightUtils.setWoodTrunksPrice()
+	for _,splitType in pairs(SplitUtil.splitTypes) do
+		splitType.pricePerLiter = splitType.pricePerLiter * MrLightUtils.PriceBalanceFactorGlobal * MrLightUtils.PriceBalanceFactors.woodTrunks;
+	end;
+end;
+
 function MrLightUtils.setFruitData(newGame)
 	MrLightUtils.setFillableInfos("fertilizer", true);
 	MrLightUtils.setFillableInfos("fuel", true);
@@ -339,6 +365,8 @@ function MrLightUtils.setFruitData(newGame)
 	for k, fruitType in pairs(FruitUtil.fruitTypes) do
 		MrLightUtils.setFruitUtilInfos(fruitType.name)
 	end;
+	
+	MrLightUtils.setWoodTrunksPrice();
 	print("--- MRL: fruit data set");
 end;
 
@@ -421,6 +449,49 @@ end;
 
 
 
+--**********************************************--
+--*   get working width from workAreas table   *--
+--**********************************************--
+function MrLightUtils.getWorkingWidth(workAreas, rootNode)
+	local minX = 1000;
+	local maxX = -1000;
+	if workAreas ~= nil then
+		for _,workArea in pairs(workAreas) do
+		
+			local x1,y1,z1 = getWorldTranslation(workArea.start)
+			local x2,y2,z2 = getWorldTranslation(workArea.width)
+			local x3,y3,z3 = getWorldTranslation(workArea.height)
+			local lx1,ly1,lz1 = worldToLocal(rootNode,x1,y1,z1)
+			local lx2,ly2,lz2 = worldToLocal(rootNode,x2,y2,z2)
+			local lx3,ly3,lz3 = worldToLocal(rootNode,x3,y3,z3)
+			
+			if lx1 < minX then
+				minX = lx1;
+			end
+			if lx1 > maxX then
+				maxX = lx1;
+			end
+			if lx2 < minX then
+				minX = lx2;
+			end
+			if lx2 > maxX then
+				maxX = lx2;
+			end
+			if lx3 < minX then
+				minX = lx3;
+			end
+			if lx3 > maxX then
+				maxX = lx3;
+			end
+		end;
+	end;
+	return math.min(math.abs(maxX - minX), 50); --no wider than 50m allowed, backup to prevent insane values in case the workAreas aren't detected correctly.
+end;
+
+
+
+
+
 --*******************************--
 --*   set correct bale masses   *--
 --*******************************--
@@ -469,6 +540,7 @@ g_careerScreen.saveSavegame = function(self, savegame)
 			setXMLFloat(xmlFile, "settings.balancing.silagePriceBalancing#value", MrLightUtils.PriceBalanceFactors.silage);
 			setXMLFloat(xmlFile, "settings.balancing.windrowPriceBalancing#value", MrLightUtils.PriceBalanceFactors.windrow);
 			setXMLFloat(xmlFile, "settings.balancing.woodChipsPriceBalancing#value", MrLightUtils.PriceBalanceFactors.woodChips);
+			setXMLFloat(xmlFile, "settings.balancing.woodTrunksPriceBalancing#value", MrLightUtils.PriceBalanceFactors.woodTrunks);
 			saveXMLFile(xmlFile);
 		end;
 	end;

@@ -38,7 +38,7 @@ function FillableManipulation:load(xmlFile)
 			local node;
 			if self.configFileNameClean ~= nil then
 				local path = MrLightUtils.modDir.."fillVolumes/"..self.configFileNameClean.."_"..k..".i3d";
-				print(" --> path: "..path);
+				--print(" --> path: "..path);
 				if fileExists(path) then
 					local i3dNode = Utils.loadSharedI3DFile(path, "", true, true);
 					local linkNode = Utils.indexToObject(self.components, MrLightUtils.vehicleConfigs[self.configFileName].fillVolumesNode);
@@ -59,7 +59,7 @@ function FillableManipulation:load(xmlFile)
 			if node == nil and #self.fillVolumes ~= 0 then
 				node = self.fillVolumes[1].baseNode;
 			end;
-			print(" --> node: "..node);
+			--print(" --> node: "..node);
 			self.fillVolumesInfo[k] = {capacity = capacity, baseNode = node};
 			
 		end;
@@ -98,18 +98,30 @@ end;
 
 function FillableManipulation:update(dt)
 
-	if self.lastCurrentFillType ~= self.currentFillType and self.fillVolumesInfo~= nil and #self.fillVolumes ~= 0 then
-		
+	if self.actualFillLevel ~= nil and self.actualFillType ~= nil then
+		local fillTypeInt = Fillable.fillTypeNameToInt[self.actualFillType];
+		if fillTypeInt ~= nil then
+			self:setFillLevel(self.actualFillLevel, fillTypeInt);
+		end;
+		self.actualFillLevel = nil;
+		self.actualFillType = nil;
+		--print(self.configFileNameClean);
+	end;
+	
+	if not self.firstRunFillableManipulation and self.lastCurrentFillType ~= self.currentFillType and self.fillVolumesInfo~= nil and #self.fillVolumes ~= 0 then
+		--print(self.configFileNameClean);
 		local fillableClass;
+		--print(self.currentFillType);
 		if Fillable.fillTypeIndexToDesc[self.currentFillType] ~= nil then
 			fillableClass = Fillable.fillTypeIndexToDesc[self.currentFillType].fillableClass;
 		end;
 		if fillableClass == nil then
+			--print("fillableClass UNKNOWN");
 			fillableClass = MrLightUtils.FILLABLE_CLASS_UNKNOWN;
 		end;
 		
 		self:setCapacity(self.fillVolumesInfo[fillableClass].capacity);
-		if self.isTurnedOn then
+		if Fillable.fillTypeIndexToDesc[self.currentFillType] ~= nil then--if self.isTurnedOn then
 			if string.find(Fillable.fillTypeIndexToDesc[self.currentFillType].name, "_windrow") then
 				self:setCapacity(self.compressedCapacity);
 			end;
@@ -144,17 +156,12 @@ function FillableManipulation:update(dt)
 		self:setFillLevel(fillLevel, fillType, true);
 		-- end
 		
-		if self.actualFillLevel ~= nil and self.actualFillType ~= nil then
-			local fillTypeInt = Fillable.fillTypeNameToInt[self.actualFillType];
-			if fillTypeInt ~= nil then
-				self:setFillLevel(self.actualFillLevel, fillTypeInt);
-			end;
-			self.actualFillLevel = nil;
-			self.actualFillType = nil;
-		end;
 		self.lastCurrentFillType = self.currentFillType;
 	end;
 	
+	if self.firstRunFillableManipulation then 
+		self.firstRunFillableManipulation = not self.firstRunFillableManipulation;
+	end;
 end;
 
 function FillableManipulation:draw()

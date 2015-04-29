@@ -7,6 +7,7 @@ end;
 function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
+	print("configFileName: " .. self.configFileName);
 	
 	
 		--local jointEntry = MrLightUtils.vehicleConfigs[self.configFileName]["attacherJoint"..tostring(i)];
@@ -15,37 +16,29 @@ function VehicleManipulation:load(xmlFile)
 			local jointNumber = "attacherJoint"..tostring(i);
 			
 			if MrLightUtils.vehicleConfigs[self.configFileName][jointNumber] ~= nil then
-				local jointSettings = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
-				attacherJoint.minRotDistanceToGround = jointSettings[1];
-				attacherJoint.minRotRotationOffset = math.rad(jointSettings[2]);
-				attacherJoint.minRot[1] = math.rad(jointSettings[3]);
-				attacherJoint.minRot2[1] = math.rad(jointSettings[4]);
-				attacherJoint.maxRotDistanceToGround = jointSettings[5];
-				attacherJoint.maxRotRotationOffset = math.rad(jointSettings[6]);
-				attacherJoint.maxRot[1] = math.rad(jointSettings[7]);
-				attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
-				
-				attacherJoint.bottomArm.translationNode = nil;
-				attacherJoint.isFixed = true;
+				if attacherJoint.jointType == Vehicle.JOINTTYPE_IMPLEMENT then
+					local jointSettings = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
+					attacherJoint.minRotDistanceToGround = jointSettings[1];
+					attacherJoint.minRotRotationOffset = math.rad(jointSettings[2]);
+					attacherJoint.minRot[1] = math.rad(jointSettings[3]);
+					attacherJoint.minRot2[1] = math.rad(jointSettings[4]);
+					attacherJoint.maxRotDistanceToGround = jointSettings[5];
+					attacherJoint.maxRotRotationOffset = math.rad(jointSettings[6]);
+					attacherJoint.maxRot[1] = math.rad(jointSettings[7]);
+					attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
+					
+					attacherJoint.bottomArm.translationNode = nil;
+					attacherJoint.isFixed = true;
+				elseif attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILERLOW or attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILER then
+					local jointSettings = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
+					attacherJoint.maxRotLimit[1] = math.rad(jointSettings[1]);
+					attacherJoint.maxRotLimit[2] = math.rad(jointSettings[2]);
+					attacherJoint.maxRotLimit[3] = math.rad(jointSettings[3]);
+				end;
 			end;
 		end;
 		
-		--[[if MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring ~= nil then
-			local wheelsSpringT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring);
-			if #wheelsSpringT == #self.wheels then
-				for k,v in pairs(self.wheels) do
-					v.spring = wheelsSpringT[k] * 10;
-					
-					
-					local collisionMask = 255 - 4; -- all up to bit 8, except bit 2 which is set by the players kinematic object
-					print(string.format("node %d, x %.4f, y %.4f, z %.4f, radius %.4f, suspTravel %.4f, radius %.4f, spring %.4f, damper %.4f, mass %.4f, collisionMask %d, wheelShape %d", v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.radius, v.spring, v.damper, v.mass, collisionMask, v.wheelShape));
-					--v.wheelShape = createWheelShape(v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.radius, v.spring, v.damper, v.mass, collisionMask, v.wheelShape);
-					
-				end;
-			else
-				print("WARNING: number of wheelsSpring elements not equal number of wheels for vehicle "..self.configFileName);
-			end;
-		end;]]
+		
 	end;
 	
 	self.isDrivable = SpecializationUtil.hasSpecialization(Drivable, self.specializations);
@@ -54,7 +47,7 @@ function VehicleManipulation:load(xmlFile)
 		self.moveLowerJointAxis2 = InputBinding.AXIS_MOVE_ATTACHERJOINT_LOWER2;
 		self.moveUpperJointAxis1 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER1;
 		self.moveUpperJointAxis2 = InputBinding.AXIS_MOVE_ATTACHERJOINT_UPPER2;
-		self.isSelectable = true;
+		--self.isSelectable = true;
 		self.attacherJointMovementLocked = true;
 	end;
 	
@@ -110,6 +103,26 @@ function VehicleManipulation:update(dt)
 					end;
 				else
 					print("WARNING: number of \"centerOfMass\" parts in configFile not equals number of components for vehicle "..self.configFileName);
+				end;
+			end;
+			
+			if MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring ~= nil then
+				local wheelsSpringT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring);
+				if #wheelsSpringT == #self.wheels then
+					for k,v in pairs(self.wheels) do
+						v.spring = wheelsSpringT[k] * 10;
+						local widthBak = v.width;
+						print(widthBak);
+						--delete(v.wheelShape);
+						
+						local collisionMask = 255 - 4; -- all up to bit 8, except bit 2 which is set by the players kinematic object
+						
+						v.wheelShape = createWheelShape(v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.spring, v.damper, v.mass, collisionMask, v.wheelShape);
+						v.width = widthBak;
+						print(string.format("node %d, x %.4f, y %.4f, z %.4f, radius %.4f, suspTravel %.4f, width %.4f, spring %.4f, damper %.4f, mass %.4f, collisionMask %d, wheelShape %d", v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.width, v.spring, v.damper, v.mass, collisionMask, v.wheelShape));
+					end;
+				else
+					print("WARNING: number of wheelsSpring elements not equal number of wheels for vehicle "..self.configFileName);
 				end;
 			end;
 			

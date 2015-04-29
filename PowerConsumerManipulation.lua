@@ -19,6 +19,35 @@ function PowerConsumerManipulation:load(xmlFile)
 		self.powerConsumer.ptoRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].ptoRpm, self.powerConsumer.ptoRpm);
 		self.powerConsumer.neededPtoPower = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].neededPtoPower, self.powerConsumer.neededPtoPower);
 		self.powerConsumer.maxForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxForce, self.powerConsumer.maxForce);
+		
+		if MrLightUtils.vehicleConfigs[self.configFileName].groundReferenceNodes ~= nil then
+			local refNodesInfoT = Utils.splitString(";", MrLightUtils.vehicleConfigs[self.configFileName].groundReferenceNodes);
+			self.groundReferenceNodes = {};
+			for _,refNodeInfo in pairs(refNodesInfoT) do
+				local refNodeT = Utils.splitString(",", refNodeInfo);
+				local refNodeIndex;
+				local threshold;
+				local workArea;
+				if refNodeT[1] == "+" then
+					refNodeIndex = createTransformGroup("refNodeIndex");
+					link(Utils.indexToObject(self.components, refNodeT[2]), refNodeIndex);
+					setTranslation(refNodeIndex, Utils.getVectorFromString(refNodeT[3]));
+					threshold = tonumber(refNodeT[4]);
+					workArea = tonumber(refNodeT[5]);
+				else
+					refNodeIndex = Utils.indexToObject(self.components, refNodeT[1]);
+					threshold = tonumber(refNodeT[2]);
+					workArea = tonumber(refNodeT[3]);
+				end;
+				table.insert(self.groundReferenceNodes, {node=refNodeIndex, threshold=threshold, isActive=true, chargeValue=(1/#refNodesInfoT)});
+				if workArea > 0 then
+					self.workAreas[workArea].refNode = self.groundReferenceNodes[#self.groundReferenceNodes];
+				end;
+			end;
+			
+			self.powerConsumer.forceNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceNode, "0>"));
+			self.powerConsumer.forceDirNode = Utils.indexToObject(self.components, Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].forceDirNode, "0>"));
+		end;
 	end;
 	
 	self.debugRenderPowerConsumerManipulation = false;
