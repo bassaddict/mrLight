@@ -7,7 +7,8 @@ SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipul
 SpecializationUtil.registerSpecialization("fillableManipulation", "FillableManipulation", g_currentModDirectory.."FillableManipulation.lua");
 SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
 SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
-SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
+--SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
+SpecializationUtil.registerSpecialization("motorizedManipulation", "MotorizedManipulation", g_currentModDirectory.."MotorizedManipulation.lua");
 SpecializationUtil.registerSpecialization("drivableManipulation", "DrivableManipulation", g_currentModDirectory.."DrivableManipulation.lua");
 SpecializationUtil.registerSpecialization("vehicleManipulation", "VehicleManipulation", g_currentModDirectory.."VehicleManipulation.lua");
 SpecializationUtil.registerSpecialization("cylinderedManipulation", "CylinderedManipulation", g_currentModDirectory.."CylinderedManipulation.lua");
@@ -61,8 +62,11 @@ function loaderClass:loadMap(name)
 		if SpecializationUtil.hasSpecialization(PowerConsumer, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("powerConsumerManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
-			table.insert(v.specializations, SpecializationUtil.getSpecialization("workSpeedUpdates"));
+		--if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
+		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("workSpeedUpdates"));
+		--end;
+		if SpecializationUtil.hasSpecialization(Motorized, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("motorizedManipulation"));
 		end;
 		if SpecializationUtil.hasSpecialization(Drivable, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("drivableManipulation"));

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="3750" maxForwardSpeed="141" minForwardSpeed="7" maxBackwardSpeed="35" minBackwardSpeed="7" brakeForce="2.73" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1">
+        <torque normRpm="0.26" torque="0.42"/>
+        <torque normRpm="0.36" torque="0.46"/>
+        <torque normRpm="0.47" torque="0.55"/>
+        <torque normRpm="0.67" torque=".051"/>
+        <torque normRpm="0.82" torque="0.46"/>
+        <torque normRpm="1" torque="0.43"/>
+    </motor>
+
+    <fuelCapacity>132</fuelCapacity>
+    <fuelUsage>24</fuelUsage>
+</vehicle>

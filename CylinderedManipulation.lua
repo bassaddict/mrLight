@@ -54,7 +54,7 @@ end;
 
 function CylinderedManipulation:update(dt)
 
-	if self.firstRunCylinderedManipulation then
+	--[[if self.firstRunCylinderedManipulation then
 		self.firstRunCylinderedManipulation = false;
 		--print("--CylinderedManipulation first update "..self.configFileName);
 		
@@ -79,7 +79,7 @@ function CylinderedManipulation:update(dt)
 				end;
 			end;
 		end;
-	end;
+	end;]]
 	
 end;
 

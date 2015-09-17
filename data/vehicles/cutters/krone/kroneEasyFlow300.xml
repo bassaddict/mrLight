@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="12" />
+
+    <components> <!--  is +0.324, data from MR DLCs -->
+        <component1 mrlMass="1.25" />
+    </components>
+</vehicle>

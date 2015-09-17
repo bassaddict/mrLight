@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="18" />
+
+    <wheels>
+        <wheel frictionScale="0.867" />
+        <wheel frictionScale="0.867" />
+        <wheel frictionScale="1.0" />
+        <wheel frictionScale="1.0" />
+    </wheels>
+
+    <!-- recommended horsepower by manufacturer: 180 - 300 -->
+    <powerConsumer mrlBaseForce="1.5" mrlBaseForceFactor="6"/> <!-- 6m working width, base force per meter -->
+
+    <inputAttacherJoints>
+        <inputAttacherJoint lowerDistanceToGround="0.525" upperDistanceToGround="1.0" />
+    </inputAttacherJoints>
+	
+    <components>
+        <component1 mrlMass="5.9" />
+        <component2 mrlMass="0.125" />
+    </components>
+</vehicle>

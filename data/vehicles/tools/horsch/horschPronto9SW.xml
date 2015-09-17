@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="30" forceNode="1>" mrlBaseForce="1.5" mrlBaseForceFactor="9" />
+	<!-- base force per meter -->
+	
+    <speedLimit value="20" />
+
+    <wheels>
+        <wheel frictionScale="1.175" />
+        <wheel frictionScale="1.175" />
+        <wheel frictionScale="1.0" />
+        <wheel frictionScale="1.0" />
+    </wheels>
+
+    <groundReferenceNodes>
+        <groundReferenceNode mrlOrigNode="1" index="1>2|10|2" threshold="0.2" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="2" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="3" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="4" chargeValue="1" mrlNormalizeChargeValue="false" />
+    </groundReferenceNodes>
+
+    <components>
+        <component1 mrlMass="3.46" /> <!-- main -->
+        <component2 mrlMass="9.74" />   <!-- sower -->
+    </components>
+</vehicle>

@@ -7,7 +7,97 @@ end;
 function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
-	print("configFileName: " .. self.configFileName);
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].xmlFile ~= nil then
+		local xmlPath = MrLightUtils.modDir .. "" .. MrLightUtils.vehicleConfigs[self.configFileName].xmlFile;
+		xmlFile = loadXMLFile("settings", xmlPath);
+	end;
+	
+	self.realSpeedLimit = getXMLFloat(xmlFile, "vehicle.speedLimit#value");
+	
+	--print(self.configFileName);
+	local numWheels = #self.wheels;
+	for i=1, numWheels do
+		local wheelnamei = string.format("vehicle.wheels.wheel(%d)", self.wheels[i].xmlIndex);
+		self.wheels[i].frictionScale = Utils.getNoNil(getXMLFloat(xmlFile, wheelnamei .. "#frictionScale"), self.wheels[i].frictionScale);
+		--print("    " .. tostring(self.wheels[i].frictionScale));
+		self:updateWheelTireFriction(self.wheels[i]);
+		--print("    " .. tostring(self.wheels[i].frictionScale));
+	end;
+	
+	local numComponents = #self.components;
+	self.componentMasses = {};
+	for i=1, numComponents do
+		local namei = string.format("vehicle.components.component%d", i);
+		if not hasXMLProperty(xmlFile, namei) then
+			break;
+            --print("Warning: " .. namei .. " not found in '"..self.configFileName.."'");
+        end;
+		
+		self.componentMasses[i] = getXMLFloat(xmlFile, namei .. "#mrlMass");
+		
+		local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, namei .. "#centerOfMass"));
+        if x ~= nil and y ~= nil and z ~= nil then
+            setCenterOfMass(self.components[i].node, x, y, z);
+            self.components[i].centerOfMass = { x, y, z };
+        end;
+	end;
+	
+	local i=0;
+	while true do
+        local baseName = string.format("vehicle.attacherJoints.attacherJoint(%d)", i);
+		local mrlType = getXMLString(xmlFile, baseName.."#mrlType");
+		if mrlType == nil then
+			break;
+		end;
+        local mrlOrigJointIndex = getXMLInt(xmlFile, baseName.. "#mrlOrigJointIndex");
+		local attacherJoint = self.attacherJoints[mrlOrigJointIndex];
+		if mrlOrigJointIndex ~= nil and attacherJoint ~= nil then
+			if mrlType == "3pt" then
+				--minRot + maxRot
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRot"));
+				attacherJoint.maxRot = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minRot"));
+				attacherJoint.minRot = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+				
+				--minRot2 + maxRot2
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRot2"));
+				attacherJoint.maxRot2 = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minRot2"));
+				attacherJoint.minRot2 = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+				
+				--distance to ground + rotation offsets
+				attacherJoint.maxRotDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#maxRotDistanceToGround"), 0.7);
+				attacherJoint.minRotDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#minRotDistanceToGround"), 1.0);
+				attacherJoint.maxRotRotationOffset = math.rad(Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#maxRotRotationOffset"), 0));
+				attacherJoint.minRotRotationOffset = math.rad(Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#minRotRotationOffset"), 8));
+				
+				attacherJoint.bottomArm.translationNode = nil;
+			elseif mrlType == "trailer" then
+				--rotation limit for trailer attacher joints
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRotLimit"));
+				attacherJoint.maxRotLimit[1] = math.rad(math.abs(Utils.getNoNil(x, 0)));
+				attacherJoint.maxRotLimit[2] = math.rad(math.abs(Utils.getNoNil(y, 0)));
+				attacherJoint.maxRotLimit[3] = math.rad(math.abs(Utils.getNoNil(z, 0)));
+			end;
+		end;
+		if self.attacherJoints[i+1] ~= nil then
+			self.attacherJoints[i+1].isFixed = Utils.getNoNil(getXMLBool(xmlFile, baseName.."#mrlIsFixed"), false);
+		end;
+		
+        i = i + 1;
+    end;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	--print("configFileName: " .. self.configFileName);
 	
 	
 		--local jointEntry = MrLightUtils.vehicleConfigs[self.configFileName]["attacherJoint"..tostring(i)];
@@ -28,6 +118,11 @@ function VehicleManipulation:load(xmlFile)
 					attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
 					
 					attacherJoint.bottomArm.translationNode = nil;
+					--attacherJoint.allowsJointLimitMovement = false;
+					--attacherJoint.allowsJointLimitMovementMod = true;
+					--attacherJoint.jointTransform = nil;
+					--attacherJoint.transLimitDamping = {0, 0, 0};
+					attacherJoint.maxTransLimit = {0, 0.2, 0};
 					attacherJoint.isFixed = true;
 				elseif attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILERLOW or attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILER then
 					local jointSettings = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName][jointNumber]);
@@ -54,7 +149,7 @@ function VehicleManipulation:load(xmlFile)
 	self.counter = 100;
 	self.debugLowerDistanceToGround = 0;
 	self.debugUpperDistanceToGround = 1.5;
-	self.debugVehicleManipulation = false;
+	self.debugVehicleManipulation = true;
 	self.debugRenderVehicleManipulation = true;
 end;
 
@@ -71,25 +166,39 @@ function VehicleManipulation:update(dt)
 
 	if self.firstRunVehicleManipulation then
 		self.firstRunVehicleManipulation = false;
-		--print("--VehicleManipulation first update "..self.configFileName);
+		if self.realSpeedLimit ~= nil then
+			self.speedLimit = self.realSpeedLimit;
+		end;
+		
+		if self.isServer then
+			for i=1, #self.components do
+				if self.componentMasses[i] ~= nil then
+					setMass(self.components[i].node, self.componentMasses[i]);
+				end;
+			end;
+		end;
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 			local numComponents = #self.components;
 			if MrLightUtils.vehicleConfigs[self.configFileName].masses ~= nil then
-				--print("--VehicleManipulation vehicle exists, masses exists, "..self.configFileName);
 				if numComponents > 1 then
 					local massesT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].masses);
 					if #massesT == numComponents then
 						for k,v in pairs(massesT) do
-							--print("--VehicleManipulation set mass multiple components "..tostring(v));
 							setMass(self.components[k].node, tonumber(v));
-							--print("--mass: "..tostring(getMass(self.components[k].node)));
 						end;
 					else
 						print("WARNING: number of masses in configFile not equals number of components for vehicle "..self.configFileName);
 					end;
 				elseif numComponents == 1 then
-					--print("--VehicleManipulation set mass single component");
 					setMass(self.rootNode, MrLightUtils.vehicleConfigs[self.configFileName].masses);
 				end;
 			end;
@@ -106,6 +215,15 @@ function VehicleManipulation:update(dt)
 				end;
 			end;
 			
+			if MrLightUtils.vehicleConfigs[self.configFileName].wheelsFrictionScale ~= nil then
+				local wheelsFrictionScaleT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].wheelsFrictionScale);
+				if #wheelsFrictionScaleT == #self.wheels then
+					for k,v in pairs(self.wheels) do
+						v.frictionScale = wheelsFrictionScaleT[k];
+					end;
+				end;
+			end;
+			
 			if MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring ~= nil then
 				local wheelsSpringT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].wheelsSpring);
 				if #wheelsSpringT == #self.wheels then
@@ -113,7 +231,6 @@ function VehicleManipulation:update(dt)
 						v.spring = wheelsSpringT[k] * 10;
 						local widthBak = v.width;
 						print(widthBak);
-						--delete(v.wheelShape);
 						
 						local collisionMask = 255 - 4; -- all up to bit 8, except bit 2 which is set by the players kinematic object
 						
@@ -127,16 +244,16 @@ function VehicleManipulation:update(dt)
 			end;
 			
 		end;
+		
+		--[[print(self.configFileName);
+		for k,v in pairs(self.wheels) do
+			self:updateWheelTireFriction(v);
+			print("    friction: " .. v.frictionScale);
+		end;]]
 	end;
 	
 	self.counter = self.counter - 1;
 	if self.counter == 0 and self.debugVehicleManipulation then
-		--[[if self.attacherJoints[1] ~= nil and self.attacherJoints[1].jointTransform ~= nil then
-			local x,y,z = getWorldTranslation(self.attacherJoints[1].jointTransform);
-			local terrainHeight = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x, 300, z);
-			local dif = y - terrainHeight;
-			print("dif: "..tostring(dif)..", vehicle: "..tostring(self.configFileName));
-		end;]]
 		
 		local groundRaycastResult = {
 			raycastCallback = function (self, transformId, x, y, z, distance)
@@ -171,37 +288,6 @@ function VehicleManipulation:update(dt)
 					attacherJoint.useTODO = true;
 				end;
 				
-				--[[local offset = math.rad(0.05); --2 * math.pi / 360;
-				local sign = 1;
-				local pos = 1;
-				local c = 0;
-				if attacherJoint.maxRot[1] < attacherJoint.minRot[1] then sign = -1 else sign = 1 end;
-				
-				local minRotOrig = attacherJoint.minRot[1];
-				local minRot2Orig = attacherJoint.minRot2[1];
-				attacherJoint.minRotDistanceToGround = 0;
-				-- set min rot
-				--while attacherJoint.minRotDistanceToGround < 1 do
-				while true do
-					if attacherJoint.minRotDistanceToGround > 0.999 and attacherJoint.minRotDistanceToGround < 1.001 then
-						print("break min in iteration: "..tostring(c));
-						break;
-					end;
-					if attacherJoint.minRotDistanceToGround > 1 then pos = -1 else pos = 1 end;
-					if attacherJoint.rotationNode ~= nil then
-						attacherJoint.minRot[1] = minRotOrig - (pos * sign * c * offset);
-						setRotation(attacherJoint.rotationNode, unpack(attacherJoint.minRot));
-					end
-					if attacherJoint.rotationNode2 ~= nil then
-						attacherJoint.minRot2[1] = minRot2Orig + (pos * sign * c * offset);
-						setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.minRot2));
-					end
-					local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
-					groundRaycastResult.groundDistance = 0;
-					raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
-					attacherJoint.minRotDistanceToGround = groundRaycastResult.groundDistance;
-					c = c + 1;
-				end;]]
 				if attacherJoint.rotationNode ~= nil then
 					setRotation(attacherJoint.rotationNode, unpack(attacherJoint.minRot));
 				end;
@@ -222,32 +308,6 @@ function VehicleManipulation:update(dt)
 				attacherJoint.minRotRotationOffset = math.rad(angle);
 				
 				
-				--[[c = 0;
-				local maxRotOrig = attacherJoint.maxRot[1];
-				local maxRot2Orig = attacherJoint.maxRot2[1];
-				attacherJoint.maxRotDistanceToGround = 10;
-				-- set max rot
-				--while attacherJoint.maxRotDistanceToGround > 0.7 do
-				while true do
-					if attacherJoint.maxRotDistanceToGround > 0.379 and attacherJoint.maxRotDistanceToGround < 0.381 then
-						print("break max in iteration: "..tostring(c));
-						break;
-					end;
-					if attacherJoint.maxRotDistanceToGround < 0.7 then pos = -1 else pos = 1 end;
-					if attacherJoint.rotationNode ~= nil then
-						attacherJoint.maxRot[1] = maxRotOrig + (pos * sign * c * offset);
-						setRotation(attacherJoint.rotationNode, unpack(attacherJoint.maxRot));
-					end
-					if attacherJoint.rotationNode2 ~= nil then
-						attacherJoint.maxRot2[1] = maxRot2Orig - (pos * sign * c * offset);
-						setRotation(attacherJoint.rotationNode2, unpack(attacherJoint.maxRot2));
-					end
-					local x,y,z = getWorldTranslation(attacherJoint.jointTransform);
-					groundRaycastResult.groundDistance = 0;
-					raycastClosest(x, y, z, 0, -1, 0, "raycastCallback", 4, groundRaycastResult);
-					attacherJoint.maxRotDistanceToGround = groundRaycastResult.groundDistance;
-					c = c + 1;
-				end;]]
 				if attacherJoint.useTODO == nil then
 					local brx,bry,brz = getRotation(attacherJoint.bottomArm.rotationNode);
 					attacherJoint.maxRot = {brx, bry, brz};
@@ -297,39 +357,6 @@ function VehicleManipulation:update(dt)
 			setRotation(attacherJoint.jointTransform, trx, try, trz);
 		end;
 		
-		
-		--[[for k,v in pairs(self.attacherJoints) do
-			if v.bottomArm ~= nil then
-				local difMinDist = 1;
-				local difMaxDist = 0.7;
-				local i = 0;
-				local offset = math.rad(1); --2 * math.pi / 360;
-				local sign = 1;
-				if v.maxRot[1] < v.minRot[1] then sign = -1 else sign = 1 end;
-				while difMinDist > 0.7 do --make sure lower distance to ground is 0.7 or smaller
-					setRotation(v.rotationNode, (v.maxRot[1] + (sign * i * offset)), v.maxRot[2], v.maxRot[3]);
-					local x,y,z = getWorldTranslation(v.jointTransform);
-					local terrainHeight = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x, 300, z);
-					difMinDist = y - terrainHeight;
-					i = i + 1;
-				end;
-				v.maxRot[1] = v.maxRot[1] + (sign * i * offset);
-				v.maxRotDistanceToGround = difMinDist;
-				
-				
-				i = 0;
-				while difMaxDist < 1 do --make sure upper distance to ground is 1 or bigger
-					setRotation(v.rotationNode, (v.minRot[1] - (sign * i * offset)), v.minRot[2], v.minRot[3]);
-					local x,y,z = getWorldTranslation(v.jointTransform);
-					local terrainHeight = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, x, 300, z);
-					difMaxDist = y - terrainHeight;
-					i = i + 1;
-				end;
-				v.minRot[1] = v.minRot[1] - (sign * i * offset);
-				v.minRotDistanceToGround = difMaxDist;
-				
-			end;
-		end;]]
 	end;
 	
 	if (InputBinding.hasEvent(InputBinding.TOGGLE_AJ_LOCK)) then
@@ -352,8 +379,6 @@ function VehicleManipulation:update(dt)
 				moveDeltaL = 0.25 / (1000 / dt); --0.25m/s
 			end;
 			
-			
-			
 			local aj = self.selectedImplement.object.attacherJoint;
 			local ajs = self.attacherJoints[self.selectedImplement.jointDescIndex];
 			
@@ -369,6 +394,37 @@ function VehicleManipulation:update(dt)
 		end;
 	end;
 	
+	--[[if self:getIsActive() then
+		for k,v in pairs (self.components) do
+			local x,y,z = getCenterOfMass(v.node);
+			x,y,z = localToWorld(v.node,x,y,z);
+			drawDebugPoint(x,y,z,0,1,1,1);
+		end;
+	end;]]
+	
+end;
+
+function VehicleManipulation:updateTick(dt)
+    if self.isActive then
+        for _, implement in pairs(self.attachedImplements) do
+            if implement.object ~= nil then
+                local jointDesc = self.attacherJoints[implement.jointDescIndex];
+                if self.isServer then
+                    if jointDesc.allowsLowering and jointDesc.allowsJointLimitMovement then
+                        if implement.object.attacherJoint.allowsJointTransLimitMovementMod then
+                            for i=1, 3 do
+                                local newTransLimit = Utils.lerp(implement.minTransLimit[i], implement.maxTransLimit[i], jointDesc.moveAlpha);
+                                if math.abs(newTransLimit - implement.jointTransLimit[i]) > 0.0005 then
+                                    setJointTranslationLimit(jointDesc.jointIndex, i-1, true, 0, newTransLimit);
+                                    implement.jointTransLimit[i] = newTransLimit;
+                                end;
+                            end;
+                        end;
+                    end;
+                end;
+            end
+        end;
+    end;
 end;
 
 function VehicleManipulation:draw()

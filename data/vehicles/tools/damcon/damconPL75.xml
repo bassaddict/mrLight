@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="4" />
+	
+    <powerConsumer ptoRpm="540" neededPtoPower="45" mrlBaseForce="2" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.715" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+
+    <components>
+        <component1 mrlMass="1.5" />
+    </components>
+</vehicle>

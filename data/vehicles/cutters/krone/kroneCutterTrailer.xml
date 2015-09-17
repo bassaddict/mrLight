@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <components> <!-- total mass of 0.95, is +0.893, data from MR DLCs -->
+        <component1 mrlMass="0.75" />
+        <component2 mrlMass="0.1" />
+        <component3 mrlMass="0.1" />
+    </components>
+</vehicle>

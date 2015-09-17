@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+	<powerConsumer ptoRpm="540" neededPtoPower="45" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.625" upperDistanceToGround="1.5" rotLimitScale="0 0 0" />
+    </inputAttacherJoints>
+
+    <mouseControls>
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotY.png" axis="AXIS_FRONTLOADER_TOOL" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotX.png" axis="AXIS_FRONTLOADER_ARM" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_rot.png" axis="AXIS_FRONTLOADER_ARM2" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_rot.png" axis="AXIS_FRONTLOADER_TOOL2" />
+    </mouseControls>
+
+    <movingTools>
+        <!-- arm y rot -->
+        <movingTool mrlOrigTool="1" axis="AXIS_FRONTLOADER_TOOL" />
+        <!-- arm x rot -->
+        <movingTool mrlOrigTool="2" axis="AXIS_FRONTLOADER_ARM" />
+        <!-- cutter arm -->
+        <movingTool mrlOrigTool="3" axis="AXIS_FRONTLOADER_ARM2" />
+        <!-- cutter -->
+        <movingTool mrlOrigTool="4" axis="AXIS_FRONTLOADER_TOOL2" />
+    </movingTools>
+	
+    <components>
+        <component1 mrlMass="0.7" />
+    </components>
+</vehicle>

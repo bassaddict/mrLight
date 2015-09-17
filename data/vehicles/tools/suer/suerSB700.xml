@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="implement">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Suer SB 700</en>
+        <de>Suer SB 700</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_Weight</typeDesc>
+    <filename>data/vehicles/tools/suer/suerSB700.i3d</filename>
+
+    <size width="1.5" length="1.0" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>0" jointType="implement" topReferenceNode="0>1" rotLimitScale="0 0 0" transLimitScale="0 0.1 0" upperRotationOffset="3" lowerRotationOffset="0" lowerDistanceToGround="0.65" upperDistanceToGround="0.9" />
+    </inputAttacherJoints>
+
+    <attacherJoints>
+        <attacherJoint index="0>2" jointType="trailer" maxRotLimit="10 80 80" minRotRotationOffset="0" allowsJointLimitMovement="false" />
+    </attacherJoints>
+
+    <needsLowering value="false" />
+
+    <washable dirtDuration="50" washDuration="1" workMultiplier="4" />
+
+    <components count="1">
+        <component1 centerOfMass="0 0.3 0" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0">
+        <attacherJoint position="0.5 0" rotation="0" invertX="false" />
+    </schemaOverlay>
+
+</vehicle>

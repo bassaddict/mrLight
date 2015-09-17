@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="30"/>
+    <speedLimit value="14" />
+
+    <wheels>
+        <wheel frictionScale="1.0" />
+        <wheel frictionScale="1.0" />
+    </wheels>
+	
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.58" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+
+</vehicle>

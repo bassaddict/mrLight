@@ -16,6 +16,7 @@
     <extraSourceFiles>
 		<sourceFile filename="loaderClass.lua" />	
         <sourceFile filename="DynamicLoan.lua" />
+		<sourceFile filename="AITractorOverride.lua" />
     </extraSourceFiles>
 	
 	<l10n>

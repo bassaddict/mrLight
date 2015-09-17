@@ -7,6 +7,43 @@ end;
 function AttachableManipulation:load(xmlFile)
 	--self.firstRunAttachableManipulation = true;
 	
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].xmlFile ~= nil then
+		local xmlPath = MrLightUtils.modDir .. "" .. MrLightUtils.vehicleConfigs[self.configFileName].xmlFile;
+		xmlFile = loadXMLFile("settings", xmlPath);
+	end;
+	
+	local i=0;
+	while true do
+		local key = string.format("vehicle.inputAttacherJoints.inputAttacherJoint(%d)", i);
+		if not hasXMLProperty(xmlFile, key) then
+            break;
+        end
+		local mrlOrigJointIndex = getXMLInt(xmlFile, key.. "#mrlOrigJointIndex");
+        if mrlOrigJointIndex == nil then
+			break;
+		end;
+		
+		self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#lowerDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround);
+        self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#upperDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround);
+		
+		self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovement = false;
+		self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovementMod = true;
+		
+		local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  key .. "#rotLimitScale"));
+		self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale = { Utils.getNoNil(x, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[1]), Utils.getNoNil(y, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[2]), Utils.getNoNil(z, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[3]) };
+		i = i + 1;
+	end;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 		if MrLightUtils.vehicleConfigs[self.configFileName].lowerDistanceToGround ~= nil then
 			self.inputAttacherJoints[1].lowerDistanceToGround = MrLightUtils.vehicleConfigs[self.configFileName].lowerDistanceToGround;
@@ -21,20 +58,6 @@ function AttachableManipulation:load(xmlFile)
 		self.brakeForce = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].brakeForce, self.brakeForce);
 	end;
 	
-	
-	
-	--[[self.collectLoderDist = false;
-	self.collectUpperDist = false;
-	self.collectedAM = false;
-	self.collectedInputAM = "";
-	
-	
-	for _,v in pairs(self.inputAttacherJoints) do
-		v.transLimitScale = {0, 0, 0};
-	end;]]
-	
-	
-	
 	--self.debugRenderAttachableManipulation = false;
 end;
 
@@ -45,51 +68,9 @@ function AttachableManipulation:mouseEvent(posX, posY, isDown, isUp, button)
 end;
 
 function AttachableManipulation:keyEvent(unicode, sym, modifier, isDown)
-	--[[if self.collectLowerDist or self.collectUpperDist then
-		if isDown then
-			if sym == 13 then
-				self.collectedAM = true;
-				--print("enter");
-			--elseif unicode == 46 or (unicode >= 48 and unicode <= 57) then
-			elseif unicode >= 48 and unicode <= 57 then
-				self.collectedInputAM = self.collectedInputAM .. string.char(unicode);
-				--print("number: " .. tostring(unicode));
-			else
-				print("other char pressed: " .. tostring(sym));
-			end;
-		end;
-	end;]]
 end;
 
 function AttachableManipulation:update(dt)
-	
-	--[[if (InputBinding.hasEvent(InputBinding.SETLOWERDIST)) and not self.collectUpperDist then
-		self.collectLowerDist = true;
-		--print("force pressed");
-	elseif (InputBinding.hasEvent(InputBinding.SETUPPERDIST)) and not self.collectLowerDist then
-		self.collectUpperDist = true;
-		--print("PTO power pressed");
-	end;
-	if self.collectedAM then
-		local newValue = tonumber(self.collectedInputAM);
-		if self.collectLowerDist then
-			self.inputAttacherJoints[1].lowerDistanceToGround = Utils.getNoNil(newValue*0.01, self.inputAttacherJoints[1].lowerDistanceToGround);
-			self.collectLowerDist = false;
-			print("new lowerDist value: " .. tostring(self.inputAttacherJoints[1].lowerDistanceToGround));
-		elseif self.collectUpperDist then
-			self.inputAttacherJoints[1].upperDistanceToGround = Utils.getNoNil(newValue*0.01, self.inputAttacherJoints[1].upperDistanceToGround);
-			self.collectUpperDist = false;
-			print("new upperDist value: " .. tostring(self.inputAttacherJoints[1].upperDistanceToGround));
-		end;
-		self.collectedAM = false;
-		self.collectedInputAM = "";
-	end;
-	
-	
-	--if self.firstRunAttachableManipulation then
-	--	self.firstRunAttachableManipulation = false;
-	--end;]]
-	
 end;
 
 function AttachableManipulation:draw()

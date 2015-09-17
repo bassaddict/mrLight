@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+    </wheels>
+
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2100" maxForwardSpeed="37" maxBackwardSpeed="15" brakeForce="31.5" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="0.85">
+        <torque normRpm="0.47" torque="2.5"/>
+        <torque normRpm="0.62" torque="2.6"/>
+        <torque normRpm="0.67" torque="2.94"/>
+        <torque normRpm="0.76" torque="2.8"/>
+        <torque normRpm="0.9" torque="2.56"/>
+        <torque normRpm="1" torque="2.1"/>
+    </motor>
+
+    <fuelCapacity>1880</fuelCapacity>
+    <fuelUsage>125</fuelUsage>
+
+    <attacherJoints>
+        <attacherJoint mrlOrigJointIndex="1" mrlType="3pt" minRotDistanceToGround="1.153" minRotRotationOffset="8.72" minRot="19.79 0 0" minRot2="-11.79 0 0" maxRotDistanceToGround="0.334" maxRotRotationOffset="0.72" maxRot="-22 0 0" maxRot2="22 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
+    </attacherJoints>
+
+    <components>
+        <component1 centerOfMass="0 1.66 1.724" mrlMass="12.711" />
+        <component2 centerOfMass="0 1.66 -1.977" mrlMass="9.415" />
+    </components>
+</vehicle>

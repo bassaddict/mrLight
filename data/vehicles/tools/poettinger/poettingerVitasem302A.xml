@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="sowingMachine_animated">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Poettinger Vitasem 302A</en>
+        <de>Pöttinger Vitasem 302A</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_Seeder</typeDesc>
+    <filename>data/vehicles/tools/poettinger/poettingerVitasem302A.i3d</filename>
+
+    <size width="3.5" length="3.5"/>
+
+    <powerConsumer ptoRpm="540" neededPtoPower="40" forceNode="0>" maxForce="10" />
+    <speedLimit value="14" />
+
+    <lightCoronas>
+        <lightCorona index="0>0|17" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>0|18" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>0|19|0" />
+        <turnSignalRight index="0>0|19|1" />
+    </turnSignals>
+
+    <workAreas>
+        <workArea startIndex="0>0|3" widthIndex="0>0|4" heightIndex="0>0|5" refNodeIndex="0" type="sowingMachine" />
+        <workArea startIndex="0>0|9|2" widthIndex="0>0|9|3" heightIndex="0>0|9|4" startIndexTest="0>0|9|5" widthIndexTest="0>0|9|6" heightIndexTest="0>0|9|7" animName="leftArm" type="ridgemarker" needsSetIsTurnedOn="false" />
+        <workArea startIndex="0>0|10|2" widthIndex="0>0|10|3" heightIndex="0>0|10|4" startIndexTest="0>0|10|5" widthIndexTest="0>0|10|6" heightIndexTest="0>0|10|7" animName="rightArm" type="ridgemarker" needsSetIsTurnedOn="false" />
+    </workAreas>
+
+    <groundReferenceNodes>
+        <groundReferenceNode index="0>"       threshold="0.1" depthNode="0>0|21"/>
+        <groundReferenceNode index="0>0|9|9"  threshold="0" depthNode="0>0|9|9"/>
+        <groundReferenceNode index="0>0|10|9" threshold="0" depthNode="0>0|10|9" />
+    </groundReferenceNodes>
+
+    <groundParticleAnimations>
+        <groundParticleAnimation file="$data/vehicles/particleAnimations/poettinger/poettingerVitasem302A.i3d" >
+            <node index="0>0|20"   animMeshIndex="0|1|0" refNodeIndex="0" maxDepth="-0.1" />
+            <node index="0>0|9|8"  animMeshIndex="2|0|0" refNodeIndex="1" maxDepth="-0.05" />
+            <node index="0>0|10|8" animMeshIndex="1|0|0" refNodeIndex="2" maxDepth="-0.05" />
+        </groundParticleAnimation>
+
+        <groundParticle file="$data/vehicles/particleAnimations/poettinger/poettingerVitasem302A.i3d" >
+            <node index="0>0|20"   particleIndex="0|0" refNodeIndex="0" />
+        </groundParticle>
+    </groundParticleAnimations>
+
+    <needsActivation value="true" />
+
+    <fillTypes fillTypes="seeds"/>
+    <capacity>600</capacity>
+    <fillLitersPerSecond>100</fillLitersPerSecond>
+
+    <sowingSound file="$data/vehicles/tools/sowingSound.wav" pitchOffset="0.5" volume="0.3"/>
+    <airBlowerSound file="$data/vehicles/tools/airBlowerLoop.wav" pitchOffset="1.2" volume="0.5"/>
+    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.0" volume3D="1.0" innerRadius="10" radius="40" linkNode="0>0"/>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>0|0" jointType="implement" fixedRotation="false" topReferenceNode="0>0|1" indexPTO="0>0|2" />
+    </inputAttacherJoints>
+
+    <speedRotatingParts>
+        <speedRotatingPart index="0>0|13"     radius="0.244" refNodeIndex="0" />
+        <speedRotatingPart index="0>0|16"     radius="0.322" refNodeIndex="0" />
+        <speedRotatingPart index="0>0|14|1"   radius="0.155" refNodeIndex="0" />
+        <speedRotatingPart index="0>0|14|2"   radius="0.155" refNodeIndex="0" />
+        <speedRotatingPart index="0>0|9|1|0"  radius="0.2"   refNodeIndex="1" />
+        <speedRotatingPart index="0>0|10|1|0" radius="0.2"   refNodeIndex="2" />
+    </speedRotatingParts>
+
+    <turnedOnRotationNodes>
+        <turnedOnRotationNode index="0>0|15|0" type="sowingMachine" rotSpeed="2000"  turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|1" type="sowingMachine" rotSpeed="-2000" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|2" type="sowingMachine" rotSpeed="2000"  turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|3" type="sowingMachine" rotSpeed="-2000" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|4" type="sowingMachine" rotSpeed="2000"  turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|5" type="sowingMachine" rotSpeed="-2000" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|6" type="sowingMachine" rotSpeed="2000"  turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|7" type="sowingMachine" rotSpeed="-2000" turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|8" type="sowingMachine" rotSpeed="2000"  turnOnFadeTime="2" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>0|15|9" type="sowingMachine" rotSpeed="-2000" turnOnFadeTime="2" turnOffFadeTime="2"/>
+    </turnedOnRotationNodes>
+
+    <aiLeftMarker index="0>0|6" />
+    <aiRightMarker index="0>0|7" />
+    <aiBackMarker index="0>0|8" />
+
+    <seedFruitTypes seedFruitTypes="wheat barley rape grass maize sugarBeet" />
+
+    <ridgeMarkers>
+        <ridgeMarker animName="leftArm" />
+        <ridgeMarker animName="rightArm" />
+    </ridgeMarkers>
+
+    <movingTools>
+        <!-- left arm -->
+        <movingTool index="0>0|9">
+            <!-- hydraulic -->
+            <dependentPart index="0>0|11" />
+        </movingTool>
+
+        <!-- right arm -->
+        <movingTool index="0>0|10">
+            <!-- hydraulic -->
+            <dependentPart index="0>0|12" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <!-- right hydraulic -->
+        <movingPart index="0>0|11" referencePoint="0>0|9|0" referenceFrame="0>0|9|0">
+            <translatingPart index="0>0|11|0" />
+        </movingPart>
+
+        <!-- left hydraulic -->
+        <movingPart index="0>0|12" referencePoint="0>0|10|0" referenceFrame="0>0|10|0">
+            <translatingPart index="0>0|12|0" />
+        </movingPart>
+    </movingParts>
+
+    <animations>
+        <!-- move right arm-->
+        <animation name="rightArm">
+            <part node="0>0|10" startTime="0" duration="1.5" startRot="0 0 0" endRot="0 0 108" />
+        </animation>
+        <!-- move left arm-->
+        <animation name="leftArm">
+            <part node="0>0|9" startTime="0" duration="1.5" startRot="0 0 0" endRot="0 0 -108" />
+        </animation>
+    </animations>
+
+    <washable dirtDuration="60" washDuration="1" workMultiplier="20" />
+
+    <components count="1">
+        <component1 centerOfMass="0 0.5 -0.1" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

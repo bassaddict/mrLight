@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="mixerWagon">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Kuhn Profile 1880</en>
+        <de>Kuhn Profile 1880</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_MixerWagon</typeDesc>
+    <filename>data/vehicles/trailers/kuhn/kuhnProfile1880.i3d</filename>
+
+    <size width="4.5" length="9" />
+
+    <powerConsumer ptoRpm="540" neededPtoPower="66"/>
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="2.8" repr="0"                 radius="0.474" initialCompression="40" suspTravel="0.07" spring="100" damper="20" frictionScale="1.5" mass="0.075" hasTyreTracks="true" tyreTrackAtlasIndex="1"/>
+        <wheel  restLoad="2.8" repr="1" driveNode="1|0" radius="0.474" initialCompression="40" suspTravel="0.07" spring="100" damper="20" frictionScale="1.5" mass="0.075" hasTyreTracks="true" tyreTrackAtlasIndex="1"/>
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="1|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+        <dynamicallyLoadedPart node="1|1" linkNode="0>1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>0.2</brakeForce>
+
+    <lightCoronas>
+        <lightCorona index="0>2|2" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>2|11" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>2|13|0" />
+        <turnSignalRight index="0>2|13|1" />
+    </turnSignals>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>2|1" jointType="trailer" attacherHeight="0.95" indexPTO="0>2|4" />
+    </inputAttacherJoints>
+
+    <fillTypes fillTypes="forage forage_mixing grass_windrow dryGrass_windrow silage" />
+    <capacity>18000</capacity>
+    <fillRootNode index="0>" />
+    <fillMassNode index="0>" />
+
+    <mixerWagonFillTypes>
+        <mixerWagonFillType minPercentage="25" maxPercentage="75" name="dryGrass">
+            <fillType fillType="grass_windrow" />
+            <fillType fillType="dryGrass_windrow" />
+        </mixerWagonFillType>
+        <mixerWagonFillType minPercentage="25" maxPercentage="75" name="silage">
+            <fillType fillType="silage" />
+        </mixerWagonFillType>
+        <mixerWagonFillType minPercentage="0" maxPercentage="40" name="straw">
+            <fillType fillType="wheat_windrow" />
+            <fillType fillType="barley_windrow" />
+        </mixerWagonFillType>
+    </mixerWagonFillTypes>
+
+    <mixerWagonBaleTrigger index="0>5" />
+
+    <mixerWagonRotatingParts>
+        <mixerWagonRotatingPart index="0>2|7|0" type="mixerWagonMix"    rotSpeed="-200" rotAxis="2" turnOnFadeTime="1" turnOffFadeTime="1" />
+        <mixerWagonRotatingPart index="0>2|7|1" type="mixerWagonMix"    rotSpeed="-200" rotAxis="2" turnOnFadeTime="1" turnOffFadeTime="1" />
+    </mixerWagonRotatingParts>
+
+    <mixerWagonPickupStartSound file="$data/vehicles/steerable/kuhn/kuhnSPV_startWork.wav" pitchoffset="1" volume="1" />
+    <mixerWagonPickupSound file="$data/vehicles/steerable/kuhn/kuhnSPV_work.wav" pitchoffset="1" pickupPitchOffset="0.96" volume="1" radius="50" innerRadius="20" />
+    <mixerWagonPickupStopSound file="$data/vehicles/steerable/kuhn/kuhnSPV_stopWork.wav" pitchoffset="1" volume="1" />
+    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.75" volume="0.6" />
+
+
+    <fillVolumes>
+        <fillVolume index="0>2|3" allSidePlanes="false"/>
+    </fillVolumes>
+
+    <support animationName="moveSupport" />
+
+    <animations>
+        <animation name="tipLeft">
+            <part node="0>2|5|0" startTime="0" endTime="1" startTrans="0 0 0" endTrans="0 0.65491 0"/>
+        </animation>
+        <animation name="tipRight">
+            <part node="0>2|5|0" startTime="0" endTime="1" startTrans="0 0 0" endTrans="0 0.65491 0"/>
+        </animation>
+
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>1|1" startTime="0" endTime="0.05" visibility="false" />
+            <part node="0>2|12" startTime="0" endTime="0.05" visibility="true" />
+            <part node="0>1|1" startTime="0.05" endTime="0.1" visibility="true" />
+            <part node="0>2|12" startTime="0.05" endTime="0.1" visibility="false" />
+            <part node="0>2|0" startTime="0" duration="0.2" startTrans="0.55783 -0.73123 4.14143" endTrans="0.55783 -1.14675 4.14143" />
+        </animation>
+    </animations>
+
+    <tipReferencePoints>
+        <tipReferencePoint index="0>3" width="1" />
+        <tipReferencePoint index="0>4" width="1" />
+    </tipReferencePoints>
+
+    <tipAnimations>
+        <tipAnimation speedScale="1" animationName="tipLeft" dischargeStartTime="0.9" dischargeEndTime="20" >
+            <tipEffect>
+                <effectNode node="0|0|1" linkNode="0>8" materialType="unloading" materialTypeId="3" position="0 0 0" defaultFillType="silage" filename="$data/vehicles/particleAnimations/kuhn/kuhnProfile1880.i3d" fadeTime="0.5"/>
+            </tipEffect>
+            <fillVolumeDischargeInfo index="0>6" width="0.2" length="0.2" />
+        </tipAnimation>
+        <tipAnimation speedScale="1" animationName="tipRight" dischargeStartTime="0.9" dischargeEndTime="20">
+            <tipEffect>
+                <effectNode node="0|0|0" linkNode="0>7" materialType="unloading" materialTypeId="3" position="0 0 0" defaultFillType="silage" filename="$data/vehicles/particleAnimations/kuhn/kuhnProfile1880.i3d" fadeTime="0.5"/>
+            </tipEffect>
+            <fillVolumeDischargeInfo index="0>6" width="0.2" length="0.2" />
+        </tipAnimation>
+    </tipAnimations>
+
+    <movingTools>
+        <!-- door -->
+        <movingTool index="0>2|5|0">
+            <!-- door cylinder -->
+            <dependentPart index="0>2|6" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <!-- door cylinder -->
+        <movingPart index="0>2|6" referencePoint="0>2|5|0|0" referenceFrame="0>2|5|0|0">
+            <translatingPart index="0>2|6|0" />
+        </movingPart>
+    </movingParts>
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <components count="1">
+        <component1 centerOfMass="0 0.52 -1" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

@@ -56,7 +56,7 @@ function FillableManipulation:load(xmlFile)
 					--print(" --> node: "..node);
 				end;
 			end;
-			if node == nil and #self.fillVolumes ~= 0 then
+			if node == nil and #self.fillVolumes > 0 then
 				node = self.fillVolumes[1].baseNode;
 			end;
 			--print(" --> node: "..node);
@@ -80,9 +80,13 @@ function FillableManipulation:keyEvent(unicode, sym, modifier, isDown)
 end;
 
 function FillableManipulation:loadFromAttributesAndNodes(xmlFile, key, resetVehicles)
+	local currentCapacity = getXMLFloat(xmlFile, key.."#currentCapacity");
 	local actualFillLevel = getXMLFloat(xmlFile, key.."#fillLevel");
 	local actualFillType = getXMLString(xmlFile, key.."#fillType");
 	
+	if currentCapacity ~= nil then
+		self:setCapacity(currentCapacity);
+	end;
 	if actualFillLevel ~= nil then
 		self.actualFillLevel = actualFillLevel
 	end;
@@ -93,7 +97,8 @@ function FillableManipulation:loadFromAttributesAndNodes(xmlFile, key, resetVehi
 end;
 
 function FillableManipulation:getSaveAttributesAndNodes(nodeIdent)
-
+	local attributes = 'currentCapacity="'..self.capacity..'"';
+	return attributes, nil;
 end;
 
 function FillableManipulation:update(dt)
@@ -108,7 +113,7 @@ function FillableManipulation:update(dt)
 		--print(self.configFileNameClean);
 	end;
 	
-	if not self.firstRunFillableManipulation and self.lastCurrentFillType ~= self.currentFillType and self.fillVolumesInfo~= nil and #self.fillVolumes ~= 0 then
+	if not self.firstRunFillableManipulation and self.lastCurrentFillType ~= self.currentFillType and self.fillVolumesInfo~= nil and #self.fillVolumes > 0 then
 		--print(self.configFileNameClean);
 		local fillableClass;
 		--print(self.currentFillType);
@@ -160,7 +165,7 @@ function FillableManipulation:update(dt)
 	end;
 	
 	if self.firstRunFillableManipulation then 
-		self.firstRunFillableManipulation = not self.firstRunFillableManipulation;
+		self.firstRunFillableManipulation = false;
 	end;
 end;
 

@@ -90,11 +90,17 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 			break;
 		end;
 		if Utils.startsWith(configFile, "$pdlcdir$") then
-			local tmp = string.gfind(string.gsub(configFile, "$pdlcdir$", ""), "%w+/")
-			if getfenv(0)["pdlc_"..tmp] == nil then
-				configFile = nil;
-			else
-				--TODO
+			local tmp1 = string.gsub(configFile, "$pdlcdir$", "");
+			local s,e = string.find(tmp1, "%w+/");
+			if s ~= nil then
+				local tmp = string.sub(tmp1,s,e-1);
+				--local tmp = string.gfind(tmp1, "%w+/");
+				if getfenv(0)["pdlc_"..tmp] == nil then
+					configFile = nil;
+				else
+					configFile = g_dlcsDirectories[1].path .. "/" .. string.sub(configFile, 10);
+					--TODO
+				end;
 			end;
 		end;
 		if configFile ~= nil then
@@ -373,6 +379,19 @@ end;
 
 
 
+function MrLightUtils:reloadVehicleConfigFile()
+	local xmlPath = MrLightUtils.modDir.."mrLightSettings.xml";
+	if fileExists(xmlPath) then
+		local xmlFile = loadXMLFile("settings", xmlPath);
+		MrLightUtils.loadVehicleConfigs(xmlFile);
+		delete(xmlFile);
+	end;
+end;
+addConsoleCommand('aReloadMrlightVehicleConfig', 'set rotation for attacher joint', 'reloadVehicleConfigFile', MrLightUtils);
+
+
+
+
 
 --********************************--
 --*   setting development mode   *--
@@ -546,5 +565,14 @@ g_careerScreen.saveSavegame = function(self, savegame)
 	end;
 end;
 
+
+
+local oldDriveInDirection = AIVehicleUtil.driveInDirection;
+AIVehicleUtil.driveInDirection = function(self, a,b,c,d,e,f,g,h,i,j,k)
+	local newB = b / 2;
+	local newE = e / 2;
+	oldDriveInDirection(self, a,newB,c,d,newE,f,g,h,i,j,k);
+	--print(string.format("self: %s, a: %s,newB: %s,c: %s,d: %s,newE: %s,f: %s,g: %s,h: %s,i: %s,j: %s,k: %s", tostring(self), tostring(a), tostring(newB), tostring(c), tostring(d), tostring(newE), tostring(f), tostring(g), tostring(h), tostring(i), tostring(j), tostring(k)));
+end;
 
 

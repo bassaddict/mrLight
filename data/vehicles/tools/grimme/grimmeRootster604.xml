@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="40" forceNode="0>" mrlBaseForce="3.0" mrlBaseForceFactor="6"/>
+	
+    <speedLimit value="7" />
+
+    <wheels>
+        <wheel frictionScale="0.97" />
+        <wheel frictionScale="0.97" />
+    </wheels>
+
+	<workAreas>
+        <workArea mrlOrigArea="1" refNodeIndex="0" />
+    </workAreas>
+	
+	<groundReferenceNodes>
+        <groundReferenceNode index="0>" threshold="0.08" />
+    </groundReferenceNodes>
+	
+</vehicle>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <components>
+        <component1 mrlMass="0.221" />
+    </components>
+</vehicle>

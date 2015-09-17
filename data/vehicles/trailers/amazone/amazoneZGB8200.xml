@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="sprayer_animated">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Amazone ZG-B 8200</en>
+        <de>Amazone ZG-B 8200</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_FertilizerSpreader</typeDesc>
+    <filename>data/vehicles/trailers/amazone/amazoneZGB8200.i3d</filename>
+
+    <size width="3.5" length="8" />
+
+    <powerConsumer ptoRpm="450" neededPtoPower="15"/>
+    <speedLimit value="20" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="1.7" repr="0>0" radius="0.99" initialCompression="50" suspTravel="0.15" spring="30" damper="20" frictionScale="1.5" mass="0.46" hasTyreTracks="true" tyreTrackAtlasIndex="0"/>
+        <wheel  restLoad="1.7" repr="0>1" radius="0.99" initialCompression="50" suspTravel="0.15" spring="30" damper="20" frictionScale="1.5" mass="0.46" hasTyreTracks="true" tyreTrackAtlasIndex="0"/>
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0" filename="$data/vehicles/wheels/trelleborg/trelleborgTM600_520_85R46.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>1" filename="$data/vehicles/wheels/trelleborg/trelleborgTM600_520_85R46.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>0.6</brakeForce>
+
+    <lights count="1">
+        <light1 index="0>3" />
+    </lights>
+
+    <lightCoronas>
+        <lightCorona index="0>9" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>11" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>13|0" />
+        <turnSignalRight index="0>13|1" />
+    </turnSignals>
+
+    <reverseLights>
+        <reverseLight index="0>14" />
+    </reverseLights>
+
+    <workAreas>
+        <workArea startIndex="0>4" widthIndex="0>5" heightIndex="0>6" type="sprayer" disableBackwards="false" />
+    </workAreas>
+
+    <aiLeftMarker index="0>15" />
+    <aiRightMarker index="0>16" />
+    <aiBackMarker index="0>17" />
+
+    <capacity>8200</capacity>
+
+    <spraySound file="$data/vehicles/tools/spreader.wav" pitchOffset="1" volume="3"/>
+
+    <sprayerEffects>
+        <sprayerEffect>
+            <effectNode node="0|0|0" linkNode="0>7" delay="0" materialTypeId="1" filename="$data/vehicles/particleAnimations/amazone/amazoneZGB8200.i3d" />
+        </sprayerEffect>
+    </sprayerEffects>
+
+    <turnedOnRotationNodes>
+        <turnedOnRotationNode index="0>10|0" type="sprayer" rotSpeed="-2000" turnOnFadeTime="1" turnOffFadeTime="2"/>
+        <turnedOnRotationNode index="0>10|1" type="sprayer" rotSpeed="2000" turnOnFadeTime="1" turnOffFadeTime="2"/>
+    </turnedOnRotationNodes>
+
+    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.0" volume3D="1.0" innerRadius="10" radius="40" linkNode="0>19"/>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>2" jointType="trailer" attacherHeight="1.08" indexPTO="0>12" />
+    </inputAttacherJoints>
+
+    <sprayUsages>
+        <sprayUsage fillType="fertilizer" litersPerSecond="7.2" />
+    </sprayUsages>
+
+    <fillTypes fillTypes="fertilizer" />
+
+    <support animationName="moveSupport" />
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>8" startTime="0" duration="0.25" startTrans="0.418 0.6 1.733" endTrans="0.418 0 1.733" />
+        </animation>
+    </animations>
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+
+    <components count="1">
+        <component1 centerOfMass="0 1.05 0" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

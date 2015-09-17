@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer forceNode="0>" mrlBaseForce="0.9" mrlBaseForceFactor="34" />
+	<!-- base force per tine -->
+	
+    <speedLimit value="14" />
+
+    <wheels>
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+    </wheels>
+
+</vehicle>

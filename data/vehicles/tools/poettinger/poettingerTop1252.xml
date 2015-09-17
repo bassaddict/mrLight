@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="windrower">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Poettinger TOP 1252</en>
+        <de>Pöttinger TOP 1252</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_Windrower</typeDesc>
+    <filename>data/vehicles/tools/poettinger/poettingerTop1252.i3d</filename>
+
+    <size width="4.5" length="12" />
+
+    <powerConsumer ptoRpm="500" neededPtoPower="30"/>
+    <speedLimit value="19" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="2.8" repr="0>0" radius="0.472" initialCompression="50" suspTravel="0.1" spring="50" damper="30" frictionScale="1.5" mass="0.075" maxLatStiffness="40" />
+        <wheel  restLoad="2.8" repr="0>1" radius="0.472" initialCompression="50" suspTravel="0.1" spring="50" damper="30" frictionScale="1.5" mass="0.075" maxLatStiffness="40" />
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="1|0" linkNode="0>0" filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+        <dynamicallyLoadedPart node="1|1" linkNode="0>1" filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>12|0|0|1|0|1"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>12|0|0|1|0|2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>12|0|0|1|0|3|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>12|0|0|1|0|3|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>12|0|0|1|0|4|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>12|0|0|1|0|4|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+
+        <dynamicallyLoadedPart node="0|1" linkNode="0>13|0|0|0|1"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>13|0|0|0|2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>13|0|0|0|3|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>13|0|0|0|3|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>13|0|0|0|4|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>13|0|0|0|4|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+
+        <dynamicallyLoadedPart node="0|0" linkNode="0>10|0|0|1|0|1"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>10|0|0|1|0|2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>10|0|0|1|0|3|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>10|0|0|1|0|3|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>10|0|0|1|0|4|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>10|0|0|1|0|4|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+
+        <dynamicallyLoadedPart node="0|0" linkNode="0>11|0|0|0|1"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>11|0|0|0|2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>11|0|0|0|3|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>11|0|0|0|3|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>11|0|0|0|4|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>11|0|0|0|4|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_16X6_50_8.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>1</brakeForce>
+
+    <lightCoronas>
+        <lightCorona index="0>3" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>4" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>5|0" />
+        <turnSignalRight index="0>5|1" />
+    </turnSignals>
+
+    <workAreas>
+        <workArea startIndex="0>23|0" widthIndex="0>23|1"  heightIndex="0>23|2"  foldMinLimit="0" foldMaxLimit="0.1" refNodeIndex="0" type="windrower" dropAreaIndex="0" />  <!-- front right -->
+        <workArea startIndex="0>23|3" widthIndex="0>23|4"  heightIndex="0>23|5"  foldMinLimit="0" foldMaxLimit="0.1" refNodeIndex="1" type="windrower" dropAreaIndex="1" />  <!-- front left -->
+        <workArea startIndex="0>23|6" widthIndex="0>23|7"  heightIndex="0>23|8"  foldMinLimit="0" foldMaxLimit="0.1" refNodeIndex="2" type="windrower" dropAreaIndex="2" />  <!-- back right -->
+        <workArea startIndex="0>23|9" widthIndex="0>23|10" heightIndex="0>23|11" foldMinLimit="0" foldMaxLimit="0.1" refNodeIndex="3" type="windrower" dropAreaIndex="3" />  <!-- back left -->
+
+        <workArea startIndex="0>24|0" widthIndex="0>24|1" heightIndex="0>24|2" refNodeIndex="0" type="windrowerDrop" /> <!-- front right -->
+        <workArea startIndex="0>24|3" widthIndex="0>24|4" heightIndex="0>24|5" refNodeIndex="1" type="windrowerDrop" /> <!-- front left -->
+        <workArea startIndex="0>24|6" widthIndex="0>24|7" heightIndex="0>24|8" refNodeIndex="2" type="windrowerDrop" /> <!-- back right -> same place -->
+        <workArea startIndex="0>24|6" widthIndex="0>24|7" heightIndex="0>24|8" refNodeIndex="3" type="windrowerDrop" /> <!-- back left -> same place -->
+    </workAreas>
+
+    <groundReferenceNodes>
+        <groundReferenceNode index="0>10|0|0|1|0|5" threshold="0.4" />
+        <groundReferenceNode index="0>12|0|0|1|0|5" threshold="0.4" />
+        <groundReferenceNode index="0>11|0|0|0|5" threshold="0.4" />
+        <groundReferenceNode index="0>13|0|0|0|5" threshold="0.4" />
+    </groundReferenceNodes>
+
+    <windrowerParticleSystems>
+        <windrowerParticleSystem type="grass_windrow" node="0>10|0|0|1|0|6" psRootNode="0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="0" />
+        <windrowerParticleSystem type="grass_windrow" node="0>12|0|0|1|0|6" psRootNode="0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="1" />
+        <windrowerParticleSystem type="grass_windrow" node="0>13|0|0|0|7"   psRootNode="0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="2" />
+        <windrowerParticleSystem type="grass_windrow" node="0>11|0|0|0|7"   psRootNode="0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="3" />
+
+        <windrowerParticleSystem type="dryGrass_windrow" node="0>10|0|0|1|0|6" psRootNode="1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="0" />
+        <windrowerParticleSystem type="dryGrass_windrow" node="0>12|0|0|1|0|6" psRootNode="1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="1" />
+        <windrowerParticleSystem type="dryGrass_windrow" node="0>13|0|0|0|7"   psRootNode="1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="2" />
+        <windrowerParticleSystem type="dryGrass_windrow" node="0>11|0|0|0|7"   psRootNode="1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="3" />
+
+        <windrowerParticleSystem type="wheat_windrow" node="0>10|0|0|1|0|6"  psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="0" />
+        <windrowerParticleSystem type="wheat_windrow" node="0>12|0|0|1|0|6"  psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="1" />
+        <windrowerParticleSystem type="wheat_windrow" node="0>13|0|0|0|7"    psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="2" />
+        <windrowerParticleSystem type="wheat_windrow" node="0>11|0|0|0|7"    psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="3" />
+
+        <windrowerParticleSystem type="barley_windrow" node="0>10|0|0|1|0|6" psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="0" />
+        <windrowerParticleSystem type="barley_windrow" node="0>12|0|0|1|0|6" psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="1" />
+        <windrowerParticleSystem type="barley_windrow" node="0>13|0|0|0|7"   psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="2" />
+        <windrowerParticleSystem type="barley_windrow" node="0>11|0|0|0|7"   psRootNode="2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/windrow.i3d" workAreaIndex="3" />
+    </windrowerParticleSystems>
+
+    <windrowerSound file="$data/vehicles/tools/tedder.wav" pitchOffset="1" volume="1.4"/>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint rootNode="1>" index="1>0" jointType="implement" rotLimitScale="1 0 1" transLimitScale="0.05 0.05 0.05" allowsJointTransLimitMovement="true" allowsJointRotLimitMovement="true" indexPTO="0>22|2" />
+    </inputAttacherJoints>
+
+    <isDefaultLowered value="true"/>
+    <needsLowering value="false" />
+    <allowsLowering value="false" />
+
+    <speedRotatingParts>
+        <!-- front right -->
+        <speedRotatingPart index="0>10|0|0|1|0|1" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>10|0|0|1|0|2" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>10|0|0|1|0|3" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>10|0|0|1|0|4" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <!-- back right -->
+        <speedRotatingPart index="0>11|0|0|0|1"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>11|0|0|0|2"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>11|0|0|0|3"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>11|0|0|0|4"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <!-- front left -->
+        <speedRotatingPart index="0>12|0|0|1|0|1" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>12|0|0|1|0|2" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>12|0|0|1|0|3" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>12|0|0|1|0|4" radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <!-- back left -->
+        <speedRotatingPart index="0>13|0|0|0|1"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>13|0|0|0|2"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>13|0|0|0|3"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+        <speedRotatingPart index="0>13|0|0|0|4"   radius="0.1936" foldMinLimit="0" foldMaxLimit="0.05"/>
+    </speedRotatingParts>
+
+    <support animationName="moveSupport" />
+
+    <animation animationClip="windrowerClipSource" rootNode="0>10|0|0|1|0|0" speedScale="3.5" fadeTime="2.0" />
+
+    <movingTools>
+        <!-- front right -->
+        <movingTool index="0>6" componentJointIndex="1" anchorActor="0"/>
+        <!-- back right -->
+        <movingTool index="0>7" componentJointIndex="2" anchorActor="0"/>
+        <!-- front right -->
+        <movingTool index="0>8" componentJointIndex="3" anchorActor="0"/>
+        <!-- back right -->
+        <movingTool index="0>9" componentJointIndex="4" anchorActor="0"/>
+
+        <movingTool index="0>10|0">
+            <dependentPart index="0>10|0|0" />
+        </movingTool>
+        <movingTool index="0>12|0">
+            <dependentPart index="0>12|0|0" />
+        </movingTool>
+
+        <movingTool index="0>22|5">
+            <dependentPart index="0>22|5|0" />
+        </movingTool>
+        <movingTool index="0>22|7">
+            <dependentPart index="0>22|7|0" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <!-- frontArmRight -->
+        <movingPart index="0>10" referencePoint="2>0" referenceFrame="2>0" isActiveDirty="true" useLocalOffset="true" limitedAxis="3" playSound="false">
+            <!-- rower -->
+            <dependentPart index="0>10|0|0|1" />
+            <dependentPart index="0>10|0|0|1|0" />
+            <!-- lift cylinder -->
+            <dependentPart index="0>14" />
+            <dependentPart index="0>15" />
+        </movingPart>
+        <movingPart index="0>10|0|0|1"   referenceFrame="2>0" limitedAxis="1" playSound="false"/>
+        <movingPart index="0>10|0|0|1|0" referenceFrame="2>0" playSound="false"/>
+        <movingPart index="0>14" referencePoint="0>10|3" referenceFrame="0>10|3"  playSound="false">
+            <translatingPart index="0>14|0" />
+        </movingPart>
+        <movingPart index="0>15" referencePoint="0>10|3" referenceFrame="0>10|3"  playSound="false">
+            <translatingPart index="0>15|0" />
+        </movingPart>
+        <movingPart index="0>10|0|0" localReferencePoint="0>10|0|0|0" referencePoint="0>10|2" referenceFrame="0>10|2" >
+            <dependentPart index="0>10|0|0|0" />
+            <dependentPart index="0>10|1" />
+        </movingPart>
+        <movingPart index="0>10|0|0|0" referencePoint="0>10|2" referenceFrame="0>10|4" />
+        <movingPart index="0>10|1" referencePoint="0>10|0|1" referenceFrame="0>10" >
+            <translatingPart index="0>10|1|0" />
+        </movingPart>
+
+        <!-- backArmRight -->
+        <movingPart index="0>11" referencePoint="3>0" referenceFrame="3>0" isActiveDirty="true" useLocalOffset="true" limitedAxis="3" playSound="false">
+            <!-- rower -->
+            <dependentPart index="0>11|0|0" />
+            <dependentPart index="0>11|0|0|0" />
+            <!-- lift cylinder -->
+            <dependentPart index="0>16" />
+            <dependentPart index="0>17" />
+            <!-- width control -->
+            <dependentPart index="0>11|1" />
+            <!-- pto -->
+            <dependentPart index="0>26|0" />
+        </movingPart>
+        <movingPart index="0>11|0|0"   referenceFrame="3>0" playSound="false"/>
+        <movingPart index="0>11|0|0|0" referenceFrame="3>0" limitedAxis="1" playSound="false"/>
+        <movingPart index="0>16" referencePoint="0>11|3" referenceFrame="0>11|3" playSound="false">
+            <translatingPart index="0>16|0" />
+        </movingPart>
+        <movingPart index="0>17" referencePoint="0>11|2" referenceFrame="0>11|2" playSound="false">
+            <dependentPart index="0>17|0" />
+        </movingPart>
+        <movingPart index="0>17|0" referencePoint="0>11|2" referenceFrame="0>11|2" scaleZ="true" playSound="false"/>
+        <!-- width control -->
+        <movingPart index="0>11|1" localReferencePoint="0>11|1|0" referencePoint="0>22|3" referenceFrame="0>11|4" playSound="false">
+            <dependentPart index="0>11|1|0" />
+            <dependentPart index="0>11|1|1" />
+        </movingPart>
+        <movingPart index="0>11|1|0" referencePoint="0>22|3" referenceFrame="0>11|4" playSound="false" />
+        <movingPart index="0>11|1|1" referencePoint="0>11|0|1" referenceFrame="0>11" playSound="false" >
+            <translatingPart index="0>11|1|1|0" />
+        </movingPart>
+        <movingPart index="0>26|0" referencePoint="0>11|0|0|0|6" referenceFrame="0>11|0|0|0|6" scaleZ="true" playSound="false"/>
+
+
+        <!-- frontArmLeft -->
+        <movingPart index="0>12" referencePoint="4>0" referenceFrame="4>0" isActiveDirty="true" useLocalOffset="true" limitedAxis="3">
+            <!-- rower -->
+            <dependentPart index="0>12|0|0|1" />
+            <dependentPart index="0>12|0|0|1|0" />
+            <!-- lift cylinder -->
+            <dependentPart index="0>18" />
+            <dependentPart index="0>19" />
+        </movingPart>
+        <movingPart index="0>12|0|0|1"   referenceFrame="4>0" limitedAxis="1" playSound="false" />
+        <movingPart index="0>12|0|0|1|0" referenceFrame="4>0" playSound="false" />
+        <movingPart index="0>18" referencePoint="0>12|3" referenceFrame="0>12|3" playSound="false">
+            <translatingPart index="0>18|0" />
+        </movingPart>
+        <movingPart index="0>19" referencePoint="0>12|3" referenceFrame="0>12|3" playSound="false">
+            <translatingPart index="0>19|0" />
+        </movingPart>
+        <movingPart index="0>12|0|0" localReferencePoint="0>12|0|0|0" referencePoint="0>12|2" referenceFrame="0>12|2" >
+            <dependentPart index="0>12|0|0|0" />
+            <dependentPart index="0>12|1" />
+        </movingPart>
+        <movingPart index="0>12|0|0|0" referencePoint="0>12|2" referenceFrame="0>12|4" />
+        <movingPart index="0>12|1" referencePoint="0>12|0|1" referenceFrame="0>12" >
+            <translatingPart index="0>12|1|0" />
+        </movingPart>
+
+        <!-- backArmLeft -->
+        <movingPart index="0>13" referencePoint="5>0" referenceFrame="5>0" isActiveDirty="true" useLocalOffset="true" limitedAxis="3">
+            <!-- rower -->
+            <dependentPart index="0>13|0|0" />
+            <dependentPart index="0>13|0|0|0" />
+            <!-- lift cylinder -->
+            <dependentPart index="0>20" />
+            <dependentPart index="0>21" />
+            <!-- width control -->
+            <dependentPart index="0>13|1" />
+            <!-- pto -->
+            <dependentPart index="0>25|0" />
+        </movingPart>
+        <movingPart index="0>13|0|0"   referenceFrame="5>0" playSound="false" />
+        <movingPart index="0>13|0|0|0" referenceFrame="5>0" playSound="false" />
+        <movingPart index="0>20" referencePoint="0>13|3" referenceFrame="0>13|3" playSound="false">
+            <translatingPart index="0>20|0" />
+        </movingPart>
+        <movingPart index="0>21" referencePoint="0>13|2" referenceFrame="0>13|2" playSound="false">
+            <dependentPart index="0>21|0" />
+        </movingPart>
+        <movingPart index="0>21|0" referencePoint="0>13|2" referenceFrame="0>13|2" scaleZ="true" playSound="false" />
+        <!-- width control -->
+        <movingPart index="0>13|1" localReferencePoint="0>13|1|0" referencePoint="0>22|4" referenceFrame="0>13|4" playSound="false" >
+            <dependentPart index="0>13|1|0" />
+            <dependentPart index="0>13|1|1" />
+        </movingPart>
+        <movingPart index="0>13|1|0" referencePoint="0>22|4" referenceFrame="0>13|4" playSound="false" />
+        <movingPart index="0>13|1|1" referencePoint="0>13|0|1" referenceFrame="0>13" playSound="false" >
+            <translatingPart index="0>13|1|1|0" />
+        </movingPart>
+        <movingPart index="0>25|0" referencePoint="0>13|0|0|0|6" referenceFrame="0>13|0|0|0|6" scaleZ="true" playSound="false" />
+
+        <!-- locks  -->
+        <movingPart index="0>22|5|0" referencePoint="0>22|6|0" referenceFrame="0>">
+            <translatingPart index="0>22|5|0|0" />
+        </movingPart>
+        <movingPart index="0>22|7|0" referencePoint="0>22|8|0" referenceFrame="0>">
+            <translatingPart index="0>22|7|0|0" />
+        </movingPart>
+
+        <!-- attacher -->
+        <movingPart index="0>22|0" referencePoint="1>" referenceFrame="0>" isActiveDirty="true" limitedAxis="2" playSound="false" />
+    </movingParts>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>22|1|0" startTime="0" duration="0.3" startRot="90 0 0" endRot="0 0 0" />
+            <part node="0>22|1|1" startTime="0" duration="0.3" startTrans="0 -0.21642 0" endTrans="0 -0.85079 0" />
+            <part componentJointIndex="0" startTime="0" duration="0.3" startRotLimit="0 90 10" endRotLimit="0 0 0" />
+        </animation>
+
+        <animation name="folding">
+        <!-- left back rotor -->
+            <!-- locks -->
+            <part node="0>22|5"           startTime="10" endTime="10.5"  startRot="0 0 7" endRot="0 0 0"/>
+            <part node="0>22|6"           startTime="10" endTime="10.5"  startRot="0 0 -7" endRot="0 0 0"/>
+            <part node="0>22|7"           startTime="10" endTime="10.5"  startRot="0 0 11" endRot="0 0 0"/>
+            <part node="0>22|8"           startTime="10" endTime="10.5"  startRot="0 0 -11" endRot="0 0 0"/>
+
+            <!-- right front -->
+                <!-- folding -->
+                <part node="0>10|0"           startTime="2" endTime="9"  startRot="0 85 0" endRot="0 220 0"/>
+                <part node="0>6|0"            startTime="2" endTime="9"  startTrans="-3.94085 -0.12187 0" endTrans="-0.99855 -0.12187 0"/>
+                <part node="0>6"              startTime="2" endTime="10" startRot="0 0 -10" endRot="0 0 -90"/>
+                <!-- lowering -->
+                <part node="0>6"              direction="1" startTime="0" endTime="1" startRot="0 0 0" endRot="0 0 -10"/>
+                <part componentJointIndex="1" direction="1" startTime="0" endTime="1" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+                <!-- lifting -->
+                <part node="0>6"              direction="-1" startTime="1" endTime="1.8" startRot="0 0 0" endRot="0 0 -10"/>
+                <part componentJointIndex="1" direction="-1" startTime="1" endTime="1.8" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+            <!-- left front -->
+                <!-- folding  -->
+                <part node="0>12|0"           startTime="2" endTime="9"  startRot="0 -85 0" endRot="0 -220 0"/>
+                <part node="0>8|0"            startTime="2" endTime="9"  startTrans="3.94085 -0.12187 0" endTrans="0.99855 -0.12187 0"/>
+                <part node="0>8"              startTime="2" endTime="10" startRot="0 0 10" endRot="0 0 90"/>
+                <!-- lowering -->
+                <part node="0>8"              direction="1" startTime="0" endTime="1" startRot="0 0 0" endRot="0 0 10"/>
+                <part componentJointIndex="3" direction="1" startTime="0" endTime="1" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+                <!-- lifting -->
+                <part node="0>8"              direction="-1" startTime="1" endTime="1.8" startRot="0 0 0" endRot="0 0 10"/>
+                <part componentJointIndex="3" direction="-1" startTime="1" endTime="1.8" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+
+            <!-- right back -->
+                <!-- folding -->
+                <part node="0>7|0"            startTime="2" endTime="10"  startTrans="-1.5 -0.0341 0" endTrans="-0.94855 -0.0341 0"/>
+                <part node="0>11|0"           startTime="2" endTime="10"  startTrans="0 0 1.56858" endTrans="0 0 0.95406"/>
+                <part node="0>7"              startTime="2" endTime="10" startRot="0 0 -12" endRot="0 0 -88.5"/>
+                <!-- lowering -->
+                <part node="0>7"              direction="-1" startTime="0" endTime="1" startRot="0 0 0" endRot="0 0 -12"/>
+                <part componentJointIndex="2" direction="-1" startTime="0" endTime="1" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+                <!-- lifting -->
+                <part node="0>7"              direction="1" startTime="1" endTime="2" startRot="0 0 0" endRot="0 0 -12"/>
+                <part componentJointIndex="2" direction="1" startTime="1" endTime="2" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+            <!-- left back -->
+                <!-- folding -->
+                <part node="0>9|0"            startTime="2" endTime="10"  startTrans="1.5 -0.0341 0" endTrans="0.94855 -0.0341 0"/>
+                <part node="0>13|0"           startTime="2" endTime="10"  startTrans="0 0 1.56858" endTrans="0 0 0.95406"/>
+                <part node="0>9"              startTime="2" endTime="10" startRot="0 0 12" endRot="0 0 88.5"/>
+                <!-- lowering -->
+                <part node="0>9"              direction="-1" startTime="0" endTime="1" startRot="0 0 0" endRot="0 0 12"/>
+                <part componentJointIndex="4" direction="-1" startTime="0" endTime="1" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+                <!-- lowering -->
+                <part node="0>9"              direction="1" startTime="1" endTime="2" startRot="0 0 0" endRot="0 0 12"/>
+                <part componentJointIndex="4" direction="1" startTime="1" endTime="2" startRotLimit="9 0 9" endRotLimit="0 0 0" startTransLimit="0 0.4 0" endTransLimit="0 0 0" />
+        </animation>
+    </animations>
+
+    <foldingParts startMoveDirection="1" foldMiddleAnimTime="0.18" turnOnFoldMaxLimit="0.25" turnOnFoldMinLimit="0" turnOffOnFold="true" >
+        <foldingPart animationName="folding" speedScale="1.0" />
+    </foldingParts>
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+
+    <components count="6">
+        <component1 centerOfMass="0 0.5 -1" solverIterationCount="10" />
+        <component2 centerOfMass="0 -0.15 0" solverIterationCount="10" />
+        <component3 centerOfMass="-0.14 -0.4 0.1" solverIterationCount="10" />
+        <component4 centerOfMass="-0.14 -0.4 0" solverIterationCount="10" />
+        <component5 centerOfMass="0.14 -0.4 0.1" solverIterationCount="10" />
+        <component6 centerOfMass="0.14 -0.4 0" solverIterationCount="10" />
+        <joint component1="0" component2="1" index="0>2" rotLimit="0 0 0" transLimit="0 0 0" /> <!-- attacher -->
+        <joint component1="0" component2="2" index="0>6|0" rotLimit="9 0 9" transLimit="0 0.4 0" /> <!-- right front -->
+        <joint component1="0" component2="3" index="0>7|0" rotLimit="9 0 9" transLimit="0 0.4 0" /> <!-- right back -->
+        <joint component1="0" component2="4" index="0>8|0" rotLimit="9 0 9" transLimit="0 0.4 0" /> <!-- left front -->
+        <joint component1="0" component2="5" index="0>9|0" rotLimit="9 0 9" transLimit="0 0.4 0" /> <!-- left back -->
+        <collisionPair component1="1" component2="2" enabled="false" />
+        <collisionPair component1="1" component2="3" enabled="false" />
+        <collisionPair component1="1" component2="4" enabled="false" />
+        <collisionPair component1="1" component2="5" enabled="false" />
+        <collisionPair component1="2" component2="3" enabled="false" />
+        <collisionPair component1="2" component2="4" enabled="false" />
+        <collisionPair component1="2" component2="5" enabled="false" />
+        <collisionPair component1="3" component2="4" enabled="false" />
+        <collisionPair component1="3" component2="5" enabled="false" />
+        <collisionPair component1="4" component2="5" enabled="false" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

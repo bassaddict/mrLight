@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="augerWagon">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Kotte Field Container</en>
+        <de>Kotte Feldrandcontainer</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_ManureBarrel</typeDesc>
+    <filename>data/vehicles/trailers/kotte/garantFieldContainer.i3d</filename>
+
+    <size width="5.5" length="15" lengthOffset="1.5"/>
+
+    <speedLimit value="40" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="2.1" repr="0>0|0" radius="0.532" initialCompression="50" suspTravel="0.1" spring="70" damper="30" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+        <wheel  restLoad="2.1" repr="0>0|1" radius="0.532" initialCompression="50" suspTravel="0.1" spring="70" damper="30" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+    </wheels>
+    
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>0|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+    </dynamicallyLoadedParts>
+    
+    <brakeForce>0.7</brakeForce>
+
+    <lights>
+        <light decoration="0>2" lightType="0"/>
+    </lights>
+
+    <brakeLights>
+        <brakeLight index="0>3" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>4|0" />
+        <turnSignalRight index="0>4|1" />
+    </turnSignals>
+
+    <capacity>55000</capacity>  <!-- 45, 55 or 65 m3-->
+
+    <allowFillFromAir value="true"/>
+
+    <fillTypes fruitTypes="liquidManure" />
+
+    <!--fillSound file="$data/vehicles/trailers/garantPump_small.wav" pitchOffset="1.0" volume="0.6" volume3D="0.6" innerRadius="10" radius="40" linkNode="0>9"/--> 
+
+    <unloadTrigger index="0>7" />
+    
+    <fillVolumes>
+        <fillVolume index="0>5" maxDelta="0" maxAllowedHeapAngle="0" allSidePlanes="false" />
+    </fillVolumes>
+
+    <movingTools>
+        <movingTool index="0>0" wheelIndices="1 2" >
+            <dependentPart index="0>6"/>
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <!-- support -->
+        <movingPart index="0>6" referencePoint="0>0|2" referenceFrame="0>0|2">
+            <translatingPart index="0>6|0" />
+        </movingPart>
+    </movingParts>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>0" startTime="0" duration="1" startRot="0 0 0" endRot="40 0 0" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>1" jointType="trailer" attacherHeight="0.935" />
+    </inputAttacherJoints>
+
+    <washable dirtDuration="60" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems> 
+    
+    <colorNodes>
+        <colorNode index="0>0" />
+        <colorNode index="0>6" />
+        <colorNode index="0>9" />
+    </colorNodes>
+    
+    <components count="1">
+        <component1 centerOfMass="0 0.6 0" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

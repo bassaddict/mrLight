@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="6" />
+	
+    <components>
+        <component1 mrlMass="4.104" />
+        <component2 mrlMass="0.2" />
+        <component3 mrlMass="0.1" />
+        <component4 mrlMass="0.1" />
+    </components>
+</vehicle>

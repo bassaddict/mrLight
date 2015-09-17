@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="450" neededPtoPower="20"/>
+	
+    <speedLimit value="15" />
+	
+    <workAreas mrlWidth="24" mrlMinWidth="12" mrlMaxWidth="36" mrlStepSize="3" />
+
+    <components count="1">
+        <component1 mrlMass="0.416" />
+    </components>
+</vehicle>

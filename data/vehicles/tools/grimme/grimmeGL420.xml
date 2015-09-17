@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="12" forceNode="0>" mrlBaseForce="3.5" mrlBaseForceFactor="4" />
+	<!--real machine has no PTO, but is driven by its own wheels (MR FS 13)-->
+	<!--base force 2, rows 4-->
+
+    <speedLimit value="9" />
+
+    <groundReferenceNodes>
+        <groundReferenceNode mrlOrigNode="1" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="2" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="3" chargeValue="1" mrlNormalizeChargeValue="false" />
+    </groundReferenceNodes>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.675" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+</vehicle>

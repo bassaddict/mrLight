@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="8" />
+	
+    <powerConsumer ptoRpm="540" neededPtoPower="70"/>
+</vehicle>

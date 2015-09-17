@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="augerWagon">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Kotte Garant TSA</en>
+        <de>Kotte Garant TSA</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_ManureBarrel</typeDesc>
+    <filename>data/vehicles/trailers/kotte/garantTSA.i3d</filename>
+
+    <size width="5.5" length="15" lengthOffset="1.5"/>
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="1.1" repr="0>0"                   radius="0.531" initialCompression="50" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" steeringAxleScale="0.8" steeringAxleRotMax="20" steeringAxleRotMin="-20" />
+        <wheel  restLoad="1.1" repr="0>1"                   radius="0.531" initialCompression="50" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" steeringAxleScale="0.8" steeringAxleRotMax="20" steeringAxleRotMin="-20" />
+        <wheel  restLoad="1.1" repr="0>2"                   radius="0.531" initialCompression="30" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+        <wheel  restLoad="1.1" repr="0>3" driveNode="0>3|0" radius="0.531" initialCompression="30" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+        <wheel  restLoad="1.1" repr="0>4"                   radius="0.531" initialCompression="10" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" steeringAxleScale="-1" steeringAxleRotMax="25" steeringAxleRotMin="-25" />
+        <wheel  restLoad="1.1" repr="0>5"                   radius="0.531" initialCompression="10" suspTravel="0.15" spring="30" damper="35" frictionScale="1.5" mass="0.14" steeringAxleScale="-1" steeringAxleRotMax="25" steeringAxleRotMin="-25" />
+    </wheels>
+    
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>1"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>3|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>4"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>5"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>3|1|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>3|1|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>12|2|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>12|2|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
+    </dynamicallyLoadedParts>
+    
+    <brakeForce>1</brakeForce>
+
+    <steeringAxleAngleScale startSpeed="5" endSpeed="70" />
+
+    <lights>
+        <light decoration="0>7" lightType="0"/>
+        <light decoration="0>11|0" lightType="1"/>
+    </lights>
+
+    <brakeLights>
+        <brakeLight index="0>8" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>10|0" />
+        <turnSignalRight index="0>10|1" />
+    </turnSignals>
+
+    <reverseLights>
+        <reverseLight index="0>9" />
+    </reverseLights>
+
+    <capacity>30000</capacity>
+
+    <supportsFillTriggers value="true" />
+    <allowFillFromAir value="true"/>
+
+    <fillTypes fruitTypes="liquidManure" />
+
+    <fillSound file="$data/vehicles/trailers/garantPump_big.wav" pitchOffset="1.0" volume="0.6" volume3D="0.6" innerRadius="10" radius="40" linkNode="0>12" useOnDischarge="true" useOnCharge="true" /> 
+
+    <measurementNode index="0>12|1|1" />
+
+    <overloadingCapacity>600</overloadingCapacity>
+    <unloadTrigger index="0>13" />
+    <trailerTriggers>
+        <trailerTrigger index="0>14" />
+    </trailerTriggers>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>12|0" startTime="0" duration="1" startTrans="0 0.5 0.792" endTrans="0 -0.1 0.792" />
+            <part node="0>3|1" startTime="0" endTime="0.05" visibility="false" />
+            <part node="0>12|2" startTime="0" endTime="0.05" visibility="true" />
+            <part node="0>3|1" startTime="0.05" endTime="0.1" visibility="true" />
+            <part node="0>12|2" startTime="0.05" endTime="0.1" visibility="false" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>6" jointType="semitrailer"/>
+    </inputAttacherJoints>
+
+    <washable dirtDuration="60" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="5" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="6" />
+    </driveGroundParticleSystems>
+    
+    <colorNodes>
+        <colorNode index="0>12" />
+    </colorNodes>
+    
+    <components count="1">
+        <component1 centerOfMass="0 0.58 0" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

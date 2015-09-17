@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="trailer">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Brantner E 8041</en>
+        <de>Brantner E 8041</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_Tipper</typeDesc>
+    <filename>data/vehicles/trailers/brantner/brantnerE8041.i3d</filename>
+
+    <size width="4" length="9" lengthOffset="0.5" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="0.8" repr="0>0"                   radius="0.472" initialCompression="40" suspTravel="0.15" spring="20" damper="50" frictionScale="1.5" mass="0.075" hasTyreTracks="true" tyreTrackAtlasIndex="3" />
+        <wheel  restLoad="0.8" repr="0>1" driveNode="0>1|0" radius="0.472" initialCompression="40" suspTravel="0.15" spring="20" damper="50" frictionScale="1.5" mass="0.075" hasTyreTracks="true" tyreTrackAtlasIndex="3" />
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgAW309_500_50_17.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>5|3|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>5|3|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>0.6</brakeForce>
+
+    <capacity>8500</capacity>
+
+    <lightCoronas>
+        <lightCorona index="0>5|4" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>5|6" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>5|5|0" />
+        <turnSignalRight index="0>5|5|1" />
+    </turnSignals>
+
+    <fillVolumes>
+        <fillVolume index="0>5|0|0|0|6|0" />
+    </fillVolumes>
+
+    <fillVolumeHeights>
+        <fillVolumeHeight fillVolumeId="1">
+            <refNode index="0>5|0|0|0|11|0" />
+            <refNode index="0>5|0|0|0|11|1" />
+            <node index="0>5|0|0|0|5|2|0" baseScale="0.95 1 1" transAxis="0 1 0" transMax="0 0.05 0" />
+            <node index="0>5|0|0|0|5|2|1" baseScale="1.8 0.1 1" />
+        </fillVolumeHeight>
+        <fillVolumeHeight fillVolumeId="1">
+            <refNode index="0>5|0|0|0|9|0" />
+            <refNode index="0>5|0|0|0|9|1" />
+            <node index="0>5|0|0|0|5|0|0" baseScale="1.0 1 1" transAxis="0 1 0" transMax="0 0.05 0" />
+            <node index="0>5|0|0|0|5|0|1" baseScale="0.8 0.1 1" />
+        </fillVolumeHeight>
+        <fillVolumeHeight fillVolumeId="1">
+            <refNode index="0>5|0|0|0|10|0" />
+            <refNode index="0>5|0|0|0|10|1" />
+            <node index="0>5|0|0|0|5|1|0" baseScale="1.0 1 1" transAxis="0 1 0" transMax="0 0.05 0" />
+            <node index="0>5|0|0|0|5|1|1" baseScale="0.8 0.1 1" />
+        </fillVolumeHeight>
+    </fillVolumeHeights>
+
+    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.8" volume="0.4" />
+    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.5" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>2" jointType="trailer" attacherHeight="0.935" />
+    </inputAttacherJoints>
+
+    <attacherJoints>
+        <attacherJoint index="0>3" jointType="trailer" maxRotLimit="10 80 80" minRotRotationOffset="0" allowsJointLimitMovement="false" canTurnOnImplement="false" />
+    </attacherJoints>
+
+    <tipReferencePoints>
+        <tipReferencePoint index="0>5|2|2" width="2.5" />
+        <tipReferencePoint index="0>5|2|0" width="3" />
+        <tipReferencePoint index="0>5|2|1" width="3" />
+    </tipReferencePoints>
+
+    <tipAnimations>
+        <tipAnimation speedScale="1" animationName="tipAnimationBack" dischargeStartTime="2" dischargeEndTime="9" >
+            <tipEffect fillTypes="wheat barley maize rape">
+                <effectNode node="0|0|0" linkNode="0>5|0|0|0|5|2|0" materialType="unloading" materialTypeId="3" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5"/>
+                <effectNode node="0|0|1" linkNode="0>5|0|0|0|5|2|0" materialType="smoke"     materialTypeId="1" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5"/>
+            </tipEffect>
+            <dischargeParticleSystems>
+                <dischargeParticleSystem type="chaff"     node="0>5|0|0|0|5|2|1" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="potato"    node="0>5|0|0|0|5|2|1" psRootNode="0|1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="sugarBeet" node="0>5|0|0|0|5|2|1" psRootNode="0|2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="woodChips" node="0>5|0|0|0|5|2|1" psRootNode="0|3" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="silage"    node="0>5|0|0|0|5|2|1" psRootNode="0|4" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+            </dischargeParticleSystems>
+            <fillVolumeDischargeInfo index="0>5|0|0|0|8|2" width="1.0" length="1.4" />
+            <fillVolumeHeight index="1"/>
+        </tipAnimation>
+        <tipAnimation speedScale="1" closeSpeedScale="-2" animationName="tipAnimationLeft" dischargeStartTime="2" dischargeEndTime="9">
+            <tipEffect fillTypes="wheat barley maize rape">
+                <effectNode node="0|0|0" linkNode="0>5|0|0|0|5|0|0" materialType="unloading" materialTypeId="3" position="0 0 0" filename="$data/vehicles/particleAnimations/brantner/brantnerE8041.i3d" fadeTime="0.5"/>
+                <effectNode node="0|0|1" linkNode="0>5|0|0|0|5|0|0" materialType="smoke"     materialTypeId="1" position="0 0 0" filename="$data/vehicles/particleAnimations/brantner/brantnerE8041.i3d" fadeTime="0.5"/>
+            </tipEffect>
+            <dischargeParticleSystems>
+                <dischargeParticleSystem type="chaff"     node="0>5|0|0|0|5|0|1" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="potato"    node="0>5|0|0|0|5|0|1" psRootNode="0|1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="sugarBeet" node="0>5|0|0|0|5|0|1" psRootNode="0|2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="woodChips" node="0>5|0|0|0|5|0|1" psRootNode="0|3" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="silage"    node="0>5|0|0|0|5|0|1" psRootNode="0|4" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+            </dischargeParticleSystems>
+            <fillVolumeDischargeInfo index="0>5|0|0|0|8|1" width="1.0" length="2.3" />
+            <fillVolumeHeight index="2"/>
+        </tipAnimation>
+        <tipAnimation speedScale="1" closeSpeedScale="-2" animationName="tipAnimationRight" dischargeStartTime="2" dischargeEndTime="9">
+            <tipEffect fillTypes="wheat barley maize rape">
+                <effectNode node="0|0|0" linkNode="0>5|0|0|0|5|1|0" materialType="unloading" materialTypeId="3" position="0 0 0" filename="$data/vehicles/particleAnimations/brantner/brantnerE8041.i3d" fadeTime="0.5"/>
+                <effectNode node="0|0|1" linkNode="0>5|0|0|0|5|1|0" materialType="smoke"     materialTypeId="1" position="0 0 0" filename="$data/vehicles/particleAnimations/brantner/brantnerE8041.i3d" fadeTime="0.5"/>
+            </tipEffect>
+            <dischargeParticleSystems>
+                <dischargeParticleSystem type="chaff"     node="0>5|0|0|0|5|1|1" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="potato"    node="0>5|0|0|0|5|1|1" psRootNode="0|1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="sugarBeet" node="0>5|0|0|0|5|1|1" psRootNode="0|2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="woodChips" node="0>5|0|0|0|5|1|1" psRootNode="0|3" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+                <dischargeParticleSystem type="silage"    node="0>5|0|0|0|5|1|1" psRootNode="0|4" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/brantner/brantnerE8041Particles.i3d" />
+            </dischargeParticleSystems>
+            <fillVolumeDischargeInfo index="0>5|0|0|0|8|0" width="1.0" length="2.3" />
+            <fillVolumeHeight index="3"/>
+        </tipAnimation>
+    </tipAnimations>
+
+    <fillRootNode index="0>" />
+    <exactFillRootNode index="0>6" />
+    <fillAutoAimTargetNode index="0>7" />
+    <fillMassNode index="0>" />
+
+    <fillTypes fruitTypes="wheat rape maize barley chaff potato sugarBeet silage woodChips"/>
+
+    <movingTools>
+        <movingTool index="0>5|0">
+            <dependentPart index="0>5|1" />
+            <dependentPart index="0>5|1|0" />
+        </movingTool>
+        <movingTool index="0>5|0|0">
+            <dependentPart index="0>5|1" />
+            <dependentPart index="0>5|1|0" />
+        </movingTool>
+        <movingTool index="0>5|0|0|0">
+            <dependentPart index="0>5|1|0" />
+        </movingTool>
+        <movingTool index="0>5|0|0|0|1">
+            <dependentPart index="0>5|0|0|0|3" />
+        </movingTool>
+        <movingTool index="0>5|0|0|0|2">
+            <dependentPart index="0>5|0|0|0|4" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <movingPart index="0>5|1" referencePoint="0>5|0|0|0|7" referenceFrame="0>5|0|0|0|7" lockAxis="1" />
+        <movingPart index="0>5|1|0" referencePoint="0>5|0|0|0|7" referenceFrame="0>5|0|0|0|7" lockAxis="3">
+            <translatingPart index="0>5|1|0|0" />
+            <translatingPart index="0>5|1|0|0|0" />
+            <translatingPart index="0>5|1|0|0|0|0" />
+            <translatingPart index="0>5|1|0|0|0|0|0" />
+        </movingPart>
+
+        <movingPart index="0>5|0|0|0|3" referencePoint="0>5|0|0|0|1|0" referenceFrame="0>5|0|0|0|1|0" scaleZ="true" />
+        <movingPart index="0>5|0|0|0|4" referencePoint="0>5|0|0|0|2|0" referenceFrame="0>5|0|0|0|2|0" scaleZ="true" />
+    </movingParts>
+
+    <animations>
+        <!-- backtipping -->
+        <animation name="tipAnimationBack">
+            <part node="0>5|0|0|0|0"        startTime="0.1" endTime="4" startRot="0 0 0" endRot="45 0 0" /> <!-- door -->
+            <part node="0>5|0|0|0"          startTime="0.3" endTime="8" startRot="0 0 0" endRot="-45 0 0" /> <!-- body -->
+            <part node="0>5|0|0|0|5|2|0"    startTime="0.3" endTime="8" startRot="0 0 0" endRot="45 0 0" />
+        </animation>
+        <!-- tipping left -->
+        <animation name="tipAnimationLeft">
+            <part node="0>5|0|0|0|1"        startTime="0.1" endTime="4" startRot="0 0 0" endRot="0 0 45" /> <!-- door -->
+            <part node="0>5|0"              startTime="0.3" endTime="8" startRot="0 0 0" endRot="0 0 -45" /> <!-- body -->
+            <part node="0>5|0|0|0|5|0|0"    startTime="0.3" endTime="8" startRot="0 0 0" endRot="0 0 45" />
+        </animation>
+        <!-- tipping right -->
+        <animation name="tipAnimationRight">
+            <part node="0>5|0|0|0|2"        startTime="0.1" endTime="4" startRot="0 0 0" endRot="0 0 -45" /> <!-- door -->
+            <part node="0>5|0|0"            startTime="0.3" endTime="8" startRot="0 0 0" endRot="0 0 45" /> <!-- body -->
+            <part node="0>5|0|0|0|5|1|0"    startTime="0.3" endTime="8" startRot="0 0 0" endRot="0 0 45" />
+        </animation>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>1|1" startTime="0"    endTime="0.05" visibility="false" />
+            <part node="0>5|3" startTime="0"    endTime="0.05" visibility="true" />
+            <part node="0>1|1" startTime="0.05" endTime="0.1" visibility="true" />
+            <part node="0>5|3" startTime="0.05" endTime="0.1" visibility="false" />
+            <part node="0>4"   startTime="0"    endTime="0.2" startTrans="0.008 0.241 2.33" endTrans="0.008 0 2.33" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+
+    <colorNodes>
+        <colorNode index="0>5|0|0|0" />
+        <colorNode index="0>5|0|0|0|0" />
+        <colorNode index="0>5|0|0|0|1" />
+        <colorNode index="0>5|0|0|0|2" />
+        <colorNode index="0>5|0|0|0|0|0" />
+        <colorNode index="0>5|0|0|0|0|1" />
+        <colorNode index="0>5|0|0|0|0|1|0" />
+    </colorNodes>
+
+    <components count="1">
+        <component1 centerOfMass="0 0.56 -0.2" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0">
+        <attacherJoint position="0.5 0" rotation="0" invertX="false" />
+    </schemaOverlay>
+
+</vehicle>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="waterTrailer">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Water trailer</en>
+        <de>Mobiler Wassertank</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_WaterTrailer</typeDesc>
+    <filename>data/vehicles/trailers/waterTrailer/waterTrailer.i3d</filename>
+
+    <size width="3.5" length="8.0" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="0.6" repr="0" radius="0.465" initialCompression="40" suspTravel="0.15" spring="12" damper="20" frictionScale="1.5" mass="0.04" />
+        <wheel  restLoad="0.6" repr="1" radius="0.465" initialCompression="40" suspTravel="0.15" spring="12" damper="20" frictionScale="1.5" mass="0.04" />
+        <wheel  restLoad="0.6" repr="2" radius="0.465" initialCompression="40" suspTravel="0.15" spring="12" damper="20" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="4"/>
+        <wheel  restLoad="0.6" repr="3" radius="0.465" initialCompression="40" suspTravel="0.15" spring="12" damper="20" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="4"/>
+    </wheels>
+
+    <brakeForce>0.3</brakeForce>
+
+    <lightCoronas>
+        <lightCorona index="6" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>9" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>5|0" />
+        <turnSignalRight index="0>5|1" />
+    </turnSignals>
+
+    <capacity>6000</capacity>
+    <fillLitersPerSecond>400</fillLitersPerSecond>
+    <fillTypes fillTypes="water"/>
+
+    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.5" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="4" jointType="trailerLow"/>
+    </inputAttacherJoints>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="7" startTime="0" duration="0.6" startTrans="0.379 0.353 2.118" endTrans="0.379 0 2.118" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <waterTrailerFillTrigger index="0>8" />
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
+    </driveGroundParticleSystems>
+
+    <components count="1">
+        <component1 centerOfMass="0 0.55 -1" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

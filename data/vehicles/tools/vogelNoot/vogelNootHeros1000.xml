@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="17" />
+
+    <wheels>
+        <wheel frictionScale="0.97" />
+        <wheel frictionScale="0.97" />
+    </wheels>
+
+	<groundReferenceNodes>
+        <groundReferenceNode mrlOrigNode="1" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="2" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="3" chargeValue="1" mrlNormalizeChargeValue="false" />
+		<groundReferenceNode mrlOrigNode="4" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="5" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="6" chargeValue="1" mrlNormalizeChargeValue="false" />
+    </groundReferenceNodes>
+
+    <powerConsumer mrlBaseForce="3.25" mrlBaseForceFactor="12"/> <!-- 12 blades, base force per blade -->
+
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.73" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+	
+    <components>
+        <component1 mrlMass="5.668" />
+        <component2 mrlMass="0.6" />
+        <component3 mrlMass="0.6" />
+    </components>
+</vehicle>

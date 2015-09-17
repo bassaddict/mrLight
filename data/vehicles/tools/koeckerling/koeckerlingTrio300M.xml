@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="14" />
+
+    <!-- recommended horsepower by manufacturer: 100 -->
+    <powerConsumer forceNode="0>" mrlBaseForce="0.8" mrlBaseForceFactor="10" />
+	<!-- base force per tine -->
+
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.60" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+
+</vehicle>

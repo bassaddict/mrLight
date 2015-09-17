@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+        <wheel frictionScale="1.5" />
+		<wheel frictionScale="1.05" />
+        <wheel frictionScale="1.05" />
+    </wheels>
+
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2000" maxForwardSpeed="30" maxBackwardSpeed="15" brakeForce="5" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="0.8">
+        <torque normRpm="0.47" torque="2.45"/>
+        <torque normRpm="0.57" torque="2.6"/>
+        <torque normRpm="0.67" torque="2.75"/>
+        <torque normRpm="0.76" torque="2.65"/>
+        <torque normRpm="0.95" torque="2.3"/>
+        <torque normRpm="1" torque="2"/>
+    </motor>
+
+    <fuelCapacity>1300</fuelCapacity>
+    <fuelUsage>130</fuelUsage>
+
+    <components>
+        <component1 centerOfMass="0 2.489 0.214" mrlMass="17.943" />
+    </components>
+</vehicle>

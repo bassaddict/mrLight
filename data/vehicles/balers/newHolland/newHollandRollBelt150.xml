@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="12" />
+    <powerConsumer ptoRpm="540" neededPtoPower="51"/>
+
+    <wheels>
+        <wheel frictionScale="0.967" />
+        <wheel frictionScale="0.967" />
+    </wheels>
+	
+	<mrlCompactingFactor value="3.0" />
+</vehicle>

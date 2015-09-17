@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+        <wheels>
+        <wheel frictionScale="1.35" />
+        <wheel frictionScale="1.35" />
+        <wheel frictionScale="1.35" />
+        <wheel frictionScale="1.35" />
+		<wheel frictionScale="1.35" />
+        <wheel frictionScale="1.35" />
+		<wheel frictionScale="1.35" />
+        <wheel frictionScale="1.35" />
+    </wheels>
+
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2100" maxForwardSpeed="23" maxBackwardSpeed="15" brakeForce="12" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" >
+        <torque normRpm="0.47" torque="0.90"/>
+        <torque normRpm="0.57" torque="1.15"/>
+        <torque normRpm="0.67" torque="1.15"/>
+        <torque normRpm="0.76" torque="1.15"/>
+        <torque normRpm="0.88" torque="1.05"/>
+        <torque normRpm="1.00" torque="0.96"/>
+    </motor>
+
+    <fuelCapacity>320</fuelCapacity>
+    <fuelUsage>58</fuelUsage>
+
+    <mouseControls>
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotX.png" mouseButton="LEFT" mouseAxis="Y" axis="AXIS_FRONTLOADER_ARM" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotY.png" mouseButton="LEFT" mouseAxis="X" axis="AXIS_FRONTLOADER_TOOL" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_rot.png" mouseButton="RIGHT" mouseAxis="Y" axis="AXIS_FRONTLOADER_ARM2" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_trans.png" mouseButton="RIGHT" mouseAxis="X"  axis="AXIS_FRONTLOADER_TOOL2" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/grab_rotY.png" mouseAxis="X" axis="AXIS_FRONTLOADER_TOOL3" />
+    </mouseControls>
+
+    <movingTools>
+        <!-- physics -->
+        <!-- cabin rot -->
+        <movingTool mrlOrigTool="1" axis="AXIS_FRONTLOADER_TOOL" />
+        <!-- main arm rot -->
+        <movingTool mrlOrigTool="2" axis="AXIS_FRONTLOADER_ARM" />
+        <!-- second arm rot -->
+        <movingTool mrlOrigTool="3" axis="AXIS_FRONTLOADER_ARM2" />
+        <!-- third arm trans -->
+        <movingTool mrlOrigTool="4" axis="AXIS_FRONTLOADER_TOOL2" />
+
+        <!-- delayed meshes -->
+        <!-- cabin rot -->
+        <movingTool mrlOrigTool="5" axis="AXIS_FRONTLOADER_TOOL" />
+        <!-- main arm rot -->
+        <movingTool mrlOrigTool="6" axis="AXIS_FRONTLOADER_ARM" />
+        <!-- second arm rot -->
+        <movingTool mrlOrigTool="7" axis="AXIS_FRONTLOADER_ARM2" />
+        <!-- third arm trans -->
+        <movingTool mrlOrigTool="8" axis="AXIS_FRONTLOADER_TOOL2" />
+
+        <!-- cutter x rotation -->
+        <movingTool mrlOrigTool="9" axis="AXIS_FRONTLOADER_TOOL3" />
+
+    </movingTools>
+
+    <components count="4">
+        <component1 centerOfMass="0 0.9 2" mrlMass="12.27" />
+        <component2 centerOfMass="0 1.309 -2.88" mrlMass="9.52" />
+        <component3 centerOfMass="0 -0.04 0.15" mrlMass="0.4" />
+        <component4 centerOfMass="0 -0.04 0.15" mrlMass="0.3" />
+    </components>
+</vehicle>

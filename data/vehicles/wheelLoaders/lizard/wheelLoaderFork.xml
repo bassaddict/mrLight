@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="dynamicMountAttacherImplement">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Wheelloader fork</en>
+        <de>Radlader Gabel</de>
+    </name>
+    <filename>data/vehicles/wheelLoaders/lizard/wheelLoaderFork.i3d</filename>
+
+    <size width="2" length="2"/>
+
+    <attacherJoint index="0>0" jointType="wheelLoader" />
+
+    <dynamicMountAttacher index="0>" />
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+    
+    <components count="1">
+        <component1 centerOfMass="0 0 0" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>>
+
+</vehicle>

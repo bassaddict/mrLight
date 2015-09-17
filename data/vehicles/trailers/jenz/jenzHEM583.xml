@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="woodCrusherTrailer">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Jenz HEM 583</en>
+        <de>Jenz HEM 583</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_WoodCrusher</typeDesc>
+    <filename>data/vehicles/trailers/jenz/jenzHem583.i3d</filename>
+
+    <size width="3" length="7.0" />
+
+    <powerConsumer ptoRpm="600" neededPtoPower="200"/>
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="5.0" repr="0>0"                   radius="0.537" width="0.56" initialCompression="50" suspTravel="0.08" spring="80" damper="40" frictionScale="1.5" mass="0.14" />
+        <wheel  restLoad="5.0" repr="0>1" driveNode="0>1|0" radius="0.537" width="0.56" initialCompression="50" suspTravel="0.08" spring="80" damper="40" frictionScale="1.5" mass="0.14" />
+        <wheel  restLoad="4.2" repr="0>2"                   radius="0.537" width="0.56" initialCompression="50" suspTravel="0.08" spring="80" damper="40" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+        <wheel  restLoad="4.2" repr="0>3"                   radius="0.537" width="0.56" initialCompression="50" suspTravel="0.08" spring="80" damper="40" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>2"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>3"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>7|0"   filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>7|1"   filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>1</brakeForce>
+
+    <toolCameras count="2">
+        <toolCamera1 index="0>22|0" rotatable="true" rotateNode="0>22" limit="true" useWorldXZRotation="true" rotMinX="-1.4" rotMaxX="1" transMin="4" transMax="35" >
+            <!--raycastNode index="0>23"/>
+            <raycastNode index="0>24"/-->
+        </toolCamera1>
+        <toolCamera2 index="0>9|3|0" rotatable="false" limit="true" rotMinX="0" rotMaxX="0" transMin="0" transMax="0" useMirror="false" isInside="false" />
+    </toolCameras>
+
+    <lights>
+        <light                         decoration="0>8|0"       lightType="0"/>
+        <light                         decoration="0>9|0|3|0"   lightType="1"/>
+        <light                         decoration="0>9|0|0|2|1" lightType="1"/>
+        <light                         decoration="0>10|0|3|0"  lightType="1"/>
+    </lights>
+
+    <brakeLights>
+        <brakeLight index="0>8|1" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>8|2|0" />
+        <turnSignalRight index="0>8|2|1" />
+    </turnSignals>
+
+    <reverseLights>
+        <reverseLight index="0>8|3" />
+    </reverseLights>
+
+    <beaconLights>
+        <beaconLight index="0>14|0" speed="0.015" filename="$data/vehicles/shared/beaconLight03.i3d" />
+        <beaconLight index="0>14|1" speed="0.017" filename="$data/vehicles/shared/beaconLight03.i3d" />
+    </beaconLights>
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>4" jointType="trailerLow" indexPTO="0>16"/>
+    </inputAttacherJoints>
+
+    <attacherJoints>
+        <attacherJoint index="0>5" jointType="trailer" maxRotLimit="10 80 80" minRotRotationOffset="0" allowsJointLimitMovement="false" canTurnOnImplement="false" />
+    </attacherJoints>
+
+    <mouseControls>
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotX.png" axis="AXIS_FRONTLOADER_ARM" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm1_rotY.png" axis="AXIS_FRONTLOADER_TOOL" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_rot.png"  axis="AXIS_FRONTLOADER_ARM2" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/arm2_trans.png" axis="AXIS_FRONTLOADER_TOOL2" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/grab_rotY.png" axis="AXIS_FRONTLOADER_TOOL3" />
+        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/grab_rotX.png"  axis="AXIS_FRONTLOADER_TOOL4" />
+    </mouseControls>
+
+    <movingTools>
+        <movingTool index="0>11">
+            <dependentPart index="0>12"/>
+        </movingTool>
+
+        <!-- pipe -->
+        <movingTool index="0>10|0" >
+            <dependentPart index="0>10|1" />
+        </movingTool>
+
+        <movingTool index="0>10|0|1|0">
+            <dependentPart index="0>10|0|1|0|0" />
+            <dependentPart index="0>10|0|5" />
+        </movingTool>
+
+        <movingTool index="1>1" componentJointIndex="1" anchorActor="0" rotSpeed="-70" rotAcceleration="200" rotMax="100" rotMin="" rotationAxis="3" axis="AXIS_FRONTLOADER_TOOL4" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL4" invertMouseAxis="true" speedFactor="1"/>
+        <movingTool index="1>2" componentJointIndex="2" anchorActor="0" rotSpeed="70" rotAcceleration="200" rotMax="0" rotMin="-100" rotationAxis="3" axis="AXIS_FRONTLOADER_TOOL4" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL4" invertMouseAxis="true" speedFactor="1"/>
+
+        <!-- claw rotation -->
+        <movingTool index="1>0" componentJointIndex="0" anchorActor="1" rotSpeed="-70" rotAcceleration="180"  rotationAxis="2" axis="AXIS_FRONTLOADER_TOOL3" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL3" invertMouseAxis="true" speedFactor="1">
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0"/>
+        </movingTool>
+
+        <!-- physics -->
+        <!-- arm3 -->
+        <movingTool index="0>21|0|0|0"   componentJointIndex="0" anchorActor="0" transSpeed="0.7" transAcceleration="2.0" transMin="0.975" transMax="2.975" translationAxis="3" startTrans="0.975" axis="AXIS_FRONTLOADER_TOOL2" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="true" speedFactor="1" />
+        <movingTool index="0>21|0|0|0|0" componentJointIndex="0" anchorActor="0" transSpeed="0.7" transAcceleration="2.0" transMin="0"     transMax="2"     translationAxis="3" startTrans="0"     axis="AXIS_FRONTLOADER_TOOL2" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="true" speedFactor="1" />
+        <!-- arm2 -->
+        <movingTool index="0>21|0|0" componentJointIndex="0" anchorActor="0" rotSpeed="20" rotAcceleration="180" rotMin="-3.6" rotMax="176.4" startRot="-3.6" axis="AXIS_FRONTLOADER_ARM2" invertAxis="false"  mouseAxis="AXIS_FRONTLOADER_ARM2" invertMouseAxis="false" speedFactor="1" rotSendNumBits="10">
+        </movingTool>
+        <!-- arm1 -->
+        <movingTool index="0>21|0" componentJointIndex="0" anchorActor="0" rotSpeed="20" rotAcceleration="180" rotMin="4" rotMax="80" startRot="4" axis="AXIS_FRONTLOADER_ARM" invertAxis="false"  mouseAxis="AXIS_FRONTLOADER_ARM" invertMouseAxis="false" speedFactor="1" rotSendNumBits="9">
+        </movingTool>
+        <!-- arm1 rot -->
+        <movingTool index="0>21" componentJointIndex="0" anchorActor="0" rotSpeed="20" rotAcceleration="180" rotationAxis="2" startRot="0" axis="AXIS_FRONTLOADER_TOOL" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL" invertMouseAxis="true" speedFactor="1" />
+
+        <!-- delayed meshes -->
+        <!-- arm3 -->
+        <movingTool index="0>9|0|0|0" isDelayed="true" adjustAttributesToMovingToolIndex="7" transSpeed="0.7" transAcceleration="2.0" transMin="0.975" transMax="2.975" translationAxis="3" startTrans="0.975" axis="AXIS_FRONTLOADER_TOOL2" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="true" speedFactor="1" />
+        <movingTool index="0>9|0|0|0|0" isDelayed="true" adjustAttributesToMovingToolIndex="8" transSpeed="0.7" transAcceleration="2.0" transMin="0"     transMax="2"     translationAxis="3" startTrans="0"     axis="AXIS_FRONTLOADER_TOOL2" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="true" speedFactor="1" />
+        <!-- arm2 -->
+        <movingTool index="0>9|0|0" isDelayed="true" adjustAttributesToMovingToolIndex="9" rotSpeed="20" rotAcceleration="180" rotMin="-3.6" rotMax="176.4" startRot="-3.6" axis="AXIS_FRONTLOADER_ARM2" invertAxis="false"  mouseAxis="AXIS_FRONTLOADER_ARM2" invertMouseAxis="false" speedFactor="1" rotSendNumBits="10">
+            <dependentPart index="0>9|0|1" />
+        </movingTool>
+        <!-- arm1 -->
+        <movingTool index="0>9|0" isDelayed="true" adjustAttributesToMovingToolIndex="10" rotSpeed="20" rotAcceleration="180" rotMin="4" rotMax="80" startRot="4" axis="AXIS_FRONTLOADER_ARM" invertAxis="false"  mouseAxis="AXIS_FRONTLOADER_ARM" invertMouseAxis="false" speedFactor="1" rotSendNumBits="9">
+            <dependentPart index="0>9|1" />
+        </movingTool>
+        <!-- arm1 rot -->
+        <movingTool index="0>9" isDelayed="true" adjustAttributesToMovingToolIndex="11" rotSpeed="20" rotAcceleration="180" rotationAxis="2" startRot="0" axis="AXIS_FRONTLOADER_TOOL" invertAxis="true"  mouseAxis="AXIS_FRONTLOADER_TOOL" invertMouseAxis="true" speedFactor="1" />
+    </movingTools>
+
+    <movingParts>
+        <!-- arm1 -->
+        <movingPart index="0>9|1" referencePoint="0>9|0|4" referenceFrame="0>9|2">
+            <translatingPart index="0>9|1|0"/>
+        </movingPart>
+        <!-- arm2 -->
+        <movingPart index="0>9|0|1" localReferencePoint="0>9|0|1|0" referencePoint="0>9|0|0|1" referenceFrame="0>9|0|5">
+            <dependentPart index="0>9|0|1|0"/>
+            <dependentPart index="0>9|0|2"/>
+        </movingPart>
+        <movingPart index="0>9|0|1|0" referencePoint="0>9|0|0|1" referenceFrame="0>9|0|1" scaleZ="true" />
+        <movingPart index="0>9|0|2" referencePoint="0>9|0|1|1" referenceFrame="0>9|0">
+            <translatingPart index="0>9|0|2|0"/>
+        </movingPart>
+
+        <!-- claw-arm connection -->
+        <movingPart index="0>9|0|0|0|0|1|0" referencePoint="1>4" referenceFrame="0>9|0|0|0|0|1" limitedAxis="2" isActiveDirty="true" playSound="false">
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0" />
+        </movingPart>
+        <movingPart index="0>9|0|0|0|0|1|0|0|0" referencePoint="1>4" referenceFrame="0>9|0|0|0|0|1|0|0" limitedAxis="2" playSound="false">
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0|0|0" />
+        </movingPart>
+
+        <!-- claw rotation -->
+        <movingPart index="0>9|0|0|0|0|1|0|0|0|0|0" referencePoint="1>3" referenceFrame="1>3" limitedAxis="2" playSound="false" >
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0|0|0|1" />
+        </movingPart>
+
+        <!-- left/right claw -->
+        <movingPart index="0>9|0|0|0|0|1|0|0|0|0|0|1" referencePoint="2>3" referenceFrame="2>3" limitedAxis="3" >
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0|0|0|0" />
+        </movingPart>
+        <movingPart index="0>9|0|0|0|0|1|0|0|0|0|0|0" referencePoint="3>3" referenceFrame="3>3" limitedAxis="3" >
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0|0|0|0|0" />
+            <dependentPart index="0>9|0|0|0|0|1|0|0|0|0|0|0|1" />
+        </movingPart>
+        <!-- claw arm -->
+        <movingPart index="0>9|0|0|0|0|1|0|0|0|0|0|0|0" referencePoint="0>9|0|0|0|0|1|0|0|0|0|0|1|0" referenceFrame="0>9|0|0|0|0|1|0|0|0|0|0" scaleZ="true" />
+        <!-- claw cylinder -->
+        <movingPart index="0>9|0|0|0|0|1|0|0|0|0|0|0|1" referencePoint="0>9|0|0|0|0|1|0|0|0|0|0|1|1" referenceFrame="0>9|0|0|0|0|1|0|0|0|0|0">
+            <translatingPart index="0>9|0|0|0|0|1|0|0|0|0|0|0|1|0" />
+        </movingPart>
+
+        <!-- discharge pipe -->
+        <movingPart index="0>10|1" referencePoint="0>10|0|0" referenceFrame="0>10|0|0">
+            <translatingPart index="0>10|1|0"/>
+        </movingPart>
+        <!-- spring -->
+        <movingPart index="0>10|0|1|0|0" referencePoint="0>10|0|4" referenceFrame="0>10|0|4" scaleZ="true" />
+        <movingPart index="0>10|0|5" referencePoint="0>10|0|1|0|2" referenceFrame="0>10|0|1|0|2" scaleZ="true"/>
+
+        <movingPart index="0>13|0" referencePoint="0>20|0" referenceFrame="0>20|0" isActiveDirty="true" playSound="false">
+            <dependentPart index="0>13|1" />
+        </movingPart>
+        <movingPart index="0>13|1" referencePoint="0>13|0|1" referenceFrame="0>13|0|1">
+            <translatingPart index="0>13|1|0"/>
+        </movingPart>
+
+        <!-- camera -->
+        <movingPart index="0>9|3" referencePoint="0>9|0|0|0|0|3" referenceFrame="0>" invertZ="true" isActiveDirty="true" />
+
+    </movingParts>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>7"   startTime="0"    endTime="0.05" visibility="true" />
+            <part node="0>1|1" startTime="0"    endTime="0.05" visibility="false" />
+            <part node="0>7"   startTime="0.05" endTime="0.1"  visibility="false" />
+            <part node="0>1|1" startTime="0.05" endTime="0.1"  visibility="true" />
+        </animation>
+
+        <!-- move pillars down/up, open/close gate -->
+        <animation name="movePillars">
+            <part node="0>6|0"    startTime="0" endTime="0.6" startTrans="-0.726 1.048 2.606" endTrans="-1.086 1.048 2.606" />
+            <part node="0>6|0|0"  startTime="0.6" endTime="1.2" startTrans="-0.41 -0.196 -0.002" endTrans="-0.41 -0.66 -0.002" />
+            <part node="0>6|1"    startTime="0" endTime="0.6" startTrans="0.73 1.048 2.606" endTrans="1.089 1.048 2.606" />
+            <part node="0>6|1|0"  startTime="0.6" endTime="1.2" startTrans="0.414 -0.196 -0.002" endTrans="0.414 -0.66 -0.002" />
+            <part node="0>11"     startTime="0" endTime="5"   startRot="0 0 -92" endRot="0 0 0" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <foldingParts posDirectionText="unfold_SupportFeet" negDirectionText="fold_SupportFeet" turnOnFoldMaxLimit="1" turnOnFoldMinLimit="0.9" turnOffOnFold="true" >
+        <foldingPart animationName="movePillars" speedScale="1" />
+    </foldingParts>
+
+    <pipeSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="1" />
+
+    <pipe numStates="2" unloadingStates="2" raycastNodeIndex="0>10|0|1|0|1" raycastDistance="11" autoAimStates="2" unloadingEffectStopTime="0.75">
+        <node index="0>10" rotationSpeeds="0 35 0" autoAimYRotation="true" autoAimInvertZ="true">
+            <state1 rotation="0 180 0" />
+            <state2 rotation="0 300 0"/>
+        </node>
+        <node index="0>10|0" rotationSpeeds="15 0 0">
+            <state1 rotation="-38.364 0 0"/>
+            <state2 rotation="0 0 0"/>
+        </node>
+        <node index="0>10|0|1|0" rotationSpeeds="20 0 0" autoAimXRotation="true">
+            <state1 rotation="-190 0 0"/>
+            <state2 rotation="-190 0 0"/>
+        </node>
+    </pipe>
+
+    <pipeEffect>
+        <effectNode node="0|0|0" linkNode="0>10|0|6"     position="0 0 0" materialType="unloading" materialTypeId="3" delay="0"   filename="$data/vehicles/particleAnimations/jenz/jenzHem583.i3d" />
+        <effectNode node="0|0|1" linkNode="0>10|0|1|0|3" position="0 0 0" materialType="unloading" materialTypeId="3" delay="0.1" filename="$data/vehicles/particleAnimations/jenz/jenzHem583.i3d" />
+        <effectNode node="0|0|2" linkNode="0>10|0|1|0|3" position="0 0 0" materialType="smoke"     materialTypeId="1" delay="0.1" filename="$data/vehicles/particleAnimations/jenz/jenzHem583.i3d" />
+    </pipeEffect>
+
+    <trailerTriggers>
+        <trailerTrigger index="0>15|0" pipeState="2" />
+        <trailerTrigger index="0>15|1" pipeState="2" />
+    </trailerTriggers>
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="10" />
+
+    <woodCrusher cutNode="0>17" cutSizeY="1" cutSizeZ="1.5" moveCol="0>11|4" moveColDisableCollisionPairs="false" moveTrigger="0>11|3" downForceNode="0>18" mainDrumRefNode="0>20|0" downForce="1" moveMaxForce="9">
+        <particleSystem node="0>19" psRootNode="0" file="$data/vehicles/particleAnimations/jenz/jenzHem583Particles.i3d" />
+    </woodCrusher>
+
+    <woodCrusherStartSound file="$data/vehicles/trailers/jenz/jenzHEM582_start.wav" volume="2.5" pitchOffset="1" />
+    <woodCrusherIdleSound  file="$data/vehicles/trailers/jenz/jenzHEM582_idle.wav"  volume="2.5" pitchOffset="1" />
+    <woodCrusherWorkSound  file="$data/vehicles/trailers/jenz/jenzHEM582_work.wav"  volume="2.5" pitchOffset="1" />
+    <woodCrusherStopSound  file="$data/vehicles/trailers/jenz/jenzHEM582_stop.wav"  volume="2.5" pitchOffset="1" />
+
+    <turnedOnRotationNodes>
+        <turnedOnRotationNode index="0>13|0|0" type="woodCrusher" rotSpeed="200" rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="1"/>
+        <turnedOnRotationNode index="0>13|2"   type="woodCrusher" rotSpeed="750" rotAxis="3" turnOnFadeTime="1" turnOffFadeTime="1"/>
+        <turnedOnRotationNode index="0>13|3"   type="woodCrusher" rotSpeed="-750" rotAxis="3" turnOnFadeTime="1" turnOffFadeTime="1"/>
+    </turnedOnRotationNodes>
+
+    <turnedOnScrollers>
+        <turnedOnScroller index="0>12"   shaderParameterName="offsetUV" scrollSpeed="-0.25" shaderParameterComponent="2" scrollLength="1" turnOnFadeTime="1" turnOffFadeTime="1"/>
+        <turnedOnScroller index="0>11|0" shaderParameterName="offsetUV" scrollSpeed="-0.25" shaderParameterComponent="2" scrollLength="1" turnOnFadeTime="1" turnOffFadeTime="1"/>
+    </turnedOnScrollers>
+
+    <capacity>0</capacity>
+    <overloadingCapacity>0</overloadingCapacity>
+    <fillTypes fillTypes="woodChips" />
+    <allowFillFromAir value="false" />
+
+    <fillVolumeDischargeInfo index="0>10|0|1|0|4" width="0.4" length="0.4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
+    </driveGroundParticleSystems>
+
+    <components count="4">
+        <component1 centerOfMass="0 0.62 0" solverIterationCount="15" /> <!-- main: 0-->
+        <component2 solverIterationCount="15" /> <!-- claw: 1 -->
+        <component3 solverIterationCount="15" /> <!-- claw: 2 -->
+        <component4 solverIterationCount="15" /> <!-- claw: 3 -->
+
+        <joint component1="0" component2="1" index="0>21|0|0|0|0|0" indexActor1="1>0|0" zRotationNode="0>21|0|0|0|0|0|0" rotLimit="0 50 10" rotMinLimit="0 -50 -220" transLimit="0 0 0" rotDriveVelocity="0 0 0" maxRotDriveForce="1.2 1.2 1.2" transLimitSpring="30 30 30" transLimitDamping="10 10 10" />
+        <joint component1="1" component2="2" index="1>1" rotLimit="0 0 0" transLimit="0 0 0" rotLimitSpring="0 0 1.2" rotLimitDamping="0 0 1.6" />
+        <joint component1="1" component2="3" index="1>2" rotLimit="0 0 0" transLimit="0 0 0" rotLimitSpring="0 0 1.2" rotLimitDamping="0 0 1.6" />
+
+        <collisionPair component1="2" component2="3" enabled="false" />
+        <collisionPair component1="0" component2="2" enabled="false" />
+        <collisionPair component1="0" component2="3" enabled="false" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0">
+        <attacherJoint position="0.5 0" rotation="0" invertX="false" />
+    </schemaOverlay>
+</vehicle>

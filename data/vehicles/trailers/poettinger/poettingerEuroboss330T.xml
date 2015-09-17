@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="forageWagon">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>Poettinger Euroboss 330T</en>
+        <de>Pöttinger Euroboss 330T</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_ForageWagon</typeDesc>
+    <filename>data/vehicles/trailers/poettinger/poettingerEuroboss330T.i3d</filename>
+
+    <size width="3.5" length="9"/>
+
+    <powerConsumer ptoRpm="500" neededPtoPower="20"/>
+    <speedLimit value="25" />
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="1.4" repr="0>0"                   radius="0.51" width="0.5" initialCompression="40" suspTravel="0.12" spring="30" damper="20" frictionScale="1.5" mass="0.11" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+        <wheel  restLoad="1.4" repr="0>1" driveNode="0>1|0" radius="0.51" width="0.5" initialCompression="40" suspTravel="0.12" spring="30" damper="20" frictionScale="1.5" mass="0.11" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+    </wheels>
+
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="0|0" linkNode="0>0"      filename="$data/vehicles/wheels/trelleborg/trelleborgT404_500_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>1|0"    filename="$data/vehicles/wheels/trelleborg/trelleborgT404_500_45_22_5.i3d" />
+        <dynamicallyLoadedPart node="0|0" linkNode="0>10|1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_15X6_00_6.i3d" />
+        <dynamicallyLoadedPart node="0|1" linkNode="0>10|1|1" filename="$data/vehicles/wheels/trelleborg/trelleborgT510_15X6_00_6.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|0" filename="$data/vehicles/shared/wheelChock02.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>1|1|1" filename="$data/vehicles/shared/wheelChock02.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>15|0"  filename="$data/vehicles/shared/wheelChock02.i3d" />
+        <dynamicallyLoadedPart node="0" linkNode="0>15|1"  filename="$data/vehicles/shared/wheelChock02.i3d" />
+    </dynamicallyLoadedParts>
+
+    <brakeForce>0.5</brakeForce>
+
+    <lightCoronas>
+        <lightCorona index="0>7|0|0" />
+    </lightCoronas>
+
+    <brakeLights>
+        <brakeLight index="0>7|0|1" />
+    </brakeLights>
+
+    <reverseLights>
+        <reverseLight index="0>7|0|2" />
+    </reverseLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>7|0|3|0" />
+        <turnSignalRight index="0>7|0|3|1" />
+    </turnSignals>
+
+    <fillVolumes>
+        <fillVolume index="0>5|0" maxAllowedHeapAngle="40" scrollSpeedDischarge="0 0 0.3" scrollSpeedLoad="0 0 0.08" />
+    </fillVolumes>
+
+    <fillVolumeHeights>
+        <fillVolumeHeight fillVolumeId="1" >
+            <refNode index="0>23|0" />
+            <refNode index="0>23|1" />
+            <node index="0>14" baseScale="1.5 0.1 1" transAxis="0 0 0" scaleAxis="0 1 0"/>
+        </fillVolumeHeight>
+    </fillVolumeHeights>
+
+    <fillVolumeLoadInfo index="0>22" width="1.4" length="1.0" />
+
+    <capacity>21300</capacity>
+
+    <workAreas>
+        <workArea startIndex="0>4|0" widthIndex="0>4|1" heightIndex="0>4|2" type="forageWagon" />
+    </workAreas>
+
+    <groundReferenceNodes>
+        <groundReferenceNode index="0>10|1" threshold="1" />
+    </groundReferenceNodes>
+
+    <forageWgnSound file="$data/vehicles/trailers/forageWagon.wav" pitchOffset="1" volume="1.0" />
+    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="1.0" volume="1.0" />
+    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.5" />
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>2" jointType="trailer" attacherHeight="0.944" indexPTO="0>17" />
+    </inputAttacherJoints>
+
+    <tipReferencePoints>
+        <tipReferencePoint index="0>13" width="2.5" />
+    </tipReferencePoints>
+
+    <tipAnimations>
+        <tipAnimation speedScale="1" animationName="tipAnimationBack" dischargeStartTime="1.0" dischargeEndTime="25" >
+            <dischargeParticleSystems>
+                <dischargeParticleSystem type="chaff"           node="0>14" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="grass_windrow"   node="0>14" psRootNode="0|6" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="wheat_windrow"   node="0>14" psRootNode="0|5" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+                <dischargeParticleSystem type="barley_windrow"  node="0>14" psRootNode="0|5" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
+            </dischargeParticleSystems>
+            <fillVolumeDischargeInfo index="0>21" width="1.4" length="1.0" alsoUseLoadInfoForDischarge="true" loadInfoFillFactor="0.98" loadInfoSizeScale="2 3" />
+            <fillVolumeHeight index="1"/>
+        </tipAnimation>
+    </tipAnimations>
+
+    <fillRootNode index="0>" />
+    <exactFillRootNode index="0>18" />
+    <fillAutoAimTargetNode index="0>19" />
+    <fillMassNode index="0>" />
+
+    <fillTypes fillTypes="chaff grass_windrow wheat_windrow barley_windrow"/>
+
+    <movingTools>
+        <movingTool index="0>9">
+            <dependentPart index="0>10" />
+            <dependentPart index="0>11" />
+            <dependentPart index="0>12" />
+        </movingTool>
+
+        <movingTool index="0>6">
+            <dependentPart index="0>7" />
+            <dependentPart index="0>8" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <!-- pickup wheel arm -->
+        <movingPart index="0>10" localReferencePoint="0>10|0" referencePoint="0>9|2" referenceFrame="0>">
+            <dependentPart index="0>10|0" />
+        </movingPart>
+        <movingPart index="0>10|0" referencePoint="0>9|2" referenceFrame="0>9|2" scaleZ="true" />
+        <movingPart index="0>11" referencePoint="0>9|3" referenceFrame="0>9|3">
+            <translatingPart index="0>11|0" />
+        </movingPart>
+        <movingPart index="0>12" referencePoint="0>9|4" referenceFrame="0>9|4" scaleZ="true" />
+
+        <!-- door -->
+        <movingPart index="0>7" localReferencePoint="0>7|0" referencePoint="0>6|0" referenceFrame="0>">
+            <dependentPart index="0>7|0" />
+            <dependentPart index="0>7|0|5" />
+        </movingPart>
+        <movingPart index="0>7|0" referencePoint="0>6|0" referenceFrame="0>6|0" scaleZ="true" />
+        <movingPart index="0>7|0|5" referencePoint="0>20|0" referenceFrame="0>20|0" scaleZ="true" />
+        <movingPart index="0>8" referencePoint="0>7|1" referenceFrame="0>7|1">
+            <translatingPart index="0>8|0" />
+        </movingPart>
+    </movingParts>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>1|1" startTime="0" endTime="0.05" visibility="false" />
+            <part node="0>15" startTime="0" endTime="0.05" visibility="true" />
+            <part node="0>1|1" startTime="0.05" endTime="0.1" visibility="true" />
+            <part node="0>15" startTime="0.05" endTime="0.1" visibility="false" />
+            <part node="0>3|0" startTime="0" duration="0.6" startTrans="0 0 -0.33" endTrans="0 0 0" />
+            <part node="0>3|1" startTime="0" duration="0.6" startRot="0 0 -720" endRot="0 0 0" />
+        </animation>
+
+        <!-- rotate pickup down/up -->
+        <animation name="rotatePickup">
+            <part node="0>9" startTime="0" duration="1.5" startRot="0 0 0" endRot="26 0 0" />
+        </animation>
+
+        <!-- backtipping -->
+        <animation name="tipAnimationBack">
+            <part node="0>6" startTime="0" endTime="4" startRot="0 0 0" endRot="50 0 0" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <turnedOnRotationNodes>
+        <turnedOnRotationNode index="0>9|0" rotSpeed="-400" type="forageWagon" rotAxis="1" turnOnFadeTime="1" turnOffFadeTime="1"/>
+    </turnedOnRotationNodes>
+
+    <speedRotatingParts>
+        <speedRotatingPart index="0>10|1" radius="0.2" refNodeIndex="0" onlyActiveWhenLowered="true" />
+        <speedRotatingPart index="0>9|1"  radius="0.4" refNodeIndex="0" rotateOnlyIfFillLevelIncreased="true" onlyActiveWhenLowered="true"/>
+    </speedRotatingParts>
+
+    <tipScrollerNodes>
+        <tipScrollerNode index="0>16|0" shaderParameterName="scrollPosition" scrollSpeed="-0.19" scrollLength="4.60" shaderParameterComponent="1" turnOnFadeTime="1" turnOffFadeTime="1" />
+        <tipScrollerNode index="0>16|1" shaderParameterName="offsetUV"       scrollSpeed="1"                       shaderParameterComponent="1" turnOnFadeTime="1" turnOffFadeTime="1" />
+    </tipScrollerNodes>
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+
+    <pickupAnimation name="rotatePickup" lowerSpeed="2" liftSpeed="-1" />
+
+    <components count="1">
+        <component1 centerOfMass="0 0.52 -0.2" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+</vehicle>

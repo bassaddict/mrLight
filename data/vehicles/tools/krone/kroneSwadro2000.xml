@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="50"/>
+    <speedLimit value="15" />
+
+    <wheels>
+        <wheel frictionScale="1.14" />
+        <wheel frictionScale="1.14" />
+        <wheel frictionScale="1.0" />
+        <wheel frictionScale="1.0" />
+    </wheels>
+
+    <components>
+        <component1 mrlMass="4.7" />
+        <component2 mrlMass="0.3" /><!-- attacher-->
+        <component3 mrlMass="0.7" />  <!-- leftBackRotor-->
+        <component4 mrlMass="0.7" />  <!-- rightBackRotor-->
+        <component5 mrlMass="0.7" />  <!-- leftMiddleRotor-->
+        <component6 mrlMass="0.7" />  <!-- rightMiddleRotor-->
+        <component7 mrlMass="0.7" />  <!-- leftFrontRotor-->
+        <component8 mrlMass="0.7" />  <!-- rightFrontRotor-->
+        <component9 mrlMass="0.1" />  <!-- leftWheelCol-->
+        <component10 mrlMass="0.1" />  <!-- rightWheelCol-->
+    </components>
+	
+</vehicle>

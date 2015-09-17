@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="35"/>
+	
+    <speedLimit value="15" />
+	
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.71" upperDistanceToGround="0.71" />
+    </inputAttacherJoints>
+
+    <components>
+        <component1 mrlMass="0.29" />
+        <component2 mrlMass="1.1" />
+    </components>
+	
+</vehicle>

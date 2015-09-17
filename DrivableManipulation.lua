@@ -15,7 +15,7 @@ function DrivableManipulation:load(xmlFile)
 	
 	
 	-- update motor settings
-	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
+	--[[if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
 		local torqueScale = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].torqueScale, 1);
 		local maxRpm = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxRpm, self.motor.maxRpm);
 		local maxSpeed = Utils.getNoNil(MrLightUtils.vehicleConfigs[self.configFileName].maxSpeed, self.motor.maxForwardSpeed*3.6);
@@ -72,16 +72,16 @@ function DrivableManipulation:load(xmlFile)
 		
 		--experiment:
 		self.motor.lowBrakeForceScale = 0.1;
-	end;
+	end;]]
 	
 	
 	-- incline display
-	self.frontInclineNode = createTransformGroup("front");
+	--[[self.frontInclineNode = createTransformGroup("front");
 	self.backInclineNode = createTransformGroup("back");
 	link(self.rootNode, self.frontInclineNode);
 	link(self.rootNode, self.backInclineNode);
 	setTranslation(self.frontInclineNode, 0, 0, 1);
-	setTranslation(self.backInclineNode, 0, 0, -1);
+	setTranslation(self.backInclineNode, 0, 0, -1);]]
 	
 	
 	
@@ -105,10 +105,8 @@ function DrivableManipulation:load(xmlFile)
 		self.wheelsRot[k] = rx;
 		local x,y,z = getWorldTranslation(v.driveNode);
 		self.wheelsPos[k] = {x=x, y=y, z=z};
-		local a, b, c = getTranslation(v.driveNode)
-		self.wheelsGroundContactPos[k] = {localToWorld(v.driveNode, a, 0, c)}; --{localToWorld(v.driveNode, v.positionX, 0, v.positionZ)};
-		
-		v.frictionScale = 1.5;
+		local a, b, c = worldToLocal(v.node, getWorldTranslation(v.node));
+		self.wheelsGroundContactPos[k] = {localToWorld(v.driveNode, a, b-v.node, c)}; --{localToWorld(v.driveNode, v.positionX, 0, v.positionZ)};
 		
 		v.rotPerSecond = 0;
 		v.distPerSecond = 0;
@@ -192,7 +190,7 @@ function DrivableManipulation:update(dt)
 	
 	
 	
-	
+	self.slip = 0;
 	for k,v in pairs(self.wheels) do
 		local lastRot = self.wheelsRot[k];
 		local rx,_,_ = getRotation(v.driveNode);
@@ -218,11 +216,12 @@ function DrivableManipulation:update(dt)
 		v.slipDisplay = (v.slipDisplay * 0.95) + (v.slip * 0.05);
 		self.slip = self.slip + v.slipDisplay;
 		--local a, b, c = getTranslation(v.driveNode)
-		local x1,y1,z1 = worldToLocal(v.driveNode, x, y, z);
+		--local x1,y1,z1 = worldToLocal(v.driveNode, x, y, z);
 		--print(x1, " ", y1, " ", z1);
 		
-		self.wheelsGroundContactPos[k] = {localToWorld(v.driveNode,x1,-v.radius,z1)}; --{worldToLocal(v.driveNode, x, y-v.radius, z)}; --{localToWorld(v.driveNode, v.positionX, 0, v.positionZ)};
-		--drawDebugPoint(unpack(self.wheelsGroundContactPos[k]),0,1,1,1);
+		local a, b, c = worldToLocal(v.node, getWorldTranslation(v.driveNode));
+		self.wheelsGroundContactPos[k] = {localToWorld(v.node, a, b-v.radius, c)};
+		
 	end;
 	self.slip = self.slip / self.numWheels;
 	
@@ -244,8 +243,8 @@ function DrivableManipulation:update(dt)
 	local bx, by, bz = unpack(self.wheelsGroundContactPos[2]);
 	local cx, cy, cz = unpack(self.wheelsGroundContactPos[4]);
 	
-	drawDebugLine(ax,ay,az,1,0,1,bx,by,bz,1,0,1); --,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
-	drawDebugLine(bx,by,bz,1,1,1,cx,cy,cz,1,1,1); --float x0,float y0,float z0,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
+	--drawDebugLine(ax,ay,az,1,0,1,bx,by,bz,1,0,1); --,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
+	--drawDebugLine(bx,by,bz,1,1,1,cx,cy,cz,1,1,1); --float x0,float y0,float z0,float r0,float g0,float b0,float x1,float y1,float z1,float r1,float g1,float b1)
 	
 	local distLeftRight = Utils.vector3Length(ax-bx, ay-by, az-bz);
 	local distFrontBack = Utils.vector3Length(bx-cx, by-cy, bz-cz);
@@ -272,7 +271,7 @@ end;
 function DrivableManipulation:draw()
 	if self.debugRenderDrivableManipulation then
 		setTextAlignment(RenderText.ALIGN_LEFT);
-		renderText(0.85, 0.01, 0.012, string.format("incline X: %.3f, incline Z: %.3f", self.anglePercentLeftRight, self.anglePercentFrontBack));
+		renderText(0.85, 0.01, 0.012, string.format("slip: %.3f, incline X: %.3f, incline Z: %.3f", self.slip*100, self.anglePercentLeftRight, self.anglePercentFrontBack));
 		setTextAlignment(RenderText.ALIGN_RIGHT);
 		
 		local i = 0;

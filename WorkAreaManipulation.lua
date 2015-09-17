@@ -8,7 +8,99 @@ function WorkAreaManipulation:load(xmlFile)
 
 	self.setWorkingWidth = WorkAreaManipulation.setWorkingWidth;
 	
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].xmlFile ~= nil then
+		local xmlPath = MrLightUtils.modDir .. "" .. MrLightUtils.vehicleConfigs[self.configFileName].xmlFile;
+		xmlFile = loadXMLFile("settings", xmlPath);
+	end;
+	
 	self.workingWidth = 0;
+	local workingWidth = getXMLFloat(xmlFile, "vehicle.workAreas#mrlWidth");
+	local minWidth = getXMLFloat(xmlFile, "vehicle.workAreas#mrlMinWidth");
+	local maxWidth = getXMLFloat(xmlFile, "vehicle.workAreas#mrlMaxWidth");
+	local stepSize = getXMLFloat(xmlFile, "vehicle.workAreas#mrlStepSize");
+	
+	if workingWidth ~= nil and minWidth ~= nil and maxWidth ~= nil and stepSize ~= nil then
+		self.workingWidth = workingWidth;
+		self.minWorkingWidth = minWidth;
+		self.maxWorkingWidth = maxWidth;
+		self.workingWidthStepSize = stepSize;
+	end;
+	
+	local totalCharge = 0;
+    local i = 0;
+    while true do
+        local key = string.format("vehicle.groundReferenceNodes.groundReferenceNode(%d)", i);
+        if not hasXMLProperty(xmlFile, key) then
+            break;
+        end;
+		local groundReferenceNode = {threshold = 0, chargeValue = 1};
+		local mrlOrigNode = getXMLInt(xmlFile, key.."#mrlOrigNode");
+		if mrlOrigNode ~= nil then
+			groundReferenceNode = self.groundReferenceNodes[mrlOrigNode];
+			print("used existing refNode");
+		end;
+		groundReferenceNode.node = Utils.getNoNil(Utils.indexToObject(self.components, getXMLString(xmlFile, key .. "#index")), groundReferenceNode.node);
+		groundReferenceNode.threshold = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#threshold"), groundReferenceNode.threshold);
+		groundReferenceNode.chargeValue = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#chargeValue"), groundReferenceNode.chargeValue);
+		groundReferenceNode.normalizeChargeValue = Utils.getNoNil(getXMLBool(xmlFile, key .. "#mrlNormalizeChargeValue"), true);
+        totalCharge = totalCharge + groundReferenceNode.chargeValue;
+		
+		if mrlOrigNode == nil then
+			table.insert(self.groundReferenceNodes, groundReferenceNode);
+			print("added new refNode");
+		end;
+        i = i + 1;
+    end;
+	
+	-- normalize chargeValues
+    for _, refNode in pairs(self.groundReferenceNodes) do
+		if refNode.normalizeChargeValue then
+			refNode.chargeValue = refNode.chargeValue / totalCharge;
+		end;
+    end;
+	
+	local i = 0;
+	while true do
+        local key = string.format("vehicle.workAreas.workArea(%d)", i);
+        if not hasXMLProperty(xmlFile, key) then
+            break;
+        end;
+		local workArea = {};
+		local mrlOrigArea = getXMLInt(xmlFile, key.."#mrlOrigArea");
+		if mrlOrigArea ~= nil then
+			workArea = self.workAreas[mrlOrigArea];
+		end;
+		
+        local refNodeIndex = getXMLInt(xmlFile, key .."#refNodeIndex");
+        if refNodeIndex ~= nil then
+            if self.groundReferenceNodes[refNodeIndex+1] ~= nil then
+                workArea.refNode = self.groundReferenceNodes[refNodeIndex+1];
+            else
+                print("Warning: Invalid GroundReferenceNode '"..refNodeIndex.."' ("..key..")! Indexing starts with 0");
+            end;
+        else
+            if table.getn(self.groundReferenceNodes) == 1 then
+                workArea.refNode = self.groundReferenceNodes[1];
+            end;
+        end;
+
+        local areaTypeStr = getXMLString(xmlFile, key .."#type");
+        if areaTypeStr == nil then
+            workArea.type = WorkArea.AREATYPE_DEFAULT;
+        else
+            local areaType = WorkArea.areaTypeNameToInt[areaTypeStr];
+            assert(areaType ~= nil, "Invalid workarea-type '"..areaTypeStr.."' ("..key..")");
+            workArea.type = areaType;
+        end;
+
+        workArea.disableBackwards = Utils.getNoNil(getXMLBool(xmlFile, key .. "#disableBackwards"), true);
+		
+		if mrlOrigArea == nil then
+			table.insert(self.workAreas, workArea);
+		end;
+        i = i + 1;
+    end;
+	
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].workingWidths ~= nil then
 		local wwT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].workingWidths);
@@ -22,7 +114,7 @@ function WorkAreaManipulation:load(xmlFile)
 		end;
 	end;
 	
-	self.debugRenderWorkAreaManipulation = false;
+	self.debugRenderWorkAreaManipulation = true;
 end;
 
 function WorkAreaManipulation:delete()
@@ -39,6 +131,7 @@ function WorkAreaManipulation:loadFromAttributesAndNodes(xmlFile, key, resetVehi
 		self.workingWidth = Utils.getNoNil(getXMLFloat(xmlFile, key.."#currentWorkingWidth"), self.workingWidth);
 		self:setWorkingWidth(self.workingWidth, self.workingWidthStepSize, "ABSOLUTE");
 	end;
+	return BaseMission.VEHICLE_LOAD_OK;
 end;
 
 function WorkAreaManipulation:getSaveAttributesAndNodes(nodeIdent)
@@ -58,15 +151,21 @@ end;
 
 function WorkAreaManipulation:draw()
 	if self.debugRenderWorkAreaManipulation then
-		setTextAlignment(RenderText.ALIGN_RIGHT);
+	
+		for _, refNode in pairs(self.groundReferenceNodes) do
+            local x,y,z = getWorldTranslation(refNode.node);
+            drawDebugPoint(x,y,z,0,1,1,1);
+        end
+		
+		--setTextAlignment(RenderText.ALIGN_RIGHT);
 		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, lastFillLevel: %.4f, currentSeed: %d, isFilling: %s", self.fillLevel, self.myLastFillLevel, self.currentSeed, tostring(self.isFilling)));
 		--renderText(0.99, 0.78, 0.018, string.format("fillDelta: %.4f",self.deltaFill));
-		setTextAlignment(RenderText.ALIGN_LEFT);
+		--setTextAlignment(RenderText.ALIGN_LEFT);
 	end;
 end;
 
 function WorkAreaManipulation:setWorkingWidth(currentWidth, step, action)
-	print("currentWidth: "..currentWidth..", step: "..step);
+	--print("currentWidth: "..currentWidth..", step: "..step);
 	local sx,sy,sz = getTranslation(self.workAreas[1].start);
 	local wx,wy,wz = getTranslation(self.workAreas[1].width);
 	local hx,hy,hz = getTranslation(self.workAreas[1].height);
@@ -76,7 +175,7 @@ function WorkAreaManipulation:setWorkingWidth(currentWidth, step, action)
 	local actualStep = step;
 	local actualWidth = currentWidth;
 	if action == "ABSOLUTE" then
-		print("absolute -> start: "..self.workAreas[1].start..", width: "..self.workAreas[1].width..", height: "..self.workAreas[1].height);
+		--print("absolute -> start: "..self.workAreas[1].start..", width: "..self.workAreas[1].width..", height: "..self.workAreas[1].height);
 		actualWidth = MrLightUtils.getWorkingWidth(self.workAreas, self.rootNode);
 		actualStep = currentWidth-actualWidth;
 		if actualStep < 0 then
@@ -87,7 +186,7 @@ function WorkAreaManipulation:setWorkingWidth(currentWidth, step, action)
 		actualStep = math.abs(actualStep);
 	end;
 	
-	print("actualWidth: "..actualWidth..", actualStep: "..actualStep);
+	--print("actualWidth: "..actualWidth..", actualStep: "..actualStep);
 	
 	local factor = 1;
 	if action == "INCREASE" or doIncr then
@@ -101,7 +200,7 @@ function WorkAreaManipulation:setWorkingWidth(currentWidth, step, action)
 			self.workingWidth = actualWidth - actualStep;
 		end;
 	end;
-	print("factor: "..factor);
+	--print("factor: "..factor);
 	setTranslation(self.workAreas[1].start, sx * factor, sy, sz);
 	setTranslation(self.workAreas[1].width, wx * factor, wy, wz);
 	setTranslation(self.workAreas[1].height, hx * factor, hy, hz);

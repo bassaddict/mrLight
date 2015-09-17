@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle type="augerWagon">
+    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
+    <name>
+        <en>HORSCH Titan 34 UW</en>
+        <de>HORSCH Titan 34 UW</de>
+    </name>
+    <typeDesc>$l10n_TypeDesc_AugerWagon</typeDesc>
+    <filename>data/vehicles/trailers/horsch/horschTitan34UW.i3d</filename>
+
+    <size width="4.5" length="10"/>
+
+    <wheels autoRotateBackSpeed="2.0">
+        <wheel  restLoad="3.6" repr="0"                 radius="0.93" initialCompression="50" suspTravel="0.08" spring="140" damper="50" frictionScale="1.5" mass="0.45" hasTyreTracks="true" tyreTrackAtlasIndex="0"/>
+        <wheel  restLoad="3.6" repr="1" driveNode="1|0" radius="0.93" initialCompression="50" suspTravel="0.08" spring="140" damper="50" frictionScale="1.5" mass="0.45" hasTyreTracks="true" tyreTrackAtlasIndex="0"/>
+    </wheels>
+    
+    <dynamicallyLoadedParts>
+        <dynamicallyLoadedPart node="2|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgTM2000_800_65R32.i3d" />
+        <dynamicallyLoadedPart node="2|1" linkNode="0>1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgTM2000_800_65R32.i3d" />
+        <dynamicallyLoadedPart node="0"   linkNode="0>1|1|0" filename="$data/vehicles/shared/wheelChock02.i3d" />
+        <dynamicallyLoadedPart node="0"   linkNode="0>1|1|1" filename="$data/vehicles/shared/wheelChock02.i3d" />
+    </dynamicallyLoadedParts>
+    
+    <brakeForce>1</brakeForce>
+    
+    <capacity>34000</capacity>
+
+    <lights>
+        <light decoration="0>10" lightType="0"/>
+        <light decoration="0>7|0|2" lightType="1"/>
+    </lights>
+
+    <brakeLights>
+        <brakeLight index="0>11" />
+    </brakeLights>
+
+    <turnSignals>
+        <turnSignalLeft index="0>14|0" />
+        <turnSignalRight index="0>14|1" />
+    </turnSignals>
+
+    <fillTypes fruitTypes="wheat rape maize barley chaff"/>
+
+    <fillVolumes>
+        <fillVolume index="0>9|0" maxAllowedHeapAngle="25" maxDelta="0.5" />
+    </fillVolumes>
+    
+    <fillVolumeUnloadInfo index="0>15" width="1" length="1" />
+    <fillVolumeDischargeInfo index="0>7|0|6" width="1" length="1" />
+    
+    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.9" volume="1.0" />
+    <!--fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.2" volume3D="1.2" innerRadius="10" radius="40" linkNode="0>10" useOnCharge="false" /-->
+
+    <inputAttacherJoints>
+        <inputAttacherJoint index="0>2" jointType="trailerLow" indexPTO="0>4" />
+    </inputAttacherJoints>
+
+    <fillRootNode index="0>" />
+    <fillMassNode index="0>" />
+    <allowTipDischarge value="false" />
+    <exactFillRootNode index="0>12" />
+
+    <pipe numStates="2" unloadingStates="2" raycastNodeIndex="0>7|0|4" raycastDistance="6">
+        <node index="0>7|0" rotationSpeeds="0 30 0">
+            <state1 rotation="0 -142.7 0"/>
+            <state2 rotation="0 -1 0"/>
+        </node>
+    </pipe>
+    <overloadingCapacity>800</overloadingCapacity>
+
+    <pipeEffect>
+        <effectNode node="0|0|0" linkNode="0>7|0|5" materialType="unloading" materialTypeId="3" delay="0" filename="$data/vehicles/particleAnimations/horsch/horschTitan.i3d" />
+        <effectNode node="0|0|1" linkNode="0>7|0|5" materialType="smoke"     materialTypeId="1" delay="0" filename="$data/vehicles/particleAnimations/horsch/horschTitan.i3d" />
+    </pipeEffect>
+    
+    <movingTools>
+        <movingTool index="0>5">
+            <dependentPart index="0>6" />
+        </movingTool>
+
+        <movingTool index="0>7|0" >
+            <dependentPart index="0>8|0" />
+        </movingTool>
+    </movingTools>
+
+    <movingParts>
+        <movingPart index="0>6" referencePoint="0>5|0" referenceFrame="0>5|0">
+            <translatingPart index="0>6|0" />
+        </movingPart>
+        <movingPart index="0>8|0" referencePoint="0>7|0|1" referenceFrame="0>8">
+            <translatingPart index="0>8|0|0" />
+        </movingPart>
+    </movingParts>
+
+    <turnedOnRotationNodes>
+        <turnedOnRotationNode index="0>7|0|0|0" type="overloading" rotAxis="1" rotSpeed="1200" turnOnFadeTime="0.2" turnOffFadeTime="0.2"/>
+    </turnedOnRotationNodes>
+
+    <animations>
+        <!-- move support wheel down/up -->
+        <animation name="moveSupport">
+            <part node="0>1|1" startTime="0" endTime="0.05" visibility="false" />
+            <part node="0>13" startTime="0" endTime="0.05" visibility="true" />
+            <part node="0>1|1" startTime="0.05" endTime="0.1" visibility="true" />
+            <part node="0>13" startTime="0.05" endTime="0.1" visibility="false" />
+            <part node="0>5" startTime="0" endTime="0.5" startRot="40 0 0" endRot="0 0 0" />
+            <part node="0>3" startTime="0" endTime="0.5" startTrans="0.012 0.982 1.859" endTrans="0.012 0.38 1.859" />
+        </animation>
+    </animations>
+
+    <support animationName="moveSupport" />
+
+    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
+
+    <driveGroundParticleSystems>
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
+        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
+    </driveGroundParticleSystems>
+    
+    <components count="1">
+        <component1 centerOfMass="0.03 0.98 -1.1" solverIterationCount="10" />
+    </components>
+
+    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
+
+</vehicle>

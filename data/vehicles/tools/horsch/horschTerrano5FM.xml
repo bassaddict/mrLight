@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <!-- recommended horsepower by manufacturer: 220 - 300 --> 
+    <powerConsumer forceNode="0>" mrlBaseForce="0.9" mrlBaseForceFactor="17" />
+	<!-- base force per tine -->
+	
+    <speedLimit value="14" />
+
+    <wheels>
+        <wheel frictionScale="0.88" />
+        <wheel frictionScale="0.88" />
+    </wheels>
+    
+    <components>
+        <component1 mrlMass="6.15" />
+        <component2 mrlMass="0.3" />
+    </components>
+
+</vehicle>

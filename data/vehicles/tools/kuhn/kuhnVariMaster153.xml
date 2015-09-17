@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="90" />
+
+    <powerConsumer mrlBaseForce="3.25" mrlBaseForceFactor="4"/> <!-- 4 blades, base force per blade -->
+
+	<groundReferenceNodes>
+        <groundReferenceNode mrlOrigNode="1" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="2" chargeValue="1" mrlNormalizeChargeValue="false" />
+        <groundReferenceNode mrlOrigNode="3" chargeValue="1" mrlNormalizeChargeValue="false" />
+    </groundReferenceNodes>
+	
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.465" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+	
+    <components>
+        <component1 mrlMass="1.58" />
+    </components>
+</vehicle>
