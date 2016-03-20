@@ -18,10 +18,16 @@ function VehicleManipulation:load(xmlFile)
 	local numWheels = #self.wheels;
 	for i=1, numWheels do
 		local wheelnamei = string.format("vehicle.wheels.wheel(%d)", self.wheels[i].xmlIndex);
-		self.wheels[i].frictionScale = Utils.getNoNil(getXMLFloat(xmlFile, wheelnamei .. "#frictionScale"), self.wheels[i].frictionScale);
-		--print("    " .. tostring(self.wheels[i].frictionScale));
-		self:updateWheelTireFriction(self.wheels[i]);
-		--print("    " .. tostring(self.wheels[i].frictionScale));
+		local reloadWheel = getXMLBool(xmlFile, wheelnamei .. "#mrlReloadWheel");
+		
+		if reloadWheel then
+			self:loadDynamicWheelDataFromXML(xmlFile, wheelnamei, self.wheels[i]);
+		else
+			self.wheels[i].frictionScale = Utils.getNoNil(getXMLFloat(xmlFile, wheelnamei .. "#frictionScale"), self.wheels[i].frictionScale);
+			--print("    " .. tostring(self.wheels[i].frictionScale));
+			self:updateWheelTireFriction(self.wheels[i]);
+			--print("    " .. tostring(self.wheels[i].frictionScale));
+		end;
 	end;
 	
 	local numComponents = #self.components;
@@ -46,7 +52,8 @@ function VehicleManipulation:load(xmlFile)
 	while true do
         local baseName = string.format("vehicle.attacherJoints.attacherJoint(%d)", i);
 		local mrlType = getXMLString(xmlFile, baseName.."#mrlType");
-		if mrlType == nil then
+		local mrlAddJoint = getXMLString(xmlFile, baseName.."#mrlAddJoint");
+		if mrlType == nil and mrlAddJoint == nil then
 			break;
 		end;
         local mrlOrigJointIndex = getXMLInt(xmlFile, baseName.. "#mrlOrigJointIndex");
@@ -74,12 +81,226 @@ function VehicleManipulation:load(xmlFile)
 				attacherJoint.minRotRotationOffset = math.rad(Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#minRotRotationOffset"), 8));
 				
 				attacherJoint.bottomArm.translationNode = nil;
-			elseif mrlType == "trailer" then
+			elseif mrlType == "trailer" or mrlType == "trailerLow" then
 				--rotation limit for trailer attacher joints
 				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRotLimit"));
 				attacherJoint.maxRotLimit[1] = math.rad(math.abs(Utils.getNoNil(x, 0)));
 				attacherJoint.maxRotLimit[2] = math.rad(math.abs(Utils.getNoNil(y, 0)));
 				attacherJoint.maxRotLimit[3] = math.rad(math.abs(Utils.getNoNil(z, 0)));
+			end;
+		elseif mrlAddJoint then
+			local index = getXMLString(xmlFile, baseName.. "#index");
+			if index == nil then
+				break;
+			end;
+			local object = Utils.indexToObject(self.components, index);
+			if object ~= nil then
+				local entry = {};
+				entry.jointTransform = object;
+				entry.jointOrigRot = { getRotation(entry.jointTransform) };
+				entry.jointOrigTrans = { getTranslation(entry.jointTransform) };
+
+				local jointTypeStr = getXMLString(xmlFile, baseName.. "#jointType");
+				local jointType;
+				if jointTypeStr ~= nil then
+					jointType = Vehicle.jointTypeNameToInt[jointTypeStr];
+					if jointType == nil then
+						print("Warning: invalid jointType " .. jointTypeStr);
+					end;
+				end;
+				if jointType == nil then
+					jointType = Vehicle.JOINTTYPE_IMPLEMENT;
+				end;
+				entry.jointType = jointType;
+				entry.allowsJointLimitMovement = Utils.getNoNil(getXMLBool(xmlFile, baseName.."#allowsJointLimitMovement"), true);
+				entry.allowsLowering = Utils.getNoNil(getXMLBool(xmlFile, baseName.."#allowsLowering"), true);
+
+				if jointType == Vehicle.JOINTTYPE_TRAILER or jointType == Vehicle.JOINTTYPE_TRAILERLOW then
+					entry.allowsLowering = false;
+				end;
+
+				self:loadPowerTakeoff(xmlFile, baseName, entry);
+
+				entry.canTurnOnImplement = Utils.getNoNil(getXMLBool(xmlFile, baseName.."#canTurnOnImplement"), true);
+
+				local rotationNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. "#rotationNode"));
+				if rotationNode ~= nil then
+					entry.rotationNode = rotationNode;
+					local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRot"));
+					entry.maxRot = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+
+					local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minRot"));
+					local rx,ry,rz = getRotation(rotationNode);
+					entry.minRot = { Utils.getNoNilRad(x, rx), Utils.getNoNilRad(y, ry), Utils.getNoNilRad(z, rz) };
+
+				end;
+				local rotationNode2 = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. "#rotationNode2"));
+				if rotationNode2 ~= nil then
+					entry.rotationNode2 = rotationNode2;
+					local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRot2"));
+					entry.maxRot2 = { math.rad(Utils.getNoNil(x, 0)), math.rad(Utils.getNoNil(y, 0)), math.rad(Utils.getNoNil(z, 0)) };
+
+					local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minRot2"));
+					local rx,ry,rz = getRotation(rotationNode2);
+					entry.minRot2 = { Utils.getNoNilRad(x, rx), Utils.getNoNilRad(y, ry), Utils.getNoNilRad(z, rz) };
+				end;
+				entry.maxRotDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#maxRotDistanceToGround"), 0.7);
+				entry.minRotDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#minRotDistanceToGround"), 1.0);
+				entry.maxRotRotationOffset = math.rad(Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#maxRotRotationOffset"), 0));
+				entry.minRotRotationOffset = math.rad(Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#minRotRotationOffset"), 8));
+
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxRotLimit"));
+				entry.maxRotLimit = {};
+				entry.maxRotLimit[1] = math.rad(math.abs(Utils.getNoNil(x, 0)));
+				entry.maxRotLimit[2] = math.rad(math.abs(Utils.getNoNil(y, 0)));
+				entry.maxRotLimit[3] = math.rad(math.abs(Utils.getNoNil(z, 0)));
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minRotLimit"));
+				entry.minRotLimit = {};
+				entry.minRotLimit[1] = math.rad(math.abs(Utils.getNoNil(x, 0)));
+				entry.minRotLimit[2] = math.rad(math.abs(Utils.getNoNil(y, 0)));
+				entry.minRotLimit[3] = math.rad(math.abs(Utils.getNoNil(z, 0)));
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#maxTransLimit"));
+				entry.maxTransLimit = {};
+				entry.maxTransLimit[1] = math.abs(Utils.getNoNil(x, 0));
+				entry.maxTransLimit[2] = math.abs(Utils.getNoNil(y, 0));
+				entry.maxTransLimit[3] = math.abs(Utils.getNoNil(z, 0));
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#minTransLimit"));
+				entry.minTransLimit = {};
+				entry.minTransLimit[1] = math.abs(Utils.getNoNil(x, 0));
+				entry.minTransLimit[2] = math.abs(Utils.getNoNil(y, 0));
+				entry.minTransLimit[3] = math.abs(Utils.getNoNil(z, 0));
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, baseName.."#jointPositionOffset"));
+				entry.jointPositionOffset = {};
+				entry.jointPositionOffset[1] = Utils.getNoNil(x, 0);
+				entry.jointPositionOffset[2] = Utils.getNoNil(y, 0);
+				entry.jointPositionOffset[3] = Utils.getNoNil(z, 0);
+
+				entry.transNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.."#transNode"));
+				if entry.transNode ~= nil then
+					entry.transNodeOrgTrans = {getTranslation(entry.transNode)};
+					entry.transMinYHeight = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#transMinYHeight"), entry.jointOrigTrans[2]);
+					entry.transMaxYHeight = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#transMaxYHeight"), entry.jointOrigTrans[2]);
+				end;
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  baseName.."#rotLimitSpring"));
+				local rotLimitSpring = { Utils.getNoNil(x, 0), Utils.getNoNil(y, 0), Utils.getNoNil(z, 0) };
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  baseName.."#rotLimitDamping"));
+				local rotLimitDamping = { Utils.getNoNil(x, 1), Utils.getNoNil(y, 1), Utils.getNoNil(z, 1) };
+				entry.rotLimitSpring = rotLimitSpring;
+				entry.rotLimitDamping = rotLimitDamping;
+
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  baseName.."#transLimitSpring"));
+				local transLimitSpring = { Utils.getNoNil(x, 0), Utils.getNoNil(y, 0), Utils.getNoNil(z, 0) };
+				local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  baseName.."#transLimitDamping"));
+				local transLimitDamping = { Utils.getNoNil(x, 1), Utils.getNoNil(y, 1), Utils.getNoNil(z, 1) };
+				entry.transLimitSpring = transLimitSpring;
+				entry.transLimitDamping = transLimitDamping;
+
+				entry.moveTime = Utils.getNoNil(getXMLFloat(xmlFile, baseName.."#moveTime"), 0.5)*1000;
+
+				entry.enableCollision = Utils.getNoNil(getXMLBool(xmlFile, baseName.."#enableCollision"), false);
+
+				local topArmFilename = getXMLString(xmlFile, baseName.. ".topArm#filename");
+				if topArmFilename ~= nil then
+					local baseNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".topArm#baseNode"));
+					if baseNode ~= nil then
+						local i3dNode = Utils.loadSharedI3DFile(topArmFilename,self.baseDirectory, false, false, false);
+						if i3dNode ~= 0 then
+							local rootNode = getChildAt(i3dNode, 0);
+							link(baseNode, rootNode);
+							delete(i3dNode);
+							setTranslation(rootNode, 0,0,0);
+							local translationNode = getChildAt(rootNode, 0);
+							local referenceNode = getChildAt(translationNode, 0);
+
+
+							local topArm = {};
+							topArm.rotationNode = rootNode;
+							topArm.rotX, topArm.rotY, topArm.rotZ = 0,0,0;
+							topArm.translationNode = translationNode;
+
+							local _,_,referenceDistance = getTranslation(referenceNode);
+							topArm.referenceDistance = referenceDistance;
+
+							topArm.zScale = 1;
+							local zScale = Utils.sign(Utils.getNoNil(getXMLFloat(xmlFile, baseName.. ".topArm#zScale"), 1));
+							if zScale < 0 then
+								topArm.rotY = math.pi;
+								setRotation(rootNode, topArm.rotX, topArm.rotY, topArm.rotZ);
+							end
+
+							if getNumOfChildren(rootNode) > 1 then
+								topArm.scaleNode = getChildAt(rootNode, 1);
+								local scaleReferenceNode = getChildAt(topArm.scaleNode, 0);
+								local _,_,scaleReferenceDistance = getTranslation(scaleReferenceNode);
+								topArm.scaleReferenceDistance = scaleReferenceDistance;
+							end
+
+							topArm.toggleVisibility = Utils.getNoNil(getXMLBool(xmlFile, baseName.. ".topArm#toggleVisibility"), false);
+							if topArm.toggleVisibility then
+								setVisibility(topArm.rotationNode, false);
+							end;
+
+							entry.topArm = topArm;
+						end
+					end
+				else
+					local rotationNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".topArm#rotationNode"));
+					local translationNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".topArm#translationNode"));
+					local referenceNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".topArm#referenceNode"));
+					if rotationNode ~= nil then
+						local topArm = {};
+						topArm.rotationNode = rotationNode;
+						topArm.rotX, topArm.rotY, topArm.rotZ = getRotation(rotationNode);
+						if translationNode ~= nil and referenceNode ~= nil then
+							topArm.translationNode = translationNode;
+
+							local x,y,z = getTranslation(translationNode);
+							if math.abs(x) >= 0.0001 or math.abs(y) >= 0.0001 or math.abs(z) >= 0.0001 then
+								print("Warning: translation of topArm of attacherJoint "..i.." is not 0/0/0 in '"..self.configFileName.."'");
+							end;
+							local ax, ay, az = getWorldTranslation(referenceNode);
+							local bx, by, bz = getWorldTranslation(translationNode);
+							topArm.referenceDistance = Utils.vector3Length(ax-bx, ay-by, az-bz);
+						end;
+						topArm.zScale = Utils.sign(Utils.getNoNil(getXMLFloat(xmlFile, baseName.. ".topArm#zScale"), 1));
+						topArm.toggleVisibility = Utils.getNoNil(getXMLBool(xmlFile, baseName.. ".topArm#toggleVisibility"), false);
+						if topArm.toggleVisibility then
+							setVisibility(topArm.rotationNode, false);
+						end;
+
+						entry.topArm = topArm;
+					end;
+				end
+				local rotationNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".bottomArm#rotationNode"));
+				local translationNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".bottomArm#translationNode"));
+				local referenceNode = Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.. ".bottomArm#referenceNode"));
+				if rotationNode ~= nil then
+					local bottomArm = {};
+					bottomArm.rotationNode = rotationNode;
+					bottomArm.rotX, bottomArm.rotY, bottomArm.rotZ = getRotation(rotationNode);
+					if translationNode ~= nil and referenceNode ~= nil then
+						bottomArm.translationNode = translationNode;
+
+						local x,y,z = getTranslation(translationNode);
+						if math.abs(x) >= 0.0001 or math.abs(y) >= 0.0001 or math.abs(z) >= 0.0001 then
+							print("Warning: translation of bottomArm '"..getName(translationNode).."' of attacherJoint "..i.." is "..math.abs(x) .. "/" .. math.abs(y) .. "/" .. math.abs(z) .. "! Should be 0/0/0! ("..self.configFileName..")");
+						end;
+						local ax, ay, az = getWorldTranslation(referenceNode);
+						local bx, by, bz = getWorldTranslation(translationNode);
+						bottomArm.referenceDistance = Utils.vector3Length(ax-bx, ay-by, az-bz);
+					end;
+					bottomArm.zScale = Utils.sign(Utils.getNoNil(getXMLFloat(xmlFile, baseName.. ".bottomArm#zScale"), 1));
+					entry.bottomArm = bottomArm;
+				end;
+				entry.rootNode = Utils.getNoNil(Utils.indexToObject(self.components, getXMLString(xmlFile, baseName.."#rootNode")), self.components[1].node);
+				entry.jointIndex = 0;
+				table.insert(self.attacherJoints, entry);
 			end;
 		end;
 		if self.attacherJoints[i+1] ~= nil then
@@ -88,6 +309,20 @@ function VehicleManipulation:load(xmlFile)
 		
         i = i + 1;
     end;
+	
+	local aiLeftMarkerPos = Utils.getVectorNFromString(getXMLString(xmlFile, "vehicle.aiLeftMarker#mrlPos"), 3);
+	local aiRightMarkerPos = Utils.getVectorNFromString(getXMLString(xmlFile, "vehicle.aiRightMarker#mrlPos"), 3);
+	local aiBackMarkerPos = Utils.getVectorNFromString(getXMLString(xmlFile, "vehicle.aiBackMarker#mrlPos"), 3);
+	
+	if self.aiLeftMarker ~= nil and aiLeftMarkerPos ~= nil then
+		setTranslation(self.aiLeftMarker, aiLeftMarkerPos[1], aiLeftMarkerPos[2], aiLeftMarkerPos[3]);
+	end;
+	if self.aiRightMarker ~= nil and aiRightMarkerPos ~= nil then
+		setTranslation(self.aiRightMarker, aiRightMarkerPos[1], aiRightMarkerPos[2], aiRightMarkerPos[3]);
+	end;
+	if self.aiBackMarker ~= nil and aiBackMarkerPos ~= nil then
+		setTranslation(self.aiBackMarker, aiBackMarkerPos[1], aiBackMarkerPos[2], aiBackMarkerPos[3]);
+	end;
 	
 	
 	
@@ -230,13 +465,13 @@ function VehicleManipulation:update(dt)
 					for k,v in pairs(self.wheels) do
 						v.spring = wheelsSpringT[k] * 10;
 						local widthBak = v.width;
-						print(widthBak);
+						--print(widthBak);
 						
 						local collisionMask = 255 - 4; -- all up to bit 8, except bit 2 which is set by the players kinematic object
 						
 						v.wheelShape = createWheelShape(v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.spring, v.damper, v.mass, collisionMask, v.wheelShape);
 						v.width = widthBak;
-						print(string.format("node %d, x %.4f, y %.4f, z %.4f, radius %.4f, suspTravel %.4f, width %.4f, spring %.4f, damper %.4f, mass %.4f, collisionMask %d, wheelShape %d", v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.width, v.spring, v.damper, v.mass, collisionMask, v.wheelShape));
+						--print(string.format("node %d, x %.4f, y %.4f, z %.4f, radius %.4f, suspTravel %.4f, width %.4f, spring %.4f, damper %.4f, mass %.4f, collisionMask %d, wheelShape %d", v.node, v.netInfo.x, v.netInfo.y, v.netInfo.z, v.radius, v.suspTravel, v.width, v.spring, v.damper, v.mass, collisionMask, v.wheelShape));
 					end;
 				else
 					print("WARNING: number of wheelsSpring elements not equal number of wheels for vehicle "..self.configFileName);
@@ -394,13 +629,13 @@ function VehicleManipulation:update(dt)
 		end;
 	end;
 	
-	--[[if self:getIsActive() then
+	if self:getIsActive() then
 		for k,v in pairs (self.components) do
 			local x,y,z = getCenterOfMass(v.node);
 			x,y,z = localToWorld(v.node,x,y,z);
-			drawDebugPoint(x,y,z,0,1,1,1);
+			--drawDebugPoint(x,y,z,0,1,1,1);
 		end;
-	end;]]
+	end;
 	
 end;
 
@@ -428,7 +663,7 @@ function VehicleManipulation:updateTick(dt)
 end;
 
 function VehicleManipulation:draw()
-	if self.debugRenderVehicleManipulation and self.isDrivable then
+	if self.debugRenderVehicleManipulation and self.isDrivable and not self.attacherJointMovementLocked then
 		--setTextAlignment(RenderText.ALIGN_RIGHT);
 		renderText(0.45, 0.01, 0.01, string.format("low: %.3f, up: %.3f", self.debugLowerDistanceToGround, self.debugUpperDistanceToGround));
 		--setTextAlignment(RenderText.ALIGN_LEFT);

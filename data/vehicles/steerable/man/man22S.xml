@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="1900" maxForwardSpeed="90" maxBackwardSpeed="10" brakeForce="8" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1">
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="1900" maxForwardSpeed="90" maxBackwardSpeed="20" brakeForce="8" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.5">
         <torque normRpm="0.52" torque="2.1"/>
         <torque normRpm="0.63" torque="2.1"/>
         <torque normRpm="0.74" torque="2.1"/>
@@ -9,8 +9,8 @@
         <torque normRpm="1" torque="1.63"/>
     </motor>
 
-    <fuelCapacity>800</fuelCapacity>
-    <fuelUsage>88</fuelUsage>
+    <fuelCapacity>400</fuelCapacity>
+    <fuelUsage>75</fuelUsage>
 
     <components>
         <component1 centerOfMass="0 0.916 0.527" mrlMass="6.68" />

@@ -24,6 +24,8 @@ function WorkAreaManipulation:load(xmlFile)
 		self.minWorkingWidth = minWidth;
 		self.maxWorkingWidth = maxWidth;
 		self.workingWidthStepSize = stepSize;
+		
+		self:setWorkingWidth(self.workingWidth, self.workingWidthStepSize, "ABSOLUTE");
 	end;
 	
 	local totalCharge = 0;
@@ -37,7 +39,7 @@ function WorkAreaManipulation:load(xmlFile)
 		local mrlOrigNode = getXMLInt(xmlFile, key.."#mrlOrigNode");
 		if mrlOrigNode ~= nil then
 			groundReferenceNode = self.groundReferenceNodes[mrlOrigNode];
-			print("used existing refNode");
+			--print("used existing refNode");
 		end;
 		groundReferenceNode.node = Utils.getNoNil(Utils.indexToObject(self.components, getXMLString(xmlFile, key .. "#index")), groundReferenceNode.node);
 		groundReferenceNode.threshold = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#threshold"), groundReferenceNode.threshold);
@@ -47,7 +49,7 @@ function WorkAreaManipulation:load(xmlFile)
 		
 		if mrlOrigNode == nil then
 			table.insert(self.groundReferenceNodes, groundReferenceNode);
-			print("added new refNode");
+			--print("added new refNode");
 		end;
         i = i + 1;
     end;
@@ -65,11 +67,11 @@ function WorkAreaManipulation:load(xmlFile)
         if not hasXMLProperty(xmlFile, key) then
             break;
         end;
-		local workArea = {};
 		local mrlOrigArea = getXMLInt(xmlFile, key.."#mrlOrigArea");
-		if mrlOrigArea ~= nil then
-			workArea = self.workAreas[mrlOrigArea];
+		if mrlOrigArea == nil then
+			break;
 		end;
+		local workArea = self.workAreas[mrlOrigArea];
 		
         local refNodeIndex = getXMLInt(xmlFile, key .."#refNodeIndex");
         if refNodeIndex ~= nil then
@@ -95,9 +97,21 @@ function WorkAreaManipulation:load(xmlFile)
 
         workArea.disableBackwards = Utils.getNoNil(getXMLBool(xmlFile, key .. "#disableBackwards"), true);
 		
-		if mrlOrigArea == nil then
-			table.insert(self.workAreas, workArea);
+		
+		local startPos = Utils.getVectorNFromString(getXMLString(xmlFile, key.."#mrlStartPos"), 3);
+		local widthPos = Utils.getVectorNFromString(getXMLString(xmlFile, key.."#mrlWidthPos"), 3);
+		local heightPos = Utils.getVectorNFromString(getXMLString(xmlFile, key.."#mrlHeightPos"), 3);
+		
+		if startPos ~= nil then
+			setTranslation(workArea.start, startPos[1], startPos[2], startPos[3]);
 		end;
+		if widthPos ~= nil then
+			setTranslation(workArea.width, widthPos[1], widthPos[2], widthPos[3]);
+		end;
+		if heightPos ~= nil then
+			setTranslation(workArea.height, heightPos[1], heightPos[2], heightPos[3]);
+		end;
+		
         i = i + 1;
     end;
 	
@@ -154,7 +168,7 @@ function WorkAreaManipulation:draw()
 	
 		for _, refNode in pairs(self.groundReferenceNodes) do
             local x,y,z = getWorldTranslation(refNode.node);
-            drawDebugPoint(x,y,z,0,1,1,1);
+            --drawDebugPoint(x,y,z,0,1,1,1);
         end
 		
 		--setTextAlignment(RenderText.ALIGN_RIGHT);

@@ -1,82 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="implement_animated">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Fliegl Dolly EA</en>
-        <de>Fliegl Dolly EA</de>
-    </name>
-    <typeDesc>$l10n_TypeDesc_Trailer</typeDesc>
-    <filename>data/vehicles/trailers/fliegl/flieglDolly.i3d</filename>
-
-    <size width="4.5" length="6" lengthOffset="0.9" />
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="0.9" repr="0>0"                   radius="0.6" width="0.585" initialCompression="30" suspTravel="0.05" spring="100" damper="70" frictionScale="2.5" mass="0.25" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
-        <wheel  restLoad="0.9" repr="0>1" driveNode="0>1|0" radius="0.6" width="0.585" initialCompression="30" suspTravel="0.05" spring="100" damper="70" frictionScale="2.5" mass="0.25" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="1.05" />
+        <wheel frictionScale="1.05" />
     </wheels>
 
-    <dynamicallyLoadedParts>
-        <dynamicallyLoadedPart node="0|0" linkNode="0>0"   filename="$data/vehicles/wheels/trelleborg/trelleborgT404_600_50_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|1" linkNode="0>1|0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_600_50_22_5.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>1|1|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>1|1|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>2|3|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>2|3|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
-    </dynamicallyLoadedParts>
-
-    <brakeForce>1</brakeForce>
-
-    <lightCoronas>
-        <lightCorona index="0>2|4" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>2|5" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>2|6|0" />
-        <turnSignalRight index="0>2|6|1" />
-    </turnSignals>
-
-    <reverseLights>
-        <reverseLight index="0>2|7" />
-    </reverseLights>
-
-    <inputAttacherJoints>
-        <inputAttacherJoint index="0>2|0" jointType="trailerLow"/>
-    </inputAttacherJoints>
-
-    <attacherJoints>
-        <attacherJoint index="0>2|1" jointType="semitrailer" allowsJointLimitMovement="false" allowsLowering="false" maxRotLimit="12 175 12" enableCollision="true" />
-    </attacherJoints>
-
-    <animations>
-        <!-- move support -->
-        <animation name="moveSupport">
-            <part node="0>2|2" startTime="0" duration="0.1" startTrans="-0.216 0.337 1.239" endTrans="-0.216 0 1.239" />
-            <part node="0>1|1" startTime="0" endTime="0.05" visibility="false" />
-            <part node="0>2|3" startTime="0" endTime="0.05" visibility="true" />
-            <part node="0>1|1" startTime="0.05" endTime="0.1" visibility="true" />
-            <part node="0>2|3" startTime="0.05" endTime="0.1" visibility="false" />
-        </animation>
-    </animations>
-
-    <support animationName="moveSupport"/>
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-    </driveGroundParticleSystems>
-
-    <components count="1">
-        <component1 centerOfMass="0 0.65 0" solverIterationCount="10" />
+    <components>
+        <component1 mrlMass="2" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0">
-        <attacherJoint position="0.5 0" rotation="0" invertX="false" />
-    </schemaOverlay>
-
 </vehicle>

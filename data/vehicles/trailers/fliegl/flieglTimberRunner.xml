@@ -1,83 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="dynamicMountAttacherTrailer">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Fliegl Timber Runner</en>
-        <de>Fliegl Timber Runner</de>
-    </name>
-    <filename>data/vehicles/trailers/fliegl/flieglTimberRunner.i3d</filename>
-
-    <size width="3" length="14" />
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="1.0" repr="0>0" radius="0.537" initialCompression="70" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" />
-        <wheel  restLoad="1.0" repr="0>1" radius="0.537" initialCompression="70" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" />
-        <wheel  restLoad="1.0" repr="0>2" radius="0.537" initialCompression="50" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
-        <wheel  restLoad="1.0" repr="0>3" radius="0.537" initialCompression="50" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
-        <wheel  restLoad="1.0" repr="0>4" radius="0.537" initialCompression="30" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" />
-        <wheel  restLoad="1.0" repr="0>5" radius="0.537" initialCompression="30" suspTravel="0.12" spring="50" damper="30" frictionScale="1.5" mass="0.14" />
+<vehicle>
+    <wheels>
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
     </wheels>
     
-    <dynamicallyLoadedParts>
-        <dynamicallyLoadedPart node="0|0" linkNode="0>0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|1" linkNode="0>1" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|0" linkNode="0>2" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|1" linkNode="0>3" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|0" linkNode="0>4" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-        <dynamicallyLoadedPart node="0|1" linkNode="0>5" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_45_22_5.i3d" />
-    </dynamicallyLoadedParts>
-    
-    <brakeForce>1.0</brakeForce>
-    
-    <lightCoronas>
-        <lightCorona index="0>8" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>9" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>10|0" />
-        <turnSignalRight index="0>10|1" />
-    </turnSignals>
-    
-    <reverseLights>
-        <reverseLight index="0>11" />
-    </reverseLights>
-
-    <dynamicMountAttacherTrigger triggerNode="0>12" rootNode="0>" jointNode="0>" />
-
-    <inputAttacherJoints>
-        <inputAttacherJoint index="0>6" jointType="semitrailer"/>
-    </inputAttacherJoints>
-
-    <allowFillFromAir value="false" />
-    <allowTipDischarge value="false" />
-
-    <animations>
-        <!-- move support arm down/up -->
-        <animation name="moveSupport">
-            <part node="0>7" startTime="0" endTime="1" startTrans="0 0.638 2.816" endTrans="0 0.072 2.816" />
-        </animation>
-    </animations>
-
-    <support animationName="moveSupport" />
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="5" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="6" />
-    </driveGroundParticleSystems>  
-    
-    <components count="1">
-        <component1 centerOfMass="0 0.58 0" solverIterationCount="10" />
+    <components>
+        <component1 mrlMass="5.9" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0" />
 </vehicle>

@@ -7,6 +7,16 @@ end;
 function FillableManipulation:load(xmlFile)
 	self.firstRunFillableManipulation = true;
 	
+	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].xmlFile ~= nil then
+		local xmlPath = MrLightUtils.modDir .. "" .. MrLightUtils.vehicleConfigs[self.configFileName].xmlFile;
+		xmlFile = loadXMLFile("settings", xmlPath);
+	end;
+	
+	self:setCapacity(Utils.getNoNil(getXMLFloat(xmlFile, "vehicle.capacity"), self.capacity));
+	
+	
+	
+	
 	for part in string.gfind(self.configFileName, "/%w+") do
 		self.configFileNameClean = string.sub(part, 2);
 		--[[print(" --> part: "..part);
@@ -19,6 +29,112 @@ function FillableManipulation:load(xmlFile)
 		end;]]
 	end;
 	--print(self.configFileNameClean);
+	
+	
+	if self.fillTypes == nil then
+		self.fillTypes = {};
+		self.fillTypes[Fillable.FILLTYPE_UNKNOWN] = true;
+	end;
+	
+    local fillTypes = getXMLString(xmlFile, "vehicle.fillTypes#fillTypes");
+    if fillTypes ~= nil then
+        local types = Utils.splitString(" ", fillTypes);
+        for k,v in pairs(types) do
+            local fillType = Fillable.fillTypeNameToInt[v];
+            if fillType ~= nil then
+                self.fillTypes[fillType] = true;
+            else
+                print("Warning: '"..self.configFileName.. "' has invalid fillType '"..v.."'.");
+            end;
+        end;
+    end;
+	local fruitTypes = getXMLString(xmlFile, "vehicle.fillTypes#fruitTypes");
+    if fruitTypes ~= nil then
+        local types = Utils.splitString(" ", fruitTypes);
+        for k,v in pairs(types) do
+            local fillType = Fillable.fillTypeNameToInt[v];
+            if fillType ~= nil then
+                self.fillTypes[fillType] = true;
+            else
+                print("Warning: '"..self.configFileName.. "' has invalid fillType '"..v.."'.");
+            end;
+        end;
+    end;
+	
+	
+	local key = "vehicle.mrlFillVolumes";
+	if hasXMLProperty(xmlFile, key) then
+		self.fillVolumesInfo = {}
+		local i3dNode;
+		local linkNode;
+		local x,y,z;
+		
+		local baseFillVolumeNode = getXMLString(xmlFile, "vehicle.mrlFillVolumes#mrlBaseFillVolumeNode");
+		local additionalFillVolumes = getXMLString(xmlFile, "vehicle.mrlFillVolumes#mrlAdditionalFillVolumes");
+		local path;
+		if additionalFillVolumes ~= nil then
+			path = MrLightUtils.modDir..additionalFillVolumes;
+			if fileExists(path) then
+				i3dNode = Utils.loadSharedI3DFile(path, "", true, true);
+				linkNode = Utils.indexToObject(self.components, baseFillVolumeNode);
+				x,y,z = getTranslation(getChildAt(linkNode,0));
+			end;
+		end;
+
+		local prerequisitesMet = (i3dNode ~= nil and linkNode ~= nil and x ~= nil and y ~= nil and z ~= nil);
+		
+		local node;
+		local i = 0;
+		while true do
+			local key = string.format("vehicle.mrlFillVolumes.mrlFillVolume(%d)", i);
+			if not hasXMLProperty(xmlFile, key) then
+				break;
+			end;
+			local fillableClass = Utils.getNoNil(getXMLString(xmlFile, key.."#mrlClass"), "FILLABLE_CLASS_UNKNOWN");
+			local capacity = Utils.getNoNil(getXMLFloat(xmlFile, key.."#mrlCapacity"), 0.0);
+			local useOrigVolume = getXMLInt(xmlFile, key.."#mrlUseOrigVolume");
+			local compressedCapacity = Utils.getNoNil(getXMLFloat(xmlFile, key.."#mrlCompressedCapacity"), capacity);
+			local i3dNodeVolume = getXMLInt(xmlFile, key.."#mrlI3dNode");
+			local maxDelta = Utils.getNoNil(getXMLFloat(xmlFile, key.."#mrlMaxDelta"), 1.0);
+			
+			if not useOrigVolume and i3dNodeVolume ~= nil and prerequisitesMet then
+				local volumeNode = getChildAt(i3dNode,i3dNodeVolume);
+				setTranslation(volumeNode, x,y,z);
+				link(linkNode, volumeNode);
+				node = volumeNode;
+			else
+				if #self.fillVolumes > 0 then
+					node = self.fillVolumes[1].baseNode;
+				end;
+			end;
+			
+			local classIndex = MrLightUtils[fillableClass];
+			self.fillVolumesInfo[classIndex] = {capacity = capacity, baseNode = node, maxDelta = maxDelta, compressedCapacity = compressedCapacity};
+			self.compressedCapacity = compressedCapacity;
+			
+			i = i + 1;
+		end;
+		if i3dNode ~= nil then
+			delete(i3dNode);
+		end;
+		
+		
+		for k=1, MrLightUtils.numFillableClasses do
+			if self.fillVolumesInfo[k] == nil then
+				local node;
+				if #self.fillVolumes > 0 then
+					node = self.fillVolumes[1].baseNode;
+				end;
+				self.fillVolumesInfo[k] = {capacity = 0, baseNode = node, maxDelta = 1.0, compressedCapacity = 0};
+			end;
+		end;
+
+	end;
+	
+	
+	
+	
+	
 	
 	
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].capacities ~= nil then
@@ -60,7 +176,7 @@ function FillableManipulation:load(xmlFile)
 				node = self.fillVolumes[1].baseNode;
 			end;
 			--print(" --> node: "..node);
-			self.fillVolumesInfo[k] = {capacity = capacity, baseNode = node};
+			self.fillVolumesInfo[k] = {capacity = capacity, baseNode = node, maxDelta = 1.0, compressedCapacity = self.compressedCapacity};
 			
 		end;
 	end;
@@ -128,7 +244,7 @@ function FillableManipulation:update(dt)
 		self:setCapacity(self.fillVolumesInfo[fillableClass].capacity);
 		if Fillable.fillTypeIndexToDesc[self.currentFillType] ~= nil then--if self.isTurnedOn then
 			if string.find(Fillable.fillTypeIndexToDesc[self.currentFillType].name, "_windrow") then
-				self:setCapacity(self.compressedCapacity);
+				self:setCapacity(self.fillVolumesInfo[fillableClass].compressedCapacity);
 			end;
 		end;
 		
@@ -141,7 +257,7 @@ function FillableManipulation:update(dt)
 				delete(fillVolume.volume);
 				local maxPhysicalSurfaceAngle = math.rad(35);
 				fillVolume.baseNode = self.fillVolumesInfo[fillableClass].baseNode;
-				fillVolume.maxDelta = 0.5;
+				fillVolume.maxDelta = self.fillVolumesInfo[fillableClass].maxDelta;
 				fillVolume.volume = createFillPlaneShape(fillVolume.baseNode, "fillPlane", self.capacity, fillVolume.maxDelta, fillVolume.maxSurfaceAngle, maxPhysicalSurfaceAngle, fillVolume.maxSubDivEdgeLength, fillVolume.allSidePlanes);
 				link(fillVolume.baseNode, fillVolume.volume);
 				baseNode = fillVolume.baseNode;

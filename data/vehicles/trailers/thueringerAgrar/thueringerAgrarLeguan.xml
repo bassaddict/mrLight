@@ -1,80 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="dynamicMountAttacherTrailer">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Thueringer Agrar Leguan</en>
-        <de>Thueringer Agrar Leguan</de>
-    </name>
-    <typeDesc>$l10n_TypeDesc_CutterTrailer</typeDesc>
-    <filename>data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan.i3d</filename>
-
-    <size width="3.5" length="13.0" />
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="0.3" repr="0>0" driveNode="0>0|0" radius="0.435" initialCompression="50" suspTravel="0.1" spring="25" damper="20" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="1"/>
-        <wheel  restLoad="0.3" repr="0>1" radius="0.435" initialCompression="50" suspTravel="0.1" spring="25" damper="20" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="1"/>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="0.8" />
+        <wheel frictionScale="0.8" />
     </wheels>
-
-    <dynamicallyLoadedParts>
-        <dynamicallyLoadedPart node="0|0" linkNode="0>0|0" filename="$data/vehicles/wheels/trelleborg/trelleborgAW305_300_80_15_3.i3d" />
-        <dynamicallyLoadedPart node="0|1" linkNode="0>1" filename="$data/vehicles/wheels/trelleborg/trelleborgAW305_300_80_15_3.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>0|1|0" filename="$data/vehicles/shared/wheelChock02.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>0|1|1" filename="$data/vehicles/shared/wheelChock02.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>9|0" filename="$data/vehicles/shared/wheelChock02.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>9|1" filename="$data/vehicles/shared/wheelChock02.i3d" />
-    </dynamicallyLoadedParts>
-
-    <brakeForce>0.2</brakeForce>
-
-    <lightCoronas>
-        <lightCorona index="0>5" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>6" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>7|0" />
-        <turnSignalRight index="0>7|1" />
-    </turnSignals>
-
-    <beaconLights>
-        <beaconLight index="0>8" speed="0.015" filename="$data/vehicles/shared/beaconLight03.i3d" />
-    </beaconLights>
-
-    <attacherJoint index="0>2" jointType="trailerLow" attacherHeight="0.759" />
-
-    <dynamicMountAttacherTrigger triggerNode="0>3" rootNode="0>" jointNode="0>" forceAcceleration="500" mountType="TYPE_AUTO_ATTACH_XZ"/>
-
-    <animations>
-        <!-- support animation -->
-        <animation name="moveSupport">
-            <part node="0>4" startTime="0" duration="0.6" startRot="90 0 0" endRot="0 0 0" />
-            <part node="0>9" startTime="0" endTime="0.05" visibility="true" />
-            <part node="0>9" startTime="0.05" endTime="0.1" visibility="false" />
-            <part node="0>0|1" startTime="0" endTime="0.05" visibility="false" />
-            <part node="0>0|1" startTime="0.05" endTime="0.1" visibility="true" />
-        </animation>
-    </animations>
-
-    <support animationName="moveSupport" />
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-    </driveGroundParticleSystems>
-
-    <colorNodes>
-        <colorNode index="0>11" />
-    </colorNodes>
-
-    <components count="1">
-        <component1 centerOfMass="0 0.5 -1" solverIterationCount="10" />
-    </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
 
 </vehicle>

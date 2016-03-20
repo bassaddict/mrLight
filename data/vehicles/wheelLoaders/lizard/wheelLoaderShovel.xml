@@ -1,68 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="shovel_animated">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Wheelloader Shovel</en>
-        <de>Radladerschaufel</de>
-    </name>
-    <filename>data/vehicles/wheelLoaders/lizard/wheelLoaderShovel.i3d</filename>
+<vehicle>
 
-    <size width="3" length="2"/>
-
-    <attacherJoint index="0>0" jointType="wheelLoader" />
-    
-    <mouseControls>
-        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/pipe_end.png" axis="AXIS_FRONTLOADER_TOOL2" />
-    </mouseControls>
-
-    <movingTools>
-        <movingTool index="0>1|0" rotationAxis="1" componentJointIndex="0" rotSpeed="70" rotAcceleration="250" speedFactor="0.5" rotMax="60" rotMin="0" axis="AXIS_FRONTLOADER_TOOL2" invertAxis="false" mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="false">
-            <dependentPart index="0>1|1" />
-        </movingTool>
-    </movingTools>
-
-    <movingParts>
-        <movingPart index="0>1|1" referencePoint="0>1|0|4" referenceFrame="0>" >
-            <translatingPart index="0>1|1|0" />
-        </movingPart>
-    </movingParts>
-
-    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.8" volume="0.65" />
-
-    <fillVolumes>
-        <fillVolume index="0>1|0|0|0" allSidePlanes="false" maxAllowedHeapAngle="10" />
-    </fillVolumes>
-
-    <fillTypes fruitTypes="wheat rape maize barley chaff potato sugarBeet silage manure woodChips"/>
-
-    <fillVolumeDischargeInfo index="0>2" width="2.1" length="0.4" />    
-    <fillVolumeLoadInfo index="0>3" width="2.1" length="0.2" />    
-    <fillVolumeUnloadInfo index="0>4" width="2.1" length="0.2" />    
-    
-    <shovelTipTrigger index="0>1|0|3" />    
-    
-    <shovel tipReferenceNode="0>1|0|1" emptyStartAngle="100"/>
-
-    <capacity>6400</capacity>
-
-    <shovelEmptyEffect fillTypes="wheat barley maize rape silage" rotationNode="0>1|0|5" >
-        <effectNode node="0|0|0" linkNode="0>1|0|5|0" scale="1.18 1 1" materialType="unloading" materialTypeId="3" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5"/>
-        <effectNode node="0|0|1" linkNode="0>1|0|5|0" scale="1.18 1 1" materialType="smoke"     materialTypeId="1" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5"/>
-    </shovelEmptyEffect>
-    <emptyParticleSystems>
-        <emptyParticleSystem type="chaff"     node="0>1|0|2" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingShovelParticles.i3d" />
-        <emptyParticleSystem type="potato"    node="0>1|0|2" psRootNode="0|1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingShovelParticles.i3d" />
-        <emptyParticleSystem type="sugarBeet" node="0>1|0|2" psRootNode="0|2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingShovelParticles.i3d" />
-        <emptyParticleSystem type="woodChips" node="0>1|0|2" psRootNode="0|3" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingShovelParticles.i3d" />
-        <emptyParticleSystem type="manure"    node="0>1|0|2" psRootNode="0|4" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingShovelParticles.i3d" />
-    </emptyParticleSystems>  
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-    
-    <components count="1">
-        <component1 centerOfMass="0 0 0" solverIterationCount="10" />
+	<mrlFillVolumes>
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_UNKNOWN" mrlCapacity="5500" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_GRAINS" mrlCapacity="5500" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="5500" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_TUBERS" mrlCapacity="5500" mrlUseOrigVolume="1" />
+	</mrlFillVolumes>
+	
+    <components>
+        <component1 mrlMass="2.3" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
-
 </vehicle>

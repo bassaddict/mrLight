@@ -1,71 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="fuelTrailer">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Fuel trailer</en>
-        <de>Mobiler Treibstofftank</de>
-    </name>
-    <typeDesc>$l10n_TypeDesc_Trailer</typeDesc>
-    <filename>data/vehicles/trailers/fuelTrailer/fuelTrailer.i3d</filename>
-
-    <size width="3" length="6" />
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="0.7" repr="0" radius="0.457" initialCompression="30" suspTravel="0.08" spring="13" damper="10" frictionScale="1.5" mass="0.04" />
-        <wheel  restLoad="0.7" repr="1" radius="0.457" initialCompression="30" suspTravel="0.08" spring="13" damper="10" frictionScale="1.5" mass="0.04" />
-        <wheel  restLoad="0.4" repr="2" radius="0.457" initialCompression="30" suspTravel="0.08" spring="13" damper="10" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="4"/>
-        <wheel  restLoad="0.4" repr="3" radius="0.457" initialCompression="30" suspTravel="0.08" spring="13" damper="10" frictionScale="1.5" mass="0.04" hasTyreTracks="true" tyreTrackAtlasIndex="4"/>
+<vehicle>
+    
+    <wheels>
+        <wheel frictionScale="0.8" />
+        <wheel frictionScale="0.8" />
+        <wheel frictionScale="0.8" />
+        <wheel frictionScale="0.8" />
     </wheels>
 
-    <brakeForce>0.3</brakeForce>
-
-    <lightCoronas>
-        <lightCorona index="6" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>9" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>5|0" />
-        <turnSignalRight index="0>5|1" />
-    </turnSignals>
-
-    <capacity>4500</capacity>
-    <fillTypes fillTypes="fuel"/>
-    <fuelFillLitersPerSecond>100</fuelFillLitersPerSecond>
-
-    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.5" />
-
-    <inputAttacherJoints>
-        <inputAttacherJoint index="4" jointType="trailerLow"/>
-    </inputAttacherJoints>
-
-    <animations>
-        <!-- move support wheel down/up -->
-        <animation name="moveSupport">
-            <part node="7" startTime="0" duration="0.6" startTrans="0.099 0.385 1.387" endTrans="0.099 0 1.387" />
-        </animation>
-    </animations>
-
-    <support animationName="moveSupport" />
-
-    <gasStationTrigger index="0>8" />
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
-    </driveGroundParticleSystems>    
-    
-    <components count="1">
-        <component1 centerOfMass="0 0.5 -0.7" solverIterationCount="10" />
+    <components>
+        <component1 mrlMass="2.25" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
-
 </vehicle>

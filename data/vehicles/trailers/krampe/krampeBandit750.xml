@@ -1,179 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="trailer_mouseControlled">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Krampe Bandit 750</en>
-        <de>Krampe Bandit 750</de>
-    </name>
-    <typeDesc>$l10n_TypeDesc_Tipper</typeDesc>
-    <filename>data/vehicles/trailers/krampe/krampeBandit750.i3d</filename>
-
-    <size width="3" length="10.5"/>
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="2.0" repr="0>0" driveNode="0>0|0" radius="0.67" initialCompression="50" suspTravel="0.2" spring="35" damper="60" frictionScale="1.5" mass="0.2475" />
-        <wheel  restLoad="2.0" repr="0>1"                   radius="0.67" initialCompression="50" suspTravel="0.2" spring="35" damper="60" frictionScale="1.5" mass="0.2475" />
-        <wheel  restLoad="2.1" repr="0>2" driveNode="0>2|0" radius="0.67" initialCompression="50" suspTravel="0.2" spring="35" damper="60" frictionScale="1.5" mass="0.2475" steeringAxleScale="-0.7" steeringAxleRotMax="25" steeringAxleRotMin="-25" hasTyreTracks="true" tyreTrackAtlasIndex="2"/>
-        <wheel  restLoad="2.1" repr="0>3" driveNode="0>3|0" radius="0.67" initialCompression="50" suspTravel="0.2" spring="35" damper="60" frictionScale="1.5" mass="0.2475" steeringAxleScale="-0.7" steeringAxleRotMax="25" steeringAxleRotMin="-25" hasTyreTracks="true" tyreTrackAtlasIndex="2"/>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="1.14" />
+        <wheel frictionScale="1.14" />
+        <wheel frictionScale="1.14" />
+        <wheel frictionScale="1.14" />
     </wheels>
+	
+	<mrlFillVolumes mrlBaseFillVolumeNode="0>10" mrlAdditionalFillVolumes="fillVolumes/additionalFillVolumes.i3d">
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_UNKNOWN" mrlCapacity="26500" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_GRAINS" mrlCapacity="26500" mrlI3dNode="7" mrlMaxDelta="0.3" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="40000" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_TUBERS" mrlCapacity="40000" mrlUseOrigVolume="1" />
+	</mrlFillVolumes>
 
-    <dynamicallyLoadedParts>
-        <dynamicallyLoadedPart node="1|0" linkNode="0>0|0" filename="$data/vehicles/wheels/trelleborg/twinRadial_710_50R26_5.i3d" />
-        <dynamicallyLoadedPart node="1|1" linkNode="0>1"   filename="$data/vehicles/wheels/trelleborg/twinRadial_710_50R26_5.i3d" />
-        <dynamicallyLoadedPart node="1|0" linkNode="0>2|0" filename="$data/vehicles/wheels/trelleborg/twinRadial_710_50R26_5.i3d" />
-        <dynamicallyLoadedPart node="1|1" linkNode="0>3|0" filename="$data/vehicles/wheels/trelleborg/twinRadial_710_50R26_5.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>0|1|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>0|1|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>24|0" filename="$data/vehicles/shared/wheelChock01.i3d" />
-        <dynamicallyLoadedPart node="0" linkNode="0>24|1" filename="$data/vehicles/shared/wheelChock01.i3d" />
-    </dynamicallyLoadedParts>
-
-    <brakeForce>1.7</brakeForce>
-    <steeringAxleAngleScale startSpeed="5" endSpeed="70" />
-
-    <capacity>40000</capacity>
-
-    <lightCoronas>
-        <lightCorona index="0>5" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>6" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>7|0" />
-        <turnSignalRight index="0>7|1" />
-    </turnSignals>
-
-    <reverseLights>
-        <reverseLight index="0>8" />
-    </reverseLights>
-
-    <fillVolumes>
-        <fillVolume index="0>10|0" />
-    </fillVolumes>
-
-    <fillVolumeHeights>
-        <fillVolumeHeight fillVolumeId="1">
-            <refNode index="0>26|0" />
-            <refNode index="0>26|1" />
-            <node index="0>19|0" baseScale="0.95 1 1" transAxis="0 1 0" transMax="0 1.6 0"/>
-            <node index="0>19|1" baseScale="2.15 0.1 1" scaleAxis="0 1 0" transAxis="0 0 0" />
-        </fillVolumeHeight>
-    </fillVolumeHeights>
-
-    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.8" volume="0.4" />
-    <fillSound file="$data/maps/sounds/siloFillSound.wav" pitchOffset="1.0" volume="1.5" />
-
-    <inputAttacherJoints>
-        <inputAttacherJoint index="0>4" jointType="trailerLow"/>
-    </inputAttacherJoints>
-
-    <tipScrollerNodes>
-        <tipScrollerNode index="0>16" shaderParameterName="offsetUV" scrollSpeed="0.1" shaderParameterComponent="2" turnOnFadeTime="1" turnOffFadeTime="1"/>
-    </tipScrollerNodes>
-
-    <tipReferencePoints>
-        <tipReferencePoint index="0>9" width="2.5" />
-    </tipReferencePoints>
-
-
-    <tipAnimations>
-        <tipAnimation speedScale="1" animationName="tipAnimationBack" dischargeStartTime="1.5" dischargeEndTime="19" >
-            <tipEffect fillTypes="wheat barley maize rape">
-                <effectNode node="0|0|0" linkNode="0>19|0" materialType="unloading" materialTypeId="3" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5" />
-                <effectNode node="0|0|1" linkNode="0>19|0" materialType="smoke"     materialTypeId="1" position="0 0 0" filename="$data/vehicles/particleAnimations/shared/unloadingBack.i3d" fadeTime="0.5" />
-            </tipEffect>
-            <dischargeParticleSystems>
-                <dischargeParticleSystem type="chaff"     node="0>19|1" psRootNode="0|0" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
-                <dischargeParticleSystem type="potato"    node="0>19|1" psRootNode="0|1" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
-                <dischargeParticleSystem type="sugarBeet" node="0>19|1" psRootNode="0|2" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
-                <dischargeParticleSystem type="woodChips" node="0>19|1" psRootNode="0|3" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
-                <dischargeParticleSystem type="silage"    node="0>19|1" psRootNode="0|4" position="0 0 0" rotation="0 0 0" file="$data/vehicles/particleAnimations/shared/unloadingBackParticles.i3d" />
-            </dischargeParticleSystems>
-            <fillVolumeDischargeInfo index="0>25" width="8.0" length="1.4" />
-            <fillVolumeHeight index="1"/>
-        </tipAnimation>
-    </tipAnimations>
-
-    <fillRootNode index="0>" />
-    <exactFillRootNode index="0>17" />
-    <fillAutoAimTargetNode index="0>18" />
-    <fillMassNode index="0>" />
-
-    <fillTypes fruitTypes="wheat rape maize barley chaff potato sugarBeet silage woodChips"/>
-
-    <mouseControls>
-        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/topDoor.png" axis="AXIS_FRONTLOADER_ARM" />
-    </mouseControls>
-
-    <movingTools>
-        <!-- chaffLid -->
-        <movingTool index="0>13" anchorActor="0" rotSpeed="50" rotAcceleration="160" rotMax="100" rotMin="0" axis="AXIS_FRONTLOADER_ARM" invertAxis="true" mouseAxis="AXIS_FRONTLOADER_ARM" invertMouseAxis="false" speedFactor="0.3" rotationAxis="1" translationAxis="2" >
-            <dependentPart index="0>14" />
-        </movingTool>
-        <!-- hooks -->
-        <movingTool index="0>12">
-            <dependentPart index="0>11|0" />
-        </movingTool>
-        <!-- backdoor -->
-        <movingTool index="0>11">
-            <dependentPart index="0>11|0" />
-        </movingTool>
-    </movingTools>
-
-    <movingParts>
-        <movingPart index="0>14" referencePoint="0>13|1" referenceFrame="0>13|1">
-            <translatingPart index="0>14|0" />
-        </movingPart>
-
-        <movingPart index="0>11|0" referencePoint="0>12|0" referenceFrame="0>12|0">
-            <translatingPart index="0>11|0|0" />
-        </movingPart>
-
-        <movingPart index="0>22" referencePoint="0>3|2" referenceFrame="0>" scaleZ="true" isActiveDirty="true" playSound="false" />
-        <movingPart index="0>23" referencePoint="0>2|2" referenceFrame="0>" scaleZ="true" isActiveDirty="true" playSound="false" />
-        <movingPart index="0>20" referencePoint="0>3|1" referenceFrame="0>" isActiveDirty="true" playSound="false">
-            <translatingPart index="0>20|0" />
-        </movingPart>
-        <movingPart index="0>21" referencePoint="0>2|1" referenceFrame="0>" isActiveDirty="true" playSound="false">
-            <translatingPart index="0>21|0" />
-        </movingPart>
-    </movingParts>
-
-    <animations>
-        <!-- backtipping -->
-        <animation name="tipAnimationBack">
-            <part node="0>12" startTime="0" endTime="0.9" startRot="0 0 0" endRot="-30 0 0" />
-            <part node="0>11" startTime="1" endTime="4" startRot="0 0 0" endRot="63 0 0" />
-        </animation>
-
-        <!-- move support wheel down/up -->
-        <animation name="moveSupport">
-            <part node="0>0|1" startTime="0" endTime="0.05" visibility="false" />
-            <part node="0>24" startTime="0" endTime="0.05" visibility="true" />
-            <part node="0>0|1" startTime="0.05" endTime="0.1" visibility="true" />
-            <part node="0>24" startTime="0.05" endTime="0.1" visibility="false" />
-            <part node="0>15" startTime="0" endTime="0.2" startTrans="-0.236 0.819 3.256" endTrans="-0.236 0.275 3.256" />
-        </animation>
-    </animations>
-
-    <support animationName="moveSupport" />
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="3" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="4" />
-    </driveGroundParticleSystems>
-
-    <components count="1">
-        <component1 centerOfMass="0 0.75 -1.1" solverIterationCount="10" />
+    <components>
+        <component1 mrlMass="7.9" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0" />
-
 </vehicle>

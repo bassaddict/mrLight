@@ -10,6 +10,13 @@
         <wheel frictionScale="0.88" />
         <wheel frictionScale="0.88" />
     </wheels>
+	
+	<workAreas>
+        <workArea mrlOrigArea="1" mrlStartPos="2.38 -0.595 3.091" mrlWidthPos="-2.38 -0.595 3.091" mrlHeightPos="2.38 -0.595 -1.212"/>
+    </workAreas>
+	
+	<aiLeftMarker mrlPos="2.38 -0.595 3.091" />
+    <aiRightMarker mrlPos="-2.38 -0.595 3.091" />
     
     <components>
         <component1 mrlMass="6.15" />

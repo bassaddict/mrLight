@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <speedLimit value="9" />
+
+    <powerConsumer mrlBaseForce="2.5" mrlBaseForceFactor="4"/> <!-- 4 blades, base force per blade -->
+	
+    <inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.680" upperDistanceToGround="1.5" />
+    </inputAttacherJoints>
+</vehicle>

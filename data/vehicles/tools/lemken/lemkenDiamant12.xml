@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <speedLimit value="17" />
+    <speedLimit value="10" />
 
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel frictionScale="1.02" />
+    <wheels>
+        <wheel mrlReloadWheel="true" restLoad="2.9" repr="0>0|0|0" radius="0.537" width="0.56" initialCompression="60" suspTravel="0.1" spring="120" damper="55" frictionScale="1.02" mass="0.5" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
     </wheels>
 	
 	<groundReferenceNodes>
@@ -17,6 +17,12 @@
 	<inputAttacherJoints>
         <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.79" upperDistanceToGround="1.5" />
     </inputAttacherJoints>
+	
+	<animations>
+        <animation mrlOrigAnimName="lowerAnimation">
+            <part mrlOrigPartIndex="1" node="0>0|0" startTime="0" endTime="2.0" startRot="-25 0 0" endRot="10 0 0"/>
+        </animation>
+    </animations>
 	
     <components>
         <component1 mrlMass="3.494" />

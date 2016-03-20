@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <wheels>
+        <wheel frictionScale="0.87" />
+        <wheel frictionScale="0.87" />
+        <wheel frictionScale="0.98" />
+        <wheel frictionScale="0.98" />
+    </wheels>
+	
+    <attacherJoints>
+        <!-- back -->
+        <attacherJoint mrlOrigJointIndex="1" mrlType="3pt" minRotDistanceToGround="0.812" minRotRotationOffset="8.31" minRot="8 0 0" minRot2="0 0 0" maxRotDistanceToGround="0.261" maxRotRotationOffset="0.31" maxRot="-30 0 0" maxRot2="30 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
+        <!-- front -->
+        <attacherJoint mrlOrigJointIndex="2" mrlType="3pt" minRotDistanceToGround="0.781" minRotRotationOffset="7.69" minRot="-25 0 0" minRot2="17 0 0" maxRotDistanceToGround="0.271" maxRotRotationOffset="-0.31" maxRot="20 0 0" maxRot2="-20 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
+    </attacherJoints>
+	
+</vehicle>

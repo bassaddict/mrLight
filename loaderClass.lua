@@ -3,7 +3,7 @@ SpecializationUtil.registerSpecialization("mrLightUtils", "MrLightUtils", g_curr
 SpecializationUtil.registerSpecialization("sowingMachineManipulation", "SowingMachineManipulation", g_currentModDirectory.."SowingMachineManipulation.lua");
 SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipulation", g_currentModDirectory.."SprayerManipulation.lua");
 --SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
---SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
+SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
 SpecializationUtil.registerSpecialization("fillableManipulation", "FillableManipulation", g_currentModDirectory.."FillableManipulation.lua");
 SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
 SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
@@ -14,6 +14,7 @@ SpecializationUtil.registerSpecialization("vehicleManipulation", "VehicleManipul
 SpecializationUtil.registerSpecialization("cylinderedManipulation", "CylinderedManipulation", g_currentModDirectory.."CylinderedManipulation.lua");
 SpecializationUtil.registerSpecialization("attachableManipulation", "AttachableManipulation", g_currentModDirectory.."AttachableManipulation.lua");
 SpecializationUtil.registerSpecialization("workAreaManipulation", "WorkAreaManipulation", g_currentModDirectory.."WorkAreaManipulation.lua");
+SpecializationUtil.registerSpecialization("animatedVehicleManipulation", "AnimatedVehicleManipulation", g_currentModDirectory.."AnimatedVehicleManipulation.lua");
 
 
 
@@ -50,9 +51,9 @@ function loaderClass:loadMap(name)
 		--if SpecializationUtil.hasSpecialization(ForageWagon, v.specializations) then
 		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("forageWagonManipulation"));
 		--end;
-		--if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
-		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
-		--end;
+		if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
+		end;
 		if SpecializationUtil.hasSpecialization(Fillable, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("fillableManipulation"));
 		end;
@@ -79,6 +80,9 @@ function loaderClass:loadMap(name)
 		end;
 		if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("workAreaManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(AnimatedVehicle, v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("animatedVehicleManipulation"));
 		end;
 	end;
 	print("--- MRL: specializations added, map loaded");

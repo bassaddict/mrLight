@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <speedLimit value="90" />
+    <speedLimit value="9" />
 
     <powerConsumer mrlBaseForce="3.25" mrlBaseForceFactor="4"/> <!-- 4 blades, base force per blade -->
 

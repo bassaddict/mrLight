@@ -5,7 +5,7 @@
     <speedLimit value="15" />
 	
     <inputAttacherJoints>
-        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.71" upperDistanceToGround="0.71" />
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.85" upperDistanceToGround="0.85" />
     </inputAttacherJoints>
 
     <components>

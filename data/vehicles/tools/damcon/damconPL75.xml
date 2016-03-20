@@ -5,7 +5,7 @@
     <powerConsumer ptoRpm="540" neededPtoPower="45" mrlBaseForce="2" />
 
     <inputAttacherJoints>
-        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.715" upperDistanceToGround="1.5" />
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.35" upperDistanceToGround="1.5" />
     </inputAttacherJoints>
 
     <components>

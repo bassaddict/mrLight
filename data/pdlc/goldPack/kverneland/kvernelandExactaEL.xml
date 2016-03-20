@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<vehicle>
+    <powerConsumer ptoRpm="450" neededPtoPower="10"/>
+	
+    <speedLimit value="15" />
+	
+    <workAreas mrlWidth="12" mrlMinWidth="9" mrlMaxWidth="18" mrlStepSize="3" />
+
+	<inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.600" upperDistanceToGround="1.500" />
+    </inputAttacherJoints>
+	
+</vehicle>

@@ -40,11 +40,12 @@ function MotorizedManipulation:load(xmlFile)
 		local minForwardSpeed = getXMLFloat(xmlFile, "vehicle.motor#mrlMinForwardSpeed");
 		local minBackwardSpeed = getXMLFloat(xmlFile, "vehicle.motor#mrlMinBackwardSpeed");
 		if maxForwardSpeed ~= nil then
-			minForwardGearRatio = motorMaxRpm / ((maxForwardSpeed * 30 / math.pi) / 3.6);
+			--minForwardGearRatio = motorMaxRpm / ((maxForwardSpeed * 30 / math.pi) / 3.6);
 			maxForwardSpeed = maxForwardSpeed/3.6;
 		else
 			minForwardGearRatio = getXMLFloat(xmlFile, "vehicle.motor#minForwardGearRatio");
 		end;
+		
 		if maxBackwardSpeed ~= nil then
 			minBackwardGearRatio = motorMaxRpm / ((maxBackwardSpeed * 30 / math.pi) / 3.6);
 			maxBackwardSpeed = maxBackwardSpeed/3.6;
@@ -267,6 +268,7 @@ function MotorizedManipulation:update(dt)
 	end;]]
 	
 	
+	--[[
 	if self.slip > 0.15 and not self.isDiffLocked then
 		--print("todo lock diff");
 		self:toggleDifferentialLock();
@@ -312,7 +314,7 @@ function MotorizedManipulation:update(dt)
 		
 	end;
 	self.slip = self.slip / self.numWheels;
-	
+	]]
 	
 	
 	
@@ -326,6 +328,8 @@ function MotorizedManipulation:update(dt)
 	--print(string.format("fy: %.3f, by: %.3f, heightDif: %.3f", fy, by, heightDif));
 	self.anglePercentVehicle = 100 / math.sqrt(4 - math.pow(heightDifVehicle, 2)) * heightDifVehicle;
 	self.anglePercentTerrain = 100 / math.sqrt(math.pow(dist, 2) - math.pow(heightDifTerrain, 2)) * heightDifTerrain;]]
+	
+	--[[
 	local ax, ay, az = unpack(self.wheelsGroundContactPos[1]);
 	--print(ax, " ", ay, " ", az);
 	local bx, by, bz = unpack(self.wheelsGroundContactPos[2]);
@@ -339,9 +343,10 @@ function MotorizedManipulation:update(dt)
 	local yDifLeftRight = ay - by;
 	local yDifFrontBack = by - cy;
 	self.anglePercentLeftRight = 100 / math.sqrt(math.pow(distLeftRight, 2) - math.pow(yDifLeftRight, 2)) * yDifLeftRight;
-	self.anglePercentFrontBack = 100 / math.sqrt(math.pow(distFrontBack, 2) - math.pow(yDifFrontBack, 2)) * yDifFrontBack;
+	self.anglePercentFrontBack = 100 / math.sqrt(math.pow(distFrontBack, 2) - math.pow(yDifFrontBack, 2)) * yDifFrontBack;]]
 end;
 
+--[[
 function MotorizedManipulation:toggleDifferentialLock()
 	--print("toggle diff");
 	if self.isDiffLocked then
@@ -354,10 +359,11 @@ function MotorizedManipulation:toggleDifferentialLock()
 		end;
 	end;
 	self.isDiffLocked = not self.isDiffLocked;
-end;
+end;]]
 
 function MotorizedManipulation:draw()
 	if self.debugRenderMotorizedManipulation then
+		--[[
 		setTextAlignment(RenderText.ALIGN_LEFT);
 		renderText(0.85, 0.01, 0.012, string.format("slip: %.3f, incline X: %.3f, incline Z: %.3f", self.slip*100, self.anglePercentLeftRight, self.anglePercentFrontBack));
 		setTextAlignment(RenderText.ALIGN_RIGHT);
@@ -368,6 +374,7 @@ function MotorizedManipulation:draw()
 			--local engineSlip = getWheelShapeSlip(self.rootNode, k);
 			renderText(0.8, i, 0.012, string.format("r/s: %02.2f, m/s: %02.2f, slip: %02.2f, slipDisplay: %02.2f,", v.rotPerSecond, v.distPerSecond, v.slip*100, v.slipDisplay*100));
 		end;
+		]]
 	end;
 	setTextAlignment(RenderText.ALIGN_LEFT);
 end;

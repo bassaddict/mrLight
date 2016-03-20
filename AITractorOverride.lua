@@ -5,7 +5,7 @@ AITractor.load = function(self, xmlFile)
 	
     self.aiTractorTurnRadius = getXMLFloat(xmlFile, "vehicle.aiTractorTurnRadius");
 	
-	--[[if self.aiTractorTurnRadius == nil then
+	if self.aiTractorTurnRadius == nil then
 		--try to compute the turn radius
 		--if self.realNbWheels == 4 then
 			local sumRot = 0;
@@ -47,7 +47,9 @@ AITractor.load = function(self, xmlFile)
 		if self.aiTractorTurnRadius == nil then				
 			self.aiTractorTurnRadius = 6.5; -- default value			
 		end;
-	end;]]
+	end;
+	
+	print("self.maxTurningRadius: " .. self.maxTurningRadius .. ", self.aiTractorTurnRadius: " .. self.aiTractorTurnRadius);
 	
 	if self.maxTurningRadius == 0 then
 		self.maxTurningRadius = 5;
@@ -84,11 +86,11 @@ AITractor.updateAIMovement = function(self, dt)
             break;
         end;
     end;
-    if self.turnStage > 0 then
+    --if self.turnStage > 0 then
         if self.waitForTurnTime > g_currentMission.time then
             allowedToDrive = false;
         end;
-    end;
+    --end;
     if not allowedToDrive then
         self.isHirableBlocked = true;
         --local x,y,z = getWorldTranslation(self.aiTractorDirectionNode);
@@ -111,9 +113,9 @@ AITractor.updateAIMovement = function(self, dt)
     end;
 	
 	--added bassaddict
-	if self.waitForTurnTime > g_currentMission.time then
-		allowedToDrive = false;
-	end;
+	--if self.waitForTurnTime > g_currentMission.time then
+	--	allowedToDrive = false;
+	--end;
 
 
     -- Seeding:
@@ -570,7 +572,7 @@ AITractor.realGetDriveDirectionFix = function(self, lx, lz, targetX, targetZ)
 		end;
 		if self.realAiTurnStage2Step0TargetTurningCircleX~=nil then
 			local ty = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, self.realAiTurnStage2Step0TargetTurningCircleX, 0, self.realAiTurnStage2Step0TargetTurningCircleZ);
-			drawDebugPoint(self.realAiTurnStage2Step0TargetTurningCircleX,ty+0.5,self.realAiTurnStage2Step0TargetTurningCircleZ,1,1,1,1);
+			--drawDebugPoint(self.realAiTurnStage2Step0TargetTurningCircleX,ty+0.5,self.realAiTurnStage2Step0TargetTurningCircleZ,1,1,1,1);
 			--print("draw debug, x: ", self.realAiTurnStage2Step0TargetTurningCircleX, ", y: ", ty, ", z: ", self.realAiTurnStage2Step0TargetTurningCircleZ);
 		end;
 		if self.turnStage==2 then
@@ -605,7 +607,7 @@ AITractor.realGetDriveDirectionFix = function(self, lx, lz, targetX, targetZ)
 				end;
 				--set the center point of the current turning circle (turning circle at the side where the final target is)
 				local turningCircleX,_,turningCircleZ = localToWorld(self.aiTractorDirectionNode, steeringWantedDir*self.maxTurningRadius, 0, 0);
-				local minDistance = 1.1*3*self.maxTurningRadius;--5% more since there can be slippage or the ground is not even
+				local minDistance = 1.15*3*self.maxTurningRadius;--5% more since there can be slippage or the ground is not even
 				
 				local distance = Utils.vector2Length(turningCircleX-self.realAiTurnStage2Step0TargetTurningCircleX, turningCircleZ-self.realAiTurnStage2Step0TargetTurningCircleZ);
 				

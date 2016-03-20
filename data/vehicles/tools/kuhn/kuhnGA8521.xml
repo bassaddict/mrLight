@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <powerConsumer ptoRpm="540" neededPtoPower="30"/>
+    <powerConsumer ptoRpm="540" neededPtoPower="35"/>
 	
     <speedLimit value="14" />
 

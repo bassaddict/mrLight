@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<CustomShader version="3">
+    <Parameters>
+        <Parameter name="psColor" target="psColor" type="float4" defaultValue = "1.0 1.0 1.0 1.0"/>
+    </Parameters>
+    <Variations>
+        <Variation name = "VELOCITY_ALIGNED">
+<![CDATA[
+    #define VELOCITY_ALIGNED 
+]]>
+        </Variation>
+        <Variation name = "DISABLE_BILLBOARD">
+<![CDATA[
+    #define DISABLE_BILLBOARD 
+]]>
+        </Variation>
+    </Variations>
+    <LodLevel startDistance="0">
+        <CodeInjections>
+            <CodeInjection position="MATERIALINFO">
+<![CDATA[
+    uniform float4 psColor;
+]]>
+            </CodeInjection>
+            <CodeInjection position = "CONFIG_DEFINES">
+<![CDATA[
+#if defined( VELOCITY_ALIGNED )
+    #define PARTICLE_SYSTEM_VELOCITY_ALIGNED
+#endif
+#if defined( DISABLE_BILLBOARD )
+    #undef PARTICLE_SYSTEM_BILLBOARD
+#endif
+]]>
+            </CodeInjection>
+            <CodeInjection position="GET_DIFFUSE_LIGHTING_FS">
+<![CDATA[
+float NdotL2  = clamp( dot( lightDir, normal ), 0.25, 1.0 );
+return NdotL2 * lightColor * atten;
+]]>
+            </CodeInjection>
+            <CodeInjection position="POST_ALBEDO_FS">
+<![CDATA[
+albedo.rgb *= psColor.rgb;
+]]>
+            </CodeInjection>
+        </CodeInjections>
+    </LodLevel>
+</CustomShader>

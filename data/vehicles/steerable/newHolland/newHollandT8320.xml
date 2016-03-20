@@ -7,7 +7,7 @@
         <wheel frictionScale="1.14" />
     </wheels>
 
-    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2000" maxForwardSpeed="52" maxBackwardSpeed="15" brakeForce="20.5" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="0.8">
+    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2000" maxForwardSpeed="52" maxBackwardSpeed="15" brakeForce="20.5" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="1">
         <torque normRpm="0.50" torque="1.10"/>
         <torque normRpm="0.60" torque="1.30"/>
         <torque normRpm="0.70" torque="1.40"/>

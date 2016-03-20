@@ -1,44 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="dynamicMountAttacherImplement">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Wheelloader Log fork</en>
-        <de>Radlader Poltergabel</de>
-    </name>
-    <filename>data/vehicles/wheelLoaders/lizard/wheelLoaderLogFork.i3d</filename>
-
-    <size width="2" length="2"/>
-
-    <attacherJoint index="0>0" jointType="wheelLoader" />
-
-    <dynamicMountAttacher index="0>" />
-    
-    <mouseControls>
-        <mouseControl iconFilename="$dataS2/menu/mouseControlsHelp/grab_rotX.png" axis="AXIS_FRONTLOADER_TOOL2" />
-    </mouseControls>
-
-    <movingTools>
-        <movingTool index="0>1" rotationAxis="1" componentJointIndex="0" rotSpeed="70" rotAcceleration="250" speedFactor="0.5" rotMax="0" rotMin="-95" axis="AXIS_FRONTLOADER_TOOL2" invertAxis="false" mouseAxis="AXIS_FRONTLOADER_TOOL2" invertMouseAxis="false">
-            <dependentPart index="0>2|0" />
-        </movingTool>
-    </movingTools>
-
-    <movingParts>
-        <movingPart index="0>2|0" referencePoint="1>0|0" referenceFrame="0>" >
-            <translatingPart index="0>2|0|0" />
-        </movingPart>
-    </movingParts>
-
-    <cylinderedHydraulicSound file="$data/vehicles/shared/hydraulicUp.wav" pitchOffset="0.8" volume="0.65" />
-
-    <washable dirtDuration="90" washDuration="1" workMultiplier="4" />
-    
-    <components count="2">
-        <component1 centerOfMass="0 0 0" solverIterationCount="10" />
-        <component2 solverIterationCount="10" />
-        <joint component1="0" component2="1" index="0>1" rotLimit="0 0 0" transLimit="0 0 0" />
+<vehicle>
+    <components>
+        <component1 mrlMass="0.65" />
+        <component2 mrlMass="0.4" />
     </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>>
-
 </vehicle>

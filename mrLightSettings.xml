@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <settings>
 	<balancing>
 		<priceBalancing value="3" /> 				<!-- default value = 1 / general price balancing applied to all selling/buying product | set it to 1 to get "real" prices for crop -->
@@ -20,35 +20,199 @@
 		-->
 		
 		<!-- DLCs -->
+		<!-- Gold Pack -->
+		<vehicle configFile="$pdlcdir$goldPack/farmtech/farmtechTDK1600.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/farmtech/farmtechTDK1600.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/kverneland/kvernelandAB85.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/kverneland/kvernelandAB85.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/kverneland/kvernelandAccordDL.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/kverneland/kvernelandAccordDL.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/kverneland/kvernelandExactaEL.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/kverneland/kvernelandExactaEL.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/kverneland/kvernelandOptimaV.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/kverneland/kvernelandOptimaV.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/kverneland/kvernelandQualidisc3m.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/kverneland/kvernelandQualidisc3m.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmAcros595.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmAcros595.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmTorum760.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmTorum760.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsm1403.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsm1403.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmPowerStream700.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmPowerStream700.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmPowerStream900.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmPowerStream900.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmPPK81.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmPPK81.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmGr6000.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmGr6000.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsmPF307.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsmPF307.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/rostselmash/rsm500R.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/rostselmash/rsm500R.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/tatra/tatraPhoenix.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/tatra/tatraPhoenix.xml" />
+			<entry key="price" type="number" value="109000" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/zetor/zetorCrystal.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/zetor/zetorCrystal.xml" />
+			<entry key="price" type="number" value="32000" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/zetor/zetorMajor80.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/zetor/zetorMajor80.xml" />
+			<entry key="price" type="number" value="47200" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/zetor/zetorProximaPower120.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/zetor/zetorProximaPower120.xml" />
+			<entry key="price" type="number" value="69500" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$goldPack/zetor/zetorForterraHD.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/goldPack/zetor/zetorForterraHD.xml" />
+			<entry key="price" type="number" value="88750" />
+		</vehicle>
+		
+		<!-- Holmer Pack -->
+		<!--vehicle configFile="$pdlcdir$holmerPack/bergmann/bergmannTSWA19.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/bergmann/bergmannTSWA19.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerGrainTank.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerGrainTank.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerHR9.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerHR9.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerSugarBeetTank.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerSugarBeetTank.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerTerraDosT4_40.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerTerraDosT4_40.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerTerraVariant.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerTerraVariant.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/holmer/holmerTransportTrailer.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/holmer/holmerTransportTrailer.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/zunhammer/zunhammerTV.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/zunhammer/zunhammerTV.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$holmerPack/zunhammer/zunhammerVibro.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/holmerPack/zunhammer/zunhammerVibro.xml" />
+		</vehicle-->
+		
+		<!-- IT Runner Pack -->
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/itRunner2633HD.xml" >
+			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/itRunner2633HD.xml" /-->
 			<entry key="price" type="number" value="46500" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerDumper.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerDumper.xml" />
 			<entry key="price" type="number" value="17000" />
+			<entry key="capacity" type="number" value="19000" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerChaff.xml" >
-			<entry key="price" type="number" value="42000" />
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerChaff.xml" />
+			<entry key="price" type="number" value="36000" />
+			<entry key="capacity" type="number" value="34400" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerSilage.xml" >
-			<entry key="price" type="number" value="39000" />
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerSilage.xml" />
+			<entry key="price" type="number" value="32000" />
+			<entry key="capacity" type="number" value="35400" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerManureSpreader.xml" >
-			<entry key="price" type="number" value="37500" />
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerManureSpreader.xml" />
+			<entry key="price" type="number" value="33000" />
+			<entry key="capacity" type="number" value="19400" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerSlurry.xml" >
-			<entry key="price" type="number" value="26000" />
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerSlurry.xml" />
+			<entry key="price" type="number" value="30000" />
+			<entry key="capacity" type="number" value="18100" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerBales.xml" >
+			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerBales.xml" /-->
 			<entry key="price" type="number" value="8000" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerWood.xml" >
+			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerWood.xml" /-->
 			<entry key="price" type="number" value="8000" />
 		</vehicle>
 		
+		<!-- JCB Pack -->
 		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbFastrac3000.xml" >
 			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbFastrac3000.xml" />
 			<entry key="price" type="number" value="145000" />
 		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbFastrac8000.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbFastrac8000.xml" />
+			<entry key="price" type="number" value="190000" />
+			<!--entry key="attacherJoint1TODO" type="string" value="30 -4" />
+			<entry key="attacherJoint2TODO" type="string" value="-31 11" /-->
+		</vehicle>
+		<!--vehicle configFile="$pdlcdir$jcbPack/jcb/jcb260.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcb260.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbTM320s.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbTM320s.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcb435s.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcb435s.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbShovel.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbShovel.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbBaleFork.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbBaleFork.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbPalletFork.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbPalletFork.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbManureFork.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbManureFork.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbLogFork.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbLogFork.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$jcbPack/jcb/jcbStumpCutter.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/jcbPack/jcb/jcbStumpCutter.xml" />
+		</vehicle-->
+		
+		<!-- New Holland Pack -->
+		<!--vehicle configFile="$pdlcdir$newHollandPack/newHolland/newHollandFR850.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/newHollandPack/newHolland/newHollandFR850.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$newHollandPack/kemper/kemper390Plus.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/newHollandPack/kemper/kemper390Plus.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$newHollandPack/newHolland/newHollandSFI900.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/newHollandPack/newHolland/newHollandSFI900.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$newHollandPack/newHolland/newHolland600FDR.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/newHollandPack/newHolland/newHolland600FDR.xml" />
+		</vehicle>
+		<vehicle configFile="$pdlcdir$newHollandPack/newHolland/newHollandPP273.xml" >
+			<entry key="xmlFile" type="string" value="data/pdlc/newHollandPack/newHolland/newHollandPP273.xml" />
+		</vehicle-->
+		
+		
+		
 		
 		<!-- balers -->
 		
@@ -330,8 +494,7 @@
 		<vehicle configFile="data/vehicles/steerable/man/man22S.xml" >
 		<!-- Real values: 440 HP@1900 RPM, No peak power, 2100 Nm@1000-1400 RPM, from constructor's technical datasheet and power/torque graph -->
 			<entry key="xmlFile" type="string" value="data/vehicles/steerable/man/man22S.xml" />
-			<entry key="price" type="number" value="254209" />
-			<entry key="dailyUpkeep" type="number" value="396" />
+			<entry key="price" type="number" value="108000" />
 			<entry key="power" type="number" value="440" />
 		</vehicle>
 		
@@ -486,6 +649,7 @@
 		<vehicle configFile="data/vehicles/tools/amazone/amazoneZAM1501.xml" >
 			<entry key="xmlFile" type="string" value="data/vehicles/tools/amazone/amazoneZAM1501.xml" />
 			<entry key="neededPower" type="number" value="150" />
+			<entry key="workingWidth" type="string" value="24" />
 		</vehicle>
 		
 		<!-- Damcon -->
@@ -553,7 +717,7 @@
 		<!-- Krone -->
 		<vehicle configFile="data/vehicles/tools/krone/kroneSwadro2000.xml" >
 			<entry key="xmlFile" type="string" value="data/vehicles/tools/krone/kroneSwadro2000.xml" />
-			<entry key="neededPower" type="number" value="190" />
+			<entry key="neededPower" type="number" value="150" />
 		</vehicle>
 
 		<!-- Kuhn -->
@@ -596,33 +760,20 @@
 		
 		<!-- Poettinger -->
 		<vehicle configFile="data/vehicles/tools/poettinger/poettingerHit1214T.xml" >
-			<entry key="speedLimit" type="number" value="15" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/poettinger/poettingerHit1214T.xml" />
 			<entry key="neededPower" type="number" value="75" />
-			<entry key="neededPtoPower" type="number" value="30" />
-			<entry key="masses" type="string" value="1.22 0.08 0.5 0.15 0.1 0.15 0.1" /><!-- is -0.9 -->
-			<entry key="wheelsFrictionScale" type="string" value="0.83 0.83" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/poettinger/poettingerNovacat302ED.xml" >
-			<entry key="speedLimit" type="number" value="13" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/poettinger/poettingerNovacat302ED.xml" />
 			<entry key="neededPower" type="number" value="80" />
-			<entry key="neededPtoPower" type="number" value="35" />
-			<entry key="masses" type="string" value="0.7 0.51" /><!-- is -0.03, better balance -->
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/poettinger/poettingerTop1252.xml" >
-			<entry key="speedLimit" type="number" value="15" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/poettinger/poettingerTop1252.xml" />
 			<entry key="neededPower" type="number" value="90" />
-			<entry key="neededPtoPower" type="number" value="30" />
-			<entry key="masses" type="string" value="3.25 0.3 0.6 0.6 0.6 0.6" /><!-- is -0.05, better balance -->
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" >
-			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPower" type="number" value="120" />
-			<entry key="neededPtoPower" type="number" value="35" />
-			<entry key="maxForce" type="number" value="40" />
-			<entry key="masses" type="number" value="1.685" /><!-- is -0.581 -->
-			<entry key="lowerDistanceToGround" type="number" value="0.70" /> <!-- 0.457 -->
-			<entry key="upperDistanceToGround" type="number" value="1.5" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/poettinger/poettingerVitasem302A.xml" />
+			<entry key="neededPower" type="number" value="160" />
 		</vehicle>
 		
 		<!-- Suer
@@ -639,26 +790,14 @@
 			<entry key="neededPower" type="number" value="250" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" >
-			<entry key="speedLimit" type="number" value="18" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/vaederstad/vaederstadRapidA600S.xml" />
 			<entry key="neededPower" type="number" value="180" />
-			<entry key="neededPtoPower" type="number" value="25" />
-			<entry key="ptoRpm" type="number" value="500" />
-			<entry key="maxForce" type="number" value="100" />
-			<entry key="masses" type="string" value="8.4 0.5" /><!-- is +3.075, better balance -->
 			<entry key="price" type="number" value="76000" />
 			<entry key="dailyUpkeep" type="number" value="18" />
-			<entry key="lowerDistanceToGround" type="number" value="0.75" />
-			<entry key="upperDistanceToGround" type="number" value="1.5" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" >
-			<entry key="speedLimit" type="number" value="17" />
-			<entry key="neededPower" type="number" value="90" />
-			<entry key="neededPtoPower" type="number" value="12" />
-			<entry key="maxForce" type="number" value="60" />
-			<entry key="masses" type="number" value="3.4" /><!-- is +1.086 -->
-			<!--entry key="price" type="number" value="61000" />
-			<entry key="dailyUpkeep" type="number" value="16" / -->
-			<entry key="wheelsFrictionScale" type="string" value="0.83 0.83" />
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/vaederstad/vaederstadTempoF8.xml" />
+			<entry key="neededPower" type="number" value="100" />
 		</vehicle>
 		
 		<!-- Vogel Noot -->
@@ -673,8 +812,7 @@
 		
 		<!-- Zunhammer -->
 		<vehicle configFile="data/vehicles/tools/zunhammer/zunhammerZunidisc.xml" >
-			<entry key="speedLimit" type="number" value="12" />
-			<entry key="masses" type="number" value="2.1" /><!-- is +1.086 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/tools/zunhammer/zunhammerZunidisc.xml" />
 		</vehicle>
 		
 		
@@ -683,261 +821,218 @@
 		
 		<!-- Amazone -->
 		<vehicle configFile="data/vehicles/trailers/amazone/amazoneZGB8200.xml" >
-			<entry key="speedLimit" type="number" value="14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/amazone/amazoneZGB8200.xml" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="neededPtoPower" type="number" value="20" />
-			<!-- entry key="masses" type="number" value="3.5" is +0.046 / -->
-			<entry key="workingWidths" type="string" value="30 24 36 3" /> <!-- default min max step -->
-			<entry key="wheelsFrictionScale" type="string" value="0.98 0.98" />
+			<entry key="workingWidth" type="string" value="36" />
 		</vehicle>
 		
 		<!-- Arcusin -->
 		<vehicle configFile="data/vehicles/trailers/arcusin/arcusinAutostackFS63-72.xml" >
-			<entry key="speedLimit" type="number" value="16" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/arcusin/arcusinAutostackFS63-72.xml" />
 			<entry key="neededPower" type="number" value="130" />
-			<entry key="neededPtoPower" type="number" value="20" />
-			<entry key="masses" type="number" value="8.9" /><!-- is -0.105 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02 1.02 1.02" />
 		</vehicle>
 		
 		<!-- Bergmann -->
 		<vehicle configFile="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" >
-			<entry key="fillVolumesNode" type="string" value="0>4|13" />
-			<entry key="capacities" type="string" value="38000 0 38000 0" />
-			<entry key="compressedCapacity" type="number" value="67000" />
-			<entry key="speedLimit" type="number" value="17" />
-			<entry key="neededPower" type="number" value="180" /><!-- for correct pulling @max load -->
-			<entry key="neededPtoPower" type="number" value="60" /><!-- for pickup/discharge -->
-			<!--entry key="masses" type="number" value="9.44" / is +0.09 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/bergmann/bergmannCarex38S.xml" />
+			<entry key="neededPower" type="number" value="160" /><!-- for correct pulling @max load -->
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/bergmann/bergmannHTW65.xml" >
-			<entry key="neededPower" type="number" value="150" />
-			<entry key="masses" type="number" value="10.1" /><!-- is +1.881, according Dural's search for MR FS13 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/bergmann/bergmannHTW65.xml" />
+			<entry key="neededPower" type="number" value="250" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/bergmann/bergmannM1080.xml" >
-			<entry key="speedLimit" type="number" value="10" />
-			<entry key="neededPower" type="number" value="100" />
-			<entry key="neededPtoPower" type="number" value="25" />
-			<!--entry key="masses" type="number" value="2.235" / is +0.016 -->
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/bergmann/bergmannM1080.xml" />
+			<entry key="neededPower" type="number" value="70" />
 		</vehicle>
 		
 		<!-- Brantner -->
 		<vehicle configFile="data/vehicles/trailers/brantner/brantnerE8041.xml" >
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/brantner/brantnerE8041.xml" />
 		</vehicle>
 		
 		<!-- Fliegl -->
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglASS2101.xml" >
-			<entry key="neededPower" type="number" value="320" />
-			<entry key="masses" type="number" value="6.85" /><!-- is -0.574 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglASS2101.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglDolly.xml" >
-			<entry key="masses" type="number" value="2" /><!-- is +0.363 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.05 1.05" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglDolly.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglDPW180.xml" >
-			<entry key="neededPower" type="number" value="150" />
-			<entry key="wheelsFrictionScale" type="string" value="0.87 0.87 0.87 0.87 0.87 0.87" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglDPW180.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglSemitrailer.xml" >
-			<entry key="masses" type="string" value="6.5 0.6" /><!-- is -1.624 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglSemitrailer.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" >
-			<entry key="masses" type="number" value="5.9" /><!-- is -1.525 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02 1.02 1.02 1.02 1.02" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglTimberRunner.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" >
-			<entry key="fillVolumesNode" type="string" value="0>6|2|3" />
-			<entry key="capacities" type="string" value="22000 22000 30000 0" />
-			<entry key="neededPower" type="number" value="210" />
-			<!-- entry key="wheelsSpring" type="string" value="45 45 45 45" / -->
-			<entry key="wheelsFrictionScale" type="string" value="1.05 1.05 1.05 1.05" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglTMK266Bull.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/fliegl/flieglVFW25000.xml" >
-			<entry key="speedLimit" type="number" value="11" />
-			<entry key="neededPower" type="number" value="320" />
-			<entry key="neededPtoPower" type="number" value="60" />
-			<entry key="masses" type="number" value="2.235" /><!-- is +0.124 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.175 1.175 1.175 1.175" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fliegl/flieglVFW25000.xml" />
+			<!-- entry key="neededPower" type="number" value="320" / -->
 		</vehicle>
 		
 		<!-- fuelTrailer -->
 		<vehicle configFile="data/vehicles/trailers/fuelTrailer/fuelTrailer.xml" >
-			<entry key="masses" type="number" value="2.25" /><!-- is +0.729 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/fuelTrailer/fuelTrailer.xml" />
 		</vehicle> 
 		
 		<!-- Horsch -->
 		<vehicle configFile="data/vehicles/trailers/horsch/horschTitan34UW.xml" >
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/horsch/horschTitan34UW.xml" />
 			<entry key="neededPower" type="number" value="200" /> <!-- 150kw / 200hp -->
-			<entry key="neededPtoPower" type="number" value="60" />
-			<entry key="wheelsFrictionScale" type="string" value="1.22 1.22" />
 		</vehicle>
 		
 		<!-- Jenz -->
 		<vehicle configFile="data/vehicles/trailers/jenz/jenzHEM583.xml" >
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/jenz/jenzHEM583.xml" />
 			<entry key="neededPower" type="number" value="200" /> 
-			<entry key="neededPtoPower" type="number" value="132" /><!-- 132-350kw / 180-475hp -->
-			<entry key="masses" type="string" value="10.2 0.5 0.25 0.25" />
-			<!--entry key="fixCraneAxis" type="bool" value="true" /-->
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02 1.02 1.02" />
 		</vehicle>
 		
 		<!-- Kotte -->
 		<vehicle configFile="data/vehicles/trailers/kotte/garantFieldContainer.xml" >
-			<entry key="neededPower" type="number" value="150" /> 
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kotte/garantFieldContainer.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/kotte/garantTSA.xml" >
-			<entry key="neededPower" type="number" value="320" />
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02 1.02 1.02 1.02 1.02" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kotte/garantTSA.xml" />
 		</vehicle>
 		
 		<!-- Krampe -->
 		<vehicle configFile="data/vehicles/trailers/krampe/krampeBandit750.xml" >
-			<entry key="fillVolumesNode" type="string" value="0>10" />
-			<entry key="capacities" type="string" value="26500 26500 40000 0" />
-			<entry key="neededPower" type="number" value="180" />
-			<entry key="masses" type="number" value="7.9" /><!-- is -0.06 -->
-			<!--entry key="brakeForce" type="number" value="100" /-->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/krampe/krampeBandit750.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/krampe/krampeBBS900.xml" >
-			<entry key="neededPower" type="number" value="190" />
-			<entry key="masses" type="number" value="10.2" /><!-- is +1.702 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/krampe/krampeBBS900.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/krampe/krampeSB3060.xml" >
-			<entry key="neededPower" type="number" value="320" />
-			<entry key="masses" type="number" value="8" /><!-- is -0.355 -->
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14 1.14 1.14" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/krampe/krampeSB3060.xml" />
 		</vehicle> 
 		
 		<!-- Kroeger -->
 		<vehicle configFile="data/vehicles/trailers/kroeger/kroegerHKD302.xml" >
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kroeger/kroegerHKD302.xml" />
 			<!--entry key="fillVolumesNode" type="string" value="0>3|0|0|3" />
 			<entry key="capacities" type="string" value="18000 18000 18000 0" / -->
-			<entry key="neededPower" type="number" value="150" />
-			<entry key="masses" type="string" value="3.05 0.9 0.3" /><!-- is +0.297 -->
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97 0.97 0.97" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/kroeger/kroegerTAW30.xml" >
-			<entry key="neededPtoPower" type="number" value="80" />
-			<entry key="neededPower" type="number" value="240" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kroeger/kroegerTAW30.xml" />
 			<entry key="masses" type="number" value="9.98" /><!-- is -0.146 -->
 			<entry key="wheelsFrictionScale" type="string" value="1.05 1.05 1.05 1.05 1.05 1.05" />
 		</vehicle> 
 		
 		<!-- Kuhn -->
 		<vehicle configFile="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" >
-			<entry key="neededPtoPower" type="number" value="51" />
-			<entry key="neededPower" type="number" value="110" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kuhn/kuhnPrimor3570.xml" />
+			<entry key="neededPower" type="number" value="80" />
 			<entry key="price" type="number" value="21281" />
-			<entry key="wheelsFrictionScale" type="string" value="0.83 0.83" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/kuhn/kuhnProfile1880.xml" >
-			<entry key="neededPtoPower" type="number" value="66" />
-			<entry key="neededPower" type="number" value="140" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/kuhn/kuhnProfile1880.xml" />
+			<entry key="neededPower" type="number" value="100" />
 			<entry key="price" type="number" value="41398" />
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97" />
 		</vehicle>
 		
 		<!-- Marshall -->
 		<vehicle configFile="data/vehicles/trailers/marshall/marshallST1800.xml" >
-			<entry key="speedLimit" type="number" value="10" />
-			<entry key="neededPtoPower" type="number" value="30" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/marshall/marshallST1800.xml" />
 			<entry key="neededPower" type="number" value="95" />
 			<entry key="price" type="number" value="11970" />
-			<entry key="wheelsFrictionScale" type="string" value="1.02 1.02" />
 		</vehicle>
 		
 		<!-- Poettinger -->
 		<vehicle configFile="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" >
-			<entry key="fillVolumesNode" type="string" value="0>5" />
-			<entry key="capacities" type="string" value="21300 0 21300 0" />
-			<entry key="compressedCapacity" type="number" value="33000" />
-			<entry key="speedLimit" type="number" value="15" />
-			<entry key="neededPtoPower" type="number" value="40" />
-			<entry key="neededPower" type="number" value="100" />
-			<entry key="wheelsFrictionScale" type="string" value="0.97 0.97" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/poettinger/poettingerEuroboss330T.xml" />
+			<entry key="neededPower" type="number" value="90" />
 		</vehicle>
 		
 		<!-- Stepa -->
 		<vehicle configFile="data/vehicles/trailers/stepa/stepaFHL13AK.xml" >
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/stepa/stepaFHL13AK.xml" />
 			<!--entry key="fixCraneAxis" type="bool" value="true" /-->
-			<entry key="neededPower" type="number" value="150" />
-			<entry key="masses" type="string" value="2.05 0.15 0.1 0.1" /><!-- is -0.3 -->
-			<entry key="wheelsFrictionScale" type="string" value="0.88 0.88 0.88 0.88" />
 		</vehicle>
 		
 		<!-- Strautmann -->
 		<vehicle configFile="data/vehicles/trailers/strautmann/strautmannPS3401.xml" >
-			<entry key="speedLimit" type="number" value="12" />
-			<entry key="neededPtoPower" type="number" value="80" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/strautmann/strautmannPS3401.xml" />
 			<entry key="neededPower" type="number" value="220" />
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14 1.14 1.14" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/strautmann/strautmannTeraVitesse5201.xml" >
-			<entry key="fillVolumesNode" type="string" value="0>15" />
-			<entry key="capacities" type="string" value="50000 0 50000 0" />
-			<entry key="compressedCapacity" type="number" value="95000" />
-			<entry key="speedLimit" type="number" value="18" />
-			<entry key="neededPtoPower" type="number" value="70" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/strautmann/strautmannTeraVitesse5201.xml" />
 			<entry key="neededPower" type="number" value="240" />
-			<entry key="wheelsFrictionScale" type="string" value="1.14 1.14 1.14 1.14 1.14 1.14" />
 		</vehicle>
 		
 		<!-- Thueringer Agrar -->
 		<vehicle configFile="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan.xml" >
-			<entry key="wheelsFrictionScale" type="string" value="0.8 0.8" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan40.xml" >
-			<entry key="wheelsFrictionScale" type="string" value="0.8 0.8 0.8 0.8" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/thueringerAgrar/thueringerAgrarLeguan40.xml" />
 		</vehicle>
 		
 		<!-- Ursus -->
 		<vehicle configFile="data/vehicles/trailers/ursus/ursusN270.xml" >
-			<entry key="speedLimit" type="number" value="11" />
-			<entry key="neededPtoPower" type="number" value="50" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/ursus/ursusN270.xml" />
 			<entry key="neededPower" type="number" value="150" />
-			<entry key="wheelsFrictionScale" type="string" value="1.05 1.05 1.05 1.05" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/ursus/ursusT127.xml" >
-			<entry key="neededPtoPower" type="number" value="15" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/ursus/ursusT127.xml" />
 			<entry key="neededPower" type="number" value="70" />
-			<entry key="wheelsFrictionScale" type="string" value="0.95 0.95" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/trailers/ursus/ursusZ586.xml" >
-			<entry key="neededPtoPower" type="number" value="10" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/ursus/ursusZ586.xml" />
 			<entry key="neededPower" type="number" value="50" />
-			<entry key="wheelsFrictionScale" type="string" value="0.95 0.95" />
 		</vehicle>
 		
 		<!-- waterTrailer -->
 		<vehicle configFile="data/vehicles/trailers/waterTrailer/waterTrailer.xml" >
-			<entry key="masses" type="number" value="2.08" /><!-- is -0.330 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/waterTrailer/waterTrailer.xml" />
 		</vehicle> 
 		
 		<!-- Zunhammer -->
 		<vehicle configFile="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" >
-			<entry key="speedLimit" type="number" value="11" />
-			<entry key="wheelsFrictionScale" type="string" value="1.175 1.175 1.175 1.175" />
+			<entry key="xmlFile" type="string" value="data/vehicles/trailers/zunhammer/zunhammer18500PE.xml" />
 		</vehicle>
 		
 		<!-- wheelloader -->
 		
 		<!-- Lizard -->
 		<vehicle configFile="data/vehicles/wheelLoaders/lizard/wheelLoaderFork.xml" >
-			<entry key="masses" type="string" value="0.67 0.5" /><!-- is -0.226 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/wheelLoaders/lizard/wheelLoaderFork.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/wheelLoaders/lizard/wheelLoaderLogFork.xml" >
-			<entry key="masses" type="string" value="1.47 1" /><!-- is +1.798 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/wheelLoaders/lizard/wheelLoaderLogFork.xml" />
 		</vehicle>
 		<vehicle configFile="data/vehicles/wheelLoaders/lizard/wheelLoaderShovel.xml" >
-			<entry key="masses" type="number" value="2.67" /><!-- is -2.367 -->
+			<entry key="xmlFile" type="string" value="data/vehicles/wheelLoaders/lizard/wheelLoaderShovel.xml" />
+			<entry key="capacity" type="number" value="5500" />
+		</vehicle>
+		
+		
+		
+		<!-- Official Mods -->
+		<vehicle configFile="$moddir$FS15_deutzFahrBlackEdition/deutzFahr7250.xml" >
+			<entry key="xmlFile" type="string" value="data/vehicles/steerable/deutz/deutzFahr7250.xml" />
+			<entry key="price" type="number" value="154484" />
+			<entry key="dailyUpkeep" type="number" value="231" />
+			<entry key="power" type="number" value="263" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_newHollandLoaderPack/newHolland/newHollandLM742.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_newHollandLoaderPack/newHollandLM742.xml" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_newHollandLoaderPack/newHolland/newHollandW170C.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_newHollandLoaderPack/newHollandW170C.xml" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_lamborghiniNitro120/Nitro120T4iVRT.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_lamborghiniNitro120/Nitro120T4iVRT.xml" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_rostselmashNiva/rostselmash/rsmNiva.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_rostselmashNiva/rostselmash/rsmNiva.xml" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_rostselmashNiva/rostselmash/rsmGks5.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_rostselmashNiva/rostselmash/rsmGks5.xml" />
 		</vehicle>
 	</vehicles>
 </settings>

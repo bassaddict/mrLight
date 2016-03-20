@@ -89,7 +89,7 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 		if configFile == nil then
 			break;
 		end;
-		if Utils.startsWith(configFile, "$pdlcdir$") then
+		--[[if Utils.startsWith(configFile, "$pdlcdir$") then
 			local tmp1 = string.gsub(configFile, "$pdlcdir$", "");
 			local s,e = string.find(tmp1, "%w+/");
 			if s ~= nil then
@@ -102,8 +102,9 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 					--TODO
 				end;
 			end;
-		end;
-		if configFile ~= nil then
+		end;]]
+		configFile = Utils.convertFromNetworkFilename(configFile);
+		--if configFile ~= nil then
 			MrLightUtils.vehicleConfigs[configFile] = {};
 			local j = 0;
 			while true do
@@ -126,7 +127,7 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 				MrLightUtils.vehicleConfigs[configFile][key] = value;
 				j = j + 1;
 			end;
-		end;
+		--end;
 		i = i + 1;
 	end;
 
@@ -136,25 +137,33 @@ end;
 function MrLightUtils.setStoreData()
 	for k,v in pairs(MrLightUtils.vehicleConfigs) do
 		k = string.lower(k);
-		if v.price ~= nil then
-			if StoreItemsUtil.storeItemsByXMLFilename[k] == nil then
-				print("1 is nil");
-				print("k: "..tostring(k)..", v: "..tostring(v));
+		if StoreItemsUtil.storeItemsByXMLFilename[k] ~= nil then
+			if v.price ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].price = Utils.getNoNil(tonumber(v.price), StoreItemsUtil.storeItemsByXMLFilename[k].price);
 			end;
-			if StoreItemsUtil.storeItemsByXMLFilename[k].price == nil then
-				print("3 is nil");
+			if v.dailyUpkeep ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].dailyUpkeep = Utils.getNoNil(tonumber(v.dailyUpkeep), StoreItemsUtil.storeItemsByXMLFilename[k].dailyUpkeep);
 			end;
-			StoreItemsUtil.storeItemsByXMLFilename[k].price = Utils.getNoNil(tonumber(v.price), StoreItemsUtil.storeItemsByXMLFilename[k].price);
+			if v.power ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].specs.power = Utils.getNoNil(tonumber(v.power), StoreItemsUtil.storeItemsByXMLFilename[k].specs.power);
+			end;
+			if v.neededPower ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower = Utils.getNoNil(tonumber(v.neededPower), StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower);
+			end;
+			if v.workingWidth ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].specs.workingWidth = Utils.getNoNil(tonumber(v.workingWidth), StoreItemsUtil.storeItemsByXMLFilename[k].specs.workingWidth);
+			end;
+			if v.capacity ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].capacity = Utils.getNoNil(tonumber(v.capacity), StoreItemsUtil.storeItemsByXMLFilename[k].capacity);
+			end;
+			if v.incomePerHour ~= nil then
+				StoreItemsUtil.storeItemsByXMLFilename[k].incomePerHour = Utils.getNoNil({tonumber(v.incomePerHour) * 4, tonumber(v.incomePerHour) * 2, tonumber(v.incomePerHour)}, StoreItemsUtil.storeItemsByXMLFilename[k].incomePerHour);
+			end;
 		end;
-		if v.dailyUpkeep ~= nil then
-			StoreItemsUtil.storeItemsByXMLFilename[k].dailyUpkeep = Utils.getNoNil(tonumber(v.dailyUpkeep), StoreItemsUtil.storeItemsByXMLFilename[k].dailyUpkeep);
-		end;
-		if v.power ~= nil then
-			StoreItemsUtil.storeItemsByXMLFilename[k].specs.power = Utils.getNoNil(tonumber(v.power), StoreItemsUtil.storeItemsByXMLFilename[k].specs.power);
-		end;
-		if v.neededPower ~= nil then
-			StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower = Utils.getNoNil(tonumber(v.neededPower), StoreItemsUtil.storeItemsByXMLFilename[k].specs.neededPower);
-		end;
+	end;
+	
+	for _,v in pairs(StoreItemsUtil.storeItemsByXMLFilename) do
+		v.isMod = false;
 	end;
 	
 	StoreItemsUtil.storeItemsByXMLFilename.cow.dailyUpkeep = 15; --default 40
@@ -164,11 +173,12 @@ function MrLightUtils.setStoreData()
 	print("--- MRL: store data set");
 end;
 
-MrLightUtils.numFillableClasses = 4;
+MrLightUtils.numFillableClasses = 5;
 MrLightUtils.FILLABLE_CLASS_UNKNOWN = 1;
 MrLightUtils.FILLABLE_CLASS_GRAINS = 2;
-MrLightUtils.FILLABLE_CLASS_SOLIDS = 3;
-MrLightUtils.FILLABLE_CLASS_FLUIDS = 4;
+MrLightUtils.FILLABLE_CLASS_CHAFF = 3;
+MrLightUtils.FILLABLE_CLASS_TUBERS = 4;
+MrLightUtils.FILLABLE_CLASS_FLUIDS = 5;
 
 function MrLightUtils.getFillableInfos(fillTypeName)
 	-- pricePerKg of some fruit/filltype should NEVER be 0
@@ -196,14 +206,14 @@ function MrLightUtils.getFillableInfos(fillTypeName)
 		elseif fillTypeName=="rape" then
 			density, pricePerKg, fillableClass = 0.64, 0.400, MrLightUtils.FILLABLE_CLASS_GRAINS; -- 400€/T
 		elseif fillTypeName=="chaff" or fillTypeName=="forage" then
-			density, pricePerKg, fillableClass = 0.40, 0.040, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 2000€/ha =>	2000€/50T => 40€/T			
+			density, pricePerKg, fillableClass = 0.40, 0.040, MrLightUtils.FILLABLE_CLASS_CHAFF; -- 2000€/ha =>	2000€/50T => 40€/T			
 		elseif fillTypeName=="sugarbeet" then
-			density, pricePerKg, fillableClass = 0.69, 0.040, MrLightUtils.FILLABLE_CLASS_SOLIDS; --40€/T
+			density, pricePerKg, fillableClass = 0.69, 0.040, MrLightUtils.FILLABLE_CLASS_TUBERS; --40€/T
 		elseif fillTypeName=="potato" then
-			density, pricePerKg, fillableClass = 0.67, 0.065, MrLightUtils.FILLABLE_CLASS_SOLIDS; --65€/T. should be something like 150-200€/T but in the game, we do not have to irrigate, prepare the soil, weed or clean/wash/sort the potatoes
+			density, pricePerKg, fillableClass = 0.67, 0.065, MrLightUtils.FILLABLE_CLASS_TUBERS; --65€/T. should be something like 150-200€/T but in the game, we do not have to irrigate, prepare the soil, weed or clean/wash/sort the potatoes
 				
 		elseif fillTypeName=="manure" then
-			density, pricePerKg, fillableClass = 0.65, 0.020, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--20€/T
+			density, pricePerKg, fillableClass = 0.65, 0.020, MrLightUtils.FILLABLE_CLASS_CHAFF;	--20€/T
 		elseif fillTypeName=="liquidmanure" then
 			density, pricePerKg, fillableClass = 0.92, 0.007, MrLightUtils.FILLABLE_CLASS_FLUIDS;	--7€/T
 			
@@ -212,19 +222,19 @@ function MrLightUtils.getFillableInfos(fillTypeName)
 					
 		--*************************** WINDROW filltype
 		elseif fillTypeName=="wheat_windrow" then
-			density, pricePerKg, fillableClass = 0.040, 0.040*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--40€/T
+			density, pricePerKg, fillableClass = 0.040, 0.040*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_CHAFF;	--40€/T
 		elseif fillTypeName=="barley_windrow" then
-			density, pricePerKg, fillableClass = 0.036, 0.044*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--44€/T
+			density, pricePerKg, fillableClass = 0.036, 0.044*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_CHAFF;	--44€/T
 		elseif fillTypeName=="drygrass_windrow" or fillTypeName=="drygrass" then
-			density, pricePerKg, fillableClass = 0.050, 0.085*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 85€/T			
+			density, pricePerKg, fillableClass = 0.050, 0.085*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_CHAFF; -- 85€/T			
 		elseif fillTypeName=="grass_windrow" or fillTypeName=="grass" then
-			density, pricePerKg, fillableClass = 0.25, 0.015*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_SOLIDS; -- 15€/T	 
+			density, pricePerKg, fillableClass = 0.25, 0.015*MrLightUtils.PriceBalanceFactors.windrow, MrLightUtils.FILLABLE_CLASS_CHAFF; -- 15€/T	 
 			
 		--*************************** OTHER filltype
 		elseif fillTypeName=="silage" then
-			density, pricePerKg, fillableClass = 0.4, 0.175*MrLightUtils.PriceBalanceFactors.silage, MrLightUtils.FILLABLE_CLASS_SOLIDS;	--175€/T   compress silage = 0.85 density / uncompressed = 0.4
+			density, pricePerKg, fillableClass = 0.4, 0.175*MrLightUtils.PriceBalanceFactors.silage, MrLightUtils.FILLABLE_CLASS_CHAFF;	--175€/T   compress silage = 0.85 density / uncompressed = 0.4
 		elseif fillTypeName=="forage_mixing" then -- TMR
-			density, pricePerKg, fillableClass = 0.2, 0.300, MrLightUtils.FILLABLE_CLASS_SOLIDS; --300€/T
+			density, pricePerKg, fillableClass = 0.2, 0.300, MrLightUtils.FILLABLE_CLASS_CHAFF; --300€/T
 		
 		elseif fillTypeName=="fuel" then
 			density, pricePerKg, fillableClass = 0.83, 1.025*MrLightUtils.PriceBalanceFactors.fuel, MrLightUtils.FILLABLE_CLASS_FLUIDS;	--0.85€/L == 1.025€/Kg.  
@@ -242,7 +252,7 @@ function MrLightUtils.getFillableInfos(fillTypeName)
 			density, pricePerKg, fillableClass = 1, 0, MrLightUtils.FILLABLE_CLASS_FLUIDS;		
 			
 		elseif fillTypeName=="woodchips" then
-			density, pricePerKg, fillableClass = 0.24, 0.075*MrLightUtils.PriceBalanceFactors.woodChips, MrLightUtils.FILLABLE_CLASS_SOLIDS;	-- 75€/T
+			density, pricePerKg, fillableClass = 0.21, 0.130*MrLightUtils.PriceBalanceFactors.woodChips, MrLightUtils.FILLABLE_CLASS_CHAFF;	-- 130€/T
 			
 		elseif fillTypeName=="treesaplings" then
 			density, pricePerKg, fillableClass = 10, 2.765, MrLightUtils.FILLABLE_CLASS_UNKNOWN;	-- 1L = 1 seedling = 10kgs / 17 seedling = 470€ => 2.765€ per kilo		
@@ -310,7 +320,7 @@ function MrLightUtils.getFruitUtilInfos(fruitName)
 		elseif fruitName=="drygrass" then
 			seedPrice, usage, yield, windrowYield = 0, 0, 0.18, 12; -- 120000L/ha = 6T -- a little less liters than wet grass because there are some losses when doing hay
 		elseif fruitName=="chaff" then
-			seedPrice, usage, yield, windrowYield = 0, 0, 10.96, 0; -- this is just a factor. goal: maize chaff with 125000L / ha = 50T
+			seedPrice, usage, yield, windrowYield = 0, 0, 8.22, 0; -- this is just a factor. goal: maize chaff with 125000L / ha = 50T
 		elseif fruitName=="potato" then
 			seedPrice, usage, yield, windrowYield = 0.25, 0.285, 7.4, 0; -- 50T/ha  0.67 density => 74 000L / ha
 		elseif fruitName=="sugarbeet" then
@@ -342,7 +352,7 @@ function MrLightUtils.setFruitUtilInfos(fruitName)
 		end;
 	else
 		if desc.seedUsagePerSqm == nil then
-			print(string.format("WARNING: MR-Light detected a corrupted fruit! fruit '%s' does not use the proper data structure given by Giants Software", desc.name));
+			print(string.format("WARNING: MR-Light detected a corrupted fruit! Fruit '%s' does not use the proper data structure given by GIANTS Software", desc.name));
 			desc.seedUsagePerSqm = 0.1;
 			desc.seedPricePerLiter = 0.1;
 		elseif desc.seedUsagePerSqm > 0 then
@@ -576,3 +586,92 @@ AIVehicleUtil.driveInDirection = function(self, a,b,c,d,e,f,g,h,i,j,k)
 end;
 
 
+
+function Utils.loadParticleSystemFromData(data, particleSystems, linkNodes, defaultEmittingState, defaultPsFile, baseDir, defaultLinkNode)
+    if defaultLinkNode == nil then
+        defaultLinkNode = linkNodes;
+        if type(linkNodes) == "table" then
+            defaultLinkNode = linkNodes[1].node
+        end;
+    end;
+    local linkNode = Utils.getNoNil(Utils.indexToObject(linkNodes, data.nodeStr), defaultLinkNode);
+    local psFile = data.psFile;
+    if psFile == nil then
+        psFile = defaultPsFile;
+    end;
+    if psFile == nil then
+        return;
+    end;
+	psFile = Utils.convertFromNetworkFilename(psFile);
+    psFile = Utils.getFilename(psFile, baseDir);
+	
+	
+	--print("psFile: " .. psFile);
+	
+	
+	
+    local rootNodeFile = loadI3DFile(psFile, true, true, false);
+    local rootNode = rootNodeFile;
+    if rootNode == 0 then
+        print("Error: failed to load particle system "..psFile);
+        return;
+    end;
+
+    if data.psRootNodeStr ~= nil then
+        local newRootNode = Utils.indexToObject(rootNode, data.psRootNodeStr);
+        if newRootNode ~= nil then
+            rootNode = newRootNode;
+        end;
+    end;
+    if linkNode ~= nil then
+        link(linkNode, rootNode);
+    end;
+    local posX, posY, posZ = data.posX, data.posY, data.posZ;
+    if posX ~= nil and posY ~= nil and posZ ~= nil then
+        setTranslation(rootNode, posX, posY, posZ);
+    end;
+    local rotX, rotY, rotZ = data.rotX, data.rotY, data.rotZ;
+    if rotX ~= nil and rotY ~= nil and rotZ ~= nil then
+        setRotation(rootNode, rotX, rotY, rotZ);
+    end;
+
+    local returnValue = Utils.loadParticleSystemFromNode(rootNode, particleSystems, defaultEmittingState, data.forceNoWorldSpace, data.forceFullLifespan);
+    if rootNode ~= rootNodeFile then
+        delete(rootNodeFile);
+    end;
+
+    return returnValue;
+end
+
+--Utils.loadParticleSystemFromData = Utils.overwrittenFunction(Utils.loadParticleSystemFromData, MrLightUtils.loadParticleSystemFromData);
+
+
+--[[function Utils.getModNameAndBaseDirectory(filename)
+    local modName = nil;
+    local baseDirectory = "";
+    local modFilename, isMod, isDlc, dlcsDirectoryIndex = Utils.removeModDirectory(filename)
+    --if isMod or isDlc then
+	if filename ~= modFilename then
+		local f,l = modFilename:find("/");
+		if f ~= nil and l ~= nil and f>1 then
+			modName = modFilename:sub(1, f-1);
+			if isDlc then
+				baseDirectory = g_dlcsDirectories[dlcsDirectoryIndex].path .."/"..modName.."/";
+				if g_dlcModNameHasPrefix[modName] then
+					modName = g_uniqueDlcNamePrefix..modName;
+				end
+			elseif isMod then
+				baseDirectory = g_modsDirectory.."/"..modName.."/";
+			else
+				print("MRL Notice: Something went really wrong in Utils.getModNameAndBaseDirectory!");
+				print("    filename: " .. tostring(filename));
+				print("    modFilename: " .. tostring(modFilename));
+			end;
+		end;
+	else
+		print("MRL Notice: filename is equals modFilename, " .. filename);
+    end;
+    return modName, baseDirectory;
+end;]]
+
+--Utils.getModNameAndBaseDirectory = Utils.overwrittenFunction(Utils.getModNameAndBaseDirectory, MrLightUtils.getModNameAndBaseDirectory);

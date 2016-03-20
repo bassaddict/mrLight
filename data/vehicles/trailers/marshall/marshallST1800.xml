@@ -1,90 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<vehicle type="manureBarrel">
-    <annotation>Copyright (C) GIANTS Software GmbH, All Rights Reserved.</annotation>
-    <name>
-        <en>Marshall ST 1800</en>
-        <de>Marshall ST 1800</de>
-    </name>
-    <typeDesc>$l10n_TypeDesc_ManureBarrel</typeDesc>
-    <filename>data/vehicles/trailers/marshall/marshallST1800.i3d</filename>
+<vehicle>
+    <powerConsumer ptoRpm="540" neededPtoPower="42"/>
+    <speedLimit value="12" />
 
-    <size width="3.5" length="8" />
-
-    <powerConsumer ptoRpm="450" neededPtoPower="15"/>
-    <speedLimit value="20" />
-
-    <wheels autoRotateBackSpeed="2.0">
-        <wheel  restLoad="1.2" repr="0>0" radius="0.617" width="0.56" initialCompression="40" suspTravel="0.15" spring="25" damper="20" frictionScale="1.5" mass="0.15" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
-        <wheel  restLoad="1.2" repr="0>1" radius="0.617" width="0.56" initialCompression="40" suspTravel="0.15" spring="25" damper="20" frictionScale="1.5" mass="0.15" hasTyreTracks="true" tyreTrackAtlasIndex="3"/>
+    <wheels>
+        <wheel frictionScale="1.02" />
+        <wheel frictionScale="1.02" />
     </wheels>
-    
-    <dynamicallyLoadedParts>
-        <dynamicallyLoadedPart node="1|0" linkNode="0>0" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_60_22_5.i3d" />
-        <dynamicallyLoadedPart node="1|1" linkNode="0>1" filename="$data/vehicles/wheels/trelleborg/trelleborgT404_560_60_22_5.i3d" />
-    </dynamicallyLoadedParts>
-    
-    <brakeForce>0.5</brakeForce>
-
-    <lightCoronas>
-        <lightCorona index="0>6" />
-    </lightCoronas>
-
-    <brakeLights>
-        <brakeLight index="0>5" />
-    </brakeLights>
-
-    <turnSignals>
-        <turnSignalLeft index="0>8|0" />
-        <turnSignalRight index="0>8|1" />
-    </turnSignals>
-
-    <reverseLights>
-        <reverseLight index="0>9" />
-    </reverseLights>
-
-    <workAreas>
-        <workArea startIndex="0>4|0" widthIndex="0>4|1" heightIndex="0>4|2" type="sprayer" disableBackwards="false" />
-    </workAreas>
-
-    <aiLeftMarker index="0>11" />
-    <aiRightMarker index="0>12" />
-    <aiBackMarker index="0>13" />
-    <aiForceTurnNoBackward value="true" />    
-    
-    <capacity>8000</capacity>
-
-    <allowFillFromAir value="false"/>
-
-    <sprayerEffects>
-        <sprayerEffect>
-            <effectNode node="0|0|0" linkNode="0>3" delay="0" materialTypeId="1" filename="$data/vehicles/particleAnimations/marshall/marshallST1800.i3d" />
-        </sprayerEffect>
-    </sprayerEffects>
-
-    <spraySound file="$data/vehicles/trailers/garantPump_small.wav" pitchOffset="1" volume="1.4"/>
-    <fillSound file="$data/vehicles/trailers/garantPump_small.wav" pitchOffset="1.0" volume="0.6" volume3D="0.6" innerRadius="10" radius="40" linkNode="0>10"/>
-    
-    <inputAttacherJoints>
-        <inputAttacherJoint index="0>2" jointType="trailerLow" indexPTO="0>7" />
-    </inputAttacherJoints>
-
-    <sprayUsages>
-        <sprayUsage fillType="liquidManure" litersPerSecond="100" />
-    </sprayUsages>
-
-    <fillTypes fruitTypes="liquidManure" />
-
-    <washable dirtDuration="60" washDuration="1" workMultiplier="10" />
-
-    <driveGroundParticleSystems>
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="1" />
-        <driveGroundParticleSystem file="$data/vehicles/particleAnimations/shared/drivingParticleSystem.i3d" wheel="2" />
-    </driveGroundParticleSystems>
-    
-    <components count="1">
-        <component1 centerOfMass="0 0.65 0.1" solverIterationCount="10" />
-    </components>
-
-    <schemaOverlay file="$dataS2/menu/schemas/implementSchema.png" fileSelected="$dataS2/menu/schemas/implementSchemaSelected.png" fileTurnedOn="$dataS2/menu/schemas/implementSchemaTurnedOn.png" fileSelectedTurnedOn="$dataS2/menu/schemas/implementSchemaSelectedTurnedOn.png" width="0.5" height="0.5" attacherJointPosition="0 0"/>
 
 </vehicle>

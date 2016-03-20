@@ -14,6 +14,13 @@
     <!-- recommended horsepower by manufacturer: 250 - -->
     <powerConsumer mrlBaseForce="1.5" mrlBaseForceFactor="8.2"/> <!-- 8.2m working width, base force per meter -->
 
+	<workAreas>
+        <workArea mrlOrigArea="1" mrlStartPos="4.1 -0.283 2.251" mrlWidthPos="-4.1 -0.283 2.251" mrlHeightPos="4.1 -0.283 1.271"/>
+    </workAreas>
+	
+	<aiLeftMarker mrlPos="4.1 -0.283 2.151" />
+    <aiRightMarker mrlPos="-4.1 -0.283 2.151" />
+	
     <components>
         <component1 mrlMass="3.4" />
         <component2 mrlMass="2" />

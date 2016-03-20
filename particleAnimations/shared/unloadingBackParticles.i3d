@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="fx_muckSpreaderEmitShape" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="6.0.3"/>
+  </Asset>
+
+  <Files>
+    <File fileId="1" filename="../fx_manure4x1_diffuse.png" relativePath="true"/>
+    <File fileId="2" filename="../fx_manure4x1_normal.png" relativePath="true"/>
+    <File fileId="3" filename="../psColorShader.xml" relativePath="true"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="fx_manure_mat" materialId="7" ambientColor="1 1 1" customShaderId="3">
+      <Texture fileId="1"/>
+      <Normalmap fileId="2"/>
+      <CustomParameter name="psColor" value="1 1 1 1"/>
+    </Material>
+    <Material name="lambert1" materialId="8" diffuseColor="0.494118 0.494118 0.494118 1" ambientColor="1 1 1">
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="unloadingBackParticles.i3d.shapes">
+  </Shapes>
+
+
+  <Dynamics>
+    <ParticleSystem name="manureEmitter" dynamicId="1" type="sprite" rate="0.25" lifespan="800" maxCount="350" speed="0.002" speedRandom="0" tangentSpeed="0.01" normalSpeed="1" emitterShapeVelocityScale="0.75" spriteScaleX="0.75" spriteScaleY="0.75" blendFactor="1" blendInFactor="0" blendOutFactor="1" randomInitRotation="true" deltaRotateMin="-0.0015708" deltaRotateMax="0.0015708" textureAtlasSizeX="4">
+      <Gravity force="0 -1.5 0"/>
+    </ParticleSystem>
+    <ParticleSystem name="manureEmitter" dynamicId="3" type="sprite" rate="0.07" lifespan="800" maxCount="350" speed="0.002" speedRandom="0" tangentSpeed="0.01" normalSpeed="1" emitterShapeVelocityScale="0.75" spriteScaleX="0.75" spriteScaleY="0.75" blendFactor="1" blendInFactor="0" blendOutFactor="1" randomInitRotation="true" deltaRotateMin="-0.0015708" deltaRotateMax="0.0015708" textureAtlasSizeX="4">
+      <Gravity force="0 -1.5 0"/>
+    </ParticleSystem>
+  </Dynamics>
+
+  <Scene>
+    <TransformGroup name="unloadingNormal" nodeId="16">
+      <TransformGroup name="manure" nodeId="17">
+        <Dynamic dynamicId="1" emitterShapeNodeId="20" name="manureEmitter" clipDistance="100" nodeId="19" materialIds="7">
+          <Shape shapeId="2" name="emitShape" nodeId="20" materialIds="8" nonRenderable="true"/>
+        </Dynamic>
+      </TransformGroup>
+    </TransformGroup>
+    <TransformGroup name="unloadingSmall" nodeId="21">
+      <TransformGroup name="manure" nodeId="22">
+        <Dynamic dynamicId="3" emitterShapeNodeId="25" name="manureEmitter" clipDistance="100" nodeId="24" materialIds="7">
+          <Shape shapeId="2" name="emitShape" scale="0.35 0.35 0.18" nodeId="25" materialIds="8" nonRenderable="true"/>
+        </Dynamic>
+      </TransformGroup>
+    </TransformGroup>
+  </Scene>
+
+</i3D>

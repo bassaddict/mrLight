@@ -20,19 +20,38 @@ function AttachableManipulation:load(xmlFile)
         end
 		local mrlOrigJointIndex = getXMLInt(xmlFile, key.. "#mrlOrigJointIndex");
         if mrlOrigJointIndex == nil then
-			break;
+			local inputAttacherJoint = {};
+			if self:loadInputAttacherJoint(xmlFile, key, inputAttacherJoint) then
+				table.insert(self.inputAttacherJoints, inputAttacherJoint);
+			end;
+		else
+			self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#lowerDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround);
+			self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#upperDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround);
+			
+			self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovement = false;
+			self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovementMod = true;
+			
+			local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  key .. "#rotLimitScale"));
+			self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale = { Utils.getNoNil(x, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[1]), Utils.getNoNil(y, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[2]), Utils.getNoNil(z, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[3]) };
 		end;
-		
-		self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#lowerDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].lowerDistanceToGround);
-        self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround = Utils.getNoNil(getXMLFloat(xmlFile, key .. "#upperDistanceToGround"), self.inputAttacherJoints[mrlOrigJointIndex].upperDistanceToGround);
-		
-		self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovement = false;
-		self.inputAttacherJoints[mrlOrigJointIndex].allowsJointTransLimitMovementMod = true;
-		
-		local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile,  key .. "#rotLimitScale"));
-		self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale = { Utils.getNoNil(x, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[1]), Utils.getNoNil(y, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[2]), Utils.getNoNil(z, self.inputAttacherJoints[mrlOrigJointIndex].rotLimitScale[3]) };
 		i = i + 1;
 	end;
+	
+	
+	local i = 0;
+   while true do
+       local key = string.format("vehicle.inputAttacherJoints.inputAttacherJoint(%d)", i);
+       if not hasXMLProperty(xmlFile, key) then
+           break;
+       end
+
+       local inputAttacherJoint = {};
+       if self:loadInputAttacherJoint(xmlFile, key, inputAttacherJoint) then
+           table.insert(self.inputAttacherJoints, inputAttacherJoint);
+       end;
+
+       i = i + 1;
+   end;
 	
 	
 	
