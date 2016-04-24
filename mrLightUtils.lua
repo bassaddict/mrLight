@@ -675,3 +675,38 @@ end
 end;]]
 
 --Utils.getModNameAndBaseDirectory = Utils.overwrittenFunction(Utils.getModNameAndBaseDirectory, MrLightUtils.getModNameAndBaseDirectory);
+
+
+
+-- overwrite mixer wagon bale trigger for correct bale decompression
+MixerWagon.mixerWagonBaleTriggerCallback = function(self, triggerId, otherActorId, onEnter, onLeave, onStay, otherShapeId)
+    if onEnter then
+        -- this happens if a compound child of a deleted compound is entering
+        if otherActorId ~= 0 then
+            local object = g_currentMission:getNodeObject(otherActorId);
+            if object ~= nil then
+                if object:isa(Bale) then
+					local decompressionFactor = 1.5; -- decompress bales by factor 1.5
+                    local fillLevel = object:getFillLevel();
+                    local fillType = object:getFillType();
+					local width = object.baleWidth;
+					local length = object.baleLength;
+					local height = object.baleHeight;
+					local diameter = object.baleDiameter;
+                    if self:allowFillType(fillType, false) then
+						local newFillLevel = fillLevel;
+						if diameter ~= nil and width ~= nil then
+							newFillLevel = math.pi * (diameter / 2)^2 * width * 1000 * decompressionFactor;
+						elseif width ~= nil and length ~= nil and height ~= nil then
+							newFillLevel = width * length * height * 1000 * decompressionFactor;
+						end;
+                        self:setFillLevel(self:getFillLevel(fillType)+newFillLevel, fillType, false);
+                    end
+                    object:delete();
+                    self.mixingActiveTimer = self.mixingActiveTimerMax;
+                    self:raiseDirtyFlags(self.mixerWagonDirtyFlag);
+                end;
+            end;
+        end;
+    end;
+end;

@@ -6,6 +6,10 @@
         <wheel frictionScale="1.00" />
         <wheel frictionScale="1.00" />
     </wheels>
+	
+	<fuelCapacity>850</fuelCapacity>
+    <fuelUsage>102</fuelUsage>
+	
 	<!--
     <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="1900" maxForwardSpeed="40" maxBackwardSpeed="10" brakeForce="12" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1">
         <torque normRpm="0.52" torque="4.2"/>

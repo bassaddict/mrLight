@@ -14,4 +14,7 @@
         <attacherJoint mrlOrigJointIndex="2" mrlType="3pt" minRotDistanceToGround="0.781" minRotRotationOffset="7.69" minRot="-25 0 0" minRot2="17 0 0" maxRotDistanceToGround="0.271" maxRotRotationOffset="-0.31" maxRot="20 0 0" maxRot2="-20 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
     </attacherJoints>
 	
+	<fuelCapacity>180</fuelCapacity>
+    <fuelUsage>23</fuelUsage>
+	
 </vehicle>

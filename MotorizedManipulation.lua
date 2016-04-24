@@ -14,8 +14,8 @@ function MotorizedManipulation:load(xmlFile)
 		xmlFile = loadXMLFile("settings", xmlPath);
 	end;
 	
-	self.fuelCapacity = Utils.getNoNil(getXMLFloat(xmlFile, "vehicle.fuelCapacity"), 500);
-    local fuelUsage = Utils.getNoNil(getXMLFloat(xmlFile, "vehicle.fuelUsage"), 1);
+	self.fuelCapacity = Utils.getNoNil(getXMLFloat(xmlFile, "vehicle.fuelCapacity"), self.fuelCapacity);
+    local fuelUsage = Utils.getNoNil(getXMLFloat(xmlFile, "vehicle.fuelUsage"), (self.fuelUsage * 60*60*1000));
     self.fuelUsage = fuelUsage / (60*60*1000); -- from l/h to l/ms
 	
 	local mrlMotorUpdate = getXMLBool(xmlFile, "vehicle.motor#mrlUpdate");

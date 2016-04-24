@@ -6,6 +6,10 @@
         <wheel frictionScale="0.97" />
         <wheel frictionScale="0.97" />
     </wheels>
+	
+	<fuelCapacity>1080</fuelCapacity>
+    <fuelUsage>98</fuelUsage>
+	
 	<!--
     <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="1900" maxForwardSpeed="40" maxBackwardSpeed="10" brakeForce="12" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1">
         <torque normRpm="0.52" torque="4.2"/>
@@ -15,9 +19,6 @@
         <torque normRpm="0.92" torque="4.33"/>
         <torque normRpm="1" torque="3.56"/>
     </motor>
-
-    <fuelCapacity>960</fuelCapacity>
-    <fuelUsage>207</fuelUsage>
 
     <components>
         <component1 mrlMass="14.8" />

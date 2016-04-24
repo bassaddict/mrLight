@@ -16,7 +16,7 @@ function SprayerManipulation:load(xmlFile)
 	self.sprayLitersPerHectare = {};
 	self.sprayLitersPerHectare[Fillable.FILLTYPE_FERTILIZER] = 500; --500l fertilizer per ha
 	self.sprayLitersPerHectare[Fillable.FILLTYPE_LIQUIDMANURE] = 20000; --20m3 per ha
-	self.sprayLitersPerHectare[Fillable.FILLTYPE_MANURE] = 20 / Fillable.fillTypeIndexToDesc[Fillable.FILLTYPE_MANURE].massPerLiter; --20t per ha
+	self.sprayLitersPerHectare[Fillable.FILLTYPE_MANURE] = 20 / 0.00065; -- hardcoded due to not available at loading time...  Fillable.fillTypeIndexToDesc[Fillable.FILLTYPE_MANURE].massPerLiter; --20t per ha
 	
 	self.workingWidth = 10;
 	
@@ -56,6 +56,9 @@ function SprayerManipulation:update(dt)
 			self.sprayLitersPerHectare[self.currentFillType] = self.sprayLitersPerHectare[Fillable.FILLTYPE_FERTILIZER];
 		end;
 		self.sprayLitersPerSecond[self.currentFillType] = self.sprayLitersPerHectare[self.currentFillType] / math.min(10000 / (Utils.getNoNil(self.lastMovedDistance, 0.0001) * (1000 / dt)), 14400) * self.workingWidth;
+		if self.debugRenderSprayerManipulation then
+			print(string.format("sprayLitersPerSecond: %.4f, sprayLitersPerHectare: %.2f, lastMovedDistance: %.4f, workingWidth: %.2f", Utils.getNoNil(self.sprayLitersPerSecond[self.currentFillType], 0), Utils.getNoNil(self.sprayLitersPerHectare[self.currentFillType], 0), Utils.getNoNil(self.lastMovedDistance, 0), Utils.getNoNil(self.workingWidth,0)));
+		end;
 		if self.attachedTool ~= nil then
 			self.attachedTool.sprayLitersPerSecond[self.currentFillType] = self.sprayLitersPerSecond[self.currentFillType];
 		end;
