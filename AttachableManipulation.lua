@@ -93,9 +93,4 @@ function AttachableManipulation:update(dt)
 end;
 
 function AttachableManipulation:draw()
-	--if self.debugRenderAttachableManipulation then
-		--setTextAlignment(RenderText.ALIGN_RIGHT);
-		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
-		--setTextAlignment(RenderText.ALIGN_LEFT);
-	--end;
 end;

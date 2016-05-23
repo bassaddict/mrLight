@@ -11,7 +11,7 @@
 	
 	<mrlFillVolumes mrlBaseFillVolumeNode="0>5" mrlAdditionalFillVolumes="fillVolumes/additionalFillVolumes.i3d">
 		<mrlFillVolume mrlClass="FILLABLE_CLASS_UNKNOWN" mrlCapacity="21300" mrlUseOrigVolume="1" />
-		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="21300" mrlCompressedCapacity="33000" mrlI3dNode="10" mrlMaxDelta="0.3" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="21300" mrlCompressedCapacity="33000" mrlI3dNode="8" mrlMaxDelta="0.3" />
 	</mrlFillVolumes>
 
     <components>

@@ -14,16 +14,6 @@ function DrivableManipulation:load(xmlFile)
 	self.inRange = DrivableManipulation.inRange;
 	
 	
-	-- incline display
-	--[[self.frontInclineNode = createTransformGroup("front");
-	self.backInclineNode = createTransformGroup("back");
-	link(self.rootNode, self.frontInclineNode);
-	link(self.rootNode, self.backInclineNode);
-	setTranslation(self.frontInclineNode, 0, 0, 1);
-	setTranslation(self.backInclineNode, 0, 0, -1);]]
-	
-	
-	
 	-- slip
 	self.slip = 0;
 	self.isDiffLocked = false;
@@ -123,18 +113,6 @@ function DrivableManipulation:update(dt)
 	self.slip = self:inRange((self.slip / self.numWheels), -1, 1);
 	
 	
-	
-	
-	--[[local fx, fy, fz = getWorldTranslation(self.frontInclineNode);
-	local bx, by, bz = getWorldTranslation(self.backInclineNode);
-	local tfy = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, fx, fy, fz);
-	local tby = getTerrainHeightAtWorldPos(g_currentMission.terrainRootNode, bx, by, bz);
-	local dist = Utils.vector3Length(fx-bx, tfy-tby, fz-bz);
-	local heightDifVehicle = fy - by;
-	local heightDifTerrain = tfy - tby;
-	--print(string.format("fy: %.3f, by: %.3f, heightDif: %.3f", fy, by, heightDif));
-	self.anglePercentVehicle = 100 / math.sqrt(4 - math.pow(heightDifVehicle, 2)) * heightDifVehicle;
-	self.anglePercentTerrain = 100 / math.sqrt(math.pow(dist, 2) - math.pow(heightDifTerrain, 2)) * heightDifTerrain;]]
 	local ax, ay, az = unpack(self.wheelsGroundContactPos[1]);
 	--print(ax, " ", ay, " ", az);
 	local bx, by, bz = unpack(self.wheelsGroundContactPos[2]);

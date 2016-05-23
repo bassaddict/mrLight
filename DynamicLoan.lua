@@ -36,20 +36,11 @@ function DynamicLoan:update(dt)
 		DynamicLoan.firstUpdate = false;
 		DynamicLoan.updateValueFlag = false;
 	end;
-	--ShopScreen.onVehicleSold()
-	--ShopScreen.onVehicleBought()
 end;
 
 function DynamicLoan:updateTotalVehicleValue()
-	--self.totalVehicleValue = self.totalVehicleValue - self.totalSoldValue;
-	--self.totalVehicleValue = self.totalVehicleValue + value;
-	--g_currentMission.missionStats.loanMax = DynamicLoan:getLoanValue(self.totalVehicleValue);
 	DynamicLoan.updateValueFlag = true;
 end;
-
---[[function DynamicLoan:updateTotalSoldValue(value)
-	self.totalSoldValue = self.totalSoldValue + value;
-end;]]
 
 function DynamicLoan:draw()
 end;
@@ -72,13 +63,3 @@ ShopScreen.onVehicleBought = function(self, ...)
 	end;
 	DynamicLoan:updateTotalVehicleValue();
 end;
-
---[[local oldOnVehicleSold = ShopScreen.onVehicleSold;
-ShopScreen.onVehicleSold = function(self, a, b, c, d, e, f, g, h, i, j, k, l)
-	if oldOnVehicleSold ~= nil then
-		oldOnVehicleSold(self, a, b, c, d, e, f, g, h, i, j, k, l);
-	end;
-	DynamicLoan:updateTotalSoldValue(self.currentSellItem.price);
-	--ZZZ_getVars.getVars:getVariablesRecursive(self);
-	--print("--------------------------------------------------");
-end;]]

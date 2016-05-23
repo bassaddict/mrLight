@@ -725,7 +725,6 @@
 			<entry key="xmlFile" type="string" value="data/vehicles/tools/kuhn/kuhnFC3525F.xml" />
 			<entry key="neededPower" type="number" value="90" />
 			<entry key="price" type="number" value="19850" />
-			
 		</vehicle>
 		<vehicle configFile="data/vehicles/tools/kuhn/kuhnFC10030.xml" >
 			<entry key="xmlFile" type="string" value="data/vehicles/tools/kuhn/kuhnFC10030.xml" />
@@ -1014,10 +1013,10 @@
 		
 		<!-- Official Mods -->
 		<vehicle configFile="$moddir$FS15_deutzFahrBlackEdition/deutzFahr7250.xml" >
-			<entry key="xmlFile" type="string" value="data/vehicles/steerable/deutz/deutzFahr7250.xml" />
-			<entry key="price" type="number" value="154484" />
-			<entry key="dailyUpkeep" type="number" value="231" />
-			<entry key="power" type="number" value="263" />
+			<entry key="xmlFile" type="string" value="data/mods/FS15_deutzFahrBlackEdition/deutzFahr7250.xml" />
+			<entry key="price" type="number" value="179500" />
+			<entry key="dailyUpkeep" type="number" value="245" />
+			<entry key="power" type="number" value="314" />
 		</vehicle>
 		<vehicle configFile="$moddir$FS15_newHollandLoaderPack/newHolland/newHollandLM742.xml" >
 			<entry key="xmlFile" type="string" value="data/mods/FS15_newHollandLoaderPack/newHollandLM742.xml" />
@@ -1033,6 +1032,15 @@
 		</vehicle>
 		<vehicle configFile="$moddir$FS15_rostselmashNiva/rostselmash/rsmGks5.xml" >
 			<entry key="xmlFile" type="string" value="data/mods/FS15_rostselmashNiva/rostselmash/rsmGks5.xml" />
+		</vehicle>
+		
+		<vehicle configFile="$moddir$FS15_kuhnMowerPack/kuhn/kuhnFC313F.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_kuhnMowerPack/kuhn/kuhnFC313F.xml" />
+			<entry key="neededPower" type="number" value="70" />
+		</vehicle>
+		<vehicle configFile="$moddir$FS15_kuhnMowerPack/kuhn/kuhnFC883.xml" >
+			<entry key="xmlFile" type="string" value="data/mods/FS15_kuhnMowerPack/kuhn/kuhnFC883.xml" />
+			<entry key="neededPower" type="number" value="140" />
 		</vehicle>
 	</vehicles>
 </settings>

@@ -19,14 +19,6 @@ function FillableManipulation:load(xmlFile)
 	
 	for part in string.gfind(self.configFileName, "/%w+") do
 		self.configFileNameClean = string.sub(part, 2);
-		--[[print(" --> part: "..part);
-		local no, _ = string.find(part, ".", 1, true)
-		if no ~= nil then
-			print(" --> no: "..no);
-			self.configFileNameClean = string.sub(part, 2, no-1);
-			print(self.configFileNameClean);
-			break;
-		end;]]
 	end;
 	--print(self.configFileNameClean);
 	

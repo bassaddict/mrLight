@@ -164,18 +164,6 @@ function WorkAreaManipulation:update(dt)
 end;
 
 function WorkAreaManipulation:draw()
-	if self.debugRenderWorkAreaManipulation then
-	
-		for _, refNode in pairs(self.groundReferenceNodes) do
-            local x,y,z = getWorldTranslation(refNode.node);
-            --drawDebugPoint(x,y,z,0,1,1,1);
-        end
-		
-		--setTextAlignment(RenderText.ALIGN_RIGHT);
-		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, lastFillLevel: %.4f, currentSeed: %d, isFilling: %s", self.fillLevel, self.myLastFillLevel, self.currentSeed, tostring(self.isFilling)));
-		--renderText(0.99, 0.78, 0.018, string.format("fillDelta: %.4f",self.deltaFill));
-		--setTextAlignment(RenderText.ALIGN_LEFT);
-	end;
 end;
 
 function WorkAreaManipulation:setWorkingWidth(currentWidth, step, action)

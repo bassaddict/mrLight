@@ -353,10 +353,6 @@ function VehicleManipulation:load(xmlFile)
 					attacherJoint.maxRot2[1] = math.rad(jointSettings[8]);
 					
 					attacherJoint.bottomArm.translationNode = nil;
-					--attacherJoint.allowsJointLimitMovement = false;
-					--attacherJoint.allowsJointLimitMovementMod = true;
-					--attacherJoint.jointTransform = nil;
-					--attacherJoint.transLimitDamping = {0, 0, 0};
 					attacherJoint.maxTransLimit = {0, 0.2, 0};
 					attacherJoint.isFixed = true;
 				elseif attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILERLOW or attacherJoint.jointType == Vehicle.JOINTTYPE_TRAILER then
@@ -480,11 +476,6 @@ function VehicleManipulation:update(dt)
 			
 		end;
 		
-		--[[print(self.configFileName);
-		for k,v in pairs(self.wheels) do
-			self:updateWheelTireFriction(v);
-			print("    friction: " .. v.frictionScale);
-		end;]]
 	end;
 	
 	self.counter = self.counter - 1;

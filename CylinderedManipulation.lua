@@ -53,40 +53,7 @@ function CylinderedManipulation:keyEvent(unicode, sym, modifier, isDown)
 end;
 
 function CylinderedManipulation:update(dt)
-
-	--[[if self.firstRunCylinderedManipulation then
-		self.firstRunCylinderedManipulation = false;
-		--print("--CylinderedManipulation first update "..self.configFileName);
-		
-		if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil then
-			if MrLightUtils.vehicleConfigs[self.configFileName].masses ~= nil then
-				--print("--CylinderedManipulation vehicle exists, masses exists, "..self.configFileName);
-				local numComponents = #self.components;
-				if numComponents > 1 then
-					local massesT = Utils.splitString(" ", MrLightUtils.vehicleConfigs[self.configFileName].masses);
-					if #massesT == numComponents then
-						for k,v in pairs(massesT) do
-							--print("--CylinderedManipulation set mass multiple components "..tostring(v));
-							setMass(self.components[k].node, tonumber(v));
-							--print("--mass: "..tostring(getMass(self.components[k].node)));
-						end;
-					else
-						print("WARNING: number of masses in configFile not equals number of components for vehicle "..self.configFileName);
-					end;
-				elseif numComponents == 1 then
-					--print("--CylinderedManipulation set mass single component");
-					setMass(self.rootNode, MrLightUtils.vehicleConfigs[self.configFileName].masses);
-				end;
-			end;
-		end;
-	end;]]
-	
 end;
 
 function CylinderedManipulation:draw()
-	if self.debugRenderCylinderedManipulation then
-		--setTextAlignment(RenderText.ALIGN_RIGHT);
-		--renderText(0.99, 0.80, 0.018, string.format("fillLevel: %.4f, capacity: %.4f", self.fillLevel, self.capacity));
-		--setTextAlignment(RenderText.ALIGN_LEFT);
-	end;
 end;

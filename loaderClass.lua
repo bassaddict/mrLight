@@ -2,12 +2,10 @@ SpecializationUtil.registerSpecialization("mrLightUtils", "MrLightUtils", g_curr
 
 SpecializationUtil.registerSpecialization("sowingMachineManipulation", "SowingMachineManipulation", g_currentModDirectory.."SowingMachineManipulation.lua");
 SpecializationUtil.registerSpecialization("sprayerManipulation", "SprayerManipulation", g_currentModDirectory.."SprayerManipulation.lua");
---SpecializationUtil.registerSpecialization("forageWagonManipulation", "ForageWagonManipulation", g_currentModDirectory.."ForageWagonManipulation.lua");
 SpecializationUtil.registerSpecialization("trailerManipulation", "TrailerManipulation", g_currentModDirectory.."TrailerManipulation.lua");
 SpecializationUtil.registerSpecialization("fillableManipulation", "FillableManipulation", g_currentModDirectory.."FillableManipulation.lua");
 SpecializationUtil.registerSpecialization("balerManipulation", "BalerManipulation", g_currentModDirectory.."BalerManipulation.lua");
 SpecializationUtil.registerSpecialization("powerConsumerManipulation", "PowerConsumerManipulation", g_currentModDirectory.."PowerConsumerManipulation.lua");
---SpecializationUtil.registerSpecialization("workSpeedUpdates", "WorkSpeedUpdates", g_currentModDirectory.."WorkSpeedUpdates.lua");
 SpecializationUtil.registerSpecialization("motorizedManipulation", "MotorizedManipulation", g_currentModDirectory.."MotorizedManipulation.lua");
 SpecializationUtil.registerSpecialization("drivableManipulation", "DrivableManipulation", g_currentModDirectory.."DrivableManipulation.lua");
 SpecializationUtil.registerSpecialization("vehicleManipulation", "VehicleManipulation", g_currentModDirectory.."VehicleManipulation.lua");
@@ -15,6 +13,7 @@ SpecializationUtil.registerSpecialization("cylinderedManipulation", "CylinderedM
 SpecializationUtil.registerSpecialization("attachableManipulation", "AttachableManipulation", g_currentModDirectory.."AttachableManipulation.lua");
 SpecializationUtil.registerSpecialization("workAreaManipulation", "WorkAreaManipulation", g_currentModDirectory.."WorkAreaManipulation.lua");
 SpecializationUtil.registerSpecialization("animatedVehicleManipulation", "AnimatedVehicleManipulation", g_currentModDirectory.."AnimatedVehicleManipulation.lua");
+SpecializationUtil.registerSpecialization("baleLoaderManipulation", "BaleLoaderManipulation", g_currentModDirectory.."BaleLoaderManipulation.lua");
 
 
 
@@ -41,48 +40,47 @@ function loaderClass:loadMap(name)
 	
 	--add specializations to vehicles
 	for k, v in pairs(VehicleTypeUtil.vehicleTypes) do
-		table.insert(v.specializations, SpecializationUtil.getSpecialization("vehicleManipulation"));
-		if SpecializationUtil.hasSpecialization(SowingMachine, v.specializations) then
+		if not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("vehicleManipulation"), v.specializations)
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("vehicleManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(SowingMachine, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("sowingMachineManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("sowingMachineManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Sprayer, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Sprayer, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("sprayerManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("sprayerManipulation"));
 		end;
-		--if SpecializationUtil.hasSpecialization(ForageWagon, v.specializations) then
-		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("forageWagonManipulation"));
-		--end;
-		if SpecializationUtil.hasSpecialization(Trailer, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Trailer, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("trailerManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("trailerManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Fillable, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Fillable, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("fillableManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("fillableManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Baler, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Baler, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("balerManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("balerManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(PowerConsumer, v.specializations) then
+		if SpecializationUtil.hasSpecialization(PowerConsumer, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("powerConsumerManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("powerConsumerManipulation"));
 		end;
-		--if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
-		--	table.insert(v.specializations, SpecializationUtil.getSpecialization("workSpeedUpdates"));
-		--end;
-		if SpecializationUtil.hasSpecialization(Motorized, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Motorized, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("motorizedManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("motorizedManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Drivable, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Drivable, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("drivableManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("drivableManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Cylindered, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Cylindered, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("cylinderedManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("cylinderedManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(Attachable, v.specializations) then
+		if SpecializationUtil.hasSpecialization(Attachable, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("attachableManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("attachableManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) then
+		if SpecializationUtil.hasSpecialization(WorkArea, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("workAreaManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("workAreaManipulation"));
 		end;
-		if SpecializationUtil.hasSpecialization(AnimatedVehicle, v.specializations) then
+		if SpecializationUtil.hasSpecialization(AnimatedVehicle, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("animatedVehicleManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("animatedVehicleManipulation"));
+		end;
+		if SpecializationUtil.hasSpecialization(BaleLoader, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("baleLoaderManipulation"), v.specializations) then
+			table.insert(v.specializations, SpecializationUtil.getSpecialization("baleLoaderManipulation"));
 		end;
 	end;
 	print("--- MRL: specializations added, map loaded");

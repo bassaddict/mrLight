@@ -89,20 +89,6 @@ function MrLightUtils.loadVehicleConfigs(xmlFile)
 		if configFile == nil then
 			break;
 		end;
-		--[[if Utils.startsWith(configFile, "$pdlcdir$") then
-			local tmp1 = string.gsub(configFile, "$pdlcdir$", "");
-			local s,e = string.find(tmp1, "%w+/");
-			if s ~= nil then
-				local tmp = string.sub(tmp1,s,e-1);
-				--local tmp = string.gfind(tmp1, "%w+/");
-				if getfenv(0)["pdlc_"..tmp] == nil then
-					configFile = nil;
-				else
-					configFile = g_dlcsDirectories[1].path .. "/" .. string.sub(configFile, 10);
-					--TODO
-				end;
-			end;
-		end;]]
 		configFile = Utils.convertFromNetworkFilename(configFile);
 		--if configFile ~= nil then
 			MrLightUtils.vehicleConfigs[configFile] = {};
@@ -530,15 +516,9 @@ function MrLightUtils.addItemToSave(self, obj)
 	if obj:isa(Bale) then
 		local newMass = Fillable.fillTypeIndexToDesc[obj.fillType].massPerLiter * obj.fillLevel;
 		setMass(obj.nodeId, newMass);
-		--print("i3d filename: " .. obj.i3dFilename);
-		--print("mpl: " .. tostring(newMassPerLiter) .. ", fl: " .. tostring(newFillLevel) .. ", mass: " .. tostring(newMass));
 	end;
-	--for k,v in pairs(obj) do
-	--	print("k: " .. tostring(k) .. ", v: " .. tostring(v));
-	--end;
 end;
 BaseMission.addItemToSave = MrLightUtils.addItemToSave;
---Utils.overwrittenFunction(BaseMission.addItemToSave, MrLightUtils.addItemToSave);
 
 
 
@@ -551,9 +531,6 @@ local oldCareerScreenSaveSavegame = g_careerScreen.saveSavegame;
 g_careerScreen.saveSavegame = function(self, savegame)
 	oldCareerScreenSaveSavegame(self, savegame)
 	
-	--ZZZ_getVars.getVars:getVariables(savegame);
-	--print("savegame: " .. tostring(savegame));
-	--local dir = self.savegames[self.selectedIndex].savegameDirectory;
 	local settingsFile = savegame.savegameDirectory .. "/mrLightSettings.xml"
 	if not fileExists(settingsFile) then
 		local xmlFile = createXMLFile("mrLightSettings", settingsFile, "settings");
@@ -642,39 +619,6 @@ function Utils.loadParticleSystemFromData(data, particleSystems, linkNodes, defa
 
     return returnValue;
 end
-
---Utils.loadParticleSystemFromData = Utils.overwrittenFunction(Utils.loadParticleSystemFromData, MrLightUtils.loadParticleSystemFromData);
-
-
---[[function Utils.getModNameAndBaseDirectory(filename)
-    local modName = nil;
-    local baseDirectory = "";
-    local modFilename, isMod, isDlc, dlcsDirectoryIndex = Utils.removeModDirectory(filename)
-    --if isMod or isDlc then
-	if filename ~= modFilename then
-		local f,l = modFilename:find("/");
-		if f ~= nil and l ~= nil and f>1 then
-			modName = modFilename:sub(1, f-1);
-			if isDlc then
-				baseDirectory = g_dlcsDirectories[dlcsDirectoryIndex].path .."/"..modName.."/";
-				if g_dlcModNameHasPrefix[modName] then
-					modName = g_uniqueDlcNamePrefix..modName;
-				end
-			elseif isMod then
-				baseDirectory = g_modsDirectory.."/"..modName.."/";
-			else
-				print("MRL Notice: Something went really wrong in Utils.getModNameAndBaseDirectory!");
-				print("    filename: " .. tostring(filename));
-				print("    modFilename: " .. tostring(modFilename));
-			end;
-		end;
-	else
-		print("MRL Notice: filename is equals modFilename, " .. filename);
-    end;
-    return modName, baseDirectory;
-end;]]
-
---Utils.getModNameAndBaseDirectory = Utils.overwrittenFunction(Utils.getModNameAndBaseDirectory, MrLightUtils.getModNameAndBaseDirectory);
 
 
 

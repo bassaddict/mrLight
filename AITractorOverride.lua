@@ -49,11 +49,11 @@ AITractor.load = function(self, xmlFile)
 		end;
 	end;
 	
-	print("self.maxTurningRadius: " .. self.maxTurningRadius .. ", self.aiTractorTurnRadius: " .. self.aiTractorTurnRadius);
 	
-	if self.maxTurningRadius == 0 then
-		self.maxTurningRadius = 5;
+	if self.maxTurningRadius == nil or self.maxTurningRadius == 0 then
+		self.maxTurningRadius = 6.5;
 	end;
+	-- print("self.maxTurningRadius: " .. self.maxTurningRadius .. ", self.aiTractorTurnRadius: " .. self.aiTractorTurnRadius);
 	
 	
 	self.realTurnStage2Step = 0;

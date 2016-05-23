@@ -12,9 +12,9 @@
         <wheel frictionScale="1.14" />
     </wheels>
 
-	<mrlFillVolumes mrlBaseFillVolumeNode="0>15">
+	<mrlFillVolumes mrlBaseFillVolumeNode="0>15" mrlAdditionalFillVolumes="fillVolumes/additionalFillVolumes.i3d">
 		<mrlFillVolume mrlClass="FILLABLE_CLASS_UNKNOWN" mrlCapacity="50000" mrlUseOrigVolume="1" />
-		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="50000" mrlCompressedCapacity="95000" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="50000" mrlCompressedCapacity="95000" mrlI3dNode="9" mrlMaxDelta="0.3" />
 	</mrlFillVolumes>
 	
 </vehicle>
