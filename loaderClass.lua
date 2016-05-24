@@ -40,7 +40,7 @@ function loaderClass:loadMap(name)
 	
 	--add specializations to vehicles
 	for k, v in pairs(VehicleTypeUtil.vehicleTypes) do
-		if not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("vehicleManipulation"), v.specializations)
+		if not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("vehicleManipulation"), v.specializations) then
 			table.insert(v.specializations, SpecializationUtil.getSpecialization("vehicleManipulation"));
 		end;
 		if SpecializationUtil.hasSpecialization(SowingMachine, v.specializations) and not SpecializationUtil.hasSpecialization(SpecializationUtil.getSpecialization("sowingMachineManipulation"), v.specializations) then
