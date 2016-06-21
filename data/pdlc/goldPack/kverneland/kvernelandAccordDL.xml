@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
 
-    <powerConsumer ptoRpm="540" neededPtoPower="10" forceNode="0>" mrlBaseForce="2.1" mrlBaseForceFactor="3" />
+    <powerConsumer ptoRpm="540" neededPtoPower="15" forceNode="0>" mrlBaseForce="1.2" mrlBaseForceFactor="3" />
 	
     <speedLimit value="14" />
 	
@@ -13,7 +13,7 @@
 	
 	
     <inputAttacherJoints>
-        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.730" upperDistanceToGround="1.500" />
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.54" upperDistanceToGround="1.500" />
     </inputAttacherJoints>
 
 

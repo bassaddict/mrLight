@@ -9,11 +9,11 @@
 
     <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2300" maxForwardSpeed="42" maxBackwardSpeed="15" brakeForce="7.9" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="1">
         <torque normRpm="0.43" torque="0.48"/>
-        <torque normRpm="0.57" torque="0.51"/>
-        <torque normRpm="0.7" torque="0.55"/>
-        <torque normRpm="0.78" torque="0.51"/>
-        <torque normRpm="0.89" torque="0.47"/>
-        <torque normRpm="1" torque="0.44"/>
+        <torque normRpm="0.57" torque="0.53"/>
+        <torque normRpm="0.68" torque="0.55"/>
+        <torque normRpm="0.78" torque="0.525"/>
+        <torque normRpm="0.89" torque="0.48"/>
+        <torque normRpm="1" torque="0.437"/>
     </motor>
 
     <fuelCapacity>290</fuelCapacity>

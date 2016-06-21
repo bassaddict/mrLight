@@ -116,7 +116,8 @@ AITractor.updateAIMovement = function(self, dt)
 	--if self.waitForTurnTime > g_currentMission.time then
 	--	allowedToDrive = false;
 	--end;
-
+	--print("self.turnStage: " .. tostring(self.turnStage));
+	
 
     -- Seeding:
     --      Required: Cultivated, Ploughed
@@ -184,7 +185,7 @@ AITractor.updateAIMovement = function(self, dt)
                     else
                         self.turnStage = 3;
                         moveForwards = false;
-						self.waitForTurnTime = g_currentMission.time + 1200; --TODO: dynamic
+						self.waitForTurnTime = g_currentMission.time + 12; --TODO: dynamic
                     end;
                     if self.turnStageTimer < 0 then
 
@@ -213,7 +214,7 @@ AITractor.updateAIMovement = function(self, dt)
 					if distance > 6 or self.turnStageTimer < 0 then
 						self.turnStage = 4;
 						moveForwards = true;	
-						self.waitForTurnTime = g_currentMission.time + 1200; --TODO: dynamic							
+						self.waitForTurnTime = g_currentMission.time + 12; --TODO: dynamic							
 					end;
                 end;
             elseif self.turnStage == 4 then

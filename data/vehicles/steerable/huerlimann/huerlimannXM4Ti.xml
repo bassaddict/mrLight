@@ -8,12 +8,12 @@
     </wheels>
 
     <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2200" maxForwardSpeed="42" maxBackwardSpeed="15" brakeForce="6.92" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="1">
-        <torque normRpm="0.45" torque="0.38"/>
-        <torque normRpm="0.55" torque="0.42"/>
-        <torque normRpm="0.64" torque="0.46"/>
+        <torque normRpm="0.45" torque="0.405"/>
+        <torque normRpm="0.59" torque="0.451"/>
         <torque normRpm="0.73" torque="0.48"/>
-        <torque normRpm="0.86" torque="0.44"/>
-        <torque normRpm="1" torque="0.41"/>
+        <torque normRpm="0.82" torque="0.48"/>
+        <torque normRpm="0.89" torque="0.456"/>
+        <torque normRpm="1" torque="0.406"/>
     </motor>
 
     <fuelCapacity>165</fuelCapacity>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <speedLimit value="18" />
+    <speedLimit value="22" />
 
     <wheels>
         <wheel frictionScale="1" />
@@ -12,7 +12,7 @@
     </wheels>
 
     <!-- recommended horsepower by manufacturer: 250 - -->
-    <powerConsumer mrlBaseForce="1.5" mrlBaseForceFactor="8.2"/> <!-- 8.2m working width, base force per meter -->
+    <powerConsumer mrlBaseForce="1.15" mrlBaseForceFactor="8.2"/> <!-- 8.2m working width, base force per meter -->
 
 	<workAreas>
         <workArea mrlOrigArea="1" mrlStartPos="4.1 -0.283 2.251" mrlWidthPos="-4.1 -0.283 2.251" mrlHeightPos="4.1 -0.283 1.271"/>

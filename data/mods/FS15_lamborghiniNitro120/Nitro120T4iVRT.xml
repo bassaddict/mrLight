@@ -6,21 +6,27 @@
         <wheel frictionScale="1.00" />
         <wheel frictionScale="1.00" />
     </wheels>
-	<!--
-    <motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2200" maxForwardSpeed="40" maxBackwardSpeed="20" brakeForce="8" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1">
-        <torque normRpm="0.36" torque="0.50"/>
-        <torque normRpm="0.55" torque="0.56"/>
-        <torque normRpm="0.68" torque="0.59"/>
-        <torque normRpm="0.77" torque="0.57"/>
-        <torque normRpm="0.86" torque="0.53"/>
-        <torque normRpm="1" torque="0.42"/>
+	
+	<motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2200" maxForwardSpeed="52" maxBackwardSpeed="15" brakeForce="6.92" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="1">
+        <torque normRpm="0.45" torque="0.425"/>
+        <torque normRpm="0.59" torque="0.475"/>
+        <torque normRpm="0.73" torque="0.5"/>
+        <torque normRpm="0.82" torque="0.5"/>
+        <torque normRpm="0.89" torque="0.481"/>
+        <torque normRpm="1" torque="0.429"/>
     </motor>
 
-    <fuelCapacity>140</fuelCapacity>
-    <fuelUsage>28</fuelUsage>
-
+    <fuelCapacity>165</fuelCapacity>
+    <fuelUsage>26</fuelUsage>
+	
     <attacherJoints>
-        <attacherJoint mrlAddJoint="true" index="0>11"       jointType="trailerLow" maxRotLimit="20 85 85" minRotRotationOffset="0" allowsJointLimitMovement="false" canTurnOnImplement="false" />
+        <!-- back -->
+        <attacherJoint mrlOrigJointIndex="1" mrlType="3pt" minRotDistanceToGround="1.006" minRotRotationOffset="7.26" minRot="25 0 0" minRot2="-17 0 0" maxRotDistanceToGround="0.346" maxRotRotationOffset="-0.74" maxRot="-21.32 0 0" maxRot2="21.32 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
+        <!-- front -->
+        <attacherJoint mrlOrigJointIndex="2" mrlType="3pt" minRotDistanceToGround="1.044" minRotRotationOffset="8.74" minRot="-33 0 0" minRot2="25 0 0" maxRotDistanceToGround="0.3.17" maxRotRotationOffset="0.74" maxRot="29 0 0" maxRot2="-29 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
     </attacherJoints>
-	-->
+	
+	<components>
+        <component1 centerOfMass="0 1.08 -0.18" mrlMass="5.3" />
+    </components>
 </vehicle>

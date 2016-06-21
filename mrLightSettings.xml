@@ -118,7 +118,7 @@
 		
 		<!-- IT Runner Pack -->
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/itRunner2633HD.xml" >
-			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/itRunner2633HD.xml" /-->
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/itRunner2633HD.xml" />
 			<entry key="price" type="number" value="46500" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerDumper.xml" >
@@ -147,11 +147,11 @@
 			<entry key="capacity" type="number" value="18100" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerBales.xml" >
-			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerBales.xml" /-->
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerBales.xml" />
 			<entry key="price" type="number" value="8000" />
 		</vehicle>
 		<vehicle configFile="$pdlcdir$itRunnerPack/itRunner/containerWood.xml" >
-			<!--entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerWood.xml" /-->
+			<entry key="xmlFile" type="string" value="data/pdlc/itRunnerPack/itRunner/containerWood.xml" />
 			<entry key="price" type="number" value="8000" />
 		</vehicle>
 		
@@ -378,7 +378,7 @@
 		<vehicle configFile="data/vehicles/steerable/caseIH/caseIHPuma160.xml" >
 		<!-- Real values: 190 HP@2200 RPM, 203 HP@1800-1900 RPM, 866Nm@1500 RPM, from constructor's technical datasheet -->
 			<entry key="xmlFile" type="string" value="data/vehicles/steerable/caseIH/caseIHPuma160.xml" />
-			<entry key="price" type="number" value="104544" />
+			<entry key="price" type="number" value="111650" />
 			<entry key="dailyUpkeep" type="number" value="152" />
 			<entry key="power" type="number" value="203" />
 		</vehicle>
@@ -569,7 +569,7 @@
 		<vehicle configFile="data/vehicles/steerable/same/sameFortis190.xml" >
 		<!-- Real values: 184 HP@2100 RPM, 193 maxHP, 820Nm@1400 RPM, from constructor's technical datasheet -->
 			<entry key="xmlFile" type="string" value="data/vehicles/steerable/same/sameFortis190.xml" />
-			<entry key="price" type="number" value="113649" />
+			<entry key="price" type="number" value="106150" />
 			<entry key="dailyUpkeep" type="number" value="166" />
 			<entry key="power" type="number" value="193" />
 		</vehicle>
@@ -1026,6 +1026,9 @@
 		</vehicle>
 		<vehicle configFile="$moddir$FS15_lamborghiniNitro120/Nitro120T4iVRT.xml" >
 			<entry key="xmlFile" type="string" value="data/mods/FS15_lamborghiniNitro120/Nitro120T4iVRT.xml" />
+			<entry key="price" type="number" value="78500" />
+			<entry key="dailyUpkeep" type="number" value="110" />
+			<entry key="power" type="number" value="134" />
 		</vehicle>
 		<vehicle configFile="$moddir$FS15_rostselmashNiva/rostselmash/rsmNiva.xml" >
 			<entry key="xmlFile" type="string" value="data/mods/FS15_rostselmashNiva/rostselmash/rsmNiva.xml" />

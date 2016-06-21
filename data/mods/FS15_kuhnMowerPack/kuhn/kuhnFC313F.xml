@@ -5,7 +5,17 @@
     <speedLimit value="15" />
 	
     <inputAttacherJoints>
-        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.75" upperDistanceToGround="0.75" />
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.84" upperDistanceToGround="0.84" />
     </inputAttacherJoints>
+	
+	<groundReferenceNodes>
+        <groundReferenceNode mrlOrigNode="1" threshold="0.25" />
+    </groundReferenceNodes>
+	
+	<animations>
+        <animation mrlOrigAnimName="lowerAnimation">
+			<part mrlOrigPartIndex="2" node="0>0|5" startTime="0" endTime="1" startTrans="0.01269 0.96937 -0.14556" endTrans="0.01269 0.691578 -0.0720844" />
+        </animation>
+    </animations>
 	
 </vehicle>

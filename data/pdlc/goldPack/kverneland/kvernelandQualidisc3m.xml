@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <vehicle>
-    <speedLimit value="18" />
+    <speedLimit value="20" />
 
-    <powerConsumer mrlBaseForce="1.5" mrlBaseForceFactor="3"/> <!-- 3m working width, base force per meter -->
+    <powerConsumer mrlBaseForce="1.05" mrlBaseForceFactor="3"/> <!-- 3m working width, base force per meter -->
 
     <inputAttacherJoints>
-        <inputAttacherJoint lowerDistanceToGround="0.800" upperDistanceToGround="1.500" />
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.650" upperDistanceToGround="1.500" />
     </inputAttacherJoints>
 </vehicle>

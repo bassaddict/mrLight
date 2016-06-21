@@ -14,6 +14,15 @@
         <attacherJoint mrlOrigJointIndex="2" mrlType="3pt" minRotDistanceToGround="0.889" minRotRotationOffset="8.52" minRot="-25 0 0" minRot2="17 0 0" maxRotDistanceToGround="0.272" maxRotRotationOffset="0.52" maxRot="20 0 0" maxRot2="-20 0 0" maxTransLimit="0 0.2 0" mrlIsFixed="true" />
     </attacherJoints>
 	
+	<motor mrlUpdate="true" torqueScale="1" minRpm="800" maxRpm="2200" maxForwardSpeed="42" maxBackwardSpeed="15" brakeForce="6.5" lowBrakeForceScale="0.1" lowBrakeForceSpeedLimit="0.1" mrlPtoRatedRatio="1"> <!-- mass 4.95t -->
+        <torque normRpm="0.45" torque="0.49"/>
+        <torque normRpm="0.52" torque="0.515"/>
+        <torque normRpm="0.63" torque="0.589"/>
+        <torque normRpm="0.67" torque="0.589"/>
+        <torque normRpm="0.84" torque="0.55"/>
+        <torque normRpm="1" torque="0.47"/>
+    </motor>
+	
 	<fuelCapacity>220</fuelCapacity>
     <fuelUsage>29</fuelUsage>
 

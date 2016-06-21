@@ -7,6 +7,13 @@
         <wheel frictionScale="0.97" />
     </wheels>
 
+	<mrlFillVolumes mrlBaseFillVolumeNode="0>3|0|0|3" mrlAdditionalFillVolumes="fillVolumes/additionalFillVolumes.i3d">
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_UNKNOWN" mrlCapacity="15000" mrlUseOrigVolume="1" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_TUBERS" mrlCapacity="18000" mrlI3dNode="12" mrlMaxDelta="0.3" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="18000" mrlI3dNode="11" mrlMaxDelta="0.3" />
+		<mrlFillVolume mrlClass="FILLABLE_CLASS_GRAINS" mrlCapacity="18000" mrlI3dNode="10" mrlMaxDelta="0.3" />
+	</mrlFillVolumes>
+	
     <components>
         <component1 mrlMass="3.05" />
         <component2 mrlMass="0.9" />

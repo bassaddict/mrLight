@@ -3,4 +3,8 @@
     <speedLimit value="8" />
 	
     <powerConsumer ptoRpm="540" neededPtoPower="70"/>
+	
+	<inputAttacherJoints>
+        <inputAttacherJoint mrlOrigJointIndex="1" lowerDistanceToGround="0.500" upperDistanceToGround="1.500" />
+    </inputAttacherJoints>
 </vehicle>

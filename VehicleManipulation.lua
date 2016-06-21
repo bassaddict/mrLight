@@ -7,6 +7,7 @@ end;
 function VehicleManipulation:load(xmlFile)
 	self.firstRunVehicleManipulation = true;
 	
+	local oldXmlFile = xmlFile;
 	if MrLightUtils ~= nil and MrLightUtils.vehicleConfigs[self.configFileName] ~= nil and MrLightUtils.vehicleConfigs[self.configFileName].xmlFile ~= nil then
 		local xmlPath = MrLightUtils.modDir .. "" .. MrLightUtils.vehicleConfigs[self.configFileName].xmlFile;
 		xmlFile = loadXMLFile("settings", xmlPath);
@@ -29,6 +30,121 @@ function VehicleManipulation:load(xmlFile)
 			--print("    " .. tostring(self.wheels[i].frictionScale));
 		end;
 	end;
+	
+	local updateSteering = Utils.getNoNil(getXMLBool(xmlFile, "vehicle.wheels#mrlUpdateSteering"), false);
+	
+	local i = 0;
+    while true do
+        local wheelnamei = string.format("vehicle.wheels.wheel(%d)", i);
+		local reloadWheel = getXMLBool(xmlFile, wheelnamei .. "#mrlReloadWheel");
+		local newWheel = getXMLBool(xmlFile, wheelnamei .. "#mrlNewWheel");
+		local checkWheel = getXMLString(xmlFile, wheelnamei .. "#frictionScale");
+		if checkWheel == nil then
+			break;
+		end;
+		
+		if newWheel then
+			local linkNode = Utils.indexToObject(self.components, getXMLString(xmlFile, wheelnamei .. "#mrlLinkNode"));
+			local x, y, z = Utils.getVectorFromString(getXMLString(xmlFile, wheelnamei .. "#mrlNodePos"));
+			local newNode = createTransformGroup("newWheel" .. i);
+			link(linkNode, newNode);
+			setTranslation(newNode, x, y, z);
+			
+			local wheel = {};
+			wheel.repr = newNode;
+			if wheel.repr == nil then
+				print("Error: could not add new wheel " .. i);
+			else
+				wheel.driveNode = newNode;
+				if wheel.driveNode == nil then
+					wheel.driveNode = wheel.repr;
+				end;
+				wheel.isSynchronized = Utils.getNoNil(getXMLBool(xmlFile, wheelnamei .. "#isSynchronized"), true);
+				--wheel.node = getParent(wheel.repr);
+				-- look for top parent component node
+				wheel.node = self:getParentComponent(wheel.repr);
+				if wheel.node == 0 then
+					print("Invalid wheel-repr. Needs to be a child of a collision");
+				end;
+				wheel.positionX, wheel.positionY, wheel.positionZ = localToLocal(wheel.repr, wheel.node, 0,0,0);
+				wheel.startPositionX, wheel.startPositionY, wheel.startPositionZ = getTranslation(wheel.repr);
+				wheel.dirtAmount = 0;
+				wheel.lastColor = {0,0,0,0};
+				wheel.contact = Vehicle.WHEEL_NO_CONTACT;
+				wheel.steeringAngle = 0;
+				wheel.hasGroundContact = false;
+				wheel.hasHandbrake = true;
+				-- try to load wheels from i3d
+				local wheelFilename = getXMLString(xmlFile, wheelnamei .. "#wheelFilename");
+				if wheelFilename ~= nil then
+					wheel.wheelFilename = wheelFilename;
+					wheelIndex = Utils.getNoNil(getXMLString(xmlFile, wheelnamei .. "#wheelIndex"), "0|0");
+					local i3dNode = Utils.loadSharedI3DFile(wheelFilename, self.baseDirectory, false, false, false);
+					if i3dNode ~= 0 then
+						local loadedWheel = Utils.indexToObject(i3dNode, wheelIndex);
+						link(wheel.driveNode, loadedWheel);
+						delete(i3dNode);
+					end;
+				end;
+				local vehicleNode = self.vehicleNodes[wheel.node];
+				if vehicleNode ~= nil and vehicleNode.component ~= nil and vehicleNode.component.motorized == nil then
+					vehicleNode.component.motorized = true;
+					if lastMotorizedNode ~= nil then
+						if self.isServer then
+							addVehicleLink(lastMotorizedNode, vehicleNode.component.node);
+						end
+					end
+					lastMotorizedNode = vehicleNode.component.node;
+				end
+				self:loadDynamicWheelDataFromXML(xmlFile, wheelnamei, wheel);
+				wheel.width = Utils.getNoNil(getXMLFloat(xmlFile, wheelnamei .. "#width"), wheel.radius * 0.8);
+				if g_currentMission.tyreTrackSystem ~= nil and Utils.getNoNil(getXMLBool(xmlFile, wheelnamei .. "#hasTyreTracks"), false) then
+					wheel.tyreTrackIndex = g_currentMission.tyreTrackSystem:createTrack(wheel.width, Utils.getNoNil(getXMLInt(xmlFile, wheelnamei .. "#tyreTrackAtlasIndex"), 0));
+				end
+				wheel.xmlIndex = i;
+				table.insert(self.wheels, wheel);
+			end;
+		elseif reloadWheel then
+			self:loadDynamicWheelDataFromXML(xmlFile, wheelnamei, self.wheels[i+1]);
+		else
+			--print("    " .. tostring(self.wheels[i+1].frictionScale));
+			self.wheels[i+1].frictionScale = Utils.getNoNil(getXMLFloat(xmlFile, wheelnamei .. "#frictionScale"), self.wheels[i+1].frictionScale);
+			self:updateWheelTireFriction(self.wheels[i+1]);
+			--print("    " .. tostring(self.wheels[i+1].frictionScale));
+		end;
+		
+        i = i+1;
+	end;
+	if updateSteering then
+		self:loadWheelsSteeringDataFromXML(xmlFile);
+	else
+		self:loadWheelsSteeringDataFromXML(oldXmlFile);
+	end;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	local numComponents = #self.components;
 	self.componentMasses = {};
