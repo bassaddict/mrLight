@@ -14,6 +14,7 @@
 		<mrlFillVolume mrlClass="FILLABLE_CLASS_CHAFF" mrlCapacity="30000" mrlI3dNode="5" mrlMaxDelta="0.3" />
 	</mrlFillVolumes>
 	
+	<!--
 	<fillTypes fruitTypes="wheat rape maize barley chaff potato sugarBeet silage woodChips manure"/>
 	
 	<tipAnimations>
@@ -28,5 +29,6 @@
             </dischargeParticleSystems>
         </tipAnimation>
     </tipAnimations>
+	-->
 
 </vehicle>
